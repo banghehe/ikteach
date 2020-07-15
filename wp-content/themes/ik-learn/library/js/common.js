@@ -19,7 +19,6 @@ var ASSIGNMENT_SPELLING = 1; var ASSIGNMENT_VOCAB_GRAMMAR = 2; var ASSIGNMENT_RE
 			$("#sub-user-nav").css("display", "");
 
 			var viewport = getViewport();
-			console.log(viewport.height);
 			var menu_pc = $("#mySidenav").hasClass("open");
 			var menu_mb = $("#menu-account-nav").hasClass("open");
 			var check_mb = $("#checked-availability").hasClass('available-mb');
