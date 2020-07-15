@@ -2593,7 +2593,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                         <span class="stuff-day-tutor">(<?php echo $dt->format('D') ?>)</span>
                                                                     </span>
                                                                 </div>                                                      
-                                                                <div class="col-xs-3 col-sm-3 col-md-3 text-right no-padding">
+                                                                <div class="col-xs-3 col-sm-3 col-md-3 text-right no-padding" style="margin-left: -5px;">
+                                                                   <div class="row">
+                                                                       <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right"></div>
+                                                                       <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right">
+                                                                       <button type="button" class="refresh-btn-tutor"  id="refresh-btn-tutor" style=" background: none; border:0px;">
+                                                                        <img style="height:28px;" src="https://svgshare.com/i/Mts.svg">
+                                                                        </button>
+                                                                       </div>
+                                                                       <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right">
                                                                     <button type="button" class="btn-orange2 border-btn"  id="summary-btn-tutor" data-day="<?php echo $dt->format('Y-m-d') ?>" data-type="menu">
                                                                         <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Menu_Dropdown.png">
                                                                     </button>
@@ -2635,6 +2643,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                             </button>
                                                                         </li>
                                                                     </ul>
+                                                                    </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>   
                                                             
@@ -21164,6 +21174,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             get_list_schedule_tutor('schedule');
                             get_scheduled_day_tutor(day,type);
+                        });
+                        
+                        $("#refresh-btn-tutor").click(function(){
+                            var day = $(".schedule-rightbtn").attr("data-day");
+                            var type = $(".schedule-rightbtn").attr("data-type");
+                            var day = day.split("-");
+                            day[2] = day[2] - 1;
+                            var cur_day = day[0] + "-" + day[1] + "-" + day[2];
+                            console.log(cur_day);
+                            get_list_schedule_tutor('schedule');
+                            get_scheduled_day_tutor(cur_day,type);
                         });
 
                         $(".schedule-rightbtn").click(function(){
