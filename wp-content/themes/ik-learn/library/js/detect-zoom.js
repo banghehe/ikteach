@@ -365,21 +365,96 @@ function getZoomValues() {
     var newZoomVal = parseFloat(zoom, 10).toFixed(2);
     var newDeviceVal = parseFloat(device, 10).toFixed(2);
     changeHeight(newZoomVal);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1498df6c7e7294f901b588bfb2e517169b86a6a8
     //console.log(newZoomVal);
 }
 
 function changeHeight(zoom) {
-    if (zoom > 0.75) {
-        $(".footer").css({ height: "105px" });
-        $("body").css({ height: "unset" });
-        $("html").css({ height: "unset" });
-        $("#container").css({ height: "unset", overflow: "unset" });
-    } else {
-        $(".footer").css({ height: "100%" });
-        $("body").css({ height: "100%" });
-        $("html").css({ height: "100%" });
-        $("#container").css({ height: "100%", overflow: "hidden" });
-    }
+    // if(zoom > 0.42){
+    // //  $(".footer").css({ height: "600px" });}
+    // if( zoom > 0.75 ){
+    //     $(".footer").css({ height: "105px" });
+    //     $("body").css({ height: "unset" });
+    //     $("html").css({ height: "unset" });
+    //     $("#container").css({ height: "unset", overflow: "unset" });
+     if(zoom > 0.97){
+        var e = window, a = 'inner';
+        if (!('innerWidth' in window)) {
+            a = 'client';
+            e = document.documentElement || document.body;
+        }
+
+        var wh = e[ a + 'Width' ];
+        var ht = e[ a + 'Height' ];
+
+        if((wh/ht)<0.75){
+            $(".footer").css({ height: "100%" });
+            $("body").css({ height: "100%" });
+            $("html").css({ height: "100%" });
+            $("#container").css({ height: "100%", overflow: "hidden" });
+            
+        }else if((wh/ht)>0.75){
+            $(".footer").css({ height: "110px" });
+            $("body").css({ height: "unset" });
+            $("html").css({ height: "unset" });
+            $("#container").css({ height: "unset", overflow: "unset" });
+            
+        }
+        }else if (zoom > 0.8 && zoom < 0.98) {
+            $(".footer").css({ height: "110px" });
+            $("body").css({ height: "unset" });
+            $("html").css({ height: "unset" });
+            $("#container").css({ height: "unset", overflow: "unset" });
+        
+        } else if(zoom <0.81){
+            $(".footer").css({ height: "100%" });
+            $("body").css({ height: "100%" });
+            $("html").css({ height: "100%" });
+            $("#container").css({ height: "100%", overflow: "hidden" });
+            
+        }
+        // $(".footer").css({ height: "100%" });
+        // $("body").css({ height: "100%" });
+        // $("html").css({ height: "100%" });
+        // $("#container").css({ height: "100%", overflow: "hidden" });
+        // alert(zoom);
+    // }else{
+    //     $(".footer").css({ height: "120px" });
+    //     $("body").css({ height: "unset" });
+    //     $("html").css({ height: "unset" });
+    //     $("#container").css({ height: "unset", overflow: "unset" });
+    //     alert(zoom);
+    // // }else if( zoom = 0.98 ){
+    //     $(".footer").css({ height: "100%" });
+    //     $("body").css({ height: "100%" });
+    //     $("html").css({ height: "100%" });
+    //     $("#container").css({ height: "100%", overflow: "hidden" });
+    //     alert(zoom);
+    // }else if(zoom > 0.98){
+    //     $(".footer").css({ height: "120px" });
+    //     $("body").css({ height: "unset" });
+    //     $("html").css({ height: "unset" });
+    //     $("#container").css({ height: "unset", overflow: "unset" });
+    //     alert(zoom);
+    // }}
+    
+    // // if(0.25 < zoom < 0.42){
+    // //     $(".footer").css({ height: "600px" });
+    // // }
+    // // if(0.41  zoom < 0.45){
+    // //     $(".footer").css({ height: "245px" });
+    // // }
+    // // if(0.45 < zoom < 0.51){
+    // //     $(".footer").css({ height: "149px" });
+    // }else {
+    //     $(".footer").css({ height: "100%" });
+    //     $("body").css({ height: "100%" });
+    //     $("html").css({ height: "100%" });
+    //     $("#container").css({ height: "100%", overflow: "hidden" });
+    // }
 }
 
 $(document).ready(function () {

@@ -2406,7 +2406,7 @@ span.omg_highlight {
 }
 .md-select-p {
     margin: 15px 0px;
-    color: #00;
+    color: #000;
 }
 .md-eng-math {
     height: 360px;
@@ -12422,7 +12422,7 @@ background: url(../images/chevron-l.png) no-repeat !important;
     margin-bottom: 40px;
 }
 .style-paginate{
-    border: 1px solid #ddddd;
+    border: 1px solid #dddddd;
     background: #DEDEDE;
     padding: 5px 10px;
     margin-right: 5px;
@@ -16167,4 +16167,13 @@ font-weight: bold;
     .btn-start-now{
         width: 100%;
     }
+<<<<<<< HEAD
+=======
+}
+#price-tutoring, #price-group-tutoring{
+    padding-left: 108px !important;
+}
+#number-participant{
+    padding-left: 145px !important;
+>>>>>>> 1498df6c7e7294f901b588bfb2e517169b86a6a8
 }

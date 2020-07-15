@@ -22114,6 +22114,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $("#sub-tutoring-preference").addClass("active");
                         });
 
+                         $("#tab-schedule").click(function () {
+                            
+                            $(".sub-menu-left li").removeClass("active");
+                            $("#sub-schedule-li").addClass("active");
+                        });
+                         $(".tab-schedule").click(function () {
+                            
+                            $(".sub-menu-left li").removeClass("active");
+                            $("#sub-schedule-li").addClass("active");
+                        });
+
                         $('.img-one-icon').click(function () {
                             var name = $(this).attr("data-tab");
                             var menu = $(this).attr("data-menu");
@@ -22138,7 +22149,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $('#update-preference').attr('data-type','');
                             $('#cancel-update-preference').attr('data-type','');
                         });
-
                         $("#btn-my-timezone").click(function () {
                             $('#my-timezone').toggle();
                         });
@@ -24045,7 +24055,32 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                    
                     
                 })(jQuery);
+                
+                $(".modal-body-signup").click( function (e){
+                     $("#my-timezone").css("display","none");
+                    if (e.target !== this){
+                            return;
+                        }
+                        $("#open-menu-schedule").css("display","none");
+                       
+                });
+                $(".title-div").click( function (e){
+                        
+                        if (e.target !== this){
+                            return;
+                        }
+                        $("#open-menu-schedule").css("display","none");
+                        $("#my-timezone").css("display","none");
+                });
+                $(".modal-content-signup").click( function (e){
+                        if (e.target !== this){
+                            return;
+                        }
+                        $("#open-menu-schedule").css("display","none");
+                        $("#my-timezone").css("display","none");
+
+});
 
             </script>
-          
+            
             

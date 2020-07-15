@@ -2308,7 +2308,7 @@ span.omg_highlight {
 }
 .md-select-p {
     margin: 15px 0px;
-    color: #00;
+    color: #F00;
 }
 .md-eng-math {
     height: 360px;
@@ -12256,4 +12256,8 @@ background: url(../images/chevron-l.png) no-repeat !important;
     margin-right: 10px;
     font-size: 14px;
     font-family: Myriad_bold;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1498df6c7e7294f901b588bfb2e517169b86a6a8

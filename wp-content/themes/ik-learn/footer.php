@@ -2,7 +2,7 @@
 
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-12">
+						<div class="col-sm-12 col-md-12 col-lg-12">
 							<div class="copyright">
 								<p><?php _e('Disctionaries : Copy right by Merriam Webster, All right reserved.', 'iii-dictionary') ?><br>
 								<?php _e('Software and graphics : Copy right by Innovative Knowldge, Inc. All right reserved.', 'iii-dictionary') ?></p>
