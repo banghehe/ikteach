@@ -103,9 +103,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
     <title><?php wp_title(''); ?></title>
 
-        <?php // <meta name="HandheldFriendly" content="True">   ?>
-        <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <?php // <meta name="HandheldFriendly" content="True">   ?>
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/)   ?>
     <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-touch-icon.png">
@@ -21937,7 +21937,6 @@ $("#set-now-preference").click(function () {
 $("#btn-my-timezone").click(function () {
     $('#my-timezone').toggle();
 });
-
 
 
 $(".close-timelot").click(function () {
