@@ -22122,9 +22122,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $('#update-preference').attr('data-type','');
                             $('#cancel-update-preference').attr('data-type','');
                         });
-                        $(".title-div").click( function (e){
-                        $("#my-timezone").css("display","none");
-                        });
+                        
                         $("#btn-my-timezone").click(function () {
                             $('#my-timezone').toggle();
                         });
