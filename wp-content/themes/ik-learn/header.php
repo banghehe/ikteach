@@ -24032,6 +24032,22 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                 $(".modal-body-signup").click( function (e){
                     $("#my-timezone").css("display","none");
                 });
+                $(".title-div").click( function (e){
+                        
+                        if (e.target !== this){
+                            return;
+                        }
+                        
+                        $("#my-timezone").css("display","none");
+                });
+                $(".modal-content-signup").click( function (e){
+                        if (e.target !== this){
+                            return;
+                        }
+                       
+                        $("#my-timezone").css("display","none");
+
+});
 
             </script>
             
