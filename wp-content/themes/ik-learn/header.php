@@ -24029,22 +24029,28 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                    
                     
                 })(jQuery);
+                
                 $(".modal-body-signup").click( function (e){
-                    $("#my-timezone").css("display","none");
+                     $("#my-timezone").css("display","none");
+                    if (e.target !== this){
+                            return;
+                        }
+                        $("#open-menu-schedule").css("display","none");
+                       
                 });
                 $(".title-div").click( function (e){
                         
                         if (e.target !== this){
                             return;
                         }
-                        
+                        $("#open-menu-schedule").css("display","none");
                         $("#my-timezone").css("display","none");
                 });
                 $(".modal-content-signup").click( function (e){
                         if (e.target !== this){
                             return;
                         }
-                       
+                        $("#open-menu-schedule").css("display","none");
                         $("#my-timezone").css("display","none");
 
 });
