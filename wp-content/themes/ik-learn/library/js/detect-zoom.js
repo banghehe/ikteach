@@ -365,10 +365,6 @@ function getZoomValues() {
     var newZoomVal = parseFloat(zoom, 10).toFixed(2);
     var newDeviceVal = parseFloat(device, 10).toFixed(2);
     changeHeight(newZoomVal);
-<<<<<<< HEAD
-=======
-
->>>>>>> 1498df6c7e7294f901b588bfb2e517169b86a6a8
     //console.log(newZoomVal);
 }
 
