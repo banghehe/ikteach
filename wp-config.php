@@ -34,12 +34,12 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 define('COOKIE_DOMAIN', '.ikteach.local');
-define('COOKIEPATH', '');
+define('COOKIEPATH', '/');
 
-define('WP_SITEURL', 'http://ikteach.local/');
-define('WP_HOME', 'http://ikteach.local/');
+define('WP_SITEURL', 'http://ikteach.local');
+define('WP_HOME', 'http://ikteach.local');
 
-//define('FORCE_SSL_ADMIN', true);
+define('FORCE_SSL_ADMIN', true);
 // define('IK_TEST_SERVER', 1);
 
 /**#@+
