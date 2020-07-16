@@ -400,58 +400,20 @@ function changeHeight(zoom) {
             $("#container").css({ height: "unset", overflow: "unset" });
             
         }
-        }else if (zoom > 0.8 && zoom < 0.98) {
+        }else if (zoom > 0.79 && zoom < 0.98) {
             $(".footer").css({ height: "150px" });
             $("body").css({ height: "unset" });
             $("html").css({ height: "unset" });
             $("#container").css({ height: "unset", overflow: "unset" });
         
-        } else if(zoom <0.81){
+        } else if(zoom <0.8){
             $(".footer").css({ height: "100%" });
             $("body").css({ height: "100%" });
             $("html").css({ height: "100%" });
             $("#container").css({ height: "100%", overflow: "hidden" });
             
         }
-        // $(".footer").css({ height: "100%" });
-        // $("body").css({ height: "100%" });
-        // $("html").css({ height: "100%" });
-        // $("#container").css({ height: "100%", overflow: "hidden" });
-        // alert(zoom);
-    // }else{
-    //     $(".footer").css({ height: "120px" });
-    //     $("body").css({ height: "unset" });
-    //     $("html").css({ height: "unset" });
-    //     $("#container").css({ height: "unset", overflow: "unset" });
-    //     alert(zoom);
-    // // }else if( zoom = 0.98 ){
-    //     $(".footer").css({ height: "100%" });
-    //     $("body").css({ height: "100%" });
-    //     $("html").css({ height: "100%" });
-    //     $("#container").css({ height: "100%", overflow: "hidden" });
-    //     alert(zoom);
-    // }else if(zoom > 0.98){
-    //     $(".footer").css({ height: "120px" });
-    //     $("body").css({ height: "unset" });
-    //     $("html").css({ height: "unset" });
-    //     $("#container").css({ height: "unset", overflow: "unset" });
-    //     alert(zoom);
-    // }}
-    
-    // // if(0.25 < zoom < 0.42){
-    // //     $(".footer").css({ height: "600px" });
-    // // }
-    // // if(0.41  zoom < 0.45){
-    // //     $(".footer").css({ height: "245px" });
-    // // }
-    // // if(0.45 < zoom < 0.51){
-    // //     $(".footer").css({ height: "149px" });
-    // }else {
-    //     $(".footer").css({ height: "100%" });
-    //     $("body").css({ height: "100%" });
-    //     $("html").css({ height: "100%" });
-    //     $("#container").css({ height: "100%", overflow: "hidden" });
-    // }
+        
 }
 
 $(document).ready(function () {
