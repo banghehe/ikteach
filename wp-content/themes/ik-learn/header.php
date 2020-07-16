@@ -2589,10 +2589,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 </div>
                                                                 <div class="col-xs-7 col-sm-7 col-md-7 no-padding">
                                                                     <span class="current-stuff">
-                                                                        <span class="current-day-tutor"><?php echo $dt->format('F d') ?></span>
+                                                                        <span class="current-day-tutor"><?php echo $dt->format('M d') ?></span>
                                                                         <span class="stuff-day-tutor">(<?php echo $dt->format('D') ?>)</span>
                                                                     </span>
-                                                                </div>                                                      
+                                                                </div>  
+
                                                                 <div class="col-xs-3 col-sm-3 col-md-3 text-right no-padding" style="margin-left: -5px;">
                                                                    <div class="row">
                                                                        <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right"></div>
@@ -24079,7 +24080,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         $("#open-menu-schedule").css("display","none");
                 });
                 $(".body-my-scheduled-tutor").click( function (){
-                    
+
                         $("#open-menu-schedule").css("display","none");
                 });
             </script>
