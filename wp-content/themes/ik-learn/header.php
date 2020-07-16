@@ -2587,7 +2587,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <img class="schedule-leftbtn" src="<?php echo get_template_directory_uri(); ?>/library/images/Chalendar_icon_Left_circle.png" data-day="<?php echo $dt_yesterday->format('Y-m-d') ?>" data-type="schedule">
                                                         <img class="schedule-rightbtn" src="<?php echo get_template_directory_uri(); ?>/library/images/Chalendar_icon_Rightt_circle.png"  data-day="<?php echo $dt_tomorrow->format('Y-m-d') ?>" data-type="schedule">
                                                     </div>
-                                                    <div class="col-xs-7 col-sm-7 col-md-7 no-padding">
+                                                    <div class="col-xs-7 col-sm-7 col-md-7 no-padding clickhide">
                                                         <span class="current-stuff">
                                                             <span class="current-day-tutor"><?php echo $dt->format('F d') ?></span>
                                                             <span class="stuff-day-tutor">(<?php echo $dt->format('D') ?>)</span>
@@ -24064,9 +24064,8 @@ function clickBodySignup() {
      if (e.target !== this){
         return;
     }
-    openMenuSchedule.css("display","none");
-
-});
+    // openMenuSchedule.css("display","none");
+    });
 };
 clickBodySignup();
 
@@ -24095,6 +24094,21 @@ function clickTitleDiv() {
 }
 
 clickTitleDiv();
+
+$('.teacher-center').click( function (){
+    openMenuSchedule.css("display","none");
+});
+$('.box-schedule-left').click( function (){
+    openMenuSchedule.css("display","none");
+});
+$('.body-my-scheduled-tutor').click( function (){
+    openMenuSchedule.css("display","none");
+});
+$('.clickhide').click( function (){
+    openMenuSchedule.css("display","none");
+    console.log("hehe");
+});
+
 // end task1
 
 </script>
