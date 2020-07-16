@@ -2600,7 +2600,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     <ul id="open-menu-schedule">
                                                                         <li>
                                                                             <button type="button" id="make-check-all" data-status="checkall">
-                                                                                <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Check_check_ALL.png">
+                                                                                <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Check_check_ALL.png" >
                                                                                 Check All
                                                                             </button>
                                                                         </li>
