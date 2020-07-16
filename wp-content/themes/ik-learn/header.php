@@ -24074,8 +24074,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         $("#open-menu-schedule").css("display","none");
                         $("#my-timezone").css("display","none");
 
-});
-
+                });
+                $(".teacher-center").click( function (){
+                        $("#open-menu-schedule").css("display","none");
+                });
+                $(".body-my-scheduled-tutor").click( function (){
+                    
+                        $("#open-menu-schedule").css("display","none");
+                });
             </script>
             
             
