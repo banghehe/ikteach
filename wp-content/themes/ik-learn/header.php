@@ -2598,7 +2598,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                        <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right"></div>
                                                                        <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right">
                                                                        <button type="button" class="refresh-btn-tutor"  id="refresh-btn-tutor" style=" background: none; border:0px;">
-                                                                        <img style="height:28px;" src="https://svgshare.com/i/Mts.svg">
+                                                                       <img style="height:26px;" src="https://upload.wikimedia.org/wikipedia/commons/1/17/OOjs_UI_icon_reload.svg">
                                                                         </button>
                                                                        </div>
                                                                        <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right">
