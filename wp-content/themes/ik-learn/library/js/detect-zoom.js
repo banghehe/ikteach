@@ -401,7 +401,7 @@ function changeHeight(zoom) {
             
         }
         }else if (zoom > 0.8 && zoom < 0.98) {
-            $(".footer").css({ height: "110px" });
+            $(".footer").css({ height: "150px" });
             $("body").css({ height: "unset" });
             $("html").css({ height: "unset" });
             $("#container").css({ height: "unset", overflow: "unset" });
