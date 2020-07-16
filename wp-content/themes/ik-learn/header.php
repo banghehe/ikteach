@@ -2110,14 +2110,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         <div id="tutoring-preference" class="tab-pane fade">
                             <div class="teacher-center">
                                 <div class="row">
-                                    <div class="col-sm-8 col-md-8 col-xs-8">
+                                    <div class="col-sm-10 col-md-10 col-xs-10">
                                         <p class="mt-bottom-12 student-center-title">TUTORING</p>
                                         <div class="new-request-lists">Tutoring Preference</div>
                                     </div>
-                                    <div id="manage-preference" class="col-sm-4 col-md-4 col-xs-4 text-right">
+                                    <div class="col-sm-2 col-md-2 col-xs-2 text-right">
+                                        <img class="img-one-icon" src="http://ikteach.local/wp-content/themes/ik-learn/library/images/Icon_Close.png" alt="">
+                                    </div>
+                                   <!--  <div id="manage-preference" class="col-sm-4 col-md-4 col-xs-4 text-right">
                                         <a class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="true">Schedule</a>
                                         <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="true">Tutoring Preference</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="row">
@@ -2242,7 +2245,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     <img class="img-style-icon" src="<?php echo get_template_directory_uri(); ?>/library/images/03_icon_Open.png" alt="uparrow"><span>MATH</span>
                                 </div>
                                 <div class="col-sm-3 col-md-3 col-xs-4">
-                                   <div class="form-group">
+                                 <div class="form-group">
                                     <label>
                                         <span>Check All</span>
                                         <input type="checkbox" class="radio_buttons option-input-4 radio" value="math" name="check_all_math">
@@ -2594,9 +2597,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </span>
                                                     </div>                                                      
                                                     <div class="col-xs-3 col-sm-3 col-md-3 text-right no-padding" style="margin-left: -5px;">
-                                                       <div class="row">
-                                                           <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right"></div>
-                                                           <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right">
+                                                     <div class="row">
+                                                         <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right"></div>
+                                                         <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right">
                                                                        <!-- <button type="button" class="refresh-btn-tutor"  id="refresh-btn-tutor" style=" background: none; border:0px;">
                                                                         <img style="height:28px;" src="https://svgshare.com/i/Mts.svg">
                                                                     </button> -->
@@ -5445,7 +5448,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             </div>
                             <div class="manage-class-message hidden">
-                             <div class="form-group check-class-name">
+                               <div class="form-group check-class-name">
                                 <input name="check-class-name" id="manage-msg-class-name" class="form-control border-ras" value="" disabled>
                                 <button id="icon-close-manage-msg"><img class="img-style-icon" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_White_Close.png" alt="uparrow"></button>
                                 <div class="clearfix"></div>
@@ -6112,7 +6115,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         <?php _e('Initiate Now!', 'iii-dictionary') ?>
                                     </button>
                                 <?php }else{ ?>
-                                 <button id="btn-start-now<?php echo $value['id'] ?>" class="btn-dark-blue btn-start-now" type="button" name="start-now" data-id="<?php echo $value['id'] ?>" data-student-id="<?php echo $value['id_user'] ?>" data-teacher-id="<?php echo $value['tutor_id'] ?>">
+                                   <button id="btn-start-now<?php echo $value['id'] ?>" class="btn-dark-blue btn-start-now" type="button" name="start-now" data-id="<?php echo $value['id'] ?>" data-student-id="<?php echo $value['id_user'] ?>" data-teacher-id="<?php echo $value['tutor_id'] ?>">
                                     <?php _e('Initiate Now!', 'iii-dictionary') ?>
                                 </button>
                                 <button id="btn-cancel-schedule<?php echo $value['id'] ?>" class="btn-dark-blue btn-cancel-schedule active" type="button" name="cancel-schedule" data-id="<?php echo $value['id'] ?>" data-student-id="<?php echo $value['id_user'] ?>" data-teacher-id="<?php echo $value['tutor_id'] ?>">
@@ -8836,8 +8839,8 @@ $("#sub-update-info a").click(function (e) {
 });
 
 $("#tutor-regist a").click(function (e) {  
- get_update_info();                           
- $('span.placeholder').each(function () {
+   get_update_info();                           
+   $('span.placeholder').each(function () {
     var text = $(this).text();
     var font = $(this).css("font");
     if(text == 'Year:'){
@@ -18671,8 +18674,8 @@ $("#btn-class-tutoring-down").click(function () {
                             tinyMCE.activeEditor.setContent('');
                         });
                         $('#list-student-btn').click(function(){
-                           $('.student-list').text('STUDENT LIST');
-                       });
+                         $('.student-list').text('STUDENT LIST');
+                     });
                         $('#search-my-message-btn').click(function(){
                             var keyword = $('#search-my-message').val();
                             var tbody_receive = $("#table-receive-message");
@@ -19141,12 +19144,12 @@ $("#btn-class-tutoring-down").click(function () {
                                 var formattedDate = curr_year + "-" + curr_month + "-" + curr_date;
                                 if($.inArray(formattedDate, active_day) != -1){
                                     return {
-                                       classes: 'activeClass'
-                                   };
-                               }
-                               return;
-                           }
-                       });
+                                     classes: 'activeClass'
+                                 };
+                             }
+                             return;
+                         }
+                     });
 
                         $('.datepicker-switch').click(function() { return false; });
 
@@ -22389,25 +22392,25 @@ $('.my-timezone').click(function(){
 
                             let time = moment.tz(timezone_name).format('h:mm a');
                             if (document.getElementById('time-clock')) {
-                               document.getElementById('time-clock').innerHTML = time;
-                           }
-                           $('#time-clock').attr('data-hour',moment.tz(timezone_name).format('H'));
-                           $('#time-clock').attr('data-minute',moment.tz(timezone_name).format('m'));
-                           $('#time-clock').attr('data-type',moment.tz(timezone_name).format('a'));
+                             document.getElementById('time-clock').innerHTML = time;
+                         }
+                         $('#time-clock').attr('data-hour',moment.tz(timezone_name).format('H'));
+                         $('#time-clock').attr('data-minute',moment.tz(timezone_name).format('m'));
+                         $('#time-clock').attr('data-type',moment.tz(timezone_name).format('a'));
 
-                           interval = setInterval(() => {
+                         interval = setInterval(() => {
                             time = moment.tz(timezone_name).format('h:mm a');
                             if (document.getElementById('time-clock')) {
-                               document.getElementById('time-clock').innerHTML = time;
-                           }
-                           $('#time-clock').attr('data-hour',moment.tz(timezone_name).format('H'));
-                           $('#time-clock').attr('data-minute',moment.tz(timezone_name).format('m'));
-                           $('#time-clock').attr('data-type',moment.tz(timezone_name).format('a'));
-                       }, 1000);
+                             document.getElementById('time-clock').innerHTML = time;
+                         }
+                         $('#time-clock').attr('data-hour',moment.tz(timezone_name).format('H'));
+                         $('#time-clock').attr('data-minute',moment.tz(timezone_name).format('m'));
+                         $('#time-clock').attr('data-type',moment.tz(timezone_name).format('a'));
+                     }, 1000);
 
-                           var text = $('#select-timezoneSelectBoxItText').text();
-                           var font = $('#select-timezoneSelectBoxItText').css("font");
-                           if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+                         var text = $('#select-timezoneSelectBoxItText').text();
+                         var font = $('#select-timezoneSelectBoxItText').css("font");
+                         if (document.documentMode || /Edge/.test(navigator.userAgent)) {
                                 //console.log("Edge");
                                 var offset = getDistancePlace(text, "Edge");
                             }else if (navigator.userAgent.search("Firefox") >= 0){
@@ -24060,12 +24063,12 @@ var modalContentSignup = $(".modal-content-signup");
 var titDivClick = $(".title-div");
 function clickBodySignup() {
     modalBodySignup.click( function (e){
-     timeZone.css("display","none");
-     if (e.target !== this){
+       timeZone.css("display","none");
+       if (e.target !== this){
         return;
     }
     // openMenuSchedule.css("display","none");
-    });
+});
 };
 clickBodySignup();
 
@@ -24085,12 +24088,12 @@ hiddenBoxTimeZoneAndBoxSchedule();
 function clickTitleDiv() {
     titDivClick.click( function (e){
 
-    if (e.target !== this){
-        return;
-    }
-    openMenuSchedule.css("display","none");
-    timeZone.css("display","none");
-});
+        if (e.target !== this){
+            return;
+        }
+        openMenuSchedule.css("display","none");
+        timeZone.css("display","none");
+    });
 }
 
 clickTitleDiv();
@@ -24110,6 +24113,7 @@ $('.clickhide').click( function (){
 });
 
 // end task1
+
 
 </script>
 
