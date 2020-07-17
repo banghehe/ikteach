@@ -89,12 +89,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 }
 ?>
 <!DOCTYPE html>
-
-<!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
-
     <head>
         <meta charset="utf-8">
 
@@ -130,7 +124,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
         <script>var home_url = "<?php echo locale_home_url() ?>", LANG_CODE = "<?php echo $locale_code[0] ?>", isuserloggedin = <?php echo $is_user_logged_in ? 1 : 0 ?>;</script>
 
         <?php // drop Google Analytics Here  ?>
-        <?php // end analytics  ?>      
+        <?php // end analytics  ?>		
 
         <?php if (is_admin_panel()) : ?>
             <style type="text/css">
@@ -169,6 +163,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
             var active_day = <?php echo $active_day ?>;
             var active_day_tutor = <?php echo $active_day_teach ?>;
         </script>
+        
     </head>
 
     <body <?php body_class('body-math'); ?> itemscope itemtype="http://schema.org/WebPage">
@@ -208,14 +203,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                     <div class="title-div">
                         <div class="icon-close-classes-created">
                             <?php if ($is_user_logged_in) { ?>
-                            <button type="button" id="btn-my-timezone" class="btn-my-schedule">
-                                <span id="mycity-name"><?php echo $my_city ?></span>
-                                <span id="mytime-clock" data-hour="24" data-minute="0">2:35 PM</span>
-                                <img class="ic-my-schedule" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_TimeZone_Selector.png">
-                            </button>
-                            <button type="button" id="btn-my-schedule" class="btn-my-schedule">
-                                <img class="ic-my-schedule" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_MySchedule_Top.png">
-                            </button>
+							<button type="button" id="btn-my-timezone" class="btn-my-schedule">
+								<span id="mycity-name"><?php echo $my_city ?></span>
+								<span id="mytime-clock" data-hour="24" data-minute="0">2:35 PM</span>
+								<img class="ic-my-schedule" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_TimeZone_Selector.png">
+							</button>
+							<button type="button" id="btn-my-schedule" class="btn-my-schedule">
+								<img class="ic-my-schedule" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_MySchedule_Top.png">
+							</button>
                             <?php } ?>
                             <img class="ic-close7" id="close-modal" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png">
                             <ul id="my-timezone" style="display: none;">
@@ -306,7 +301,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         </span>
                     </div>
                     <hr class="line-modal">
-                    <div class="bg-overload"></div>
+					<div class="bg-overload"></div>
                     <div class="modal-body-signup">
                         <div class="section-right">
                             <div class="tab-content">
@@ -1220,22 +1215,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                                 <label class="mt-top-10 mt-bottom-12">Tell me why you like Tutoring and Teaching</label>
                                                 <div id="desc-class2" class="mt-bottom-10">
-                                                    <span class="editor-top-left"></span>
-                                                    <span class="editor-top-right"></span>
-                                                    <span class="editor-bottom-left"></span>
-                                                    <span class="editor-bottom-right"></span>
-                                                    <?php
-                                                    $editor_settings = array(
-                                                        'wpautop' => false,
-                                                        'media_buttons' => false,
-                                                        'quicktags' => false,
-                                                        'editor_height' => 50,
-                                                        'textarea_rows' => 3,
-                                                        'tinymce' => array(
-                                                            'toolbar1' => 'bold,italic,strikethrough,image,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,spellchecker,fullscreen,wp_adv'
-                                                        )
-                                                    );
-                                                    ?>
+                                                    
+                                                    
                                                     <?php wp_editor($desc_tell_update, 'desc_tell_update', $editor_settings); ?>
                                                     <div class="clear-both"></div>
                                                 </div>
@@ -2110,13 +2091,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 <div id="tutoring-preference" class="tab-pane fade">
                                     <div class="teacher-center">
                                         <div class="row">
-                                            <div class="col-sm-8 col-md-8 col-xs-8">
+                                            <div class="col-sm-10 col-md-10 col-xs-10">
                                                 <p class="mt-bottom-12 student-center-title">TUTORING</p>
                                                 <div class="new-request-lists">Tutoring Preference</div>
                                             </div>
-                                            <div id="manage-preference" class="col-sm-4 col-md-4 col-xs-4 text-right">
-                                                <a class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="true">Schedule</a>
-                                                <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="true">Tutoring Preference</a>
+                                            <div class="col-sm-2 col-md-2 col-xs-2 text-right">
+                                                <img class="img-one-icon" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -2127,8 +2107,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             </p>
                                             <label class="label-preference mt-top-6">Price for 30 Minutes of Tutoring</label>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="price_tutoring" value="<?php echo $price_tutoring ?>" id="price-tutoring">
-                                                <span class="placeholder">US Dollar/Points:</span>
+                                                <input type="text" class="form-control" name="price_tutoring" value="<?php echo $price_tutoring ?>" id="price-tutoring" placeholder="US Dollar/Points:">
+                                                
                                             </div>
                                             <div class="form-group">
                                                 <label>
@@ -2151,22 +2131,22 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 col-xs-12">
                                                 <label class="label-preference mt-top-6">Price for 30 Minutes of Tutoring</label>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="price_group_tutoring" value="<?php echo $price_group_tutoring ?>" id="price-group-tutoring">
-                                                    <span class="placeholder">US Dollar/Points:</span>
+                                                    <input type="text" class="form-control" name="price_group_tutoring" value="<?php echo $price_group_tutoring ?>" id="price-group-tutoring" placeholder="US Dollar/Points:">
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-xs-12">
                                                 <label class="label-preference mt-top-6">Participant limits</label>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="number_participant" value="<?php echo $number_participant ?>" id="number-participant">
-                                                    <span class="placeholder">Number of Participants:</span>
+                                                    <input type="text" class="form-control" name="number_participant" value="<?php echo $number_participant ?>" id="number-participant" placeholder="Number of Participants:">
+                                                   
                                                 </div>
                                             </div>
                                             <div class="col-xs-12">
                                                 <div class="form-group">
                                                     <label>
-                                                        <input type="checkbox" class="radio_buttons option-input-3 radio" value="group_tutoring" name="enable_group_tutoring" <?php if($enable_group_tutoring == 'group_tutoring') echo 'checked="checked"'; ?>>
-                                                        <span>Enables Group Tutoring </span>
+                                                        <input type="checkbox" class="radio_buttons option-input-3 radio" value="group_tutoring" name="enable_group_tutoring" <?php $enable_group_tutoring == 'group_tutoring'; if($enable_group_tutoring == 'group_tutoring') echo 'checked="checked"'; ?>>
+                                                        <span>Enables Group Tutoring</span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -2199,12 +2179,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-xs-12 cb-type3">
                                                 <label>
                                                     <input type="checkbox" class="radio_buttons option-input-3 radio" value="english_conversation" name="english_subject" <?php if(count($english_subject) > 0 && in_array("english_conversation", $english_subject)) echo 'checked="checked"'; ?>>
-                                                    <span>English Conversations for Foreign Students</span>
+                                                    <span>English Conversation for Foreign Students</span>
                                                 </label>
                                             </div>
                                             <div class="col-xs-12 cb-type3">
                                                 <label>
-                                                    <input type="checkbox" class="radio_buttons option-input-3 radio" value="english_grammar" name="english_subject" <?php if(count($english_subject) > 0 && in_array("english_grammar", $english_subject)) echo 'checked="checked"'; ?>>
+                                                    <input  type="checkbox" class="radio_buttons option-input-3 radio" value="english_grammar" name="english_subject" <?php if(count($english_subject) > 0 && in_array("english_grammar", $english_subject)) echo 'checked="checked"'; ?>>
                                                     <span>English Grammar</span>
                                                 </label>
                                             </div>
@@ -2356,14 +2336,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     </div>
                                     <div class="other-subject">
                                         <?php 
-                                        if(count($other_preferences) > 0){ 
-                                            for ($i = 0; $i < count($other_preferences); $i++) {
-                                                $description_preference = isset($description_preference[$i])?$description_preference[$i]:"";
+                                      if(count($other_preferences > 0)){ 
+                                      for ($i = 0; $i < count($other_preferences); $i++) {
+                                              $description_preference = isset($description_preference[$i])?$description_preference[$i]:"";
                                         ?>
                                         <div class="row">
                                             <div class="col-sm-2 col-md-2 col-xs-4 cb-type3">
                                                 <label>
-                                                    <input type="checkbox" class="radio_buttons option-input-3 radio other_preference_radio" value="others" name="other_preference" <?php if(in_array("others", $other_preferences[$i])) echo 'checked="checked"'; ?>>
+                                                    <input type="checkbox" class="radio_buttons option-input-3 radio other_preference_radio" value="others" name="other_preference" checked="checked" >
                                                     <span>Others</span>
                                                 </label>
                                             </div>
@@ -2448,7 +2428,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="new-request-list">SCHEDULE</div>
                                             </div>
                                             <div class="col-sm-4 col-md-4 col-xs-4 text-right">
-                                                <a class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="true">Schedule</a>
+                                                <a class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="false">Schedule</a>
                                                 <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="true">Tutoring Preference</a>
                                             </div>
                                         </div>
@@ -2486,6 +2466,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                             <label>
                                                                                 <input type="radio" class="radio_buttons option-input-2 radio radio_tutor_search" data-subject="english_writting" value="english_writting" name="subject_type_search"/> English Writting
                                                                             </label>
+
                                                                         </div>
                                                                         <div class="col-sm-4 col-md-2 col-xs-4 cb-type3">
                                                                             <label>
@@ -2594,130 +2575,143 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     </span>
                                                                 </div>                                                      
                                                                 <div class="col-xs-3 col-sm-3 col-md-3 text-right no-padding">
-                                                                    <button type="button" class="btn-orange2 border-btn"  id="summary-btn-tutor" data-day="<?php echo $dt->format('Y-m-d') ?>" data-type="menu">
-                                                                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Menu_Dropdown.png">
-                                                                    </button>
-                                                                    <ul id="open-menu-schedule">
-                                                                        <li>
-                                                                            <button type="button" id="make-check-all" data-status="checkall">
-                                                                                <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Check_check_ALL.png" >
-                                                                                Check All
-                                                                            </button>
-                                                                        </li>
-                                                                        <li class="make-uncheck-all">
-                                                                            <button type="button" id="make-uncheck-all" data-status="uncheckall">
-                                                                                <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Check_uncheck_ALL.png">
-                                                                                Uncheck All
-                                                                            </button>
-                                                                        </li>
-                                                                        <li>
-                                                                            <button type="button" id="all-schedule-btn" data-status="all">
-                                                                                <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Summary.png">
-                                                                                All
-                                                                            </button>
-                                                                        </li>
-                                                                        <li>
-                                                                            <button type="button" id="scheduled-btn" data-status="waiting">
-                                                                                <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Scheduled.png">
-                                                                                Scheduled
-                                                                            </button>
-                                                                        </li>
-                                                                        <li>
-                                                                            <button type="button" id="completed-btn" data-status="confirmed">
-                                                                                <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Completed.png">
-                                                                                Completed
-                                                                            </button>
-                                                                        </li>
-                                                                        <li>
-                                                                            <button type="button" id="expired-btn" data-status="canceled">
-                                                                                <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Expired.png">
-                                                                                Canceled
-                                                                            </button>
-                                                                        </li>
-                                                                    </ul>
+																	<button type="button" class="btn-orange2 border-btn"  id="summary-btn-tutor" data-day="<?php echo $dt->format('Y-m-d') ?>" data-type="menu">
+																		<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Menu_Dropdown.png">
+																	</button>
+																	<ul id="open-menu-schedule">
+																		<li>
+																			<button type="button" id="make-check-all" data-status="checkall">
+																				<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Check_check_ALL.png">
+																				Check All
+																			</button>
+																		</li>
+																		<li class="make-uncheck-all">
+																			<button type="button" id="make-uncheck-all" data-status="uncheckall">
+																				<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Check_uncheck_ALL.png">
+																				Uncheck All
+																			</button>
+																		</li>
+																		<li>
+																			<button type="button" id="all-schedule-btn" data-status="all">
+																				<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Summary.png">
+																				All
+																			</button>
+																		</li>
+																		<li>
+																			<button type="button" id="scheduled-btn" data-status="waiting">
+																				<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Scheduled.png">
+																				Scheduled
+																			</button>
+																		</li>
+																		<li>
+																			<button type="button" id="completed-btn" data-status="confirmed">
+																				<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Completed.png">
+																				Completed
+																			</button>
+																		</li>
+																		<li>
+																			<button type="button" id="expired-btn" data-status="canceled">
+																				<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Expired.png">
+																				Canceled
+																			</button>
+																		</li>
+																	</ul>
                                                                 </div>
                                                             </div>   
-                                                            
-                                                            <div id="list-schedule-status" class="border-selectall color-border">
-                                                                <button type="button" class="list-schedule-status all-status-btn active" id="all-status-btn" data-status="all">
-                                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Summary.png">
-                                                                    All
-                                                                </button>
-                                                                <span class="line-schedule-status">|</span>
-                                                                <button type="button" class="list-schedule-status scheduled-status-btn" id="scheduled-status-btn" data-status="waiting">
-                                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Scheduled_disable.png">
-                                                                    Scheduled
-                                                                </button>
-                                                                <span class="line-schedule-status">|</span>
-                                                                <button type="button" class="list-schedule-status completed-status-btn" id="completed-status-btn" data-status="confirmed">
-                                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Completed_disable.png">
-                                                                    Completed
-                                                                </button>
-                                                                <span class="line-schedule-status">|</span>
-                                                                <button type="button" class="list-schedule-status expired-status-btn" id="expired-status-btn" data-status="canceled">
-                                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Expired_disable.png">
-                                                                    Canceled
-                                                                </button>
-                                                            </div>
+															
+															<div id="list-schedule-status" class="border-selectall color-border">
+																<button type="button" class="list-schedule-status all-status-btn active" id="all-status-btn" data-status="all">
+																	<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Summary.png">
+																	All
+																</button>
+																<span class="line-schedule-status">|</span>
+																<button type="button" class="list-schedule-status scheduled-status-btn" id="scheduled-status-btn" data-status="waiting">
+																	<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Scheduled_disable.png">
+																	Scheduled
+																</button>
+																<span class="line-schedule-status">|</span>
+																<button type="button" class="list-schedule-status completed-status-btn" id="completed-status-btn" data-status="confirmed">
+																	<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Completed_disable.png">
+																	Completed
+																</button>
+																<span class="line-schedule-status">|</span>
+																<button type="button" class="list-schedule-status expired-status-btn" id="expired-status-btn" data-status="canceled">
+																	<img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Expired_disable.png">
+																	Canceled
+																</button>
+															</div>
 
                                                             <div class="body-my-scheduled-tutor style-scrollbar" id="body-my-scheduled">
-                                                                <table class="table-status-schedule">
-                                                                    <tbody id="table-status-schedule">
-                                                                        
-                                                                    </tbody>
-                                                                </table>
-                                                                <div class="main-view-status" style="display: none;">
-                                                                    <div class="row">
-                                                                        <div class="col-md-11">
-                                                                            <p class="name-status-schedule">
-                                                                                <img id="icon-status-schedule" src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Completed.png">
-                                                                                <span></span>
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-md-1 text-right">
-                                                                            <img class="close-status-schedule" src="<?php echo get_template_directory_uri(); ?>/library/images/03_Close_Icon.png">
-                                                                        </div>
-                                                                    </div>
-                                                                    <p class="date-status-schedule">
-                                                                        <span class="label-status-schedule">Date:</span>
-                                                                        <span id="date-schedule"></span>
-                                                                    </p>
-                                                                    <p class="current-status-schedule">
-                                                                        <span class="label-status-schedule">Status:</span>
-                                                                        <span id="current-status"></span>
-                                                                    </p>
-                                                                    <p class="name-tutor-schedule">
-                                                                        <span class="label-status-schedule">Tutor:</span>
-                                                                        <span id="name-tutor-detail"></span>
-                                                                    </p>
-                                                                    <p class="point-status-schedule">
-                                                                        <span class="label-status-schedule">Points:</span>
-                                                                        <span id="point-schedule"></span>
-                                                                    </p>
-                                                                    <p class="review-status-schedule">
-                                                                        <span class="label-status-schedule">Review:</span>
-                                                                        <span id="review-schedule" class="review-schedule"></span>
-                                                                    </p>
-                                                                    
-                                                                    <div id="desc-class2" class="edit-description" style="display: none;">
-                                                                        
-                                                                        <?php
-                                                                        $editor_settings = array(
-                                                                            'wpautop' => false,
-                                                                            'media_buttons' => false,
-                                                                            'quicktags' => false,
-                                                                            'editor_height' => 50,
-                                                                            'textarea_rows' => 3,
-                                                                            'tinymce' => array(
-                                                                                'toolbar1' => 'bold,italic,strikethrough,image,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,spellchecker,fullscreen,wp_adv'
-                                                                            )
-                                                                        );
-                                                                        ?>
-                                                                        <?php wp_editor('', 'note_status_schedule', $editor_settings); ?>
-                                                                        <div class="clear-both"></div>
-                                                                    </div>
-                                                                    
-                                                                </div>
+																<table class="table-status-schedule">
+																	<tbody id="table-status-schedule">
+																		
+																	</tbody>
+																</table>
+																<div class="main-view-status" style="display: none;">
+																	<div class="row">
+																		<div class="col-md-11">
+																			<p class="name-status-schedule">
+																				<img id="icon-status-schedule" src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Completed.png">
+																				<span></span>
+																			</p>
+																		</div>
+																		<div class="col-md-1 text-right">
+																			<img class="close-status-schedule" src="<?php echo get_template_directory_uri(); ?>/library/images/03_Close_Icon.png">
+																		</div>
+																	</div>
+																	<p class="date-status-schedule">
+																		<span class="label-status-schedule">Date:</span>
+																		<span id="date-schedule"></span>
+																	</p>
+																	<p class="current-status-schedule">
+																		<span class="label-status-schedule">Status:</span>
+																		<span id="current-status"></span>
+																	</p>
+																	<p class="name-tutor-schedule">
+																		<span class="label-status-schedule">Tutor:</span>
+																		<span id="name-tutor-detail"></span>
+																	</p>
+																	<p class="point-status-schedule">
+																		<span class="label-status-schedule">Points:</span>
+																		<span id="point-schedule"></span>
+																	</p>
+																	<p class="review-status-schedule">
+																		<span class="label-status-schedule">Review:</span>
+																		<span id="review-schedule" class="review-schedule"></span>
+																	</p>
+																	<!-- <p class="note-status-schedule">
+																		<span class="label-status-schedule">Note:</span> -->
+																	</p>
+																	<div id="desc-class2" class="edit-description">
+																		<!-- <span class="editor-top-left"></span>
+																		<span class="editor-top-right"></span>
+																		<span class="editor-bottom-left"></span>
+																		<span class="editor-bottom-right"></span> -->
+																		<?php
+																		$editor_settings = array(
+																			'wpautop' => false,
+																			'media_buttons' => false,
+																			'quicktags' => false,
+																			'editor_height' => 50,
+																			'textarea_rows' => 3,
+																			'tinymce' => array(
+																				'toolbar1' => 'bold,italic,strikethrough,image,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,spellchecker,fullscreen,wp_adv'
+																			)
+																		);
+																		?>
+																		<!-- <?php //* wp_editor('', 'note_status_schedule', $editor_settings); */?>
+																		<div class="clear-both"></div> -->
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-12 col-md-12 col-xs-12">
+																			<div class="form-group">
+																				<button class="btn-dark-blue border-btn btn-status-schedule" type="button" name="send-tutor">
+																					<?php _e('Save Note', 'iii-dictionary') ?>
+																				</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
                                                                 <div class="main-list-students" style="display: none;">
                                                                     <table class="table table-condensed">
                                                                         <tr class="view-detail-student">
@@ -2757,7 +2751,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <div class="content-timelot">
                                                                     <p id="time-scheduled-popup">8:00am ~ 8:30am</p>
                                                                     <p id="subject-scheduled-popup">Waiting for Confirmation</p>
-                                                                    <div id="tutoring-type">  <!-- Tutoring type choose -->
                                                                     <?php
                                                                     $tlenable_one_tutoring = '';
                                                                     $tlenable_group_tutoring = '';
@@ -2779,28 +2772,30 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                         if($other_preferences != '') $tother_preference = explode(',', $other_preferences);
                                                                     }
                                                                     ?>
-                                                                    <?php if($tlenable_one_tutoring != '' && $tlenable_group_tutoring != ''){ ?>
-                                                                    <div class="form-group">
-                                                                        <label>
-                                                                            <input id="timelot_one_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">
-                                                                            <span>Enables 1 on 1 Tutoring</span>
-                                                                        </label>
+                                                                    <!-- adding tutor type -->
+                                                                    <div id="tutor-type">
+                                                                        <?php if($tlenable_one_tutoring != '' && $tlenable_group_tutoring != ''){ ?>
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                <input id="timelot_one_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">
+                                                                                <span>Enables 1 on 1 Tutoring</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                <input id="timelot_group_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_group_tutoring" name="timelot_group_tutoring">
+                                                                                <span>Enables Groups Tutoring</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <?php }else{ ?>
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                <input type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">
+                                                                                <span>Enables 1 on 1 Tutoring</span>
+                                                                            </label>
+                                                                        </div>    
+                                                                        <?php } ?>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label>
-                                                                            <input id="timelot_group_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_group_tutoring" name="timelot_group_tutoring">
-                                                                            <span>Enables Groups Tutoring</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <?php }else{ ?>
-                                                                    <div class="form-group">
-                                                                        <label>
-                                                                            <input type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">
-                                                                            <span>Enables 1 on 1 Tutoring</span>
-                                                                        </label>
-                                                                    </div>    
-                                                                    <?php } ?>
-                                                                </div> <!-- Close tutoring type choose -->
                                                                     <div class="form-group border-ras select-style">
                                                                         <select class="select-box-it form-control" name="timelot_subject" id="select-timelot-subject">
                                                                             <option value="0" data-name="">Select Subject</option>
@@ -2809,13 +2804,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                             <option value="english_subject|all" data-name="English Only">English Only</option>
                                                                             <?php }else{ ?>
                                                                                 <?php if(in_array('english_conversation', $tenglish_subject)){ ?>
-                                                                                <option value="english_subject|english_conversation" data-name="English: Conversation for Foreigns Students">English: Conversation for Foreign Students</option>
+                                                                                <option value="english_subject|english_conversation" data-name="English: Conversation for Foreign Students">English: Conversation for Foreign Students</option>
+                                                                                <?php } ?>
+                                                                                
+                                                                              <?php if(in_array('english_grammar', $tenglish_subject)){ ?>
+                                                                                <option value="english_subject|english_grammar" data-name="English: Grammar">English: Grammar</option>
                                                                                 <?php } ?>
 
-                                                                                <?php if(in_array('english_grammar', $tenglish_subject)){ ?>
-                                                                                <option value="english_subject|english_grammar" data-name="Enlgish: Grammar">Enlgish: Grammar</option>
-                                                                                <?php } ?>
-
+                                                                              
+                                                                                                                                                          
                                                                                 <?php if(in_array('english_writting', $tenglish_subject)){ ?>
                                                                                 <option value="english_subject|english_writting" data-name="English Writting">English Writting</option>
                                                                                 <?php } ?>
@@ -2877,7 +2874,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                             <option value="other_preference|others" data-name="Other Subjects Only">Other Subjects Only</option>
                                                                             <?php } ?>
 
-                                                                            
+                                                                            <option value="english_subject|english_conversation" data-name="English: Conversation for Foreign Students">English Conversation for Foreign Students</option>
                                                                         </select>
                                                                     </div>
                                                                     <p class="text-right">
@@ -2894,9 +2891,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     </div>
                                                                     <div class="col-sm-6 col-md-6 col-xs-12">
                                                                         <div class="form-group">
-                                                                            <button id="cancel-timelot" class="btn-dark-blue border-btn" style="background: #CECECE;" type="button" name="cancel_timelot" >
-                                                                                CANCEL
-                                                                            </button>
+                                                                            <input id="cancel-timelot" class="btn-dark-blue border-btn" style="background: #CECECE;" type="button" name="cancel_timelot" value="CANCEL ">
+                                                                                
+                                                                            </input>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -4599,10 +4596,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="clearfix"></div>
                                             <div class="col-md-12 col-nopadding" style="margin-bottom: 24px;" >                                   
                                                 <div id="desc-class2">
-                                                    <span class="editor-top-left"></span>
+                                                   <!--  <span class="editor-top-left"></span>
                                                     <span class="editor-top-right"></span>
                                                     <span class="editor-bottom-left"></span>
-                                                    <span class="editor-bottom-right"></span>
+                                                    <span class="editor-bottom-right"></span> -->
                                                     <?php
                                                     $editor_settings = array(
                                                         'wpautop' => false,
@@ -4615,8 +4612,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         )
                                                     );
                                                     ?>
-                                                    <?php wp_editor('', 'post_message2', $editor_settings); ?>
-                                                    <div class="clear-both"></div>
+                                                   <!--  <?php wp_editor('', 'post_message2', $editor_settings); ?>
+                                                    <div class="clear-both"></div> -->
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
@@ -6052,104 +6049,104 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 <!--end of manage class-->
                             </div>
                         </div>
-                        
-                        <div class="modal modal-red-brown" id="top-my-schedules" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;z-index: 3000; top: 62px;">
-                            <div class="modal-dialog">
-                                <div class="modal-contents" style="margin-top: 0;">
-                                    <div class="modal-body">
-                                        <div class="row color-border">
-                                            <div class="col-sm-6 col-md-6 col-xs-6">
-                                                <p class="name-request-vew">
-                                                    <span>SCHEDULES STARTER</span>
-                                                </p>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-xs-6">
-                                                <p class="go-to-calendar">
-                                                    <span>Go to Calendar</span>
-                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Goto-Schedule.png" alt="">
-                                                </p>
-                                            </div>
-                                        </div>
+						
+						<div class="modal modal-red-brown" id="top-my-schedules" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;z-index: 3000; top: 62px;">
+							<div class="modal-dialog">
+								<div class="modal-contents" style="margin-top: 0;">
+									<div class="modal-body">
+										<div class="row color-border">
+											<div class="col-sm-6 col-md-6 col-xs-6">
+												<p class="name-request-vew">
+													<span>SCHEDULES STARTER</span>
+												</p>
+											</div>
+											<div class="col-sm-6 col-md-6 col-xs-6">
+												<p class="go-to-calendar">
+													<span>Go to Calendar</span>
+													<img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Goto-Schedule.png" alt="">
+												</p>
+											</div>
+										</div>
 
-                                        <div class="slide-my-schedule">
-                                            <?php 
-                                            $schedules = MWDB::get_my_schedules();
-                                            if(count($schedules) > 0){
-                                                foreach ($schedules as $k1 => $value) {
-                                            ?>
-                                                <div class="item" data-fromhour="<?php echo $value['fromhour'] ?>" data-fromminute="<?php echo $value['fromminute'] ?>" data-tohour="<?php echo $value['tohour'] ?>" data-tominute="<?php echo $value['tominute'] ?>" data-day="<?php echo $value['day'] ?>" data-type="<?php echo $value['totype'] ?>">
-                                                    <div class="description-detail">
-                                                        <p class="subject-detail">
-                                                            <span class="name-subject-tt"><?php echo $value['private_subject'] ?></span>
-                                                        </p>
-                                                        <p class="my-time-request">
-                                                            <span class="label-timezone">Date:</span>
-                                                            <span class="my-current-day"><?php echo $value['date'] ?></span>
-                                                            <span class="my-stuff-day"><?php echo $value['stuff'] ?>/</span>
-                                                            <span class="my-time-current"><?php echo $value['time_view'] ?></span>
-                                                        </p>
-                                                        <p class="name-detail">
-                                                            <span class="label-tutor">Tutor:</span>
-                                                            <span class="name-tutor"><?php echo $value['tutor_name'] ?></span>
-                                                        </p>
-                                                        <p class="points-detail">
-                                                            <span class="label-points">Points:</span>
-                                                            <span class="name-points"><?php echo $value['total'] ?> Points($)</span>
-                                                        </p>
-                                                    </div>
-                                                    <?php if($value['type_slide'] == 'current'){ ?>
-                                                    <button id="btn-start-now<?php echo $value['id'] ?>" class="btn-dark-blue btn-start-now active" type="button" name="start-now" data-id="<?php echo $value['id'] ?>" data-student-id="<?php echo $value['id_user'] ?>" data-teacher-id="<?php echo $value['tutor_id'] ?>">
-                                                            <?php _e('Initiate Now!', 'iii-dictionary') ?>
-                                                    </button>
-                                                    <?php }else{ ?>
-                                                     <button id="btn-start-now<?php echo $value['id'] ?>" class="btn-dark-blue btn-start-now" type="button" name="start-now" data-id="<?php echo $value['id'] ?>" data-student-id="<?php echo $value['id_user'] ?>" data-teacher-id="<?php echo $value['tutor_id'] ?>">
-                                                            <?php _e('Initiate Now!', 'iii-dictionary') ?>
-                                                    </button>
-                                                    <button id="btn-cancel-schedule<?php echo $value['id'] ?>" class="btn-dark-blue btn-cancel-schedule active" type="button" name="cancel-schedule" data-id="<?php echo $value['id'] ?>" data-student-id="<?php echo $value['id_user'] ?>" data-teacher-id="<?php echo $value['tutor_id'] ?>">
-                                                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Most-Current-Arrow.png" alt=""> <?php _e('Most Current', 'iii-dictionary') ?>
-                                                    </button>
-                                                    <?php } ?>
-                                                </div>
-                                            <?php
-                                                }
-                                            }else{
-                                            ?>
-                                                <div class="item no-detail-schedule" data-tohour="" data-tominute="" data-day="" data-type="">
-                                                    <div class="description-detail">
-                                                        <p class="subject-detail">
-                                                            <span class="name-subject-tt">Currently there's no schedules</span>
-                                                        </p>
-                                                        <p class="my-time-request">
-                                                            <span class="label-timezone">Date:</span>
-                                                            <span class="my-current-day">N/A</span>
-                                                            <span class="my-stuff-day"></span>
-                                                            <span class="my-time-current"></span>
-                                                        </p>
-                                                        <p class="name-detail">
-                                                            <span class="label-tutor">Tutor:</span>
-                                                            <span class="name-tutor">N/A</span>
-                                                        </p>
-                                                        <p class="points-detail">
-                                                            <span class="label-points">Points:</span>
-                                                            <span class="name-points">0 Points($)</span>
-                                                        </p>
-                                                    </div>
-                                                    <button id="btn-cancel-schedule" class="btn-dark-blue btn-cancel-schedule no-active" type="button" name="cancel-schedule" data-id="" data-student-id="" data-teacher-id="" tabindex="0">
-                                                        <?php _e('Initiate Now!', 'iii-dictionary') ?>
-                                                    </button>
-                                                </div>
-                                            <?php
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
+										<div class="slide-my-schedule">
+											<?php 
+											$schedules = MWDB::get_my_schedules();
+											if(count($schedules) > 0){
+												foreach ($schedules as $k1 => $value) {
+											?>
+												<div class="item" data-fromhour="<?php echo $value['fromhour'] ?>" data-fromminute="<?php echo $value['fromminute'] ?>" data-tohour="<?php echo $value['tohour'] ?>" data-tominute="<?php echo $value['tominute'] ?>" data-day="<?php echo $value['day'] ?>" data-type="<?php echo $value['totype'] ?>">
+													<div class="description-detail">
+														<p class="subject-detail">
+															<span class="name-subject-tt"><?php echo $value['private_subject'] ?></span>
+														</p>
+														<p class="my-time-request">
+															<span class="label-timezone">Date:</span>
+															<span class="my-current-day"><?php echo $value['date'] ?></span>
+															<span class="my-stuff-day"><?php echo $value['stuff'] ?>/</span>
+															<span class="my-time-current"><?php echo $value['time_view'] ?></span>
+														</p>
+														<p class="name-detail">
+															<span class="label-tutor">Tutor:</span>
+															<span class="name-tutor"><?php echo $value['tutor_name'] ?></span>
+														</p>
+														<p class="points-detail">
+															<span class="label-points">Points:</span>
+															<span class="name-points"><?php echo $value['total'] ?> Points($)</span>
+														</p>
+													</div>
+													<?php if($value['type_slide'] == 'current'){ ?>
+													<button id="btn-start-now<?php echo $value['id'] ?>" class="btn-dark-blue btn-start-now active" type="button" name="start-now" data-id="<?php echo $value['id'] ?>" data-student-id="<?php echo $value['id_user'] ?>" data-teacher-id="<?php echo $value['tutor_id'] ?>">
+															<?php _e('Initiate Now!', 'iii-dictionary') ?>
+													</button>
+													<?php }else{ ?>
+													 <button id="btn-start-now<?php echo $value['id'] ?>" class="btn-dark-blue btn-start-now" type="button" name="start-now" data-id="<?php echo $value['id'] ?>" data-student-id="<?php echo $value['id_user'] ?>" data-teacher-id="<?php echo $value['tutor_id'] ?>">
+															<?php _e('Initiate Now!', 'iii-dictionary') ?>
+													</button>
+													<button id="btn-cancel-schedule<?php echo $value['id'] ?>" class="btn-dark-blue btn-cancel-schedule active" type="button" name="cancel-schedule" data-id="<?php echo $value['id'] ?>" data-student-id="<?php echo $value['id_user'] ?>" data-teacher-id="<?php echo $value['tutor_id'] ?>">
+														<img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Most-Current-Arrow.png" alt=""> <?php _e('Most Current', 'iii-dictionary') ?>
+													</button>
+													<?php } ?>
+												</div>
+											<?php
+												}
+											}else{
+											?>
+												<div class="item no-detail-schedule" data-tohour="" data-tominute="" data-day="" data-type="">
+													<div class="description-detail">
+														<p class="subject-detail">
+															<span class="name-subject-tt">Currently there's no schedules</span>
+														</p>
+														<p class="my-time-request">
+															<span class="label-timezone">Date:</span>
+															<span class="my-current-day">N/A</span>
+															<span class="my-stuff-day"></span>
+															<span class="my-time-current"></span>
+														</p>
+														<p class="name-detail">
+															<span class="label-tutor">Tutor:</span>
+															<span class="name-tutor">N/A</span>
+														</p>
+														<p class="points-detail">
+															<span class="label-points">Points:</span>
+															<span class="name-points">0 Points($)</span>
+														</p>
+													</div>
+													<button id="btn-cancel-schedule" class="btn-dark-blue btn-cancel-schedule no-active" type="button" name="cancel-schedule" data-id="" data-student-id="" data-teacher-id="" tabindex="0">
+														<?php _e('Initiate Now!', 'iii-dictionary') ?>
+													</button>
+												</div>
+											<?php
+											}
+											?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
                         <div class="warp-menu">
                             <div id="menu-account-nav" class="menu-mb">
-                                <div class="slide-menu-bg"></div>
+								<div class="slide-menu-bg"></div>
                                 <div class="section-left">
                                     <ul id="menu-left-myaccount" class="nav nav-tabs">
                                         <li class="active" id="account"><a><img src="<?php echo get_template_directory_uri(); ?>/library/images/IconMenu_Profile.png" class="" alt="setting my account" style="width: 24px;margin:26px 0px 20px"></a>
@@ -6163,7 +6160,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         </li>
                                         <li><a data-toggle="tab" href="#"><img src="<?php echo get_template_directory_uri(); ?>/library/images/Message_Icon.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
                                         </li>                                
-                                        
+                                        <li><a data-toggle="tab" href="#"><img src="<?php echo get_template_directory_uri(); ?>/library/images/IconMenu_Download.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px 0"></a>
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -6210,7 +6208,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             </ul>
                                         </li>                                        
                                         <li><a class="header-menu-left padd-adjus redirect-create" href="#"> Message</a></li>                               
-                                        
+                                        <li><a class="header-menu-left padd-adjus redirect-create" href="#">Downloads</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -6435,7 +6433,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                 <!-- <div class="main-nav-block"></div> -->
 
-                <div class="container" style="position: relative" class="col-md-12">        
+                <div class="container" style="position: relative" class="col-md-12">		
 
                     <div id="logo">
                         <a href="https://iktutor.com" rel="nofollow" title="<?php bloginfo('name'); ?>">
@@ -6468,7 +6466,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                     <?php MWHtml::sel_lang_switcher() ?>
                     <ul id="user-nav">
-                            <!-- <li><a href="#" class="user-name-custom">Peter Chung<span class=""></span></a></li>     -->                    
+                            <!-- <li><a href="#" class="user-name-custom">Peter Chung<span class=""></span></a></li>	 -->					
                         <?php 
                         if ($is_user_logged_in) : 
                             $ru_display_name = get_user_meta($current_user->ID, 'display_name', true);
@@ -7222,7 +7220,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                 }
                 #myModal-forgot-password .btn-dark-blue{
                     margin: 10px 0 0 0;
-                }   /* Đã có ở page create group */
+                }	/* Đã có ở page create group */
                 .forgot-password-form{
                     text-align: right;
                 }
@@ -7385,7 +7383,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                          <div class="col-sm-3">
                                                                 <div class="form-group">
-                                                                        <label>&nbsp;</label>                                                           
+                                                                        <label>&nbsp;</label>															
                                                                         <a href="#" id="check-availability" class="check-availability"><?php _e('Find out availability', 'iii-dictionary') ?>
                                                                                 <span class="icon-loading"></span>
                                                                                 <span class="icon-availability" data-toggle="popover" data-placement="bottom" data-container="body" data-trigger="hover" data-html="true" data-max-width="420px" data-content="If username availability is “not available”, someone has already signed up with the email address you entered.<br>If username is “available”, please continue on with the sign up page."></span>
@@ -7516,9 +7514,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
             <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
             <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/library/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" />
             <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/library/moment/min/moment-timezone-with-data.js"></script>
-            <link href="<?php echo get_template_directory_uri(); ?>/library/slick/slick.css" rel="stylesheet">
-            <link href="<?php echo get_template_directory_uri(); ?>/library/slick/slick-theme.css" rel="stylesheet">
-            <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/library/slick/slick.min.js"></script>
+			<link href="<?php echo get_template_directory_uri(); ?>/library/slick/slick.css" rel="stylesheet">
+			<link href="<?php echo get_template_directory_uri(); ?>/library/slick/slick-theme.css" rel="stylesheet">
+			<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/library/slick/slick.min.js"></script>
             <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/library/js/detect-zoom.js"></script>
             <script type="text/javascript">
                 (function ($) {
@@ -7772,7 +7770,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $("#tutoring-main").addClass("in");
                             });
                         }
-                        
+						
                         $(".view-my-account").click(function () {
                             $("#my-account-modal").modal('show');
                             var name = $(".display-name").text();
@@ -7882,10 +7880,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 var check = $("#menu-account-nav").hasClass("open");
                             }else{
                                 if($('body').hasClass('open-myschedule')){
-                                    var check = $("#menu-account-nav").hasClass("open");
-                                }else{
-                                    var check = $("#mySidenav").hasClass("open");
-                                }
+									var check = $("#menu-account-nav").hasClass("open");
+								}else{
+									var check = $("#mySidenav").hasClass("open");
+								}
                             }
 
                             if (check) {
@@ -7899,17 +7897,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         });
                         
                         $("#account").click(function () {
-                            $('#my-timezone').css("display","none");
                             var name = $(".display-name").text();
                             var viewport = getViewport();  
                             if(viewport.width < 650){
                                 var check = $("#menu-account-nav").hasClass("open");
                             }else{
                                 if($('body').hasClass('open-myschedule')){
-                                    var check = $("#menu-account-nav").hasClass("open");
-                                }else{
-                                    var check = $("#mySidenav").hasClass("open");
-                                }
+									var check = $("#menu-account-nav").hasClass("open");
+								}else{
+									var check = $("#mySidenav").hasClass("open");
+								}
                             }
 
                             if($('#tutor-regist').hasClass('hidden-teacher')){
@@ -7965,17 +7962,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         });
                         $("#lesson").click(function () {
-                            $('#my-timezone').css("display","none");
                             var name = $(".display-name").text();
                             var viewport = getViewport();  
                             if(viewport.width < 650){
                                 var check = $("#menu-account-nav").hasClass("open");
                             }else{
                                 if($('body').hasClass('open-myschedule')){
-                                    var check = $("#menu-account-nav").hasClass("open");
-                                }else{
-                                    var check = $("#mySidenav").hasClass("open");
-                                }
+									var check = $("#menu-account-nav").hasClass("open");
+								}else{
+									var check = $("#mySidenav").hasClass("open");
+								}
                             }
                             if (name !== '') {
                                 $("#sub-lesson-manager").css("display", "block");
@@ -8007,17 +8003,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         });
                         $("#icon-class").click(function () {
-                            $('#my-timezone').css("display","none");
                             var name = $(".display-name").text();
                             var viewport = getViewport();  
                             if(viewport.width < 650){
                                 var check = $("#menu-account-nav").hasClass("open");
                             }else{
                                 if($('body').hasClass('open-myschedule')){
-                                    var check = $("#menu-account-nav").hasClass("open");
-                                }else{
-                                    var check = $("#mySidenav").hasClass("open");
-                                }
+									var check = $("#menu-account-nav").hasClass("open");
+								}else{
+									var check = $("#mySidenav").hasClass("open");
+								}
                             }
                             if (name !== '') {
                                 $("#sub-class-manager").css("display", "block");
@@ -8051,17 +8046,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         });
                         $("#icon-tutoring").click(function () {
-                            $('#my-timezone').css("display","none");
                             var name = $(".display-name").text();
                             var viewport = getViewport();  
                             if(viewport.width < 650){
                                 var check = $("#menu-account-nav").hasClass("open");
                             }else{
                                 if($('body').hasClass('open-myschedule')){
-                                    var check = $("#menu-account-nav").hasClass("open");
-                                }else{
-                                    var check = $("#mySidenav").hasClass("open");
-                                }
+									var check = $("#menu-account-nav").hasClass("open");
+								}else{
+									var check = $("#mySidenav").hasClass("open");
+								}
                             }
                             if (name !== '') {
                                 $("#sub-class-manager").css("display", "none");
@@ -8114,17 +8108,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         });
                         $("#menu_Taggle").click(function () {
-                            $('#my-timezone').css("display","none");
                             var name = $(".display-name").text();
                             var viewport = getViewport();  
                             if(viewport.width < 650){
                                 var check = $("#menu-account-nav").hasClass("open");
                             }else{
                                 if($('body').hasClass('open-myschedule')){
-                                    var check = $("#menu-account-nav").hasClass("open");
-                                }else{
-                                    var check = $("#mySidenav").hasClass("open");
-                                }
+									var check = $("#menu-account-nav").hasClass("open");
+								}else{
+									var check = $("#mySidenav").hasClass("open");
+								}
                             }
 
                             if($('#tutor-regist').hasClass('hidden-teacher')){
@@ -8175,15 +8168,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $("#menu-account-nav").removeClass("close");
                                 $("#menu-account-nav").addClass("open");
                             }else{
-                                if($('body').hasClass('open-myschedule')){
-                                    $("#menu-account-nav").removeClass("open");
-                                    $("#menu-account-nav").removeClass("close");
-                                    $("#menu-account-nav").addClass("open");
-                                }else{
-                                    $("#mySidenav").removeClass("open");
-                                    $("#mySidenav").removeClass("close");
-                                    $("#mySidenav").addClass("open");
-                                }
+								if($('body').hasClass('open-myschedule')){
+									$("#menu-account-nav").removeClass("open");
+									$("#menu-account-nav").removeClass("close");
+									$("#menu-account-nav").addClass("open");
+								}else{
+									$("#mySidenav").removeClass("open");
+									$("#mySidenav").removeClass("close");
+									$("#mySidenav").addClass("open");
+								}
                             }
                         }
 
@@ -8195,14 +8188,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $("#menu-account-nav").addClass("close");                                
                             }else{                          
                                 if($('body').hasClass('open-myschedule')){
-                                    $("#menu-account-nav").removeClass("open");
-                                    $("#menu-account-nav").removeClass("close");
-                                    $("#menu-account-nav").addClass("close");
-                                }else{
-                                    $("#mySidenav").removeClass("open");
-                                    $("#mySidenav").removeClass("close");
-                                    $("#mySidenav").addClass("close");
-                                } 
+									$("#menu-account-nav").removeClass("open");
+									$("#menu-account-nav").removeClass("close");
+									$("#menu-account-nav").addClass("close");
+								}else{
+									$("#mySidenav").removeClass("open");
+									$("#mySidenav").removeClass("close");
+									$("#mySidenav").addClass("close");
+								} 
                             }
                             $('#menu-left-myaccount li').css("margin-top", "0px");
                         }
@@ -19515,226 +19508,145 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $(this).before(html);
                         });
 
-                        function update_timelot_subject_item(data){
-                            console.log(data);
-                            var english = data.english_subject;
-                            var science = data.science_subject;
-                            var math = data.math_subject;
+                        // get tutoring preference
+                        let getTutorPreference = () => {
+                            let direct_type = $('#update-preference').attr('data-type');
+                            let price_tutoring = $('#price-tutoring').val();
+                            let english_subject_desc = $('#english-subject-desc').val();
+                            let math_subject_desc = $('#math-subject-desc').val();
+                            let science_subject_desc = $('#science-subject-desc').val();
+                            let price_group_tutoring = $('#price-group-tutoring').val();
+                            let number_participant = $('#number-participant').val();
+                            let enable_one_tutoring = $('input[name="enable_one_tutoring"]:checked').val();
+                            let enable_group_tutoring = $('input[name="enable_group_tutoring"]:checked').val();
                             
-                            $('#select-timelot-subject').empty();
-                            $('#select-timelot-subject').append('<option value="0" data-name="">Select Subject</option>');
-                            $('#select-timelot-subject').append('<option value="all" data-name="Any Subjects">Any Subjects from My Preference</option>');
-                            if(english.length > 4){
-                                $('#select-timelot-subject')
-                                            .append('<option value="english_subject|all" data-name="English Only">English Only</option>');
-                            }else if(english.length > 0 && english.length <= 4){
-                                english.forEach(function(item, index){
-                                    if(item == 'english_conversation'){
-                                        $('#select-timelot-subject')
-                                            .append('<option value="english_subject|english_conversation" data-name="English: Conversation for Foreigns Students">English: Conversation for Foreign Students</option>');
-                                    }
-                                    else if(item == 'english_grammar'){
-                                        $('#select-timelot-subject')
-                                            .append(' <option value="english_subject|english_grammar" data-name="Enlgish: Grammar">Enlgish: Grammar</option>');
-                                    }else if(item == 'english_writting'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="english_subject|english_writting" data-name="English Writting">English Writting</option>');
-                                    }else if(item == 'english_reading_comprehension'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="english_subject|english_reading_comprehension" data-name="English: Reading Comprehension">English: Reading Comprehension</option>');
-                                    }
-                                    else if(item == 'others'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="english_subject|others" data-name="English: Others">English: Others</option>');
-                                    }
-                                });
-                            }
-
-                            if(math.length > 4){
-                                $('#select-timelot-subject')
-                                            .append('<option value="math_subject|all" data-name="Math Only">Math Only</option>');
-                            }else if(math.length <= 4 && math.length >0){
-                                math.forEach(function(item, index){
-                                    if(item == 'elemenatary_school_math'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="math_subject|elemenatary_school_math" data-name="Math: Elementary">Math: Elementary</option>');
-                                    }else if(item == 'middle_school_math'){
-                                        $('#select-timelot-subject')
-                                .append(' <option value="math_subject|middle_school_math" data-name="Math: Middle School">Math: Middle School</option>');
-                                    }else if(item == 'high_school_math'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="math_subject|high_school_math" data-name="Math: High School">Math: High School</option>');
-                                    }else if(item == 'advanced_math'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="math_subject|advanced_math" data-name="Math: Advanced">Math: Advanced</option>');
-                                    }else if(item == 'others'){
-                                        $('#select-timelot-subject')
-                                .append(' <option value="math_subject|others" data-name="Math: Others">Math: Others</option>');
-                                    }
-                                });
-                            }
-
-                            if(science.length > 3){
-                                $('#select-timelot-subject')
-                                            .append('<option value="science_subject|all" data-name="Science Only">Science Only </option>');
-                            }else if(science.length <= 3 && science.length >0){
-                                science.forEach(function(item, index){
-                                    if(item == 'science_middle_school'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="science_subject|science_middle_school" data-name="Science: Elementary/Middle School">Science: Elementary/Middle School</option>');
-                                    }else if(item == 'physics_high_school'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="science_subject|physics_high_school" data-name="Science: High School">Science: High School</option>');
-                                    }else if(item == 'chemistry_high_school'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="science_subject|chemistry_high_school" data-name="Science: Chemistry for High School">Science: Chemistry for High School</option>');
-                                    }else if(item == 'others'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="science_subject|others" data-name="Science: Others">Science: Others</option>');
-                                    }
-                                });
-                            }
-                            $('#select-timelot-subject').prop('selectedIndex', 0);
-                        }
-
-                        // Update timelot tutor types
-                        function update_timelot_tutor_types(data){
-                            $('#tutoring-type').empty();
-                            if(data.enable_one_tutoring != null && data.enable_one_tutoring != undefined){
-                                $('#tutoring-type').append('<div class="form-group"><label> ' +
-                                '<input id="timelot_one_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">'+
-                                '<span>Enables 1 on 1 Tutoring</span></label></div> ');                            
-                            }
-                            if(data.enable_group_tutoring !=null && data.enable_group_tutoring != undefined){
-                                if($("#tutoring-type").children().length > 0){
-                                    $('#tutoring-type').append(
-                                    '<div class="form-group"><label>' +
-                                    '<input id="timelot_group_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_group_tutoring" name="timelot_group_tutoring">' +
-                                    '<span>Enables Groups Tutoring </span></label></div>'
-                                    );
-                                }else{
-                                    $('#tutoring-type').append(
-                                    '<div class="form-group"><label>' +
-                                    '<input id="timelot_group_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_group_tutoring" name="timelot_group_tutoring" checked="checked">' +
-                                    '<span>Enables Groups Tutoring </span></label></div>'
-                                );
-                                }
-
-                            }
-                        }
-
-                        $('#update-preference').click(function(){
-                            var direct_type = $(this).attr('data-type');
-                            var price_tutoring = $('#price-tutoring').val();
-                            var english_subject_desc = $('#english-subject-desc').val();
-                            var math_subject_desc = $('#math-subject-desc').val();
-                            var science_subject_desc = $('#science-subject-desc').val();
-                            var price_group_tutoring = $('#price-group-tutoring').val();
-                            var number_participant = $('#number-participant').val();
-                            var enable_one_tutoring = $('input[name="enable_one_tutoring"]:checked').val();
-                            var enable_group_tutoring = $('input[name="enable_group_tutoring"]:checked').val();
-
-                            var english_subject = [];
+                            let english_subject = [];
                             $('input[name="english_subject"]:checked').each(function () {
-                                var val = this.value;
+                                let val = this.value;
                                 //if(val == '') var val = $(this).attr('data-subject');
                                 english_subject.push(val);
                             });
 
-                            var math_subject = [];
+                            let math_subject = [];
                             $('input[name="math_subject"]:checked').each(function () {
-                                var val = this.value;
+                                let val = this.value;
                                 //if(val == '') var val = $(this).attr('data-subject');
                                 math_subject.push(val);
                             });
 
-                            var science_subject = [];
+                            let science_subject = [];
                             $('input[name="science_subject"]:checked').each(function () {
-                                var val = this.value;
+                                let val = this.value;
                                 //if(val == '') var val = $(this).attr('data-subject');
                                 science_subject.push(val);
                             });
 
-                            var other_preference = [];
+                            let other_preference = [];
                             $('input[name="other_preference"]:checked').each(function () {
-                                var val = this.value;
+                                let val = this.value;
                                 //if(val == '') var val = $(this).attr('data-subject');
                                 other_preference.push(val);
                             });
 
-                            var description_preference = [];
+                            let description_preference = [];
                             $('input[name="description_preference"]').each(function () {
                                 var val = this.value;
                                 //if(val == '') var val = $(this).attr('data-subject');
                                 description_preference.push(val);
                             });
 
+                            return {
+                                            price_tutoring: price_tutoring,
+                                            english_subject_desc: english_subject_desc,
+                                            math_subject_desc: math_subject_desc,
+                                            science_subject_desc: science_subject_desc,
+                                            description_preference: description_preference,
+                                            english_subject: english_subject,
+                                            math_subject: math_subject,
+                                            science_subject: science_subject,
+                                            other_preference: other_preference,
+                                            price_group_tutoring: price_group_tutoring,
+                                            number_participant: number_participant,
+                                            enable_one_tutoring: enable_one_tutoring,
+                                            enable_group_tutoring: enable_group_tutoring,
+                                            type: "tutoring"
+                                        }
+                        }
+                        
+                        // set time slot subject from tutoring preference when document ready / onload. 
+                        $(document).ready(()=>{
+                            // get data from tutoring preference form
+                            let pref_data = getTutorPreference();
+                            console.log(pref_data);
+                            
+                            // update time slot subject from tutoring preference
+                            updateTimelotDropdownItem(pref_data);
+                        })
+
+                        // update tutor preference on click
+                        $('#update-preference').click(function(){
+                            
+                            let post_data = getTutorPreference();
                             var msg = '';                                
                             var form_valid = true;
-
-                            if(price_tutoring == '' || $.trim(price_tutoring) == ''){
+                            
+                            let one = post_data.enable_one_tutoring;
+                            let group = post_data.enable_group_tutoring;
+                            
+                            one==undefined?one="":one=one;
+                            group==undefined?group="":group=group;
+                            
+                            
+                            if(post_data.price_tutoring == '' || $.trim(post_data.price_tutoring) == ''){
                                 msg += 'Please enter Price for 30 Minutes of Tutoring</br>';
                                 //form_valid = false;
                             }
 
-                            if(price_group_tutoring == '' || $.trim(price_group_tutoring) == ''){
+                            if(post_data.price_group_tutoring == '' || $.trim(post_data.price_group_tutoring) == ''){
                                 msg += 'Please enter Price for 30 Minutes of Tutoring</br>';
                                 //form_valid = false;
                             }
 
-                            if(number_participant == '' || $.trim(number_participant) == ''){
+                            if(post_data.number_participant == '' || $.trim(post_data.number_participant) == ''){
                                 msg += 'Please enter Number of Participant</br>';
                                 //form_valid = false;
                             }
 
-                            if(english_subject.length == 0 ){
+                            if(post_data.english_subject.length == 0 ){
                                 msg += 'Please check the box of English Subjects</br>';
                                 //form_valid = false;
                             }      
 
-                            if(math_subject.length == 0){
+                            if(post_data.math_subject.length == 0){
                                 msg += 'Please check the box of Math Subjects</br>';
                                 //form_valid = false;
                             }      
 
-                            if(science_subject.length == 0){
+                            if(post_data.science_subject.length == 0){
                                 msg += 'Please check the box of Science Subjects</br>';
                                 //form_valid = false;
                             }      
 
-                            if(other_preference.length == 0){
+                            if(post_data.other_preference.length == 0){
                                 msg += 'Please check the box of Other Subjects</br>';
                                 //form_valid = false;
                             }
 
-                            if(english_subject.length > 0 || math_subject.length > 0 || science_subject.length > 0 || other_preference.length > 0){
+                            if(post_data.english_subject.length > 0 || post_data.math_subject.length > 0 || science_subject.length > 0 || other_preference.length > 0){
                                 form_valid = true;
                             }else{
                                 form_valid = false;
-                            }     
-                            var post_data = {
-                                    price_tutoring: price_tutoring,
-                                    english_subject_desc: english_subject_desc,
-                                    math_subject_desc: math_subject_desc,
-                                    science_subject_desc: science_subject_desc,
-                                    description_preference: description_preference,
-                                    english_subject: english_subject,
-                                    math_subject: math_subject,
-                                    science_subject: science_subject,
-                                    other_preference: other_preference,
-                                    price_group_tutoring: price_group_tutoring,
-                                    number_participant: number_participant,
-                                    enable_one_tutoring: enable_one_tutoring,
-                                    enable_group_tutoring: enable_group_tutoring,
-                                    type: "tutoring"
-                                }
+                            }
+                            
                             if(form_valid){
-                                $.post(home_url + "/?r=ajax/update_info",post_data , function (data) {
-                                update_timelot_subject_item(post_data);
-                                 update_timelot_tutor_types(post_data);
+                                $.post(home_url + "/?r=ajax/update_info", post_data, function (data) {
+                                    // update timelot subject dropdown items  
+                                    updateTimelotDropdownItem(post_data);
+                                    updateTypeOfTentoring(post_data);
+
                                     if ($.trim(data) == '1') {
-                                        $('#chk-price-tutoring').val(price_tutoring);
-                                        $('#popup-message').html('<p class="text-used">Tutoring Preference has been updated successfully</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn" data-id="sub-tutoring-preference" data-tab="tutoring-preference" data-type="' + direct_type + '">Got it</button>'); //got-scheduled
+                                        $('#chk-price-tutoring').val(post_data.price_tutoring);
+                                        $('#popup-message').html('<p class="text-used">Tutoring Preference has been created successfully</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn" data-id="sub-tutoring-preference" data-tab="tutoring-preference" data-type="' + post_data.direct_type + '">Got it</button>'); //got-scheduled
                                         $('#top-popup-message').css("display", "block");
                                     }                                         
                                 });
@@ -19743,36 +19655,189 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#top-popup-message').css("display", "block");
                             } 
                         });
-                        // trigger type of close
-                        // $(".tab-tutoring-preference, .manage-preference").click(()=> {
-                        //     if($('#popup-option-timelot').css('display') == 'block'){
-                        //         setCloseButton("close");
-                        //     }else{
-                        //         setCloseButton("link");
-                        //     }
+
+                        // Function - update timelot subject dropdown items 
+                        let updateTimelotDropdownItem = (subject) => {
+                            // the subject from tutor preference
+                            let english = subject.english_subject;
+                            let math = subject.math_subject;
+                            let science = subject.science_subject;
                             
-                        // });
+                            // set default state 
+                            $("#select-timelot-subject").html(`
+                                <option value="0" data-name="">Select Subject</option>
+                                <option value="all" data-name="Any Subjects">Any Subjects from My Preference</option>
+                            `);
+
+                            // // set english option
+                            if(english.length > 4){
+                                $("#select-timelot-subject").append('<option value="english_subject|all" data-name="English Only">English Only</option>');
+                            }else if(english.length > 0 && english.length <= 4){
+                                english.forEach((element) => {
+                                    switch (element) {
+                                        case "english_conversation":
+                                            $("#select-timelot-subject").append('<option value="english_subject|english_conversation" data-name="English Conversation">English : English Conversation</option>')
+                                            
+                                            break;
+                                        
+                                        case "english_grammar":
+                                            $("#select-timelot-subject").append('<option value="english_subject|english_grammar" data-name="English Grammar">English : English Grammar</option>')
+                                            
+                                            break;
+                                        
+                                        case "english_writting":
+                                            $("#select-timelot-subject").append('<option value="english_subject|english_writting" data-name="English Writting">English : English Writting</option>')
+                                            
+                                            break;
+
+                                        case "english_reading_comprehension":
+                                            $("#select-timelot-subject").append('<option value="english_subject|english_reading_comprehension" data-name="English Reading Comprehension">English : English Reading Comprehension</option>')
+                                            
+                                            break;
+
+                                        case "others":
+                                            $("#select-timelot-subject").append('<option value="english_subject|others" data-name="English Reading Comprehension">English : Others</option>')
+                                            
+                                            break;
+                                    
+                                        default:
+                                            break;
+                                    }
+                                });
+                            }
+                            
+                            // set math option
+                            if(math.length > 4){
+                                $("#select-timelot-subject").append('<option value="math_subject|all" data-name="Math Only">Math Only</option>');
+                            }else if(math.length > 0 && math.length <= 4){
+                                math.forEach((element) => {
+                                    switch (element) {
+                                        case "elemenatary_school_math":
+                                            $("#select-timelot-subject").append('<option value="math_subject|elemenatary_school_math" data-name="Math Elementary">Math : Elementary</option>')
+                                            
+                                            break;
+                                        
+                                        case "middle_school_math":
+                                            $("#select-timelot-subject").append('<option value="math_subject|middle_school_math" data-name="Math Middle School">Math : Middle School</option>')
+                                            
+                                            break;
+                                        
+                                        case "high_school_math":
+                                            $("#select-timelot-subject").append('<option value="math_subject|high_school_math" data-name="Math High School">Math : High School</option>')
+                                            
+                                            break;
+
+                                        case "advanced_math":
+                                            $("#select-timelot-subject").append('<option value="math_subject|advanced_math" data-name="Math Advanced">Math : Advanced</option>')
+                                            
+                                            break;
+                                        
+                                        case "others":
+                                            $("#select-timelot-subject").append('<option value="math_subject|others" data-name="Math Others">Math : Others</option>')
+                                            
+                                            break;
+                                    
+                                        default:
+                                            break;
+                                    }
+                                });
+                            }
+                            
+                            // set science option
+                            if(science.length > 3){
+                                $("#select-timelot-subject").append('<option value="science_subject|all" data-name="Science Only">Science Only</option>');
+                            }else if(science.length > 0 && science.length <= 3){
+                                science.forEach((element) => {
+                                    switch (element) {
+                                        case "science_middle_school":
+                                            $("#select-timelot-subject").append('<option value="science_subject|science_middle_school" data-name="Science Elementary/Middle School"">Science : Elementary/Middle School"</option>')
+                                            
+                                            break;
+                                        
+                                        case "physics_high_school":
+                                            $("#select-timelot-subject").append('<option value="science_subject|physics_high_school" data-name="Science High School">Science : High School</option>')
+                                            
+                                            break;
+                                        
+                                        case "chemistry_high_school":
+                                            $("#select-timelot-subject").append('<option value="science_subject|chemistry_high_school" data-name="Science Chemistry for High School">Science : Chemistry for High School</option>')
+                                            
+                                            break;
+
+                                        case "others":
+                                            $("#select-timelot-subject").append('<option value="science_subject|others" data-name="Science Others">Science : Others</option>')
+                                            
+                                            break;
+                                    
+                                        default:
+                                            break;
+                                    }
+                                });
+                            }
+                        }
+
+                        // Function - update timelot type of tentoring
+                        let updateTypeOfTentoring = (subject) => {
+                            let one = subject.enable_one_tutoring;
+                            let group = subject.enable_group_tutoring;
+
+                            one==undefined?one="":one=one;
+                            group==undefined?group="":group=group;
+
+                            $("#tutor-type").html(``);
+                            if(one.length > 0){
+                                $("#tutor-type").append(`
+                                    <div class="form-group">
+                                        <label>
+                                            <input id="timelot_one_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">
+                                            <span>Enables 1 on 1 Tutoring</span>
+                                        </label>
+                                    </div>
+                                `)
+                            }
+
+                            if(group.length > 0){
+                                $("#tutor-type").append(`
+                                    <div class="form-group">
+                                        <label>
+                                            <input id="timelot_group_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_group_tutoring" name="timelot_group_tutoring" checked="checked">
+                                            <span>Enables Groups Tutoring</span>
+                                        </label>
+                                    </div>
+                                `)
+                            }
+                        }
+
+                        // trigger type of close
+                        $(".tab-tutoring-preference, .manage-preference").click(()=> {
+                            if($('#popup-option-timelot').css('display') == 'block'){
+                                setCloseButton("close");
+                            }else{
+                                setCloseButton("link");
+                            }
+                            
+                        });
 
                         // set close button
-                        // let setCloseButton = (state) => {   
-                        //     let closeButton = `<img class="img-one-icon" data-toggle="tab" href="#tutoring-main" src="<?php //echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt="">`;
-                        //     let closeLinkButton = ` <a id="tab-schedule" class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="true">Schedule</a>
-                        //                             <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="false">Tutoring Preference</a>`;
+                        let setCloseButton = (state) => {   
+                            let closeButton = `<img class="img-one-icon" data-toggle="tab" href="#tutoring-main" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt="">`;
+                            let closeLinkButton = ` <a class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="false">Schedule</a>
+                                                    <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="false">Tutoring Preference</a>`;
                             
-                        //     $("#tutoring-preference .teacher-center .row:first-of-type ").empty();
-                        //     $("#tutoring-preference .teacher-center .row:first-of-type ").append(`<div class="row">
-                        //                 <div class="col-sm-8 col-md-8 col-xs-8">
-                        //                     <p class="mt-bottom-12 student-center-title">TUTORING</p>
-                        //                     <div class="new-request-lists">Tutoring Preference</div>
-                        //                 </div>
-                    
-                        //                  <div class="col-sm-4 col-md-4 col-xs-4 text-right">
-                        //                         <a id="tab-schedule" class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="true">Schedule</a>
-                        //                         <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="true">Tutoring Preference</a>
-                        //                     </div>
-                        //             </div>`)
-                        // }
+                            $("#tutoring-preference .teacher-center .row:first-of-type ").empty();
+                            $("#tutoring-preference .teacher-center .row:first-of-type ").append(`<div class="row">
+                                        <div class="col-sm-8 col-md-8 col-xs-8">
+                                            <p class="mt-bottom-12 student-center-title">TUTORING</p>
+                                            <div class="new-request-lists">Tutoring Preference</div>
+                                        </div>
+					
+                                        <div class="col-sm-4 col-md-4 col-xs-4 text-right">
+                                            ${state=="close"?closeButton:closeLinkButton}
+				                        </div>
+                                    </div>`)
+                        }
 
+                        // timeslot default state 
                         $(".btn-option-timelot").live("click", (event) => {
                             // let state = $( event.target ).closest($(".btn-new-request")).html();
                             
@@ -19801,6 +19866,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             });
                             
                         });
+                        
 
                         $("#got-it, #got-cancel").live("click", function () {
                             $('#popup-message').html();
@@ -20072,20 +20138,20 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#btn-find-tutoring').removeClass('active');
                                 $('#open-find-tutoring').css("display","none");                            
                             }
-                            
+							
                             if($('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                 $('.header-schedule-tutor').removeClass('header-detail-schedule')
                             }
-                            
-                            $('#list-schedule-status').css("display","none");
+							
+							$('#list-schedule-status').css("display","none");
                             $('.main-list-students').css("display","none");
-                            $('#table-status-schedule').html('');
-                            $("#open-menu-schedule").css("display","none");
-                            $(".main-view-status").css("display","none");
-                            
-                            if($('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').removeClass('status-schedule')
-                            }
+							$('#table-status-schedule').html('');
+							$("#open-menu-schedule").css("display","none");
+							$(".main-view-status").css("display","none");
+							
+							if($('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').removeClass('status-schedule')
+							}
 
                             $('.radio_tutor_search').attr('checked',false);
 
@@ -20304,21 +20370,21 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#open-find-tutoring').css("display","none");
                                 $('.radio_tutor_search').attr('checked',false);                            
                             }
-                            
+							
                             if($('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                 $('.header-schedule-tutor').removeClass('header-detail-schedule')
                             }
 
-                            $('#list-schedule-status').css("display","none");
+							$('#list-schedule-status').css("display","none");
                             $('.main-list-students').css("display","none");
-                            $('#table-status-schedule').html('');
-                            $("#open-menu-schedule").css("display","none");
-                            $(".main-view-status").css("display","none");
+							$('#table-status-schedule').html('');
+							$("#open-menu-schedule").css("display","none");
+							$(".main-view-status").css("display","none");
                             $("#popup-option-timelot").css("display","none");
-                            
-                            if($('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').removeClass('status-schedule')
-                            }
+							
+							if($('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').removeClass('status-schedule')
+							}
 
                             var day = $('#today-tutor').val();//$('#summary-btn-tutor').attr('data-day');
                             var viewport = getViewport();
@@ -20504,7 +20570,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         initCalendar();
                         initTimeClock(timezone_name);
                         initMyTimeClock(timezone_name);                 
-                        /*
+						/*
                         $("#summary-btn-tutor").click(function(){
                             var day = $(this).attr("data-day");
                             var type = $(this).attr("data-type");
@@ -20532,232 +20598,232 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $(this).attr("data-type","summary");
                             }
                         });
-                        */
-                        
-                        $("#summary-btn-tutor").click(function(){
-                            $("#open-menu-schedule").toggle();
-                        });
-                        
-                        $('.close-status-schedule').click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
-                            $("#scheduled-btn").parent().addClass('active');
-                            $(".main-view-status").css("display","none");
+						*/
+						
+						$("#summary-btn-tutor").click(function(){
+							$("#open-menu-schedule").toggle();
+						});
+						
+						$('.close-status-schedule').click(function(){
+							$("#open-menu-schedule li").removeClass('active');
+							$("#scheduled-btn").parent().addClass('active');
+							$(".main-view-status").css("display","none");
 
-                            if(!$('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').addClass('status-schedule')
-                            }
-                            
-                            if($('.btn-status-schedule').hasClass('active')){
-                                $('.btn-status-schedule').removeClass('active');
-                            }
-                            var status = $(this).attr("data-status");
-                            get_status_schedule(status);
-                        });
-                        
-                        $('.view-status-scheduled').live("click",function(){
-                            var cl = $(this).attr("data-class");
-                            var subject = $(this).attr("data-subject");
-                            var private_subject = $(this).attr("data-private-subject");
-                            var student_name = $(this).attr("data-student-name");
-                            var tutor_name = $(this).attr("data-tutor-name");
-                            var date = $(this).attr("data-date");
-                            var stuff = $(this).attr("data-stuff");
-                            var message = $(this).attr("data-message");
-                            var note = $(this).attr("data-note");
-                            var time = $(this).attr("data-time");
-                            var time_view = $(this).attr("data-time-view");
-                            var fromtime = $(this).attr("data-fromtime");
-                            var totime = $(this).attr("data-totime");
-                            var total = $(this).attr("data-total");
-                            var total_time = $(this).attr("data-total-time");
-                            var day = $(this).attr("data-day");
-                            var location = $(this).attr("data-location");
-                            var confirmed = $(this).attr("data-confirmed");
-                            var canceled = $(this).attr("data-canceled");
-                            var id = $(this).attr("data-id");
-                            var student_id = $(this).attr("data-student-id");
-                            var teacher_id = $(this).attr("data-teacher-id");
-                            var status = $(this).attr("data-status");
+							if(!$('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').addClass('status-schedule')
+							}
+							
+							if($('.btn-status-schedule').hasClass('active')){
+								$('.btn-status-schedule').removeClass('active');
+							}
+							var status = $(this).attr("data-status");
+							get_status_schedule(status);
+						});
+						
+						$('.view-status-scheduled').live("click",function(){
+							var cl = $(this).attr("data-class");
+							var subject = $(this).attr("data-subject");
+							var private_subject = $(this).attr("data-private-subject");
+							var student_name = $(this).attr("data-student-name");
+							var tutor_name = $(this).attr("data-tutor-name");
+							var date = $(this).attr("data-date");
+							var stuff = $(this).attr("data-stuff");
+							var message = $(this).attr("data-message");
+							var note = $(this).attr("data-note");
+							var time = $(this).attr("data-time");
+							var time_view = $(this).attr("data-time-view");
+							var fromtime = $(this).attr("data-fromtime");
+							var totime = $(this).attr("data-totime");
+							var total = $(this).attr("data-total");
+							var total_time = $(this).attr("data-total-time");
+							var day = $(this).attr("data-day");
+							var location = $(this).attr("data-location");
+							var confirmed = $(this).attr("data-confirmed");
+							var canceled = $(this).attr("data-canceled");
+							var id = $(this).attr("data-id");
+							var student_id = $(this).attr("data-student-id");
+							var teacher_id = $(this).attr("data-teacher-id");
+							var status = $(this).attr("data-status");
                             var accepted = $(this).attr("data-accepted");
-                            var icon = $(this).attr("data-icon");
-                            var create_on = $(this).attr("data-create-on");
-                            var created = $(this).attr("data-created");
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            
-                            var review_schedule = 'Session Not Completed Yet';
-                            var point_schedule = ' <span class="spent">(not spent)</span>';
-                            
-                            if($.trim(note) == 'null') note = '';
-                            
-                            if($.trim(cl) == 'accepted'){
-                                var current_status = 'Completed';
-                                var type_status = 'confirmed';
-                                point_schedule = ' <span class="spent">(spent)</span>';
-                                review_schedule = '<a href="https://notepad.iktutor.com/en/?sid='+id+'&user_id='+student_id+'&teacher_id='+teacher_id+'" target="_blank">Review Session Again</a>';
-                                
-                                if(!$('#completed-status-btn').hasClass('active')){
-                                    $('.list-schedule-status').removeClass('active');
-                                    $('#completed-status-btn').addClass('active');
-                                    $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed.png');
-                                    $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
-                                    $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
-                                    $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
-                                }
-                                
-                                if(!$('.btn-status-schedule').hasClass('active')){
-                                    $('.btn-status-schedule').addClass('active');
-                                }
-                            }else if($.trim(cl) == 'canceled'){
-                                if(accepted == 2)
+							var icon = $(this).attr("data-icon");
+							var create_on = $(this).attr("data-create-on");
+							var created = $(this).attr("data-created");
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							
+							var review_schedule = 'Session Not Completed Yet';
+							var point_schedule = ' <span class="spent">(not spent)</span>';
+							
+							if($.trim(note) == 'null') note = '';
+							
+							if($.trim(cl) == 'accepted'){
+								var current_status = 'Completed';
+								var type_status = 'confirmed';
+								point_schedule = ' <span class="spent">(spent)</span>';
+								review_schedule = '<a href="https://notepad.iktutor.com/en/?sid='+id+'&user_id='+student_id+'&teacher_id='+teacher_id+'" target="_blank">Review Session Again</a>';
+								
+								if(!$('#completed-status-btn').hasClass('active')){
+									$('.list-schedule-status').removeClass('active');
+									$('#completed-status-btn').addClass('active');
+									$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed.png');
+									$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
+									$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
+									$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
+								}
+								
+								if(!$('.btn-status-schedule').hasClass('active')){
+									$('.btn-status-schedule').addClass('active');
+								}
+							}else if($.trim(cl) == 'canceled'){
+								if(accepted == 2)
                                     var current_status = 'Canceled by Tutor';
                                 else
                                     var current_status = 'Canceled';
 
-                                var type_status = 'canceled';
-                                
-                                if(!$('#expired-status-btn').hasClass('active')){
-                                    $('.list-schedule-status').removeClass('active');
-                                    $('#expired-status-btn').addClass('active');
-                                    $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired.png');
-                                    $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
-                                    $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
-                                    $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
-                                }
-                            }else{
-                                if(accepted == 1)
+								var type_status = 'canceled';
+								
+								if(!$('#expired-status-btn').hasClass('active')){
+									$('.list-schedule-status').removeClass('active');
+									$('#expired-status-btn').addClass('active');
+									$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired.png');
+									$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
+									$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
+									$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
+								}
+							}else{
+								if(accepted == 1)
                                     var current_status = 'Confirmed';
                                 else
                                     var current_status = 'Waiting for Confirmation';
 
-                                var type_status = 'waiting';
-                                
-                                if(!$('#scheduled-status-btn').hasClass('active')){
-                                    $('.list-schedule-status').removeClass('active');
-                                    $('#scheduled-status-btn').addClass('active');
-                                    $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled.png');
-                                    $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
-                                    $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
-                                    $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
-                                }
-                            }
-                            
-                            if(note == ''){
-                                $('.btn-status-schedule').text('Save Note');
-                                tinymce.get('note_status_schedule').setContent('');
-                            }else{
-                                $('.btn-status-schedule').text('Edit Note');
-                                tinymce.get('note_status_schedule').setContent(note);
-                            }
-                            
-                            $('.name-status-schedule').find('img').attr('src',path + icon);
-                            if($.trim(subject) == 'null')
-                                $('.name-status-schedule').find('span').text(private_subject);
-                            else
-                                $('.name-status-schedule').find('span').text(subject);
-                            $('#date-schedule').text(date + stuff + ' ' + time_view);
-                            $('#current-status').text(current_status);
-                            $('#name-tutor-detail').text(tutor_name);
-                            $('#point-schedule').html(total + 'Points($)' + point_schedule);
-                            $('#review-schedule').addClass($.trim(cl));
-                            $('#review-schedule').html(review_schedule);
-                            $('.close-status-schedule').attr('data-status',type_status);
-                            $('.btn-status-schedule').attr('data-id',id);
-                            
-                            $('#list-schedule-status').css("display","block");
+								var type_status = 'waiting';
+								
+								if(!$('#scheduled-status-btn').hasClass('active')){
+									$('.list-schedule-status').removeClass('active');
+									$('#scheduled-status-btn').addClass('active');
+									$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled.png');
+									$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
+									$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
+									$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
+								}
+							}
+							
+							// if(note == ''){
+							// 	$('.btn-status-schedule').text('Save Note');
+							// 	tinymce.get('note_status_schedule').setContent('');
+							// }else{
+							// 	$('.btn-status-schedule').text('Edit Note');
+							// 	tinymce.get('note_status_schedule').setContent(note);
+							// }
+							
+							$('.name-status-schedule').find('img').attr('src',path + icon);
+							if($.trim(subject) == 'null')
+								$('.name-status-schedule').find('span').text(private_subject);
+							else
+								$('.name-status-schedule').find('span').text(subject);
+							$('#date-schedule').text(date + stuff + ' ' + time_view);
+							$('#current-status').text(current_status);
+							$('#name-tutor-detail').text(tutor_name);
+							$('#point-schedule').html(total + 'Points($)' + point_schedule);
+							$('#review-schedule').addClass($.trim(cl));
+							$('#review-schedule').html(review_schedule);
+							$('.close-status-schedule').attr('data-status',type_status);
+							$('.btn-status-schedule').attr('data-id',id);
+							
+							$('#list-schedule-status').css("display","block");
                             $('.main-list-students').css("display","none");
-                            $('#table-status-schedule').html('');
+							$('#table-status-schedule').html('');
+							$("#open-menu-schedule").css("display","none");
+							$(".main-view-status").css("display","block");
+						});
+						
+						$("#make-check-all").click(function(){
+							$("#open-menu-schedule li").removeClass('active');
                             $("#open-menu-schedule").css("display","none");
-                            $(".main-view-status").css("display","block");
-                        });
-                        
-                        $("#make-check-all").click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
-                            $("#open-menu-schedule").css("display","none");
-                            var name = $('#select-timezone :selected').attr("data-name");
-                            var city = $('#select-timezone :selected').attr("data-city");
-                            var timezone = $('#select-timezone :selected').attr("data-value");
-                            var index = $("#select-timezoneSelectBoxItText").attr("data-val");
-                            var type = $('#summary-btn-tutor').attr('data-type');
-                            if(type == 'summary'){
-                                type = 'schedule';
-                            }else{
-                                type = 'summary';  
-                            }
+							var name = $('#select-timezone :selected').attr("data-name");
+							var city = $('#select-timezone :selected').attr("data-city");
+							var timezone = $('#select-timezone :selected').attr("data-value");
+							var index = $("#select-timezoneSelectBoxItText").attr("data-val");
+							var type = $('#summary-btn-tutor').attr('data-type');
+							if(type == 'summary'){
+								type = 'schedule';
+							}else{
+								type = 'summary';  
+							}
 
-                            var today = $('#today-tutor').val();
+							var today = $('#today-tutor').val();
                             var arr = [];
 
-                             $("#tutoring-scheduled-tutor").html("");
-
-                            $('#table-listschedule-tutor button.btn-new-request').each(function () {
+                            $("#tutoring-scheduled-tutor").html("");
+                            
+							$('#table-listschedule-tutor button.btn-new-request').each(function () {
                                 var user_points = $(this).attr('data-points');
-                                var fromtime = $(this).attr("data-fromtime");
-                                var time_duration = $(this).attr("data-totime");
-                                var day = $(this).attr("data-day");
-                                var time = $(this).attr("data-time"); 
-                                var request_index = $(this).attr("data-index");
-                                var tr_id =  $(this).attr("data-id");
-                                var cnt = $('#'+tr_id).index();  
-                                var request_half = $(this).attr('data-half');
-                                var no =  $(this).attr("data-no");
-                                var price_tutoring = $(this).attr("data-price-tutoring");
+								var fromtime = $(this).attr("data-fromtime");
+								var time_duration = $(this).attr("data-totime");
+								var day = $(this).attr("data-day");
+								var time = $(this).attr("data-time"); 
+								var request_index = $(this).attr("data-index");
+								var tr_id =  $(this).attr("data-id");
+								var cnt = $('#'+tr_id).index();  
+								var request_half = $(this).attr('data-half');
+								var no =  $(this).attr("data-no");
+								var price_tutoring = $(this).attr("data-price-tutoring");
                                 var accept = $(this).attr("data-accept");
                                 var users = $(this).attr("data-users");
                                 //var tid =  $(this).attr("data-tid");
-                                
-                                var CurrentDate = new Date(today);
-                                var GivenDate = new Date(day); 
-                                //alert(dmDate);
-                                var str = fromtime.split(':');
-                                var hr = parseInt(str[0]);
+								
+								var CurrentDate = new Date(today);
+								var GivenDate = new Date(day); 
+								//alert(dmDate);
+								var str = fromtime.split(':');
+								var hr = parseInt(str[0]);
 
-                                var hrtoday = $("#time-clock").attr("data-hour");
-                                var mttoday = $("#time-clock").attr("data-minute");
+								var hrtoday = $("#time-clock").attr("data-hour");
+								var mttoday = $("#time-clock").attr("data-minute");
                                 if(mttoday < 30) mttoday = 0;
-                                
-                                var scurr = parseInt(hrtoday) * 60;// + parseInt(mttoday);
-                                var egive = hr * 60 + parseInt(str[1]);
+								
+								var scurr = parseInt(hrtoday) * 60;// + parseInt(mttoday);
+								var egive = hr * 60 + parseInt(str[1]);
 
                                 if(price_tutoring == '' || $.trim(price_tutoring) == ''){
                                     price_tutoring = $('#chk-price-tutoring').val();
                                 }
-                                
-                                if(price_tutoring == '' || $.trim(price_tutoring) == ''){
-                                    $('span.placeholder').each(function () {
-                                        var text = $(this).text();
-                                        var font = $(this).css("font");
-                                        if (document.documentMode || /Edge/.test(navigator.userAgent)) {
-                                            //console.log("Edge");
-                                            var offset = getDistancePlace(text, "Edge");
-                                        }else if (navigator.userAgent.search("Firefox") >= 0){
-                                            var offset = getDistancePlace(text, "Firefox");
-                                            //console.log("Firefox");
-                                        }else{
-                                            var offset = 18;
-                                        }
-                                        var left = (getTextWidth(text,font) + offset);
-                                        $(this).prev().css("padding-left",left+"px");
-                                    });
-                                    $('#tutoring-preference').addClass('active in');
-                                    $('#sub-tutoring-preference').addClass('active');
-                                    $("#tutoring-main").removeClass("active in");
-                                    $("#sub-schedule-li").removeClass("active");
+								
+								if(price_tutoring == '' || $.trim(price_tutoring) == ''){
+									$('span.placeholder').each(function () {
+										var text = $(this).text();
+										var font = $(this).css("font");
+										if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+											//console.log("Edge");
+											var offset = getDistancePlace(text, "Edge");
+										}else if (navigator.userAgent.search("Firefox") >= 0){
+											var offset = getDistancePlace(text, "Firefox");
+											//console.log("Firefox");
+										}else{
+											var offset = 18;
+										}
+										var left = (getTextWidth(text,font) + offset);
+										$(this).prev().css("padding-left",left+"px");
+									});
+									$('#tutoring-preference').addClass('active in');
+									$('#sub-tutoring-preference').addClass('active');
+									$("#tutoring-main").removeClass("active in");
+									$("#sub-schedule-li").removeClass("active");
 
-                                    $('#update-preference').attr('data-type','schedule');
-                                    $('#cancel-update-preference').attr('data-type','schedule');
-                                }else{
-                                    if((today == day && egive >= scurr) || GivenDate > CurrentDate){
-                                        var ftime = fromtime.split(':');
-                                        var totime = time_duration.split(':');
-                                        var hftime = parseInt(ftime[0]);
-                                        var httime = parseInt(totime[0]);                                
+									$('#update-preference').attr('data-type','schedule');
+									$('#cancel-update-preference').attr('data-type','schedule');
+								}else{
+									if((today == day && egive >= scurr) || GivenDate > CurrentDate){
+										var ftime = fromtime.split(':');
+										var totime = time_duration.split(':');
+										var hftime = parseInt(ftime[0]);
+										var httime = parseInt(totime[0]);                                
 
-                                        if(hftime > 12) hftime = hftime - 12;
-                                        if(httime > 12) httime = httime - 12;
-                                        
-                                        var time_sc1 = hftime+':'+ftime[1]+ftime[2].toLowerCase();
-                                        var time_sc2 = httime+':'+totime[1]+totime[2].toLowerCase();
-                                        var time = hftime+':'+ftime[1]+':'+ftime[2].toLowerCase() + ' ~ ' + httime+':'+totime[1]+':'+totime[2].toLowerCase();
+										if(hftime > 12) hftime = hftime - 12;
+										if(httime > 12) httime = httime - 12;
+										
+										var time_sc1 = hftime+':'+ftime[1]+ftime[2].toLowerCase();
+										var time_sc2 = httime+':'+totime[1]+totime[2].toLowerCase();
+										var time = hftime+':'+ftime[1]+':'+ftime[2].toLowerCase() + ' ~ ' + httime+':'+totime[1]+':'+totime[2].toLowerCase();
 
                                         var item = {day: day, time_start: time_sc1, time_end: time_sc2, time: time};
                                         
@@ -20805,9 +20871,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             li += '<span class="subject-scheduled">'+ subject +'</span>';
                                             li += '</span>' + icon_arrow + '</li>';
                                         ul_scheduled.append(li);
-                                    } 
-                                }                    
-                            });
+									} 
+								}                    
+							});
 
                             if(arr.length > 0){
                                 if(!$('#tutoring-scheduled-tutor').hasClass('active')){
@@ -20829,27 +20895,27 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     initCalendar('update');
                                 });   
                             }
-                        });
-                        
-                        $("#make-uncheck-all").click(function(){
-                            var name = $('#select-timezone :selected').attr("data-name");
-                            var city = $('#select-timezone :selected').attr("data-city");
-                            var timezone = $('#select-timezone :selected').attr("data-value");
-                            var index = $("#select-timezoneSelectBoxItText").attr("data-val");
+						});
+						
+						$("#make-uncheck-all").click(function(){
+							var name = $('#select-timezone :selected').attr("data-name");
+							var city = $('#select-timezone :selected').attr("data-city");
+							var timezone = $('#select-timezone :selected').attr("data-value");
+							var index = $("#select-timezoneSelectBoxItText").attr("data-val");
                             var day = $('#summary-btn-tutor').attr('data-day');
-                            $("#open-menu-schedule li").removeClass('active');
+							$("#open-menu-schedule li").removeClass('active');
                             $("#open-menu-schedule").css("display","none");
 
                             var arr = [];
-                            $('#tutoring-scheduled-tutor li.slot-available').each(function () {
-                                if(!$(this).hasClass('active')){
-                                    var id = $(this).attr("data-id");
-                                    var day = $(this).attr("data-day");
-                                    var no = $(this).attr("data-no");
-                                    $(this).remove();
+							$('#tutoring-scheduled-tutor li.slot-available').each(function () {
+								if(!$(this).hasClass('active')){
+									var id = $(this).attr("data-id");
+									var day = $(this).attr("data-day");
+									var no = $(this).attr("data-no");
+									$(this).remove();
                                     //arr.push(id);
-                                }
-                            });
+								}
+							});
 
                             $.post(home_url + "/?r=ajax/delete_tutor_available", {
                                 id: '',
@@ -20868,216 +20934,216 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     initCalendar('update', data);
                                 });
                             });
-                        });
+						});
 
-                        $("#all-schedule-btn").click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
-                            $(this).parent().addClass('active');
-                            $('#list-schedule-status').css("display","block");
+						$("#all-schedule-btn").click(function(){
+							$("#open-menu-schedule li").removeClass('active');
+							$(this).parent().addClass('active');
+							$('#list-schedule-status').css("display","block");
                             $('.main-list-students').css("display","none");
-                            $("#open-menu-schedule").css("display","none");
-                            $(".main-view-status").css("display","none");
+							$("#open-menu-schedule").css("display","none");
+							$(".main-view-status").css("display","none");
 
-                            if(!$('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').addClass('status-schedule')
-                            }
+							if(!$('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').addClass('status-schedule')
+							}
 
                             if(!$('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                 $('.header-schedule-tutor').addClass('header-detail-schedule')
                             }
 
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if(!$('#all-status-btn').hasClass('active')){
-                                $('.list-schedule-status').removeClass('active');
-                                $('#all-status-btn').addClass('active');
-                                $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary.png');
-                                $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
-                                $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
-                                $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
-                            }
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if(!$('#all-status-btn').hasClass('active')){
+								$('.list-schedule-status').removeClass('active');
+								$('#all-status-btn').addClass('active');
+								$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary.png');
+								$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
+								$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
+								$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
+							}
 
-                            var status = $(this).attr("data-status");
-                            get_status_schedule(status);
-                        });
+							var status = $(this).attr("data-status");
+							get_status_schedule(status);
+						});
 
-                        $("#scheduled-btn").click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
-                            $(this).parent().addClass('active');
-                            $('#list-schedule-status').css("display","block");
+						$("#scheduled-btn").click(function(){
+							$("#open-menu-schedule li").removeClass('active');
+							$(this).parent().addClass('active');
+							$('#list-schedule-status').css("display","block");
                             $('.main-list-students').css("display","none");
-                            $("#open-menu-schedule").css("display","none");
-                            $(".main-view-status").css("display","none");
+							$("#open-menu-schedule").css("display","none");
+							$(".main-view-status").css("display","none");
 
-                            if(!$('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').addClass('status-schedule')
-                            }
+							if(!$('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').addClass('status-schedule')
+							}
 
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if(!$('#scheduled-status-btn').hasClass('active')){
-                                $('.list-schedule-status').removeClass('active');
-                                $('#scheduled-status-btn').addClass('active');
-                                $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled.png');
-                                $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
-                                $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
-                                $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
-                            }
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if(!$('#scheduled-status-btn').hasClass('active')){
+								$('.list-schedule-status').removeClass('active');
+								$('#scheduled-status-btn').addClass('active');
+								$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled.png');
+								$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
+								$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
+								$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
+							}
 
-                            var status = $(this).attr("data-status");
-                            get_status_schedule(status);
-                        });
+							var status = $(this).attr("data-status");
+							get_status_schedule(status);
+						});
 
-                        $("#completed-btn").click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
-                            $(this).parent().addClass('active');
-                            $('#list-schedule-status').css("display","block");
+						$("#completed-btn").click(function(){
+							$("#open-menu-schedule li").removeClass('active');
+							$(this).parent().addClass('active');
+							$('#list-schedule-status').css("display","block");
                             $('.main-list-students').css("display","none");
-                            $("#open-menu-schedule").css("display","none");
-                            $(".main-view-status").css("display","none");
+							$("#open-menu-schedule").css("display","none");
+							$(".main-view-status").css("display","none");
 
-                            if(!$('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').addClass('status-schedule')
-                            }
+							if(!$('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').addClass('status-schedule')
+							}
 
                             if(!$('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                 $('.header-schedule-tutor').addClass('header-detail-schedule')
                             }
 
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if(!$('#completed-status-btn').hasClass('active')){
-                                $('.list-schedule-status').removeClass('active');
-                                $('#completed-status-btn').addClass('active');
-                                $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed.png');
-                                $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
-                                $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
-                                $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
-                            }
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if(!$('#completed-status-btn').hasClass('active')){
+								$('.list-schedule-status').removeClass('active');
+								$('#completed-status-btn').addClass('active');
+								$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed.png');
+								$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
+								$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
+								$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
+							}
 
-                            var status = $(this).attr("data-status");
-                            get_status_schedule(status);
-                        });
+							var status = $(this).attr("data-status");
+							get_status_schedule(status);
+						});
 
-                        $("#expired-btn").click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
+						$("#expired-btn").click(function(){
+							$("#open-menu-schedule li").removeClass('active');
                             $(this).parent().addClass('active');
                             $('#list-schedule-status').css("display","block");
                             $('.main-list-students').css("display","none");
                             $("#open-menu-schedule").css("display","none");
                             $(".main-view-status").css("display","none");
 
-                            if(!$('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').addClass('status-schedule')
-                            }
+							if(!$('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').addClass('status-schedule')
+							}
 
                             if(!$('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                 $('.header-schedule-tutor').addClass('header-detail-schedule')
                             }
 
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if(!$('#expired-status-btn').hasClass('active')){
-                                $('.list-schedule-status').removeClass('active');
-                                $('#expired-status-btn').addClass('active');
-                                $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired.png');
-                                $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
-                                $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
-                                $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
-                            }
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if(!$('#expired-status-btn').hasClass('active')){
+								$('.list-schedule-status').removeClass('active');
+								$('#expired-status-btn').addClass('active');
+								$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired.png');
+								$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
+								$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
+								$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
+							}
 
-                            var status = $(this).attr("data-status");
-                            get_status_schedule(status);
-                        });
+							var status = $(this).attr("data-status");
+							get_status_schedule(status);
+						});
 
-                        $("#all-status-btn").click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
-                            $("#all-schedule-btn").parent().addClass('active');
-                            $(".main-view-status").css("display","none");
+						$("#all-status-btn").click(function(){
+							$("#open-menu-schedule li").removeClass('active');
+							$("#all-schedule-btn").parent().addClass('active');
+							$(".main-view-status").css("display","none");
 
-                            if(!$('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').addClass('status-schedule')
-                            }
+							if(!$('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').addClass('status-schedule')
+							}
 
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if(!$(this).hasClass('active')){
-                                $('.list-schedule-status').removeClass('active');
-                                $(this).addClass('active');
-                                $(this).find('img').attr('src',path + 'TimeIcon_Summary.png');
-                                $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
-                                $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
-                                $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
-                            }
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if(!$(this).hasClass('active')){
+								$('.list-schedule-status').removeClass('active');
+								$(this).addClass('active');
+								$(this).find('img').attr('src',path + 'TimeIcon_Summary.png');
+								$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
+								$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
+								$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
+							}
 
-                            var status = $(this).attr("data-status");
-                            get_status_schedule(status);
-                        });
+							var status = $(this).attr("data-status");
+							get_status_schedule(status);
+						});
 
-                        $("#scheduled-status-btn").click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
-                            $("#scheduled-btn").parent().addClass('active');
-                            $(".main-view-status").css("display","none");
+						$("#scheduled-status-btn").click(function(){
+							$("#open-menu-schedule li").removeClass('active');
+							$("#scheduled-btn").parent().addClass('active');
+							$(".main-view-status").css("display","none");
 
-                            if(!$('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').addClass('status-schedule')
-                            }
+							if(!$('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').addClass('status-schedule')
+							}
 
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if(!$(this).hasClass('active')){
-                                $('.list-schedule-status').removeClass('active');
-                                $(this).addClass('active');
-                                $(this).find('img').attr('src',path + 'TimeIcon_Scheduled.png');
-                                $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
-                                $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
-                                $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
-                            }
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if(!$(this).hasClass('active')){
+								$('.list-schedule-status').removeClass('active');
+								$(this).addClass('active');
+								$(this).find('img').attr('src',path + 'TimeIcon_Scheduled.png');
+								$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
+								$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
+								$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
+							}
 
-                            var status = $(this).attr("data-status");
-                            get_status_schedule(status);
-                        });
+							var status = $(this).attr("data-status");
+							get_status_schedule(status);
+						});
 
-                        $("#completed-status-btn").click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
-                            $("#completed-btn").parent().addClass('active');
-                            $(".main-view-status").css("display","none");
+						$("#completed-status-btn").click(function(){
+							$("#open-menu-schedule li").removeClass('active');
+							$("#completed-btn").parent().addClass('active');
+							$(".main-view-status").css("display","none");
 
-                            if(!$('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').addClass('status-schedule')
-                            }
+							if(!$('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').addClass('status-schedule')
+							}
 
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if(!$(this).hasClass('active')){
-                                $('.list-schedule-status').removeClass('active');
-                                $(this).addClass('active');
-                                $(this).find('img').attr('src',path + 'TimeIcon_Completed.png');
-                                $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
-                                $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
-                                $('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
-                            }
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if(!$(this).hasClass('active')){
+								$('.list-schedule-status').removeClass('active');
+								$(this).addClass('active');
+								$(this).find('img').attr('src',path + 'TimeIcon_Completed.png');
+								$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
+								$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
+								$('#expired-status-btn').find('img').attr('src',path + 'TimeIcon_Expired_disable.png');
+							}
 
-                            var status = $(this).attr("data-status");
-                            get_status_schedule(status);
-                        });
+							var status = $(this).attr("data-status");
+							get_status_schedule(status);
+						});
 
-                        $("#expired-status-btn").click(function(){
-                            $("#open-menu-schedule li").removeClass('active');
-                            $("#expired-btn").parent().addClass('active');
-                            $(".main-view-status").css("display","none");
+						$("#expired-status-btn").click(function(){
+							$("#open-menu-schedule li").removeClass('active');
+							$("#expired-btn").parent().addClass('active');
+							$(".main-view-status").css("display","none");
 
-                            if(!$('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').addClass('status-schedule')
-                            }
+							if(!$('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').addClass('status-schedule')
+							}
 
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if(!$(this).hasClass('active')){
-                                $('.list-schedule-status').removeClass('active');
-                                $(this).addClass('active');
-                                $(this).find('img').attr('src',path + 'TimeIcon_Expired.png');
-                                $('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
-                                $('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
-                                $('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
-                            }
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if(!$(this).hasClass('active')){
+								$('.list-schedule-status').removeClass('active');
+								$(this).addClass('active');
+								$(this).find('img').attr('src',path + 'TimeIcon_Expired.png');
+								$('#all-status-btn').find('img').attr('src',path + 'TimeIcon_Summary_disable.png');
+								$('#completed-status-btn').find('img').attr('src',path + 'TimeIcon_Completed_disable.png');
+								$('#scheduled-status-btn').find('img').attr('src',path + 'TimeIcon_Scheduled_disable.png');
+							}
 
-                            var status = $(this).attr("data-status");
-                            get_status_schedule(status);
-                        });
-                        
+							var status = $(this).attr("data-status");
+							get_status_schedule(status);
+						});
+						
                         $(".schedule-leftbtn").click(function(){
                             if($('#btn-find-tutoring').hasClass('active')){
                                 $('#btn-find-tutoring').removeClass('active');
@@ -21147,16 +21213,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $(this).attr('data-action','disabled');
                                 }
                             });
-                            
-                            $('#list-schedule-status').css("display","none");
+							
+							$('#list-schedule-status').css("display","none");
                             $('.main-list-students').css("display","none");
-                            $('#table-status-schedule').html('');
-                            $("#open-menu-schedule").css("display","none");
-                            $(".main-view-status").css("display","none");
-                            
-                            if($('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').removeClass('status-schedule')
-                            }
+							$('#table-status-schedule').html('');
+							$("#open-menu-schedule").css("display","none");
+							$(".main-view-status").css("display","none");
+							
+							if($('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').removeClass('status-schedule')
+							}
 
                             if($('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                 $('.header-schedule-tutor').removeClass('header-detail-schedule')
@@ -21235,16 +21301,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $(this).attr('data-action','disabled');
                                 }
                             });
-                            
-                            $('#list-schedule-status').css("display","none");
+							
+							$('#list-schedule-status').css("display","none");
                             $('.main-list-students').css("display","none");
-                            $('#table-status-schedule').html('');
-                            $("#open-menu-schedule").css("display","none");
-                            $(".main-view-status").css("display","none");
-                            
-                            if($('#body-my-scheduled').hasClass('status-schedule')){
-                                $('#body-my-scheduled').removeClass('status-schedule')
-                            }
+							$('#table-status-schedule').html('');
+							$("#open-menu-schedule").css("display","none");
+							$(".main-view-status").css("display","none");
+							
+							if($('#body-my-scheduled').hasClass('status-schedule')){
+								$('#body-my-scheduled').removeClass('status-schedule')
+							}
 
                             if($('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                 $('.header-schedule-tutor').removeClass('header-detail-schedule')
@@ -21265,7 +21331,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var cnt = $('#'+tr_id).index();  
                             var request_half = $(this).attr('data-half');
                             var name = $('#select-timezone :selected').attr("data-name");
-                            var city = $('#select-timezone :selected').attr("data-city");
+							var city = $('#select-timezone :selected').attr("data-city");
                             var timezone = $('#select-timezone :selected').attr("data-value");
                             var index = $("#select-timezoneSelectBoxItText").attr("data-val");
                             var no =  $(this).attr("data-no");
@@ -21349,9 +21415,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         var class_type = ' summary slot-available';
                                     }
                                     background: #' + slot_available +'*/
-                                    top = parseInt(no) * 48 + 9 + parseInt(no);
-                                    var style = 'style="top: ' + top + 'px; height: 48px;"';    
-                                    var class_type = ' slot-available'; 
+									top = parseInt(no) * 48 + 9 + parseInt(no);
+									var style = 'style="top: ' + top + 'px; height: 48px;"';    
+									var class_type = ' slot-available'; 
 
                                     var ul_scheduled = $("#tutoring-scheduled-tutor");
                                     var fl = ' class="icon-status"';
@@ -21372,15 +21438,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         index: index
                                     }, function (data) {
                                         $('#view-detail-schedule'+no).attr("data-id",$.trim(data));
-                                        $.post(home_url + "/?r=ajax/get_tutoring_date_active", {
-                                            timezone: timezone,
-                                            name: name,
-                                            index: index
-                                        }, function (data) {
-                                            $('#active-day-tutor').val(data);
-                                            initCalendar('update', data);
-                                        });
-                                        //initDateTimePicker(name, index, timezone, city);
+										$.post(home_url + "/?r=ajax/get_tutoring_date_active", {
+											timezone: timezone,
+											name: name,
+											index: index
+										}, function (data) {
+											$('#active-day-tutor').val(data);
+											initCalendar('update', data);
+										});
+										//initDateTimePicker(name, index, timezone, city);
                                         // if ($.trim(data) == '1') { 
                                             
                                         // }
@@ -21391,123 +21457,123 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         });
 
                         $('.slot-available').live("click",function(){
-                            var name = $('#select-timezone :selected').attr("data-name");
-                            var city = $('#select-timezone :selected').attr("data-city");
+							var name = $('#select-timezone :selected').attr("data-name");
+							var city = $('#select-timezone :selected').attr("data-city");
                             var timezone = $('#select-timezone :selected').attr("data-value");
                             var index = $("#select-timezoneSelectBoxItText").attr("data-val");
-                            if(!$(this).hasClass('active')){
-                                var id = $(this).attr("data-id");
-                                var day = $(this).attr("data-day");
+							if(!$(this).hasClass('active')){
+								var id = $(this).attr("data-id");
+								var day = $(this).attr("data-day");
                                 var fromtime = $(this).attr("data-fromtime");
                                 var totime = $(this).attr("data-totime");
-                                $(this).remove();
-                                $.post(home_url + "/?r=ajax/delete_tutor_available", {
-                                    id: id,
+								$(this).remove();
+								$.post(home_url + "/?r=ajax/delete_tutor_available", {
+									id: id,
                                     day: day,
                                     fromtime: fromtime,
                                     totime: totime
-                                }, function (data) {
-                                    $.post(home_url + "/?r=ajax/get_tutoring_date_active", {
-                                        timezone: timezone,
-                                        name: name,
-                                        index: index
-                                    }, function (data) {
-                                        $('#active-day-tutor').val(data);
-                                        initCalendar('update', data);
-                                    });
-                                    // if ($.trim(data) == '1') { 
-                                        
-                                    // }
-                                    //get_scheduled_day_tutor(day);
-                                });
-                            }
+								}, function (data) {
+									$.post(home_url + "/?r=ajax/get_tutoring_date_active", {
+										timezone: timezone,
+										name: name,
+										index: index
+									}, function (data) {
+										$('#active-day-tutor').val(data);
+										initCalendar('update', data);
+									});
+									// if ($.trim(data) == '1') { 
+										
+									// }
+									//get_scheduled_day_tutor(day);
+								});
+							}
                         });
-                        
-                        $('.slot-available').live("dblclick",function(){
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if($(this).hasClass('active')){
-                                $.get(home_url + "/?r=ajax/get_my_schedules", {timezone: ''}, function (data) {
-                                    //console.log(data);
-                                    data = JSON.parse(data);
-                                    if (data.length > 0) {
-                                        $('.slide-my-schedule').html('');
-                                        $('.slide-my-schedule').removeClass('slick-initialized');
-                                        $('.slide-my-schedule').removeClass('slick-slider');
-                                        $.each(data, function (i, v) {
-                                            var html_slide = '';
-                                            html_slide += '<div class="item" data-fromhour="'+v.fromhour+'" data-fromminute="'+v.fromminute+'" data-tohour="'+v.tohour+'" data-tominute="'+v.tominute+'" data-day="'+v.day+'" data-type="'+v.totype+'">';
-                                                html_slide += '<div class="description-detail">';
-                                                    html_slide += '<p class="subject-detail">';
-                                                        html_slide += '<span class="name-subject-tt">'+v.private_subject+'</span>';
-                                                    html_slide += '</p>';
-                                                    html_slide += '<p class="my-time-request">';
-                                                        html_slide += '<span class="label-timezone">Date:</span>';
-                                                        html_slide += '<span class="my-current-day">'+v.date+'</span>';
-                                                        html_slide += '<span class="my-stuff-day">'+v.stuff+'/</span>';
-                                                        html_slide += '<span class="my-time-current">'+v.time_view+'</span>';
-                                                    html_slide += '</p>';
-                                                    html_slide += '<p class="name-detail">';
-                                                        html_slide += '<span class="label-tutor">Tutor:</span>';
-                                                        html_slide += '<span class="name-tutor">'+v.tutor_name+'</span>';
-                                                    html_slide += '</p>';
-                                                    html_slide += '<p class="points-detail">';
-                                                        html_slide += '<span class="label-points">Points:</span>';
-                                                        html_slide += '<span class="name-points">'+v.total+' Points($)</span>';
-                                                    html_slide += '</p>';
-                                                html_slide += '</div>';
-                                                if(v.type_slide == 'current'){
-                                                    html_slide += '<button id="btn-start-now'+v.id+'" class="btn-dark-blue btn-start-now active" type="button" name="start-now" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0">Initiate Now!</button>';
-                                                }else{
-                                                    html_slide += '<button id="btn-start-now'+v.id+'" class="btn-dark-blue btn-start-now" type="button" name="start-now" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0">Initiate Now!</button>';
-                                                    html_slide += '<button id="btn-cancel-schedule'+v.id+'" class="btn-dark-blue btn-cancel-schedule active" type="button" name="cancel-schedule" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0"><img src="'+path+'icon_Most-Current-Arrow.png" alt=""> Most Current</button>';
-                                                }
-                                            html_slide += '</div>';
+						
+						$('.slot-available').live("dblclick",function(){
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if($(this).hasClass('active')){
+								$.get(home_url + "/?r=ajax/get_my_schedules", {timezone: ''}, function (data) {
+									//console.log(data);
+									data = JSON.parse(data);
+									if (data.length > 0) {
+										$('.slide-my-schedule').html('');
+										$('.slide-my-schedule').removeClass('slick-initialized');
+										$('.slide-my-schedule').removeClass('slick-slider');
+										$.each(data, function (i, v) {
+											var html_slide = '';
+											html_slide += '<div class="item" data-fromhour="'+v.fromhour+'" data-fromminute="'+v.fromminute+'" data-tohour="'+v.tohour+'" data-tominute="'+v.tominute+'" data-day="'+v.day+'" data-type="'+v.totype+'">';
+												html_slide += '<div class="description-detail">';
+													html_slide += '<p class="subject-detail">';
+														html_slide += '<span class="name-subject-tt">'+v.private_subject+'</span>';
+													html_slide += '</p>';
+													html_slide += '<p class="my-time-request">';
+														html_slide += '<span class="label-timezone">Date:</span>';
+														html_slide += '<span class="my-current-day">'+v.date+'</span>';
+														html_slide += '<span class="my-stuff-day">'+v.stuff+'/</span>';
+														html_slide += '<span class="my-time-current">'+v.time_view+'</span>';
+													html_slide += '</p>';
+													html_slide += '<p class="name-detail">';
+														html_slide += '<span class="label-tutor">Tutor:</span>';
+														html_slide += '<span class="name-tutor">'+v.tutor_name+'</span>';
+													html_slide += '</p>';
+													html_slide += '<p class="points-detail">';
+														html_slide += '<span class="label-points">Points:</span>';
+														html_slide += '<span class="name-points">'+v.total+' Points($)</span>';
+													html_slide += '</p>';
+												html_slide += '</div>';
+												if(v.type_slide == 'current'){
+													html_slide += '<button id="btn-start-now'+v.id+'" class="btn-dark-blue btn-start-now active" type="button" name="start-now" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0">Initiate Now!</button>';
+												}else{
+													html_slide += '<button id="btn-start-now'+v.id+'" class="btn-dark-blue btn-start-now" type="button" name="start-now" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0">Initiate Now!</button>';
+													html_slide += '<button id="btn-cancel-schedule'+v.id+'" class="btn-dark-blue btn-cancel-schedule active" type="button" name="cancel-schedule" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0"><img src="'+path+'icon_Most-Current-Arrow.png" alt=""> Most Current</button>';
+												}
+											html_slide += '</div>';
 
-                                            $('.slide-my-schedule').append(html_slide);
-                                        });
-                                        if(data.length > 1)
-                                            $('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,1));
-                                        else
-                                            $('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,0));
-                                    }else{
-                                        $('.slide-my-schedule').html('');
-                                        $('.slide-my-schedule').removeClass('slick-initialized');
-                                        $('.slide-my-schedule').removeClass('slick-slider');
-                                        var html_slide = '';
-                                        html_slide += '<div class="item no-detail-schedule">';
-                                            html_slide += '<div class="description-detail">';
-                                                html_slide += '<p class="subject-detail">';
-                                                    html_slide += '<span class="name-subject-tt">Currently there\'s no schedules</span>';
-                                                html_slide += '</p>';
-                                                html_slide += '<p class="my-time-request">';
-                                                    html_slide += '<span class="label-timezone">Date:</span>';
-                                                    html_slide += '<span class="my-current-day">N/A</span>';
-                                                    html_slide += '<span class="my-stuff-day"></span>';
-                                                    html_slide += '<span class="my-time-current"></span>';
-                                                html_slide += '</p>';
-                                                html_slide += '<p class="name-detail">';
-                                                    html_slide += '<span class="label-tutor">Tutor:</span>';
-                                                    html_slide += '<span class="name-tutor">N/A</span>';
-                                                html_slide += '</p>';
-                                                html_slide += '<p class="points-detail">';
-                                                    html_slide += '<span class="label-points">Points:</span>';
-                                                    html_slide += '<span class="name-points">0 Points($)</span>';
-                                                html_slide += '</p>';
-                                            html_slide += '</div>';
-                                            html_slide += '<button id="btn-cancel-schedule" class="btn-dark-blue btn-cancel-schedule no-active" type="button" name="cancel-schedule" data-id="" data-student-id="" data-teacher-id="" tabindex="0"><img src="'+path+'icon_Most-Current-Arrow.png" alt=""> Most Current</button>';
-                                        html_slide += '</div>';
+											$('.slide-my-schedule').append(html_slide);
+										});
+										if(data.length > 1)
+											$('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,1));
+										else
+											$('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,0));
+									}else{
+										$('.slide-my-schedule').html('');
+										$('.slide-my-schedule').removeClass('slick-initialized');
+										$('.slide-my-schedule').removeClass('slick-slider');
+										var html_slide = '';
+										html_slide += '<div class="item no-detail-schedule">';
+											html_slide += '<div class="description-detail">';
+												html_slide += '<p class="subject-detail">';
+													html_slide += '<span class="name-subject-tt">Currently there\'s no schedules</span>';
+												html_slide += '</p>';
+												html_slide += '<p class="my-time-request">';
+													html_slide += '<span class="label-timezone">Date:</span>';
+													html_slide += '<span class="my-current-day">N/A</span>';
+													html_slide += '<span class="my-stuff-day"></span>';
+													html_slide += '<span class="my-time-current"></span>';
+												html_slide += '</p>';
+												html_slide += '<p class="name-detail">';
+													html_slide += '<span class="label-tutor">Tutor:</span>';
+													html_slide += '<span class="name-tutor">N/A</span>';
+												html_slide += '</p>';
+												html_slide += '<p class="points-detail">';
+													html_slide += '<span class="label-points">Points:</span>';
+													html_slide += '<span class="name-points">0 Points($)</span>';
+												html_slide += '</p>';
+											html_slide += '</div>';
+											html_slide += '<button id="btn-cancel-schedule" class="btn-dark-blue btn-cancel-schedule no-active" type="button" name="cancel-schedule" data-id="" data-student-id="" data-teacher-id="" tabindex="0"><img src="'+path+'icon_Most-Current-Arrow.png" alt=""> Most Current</button>';
+										html_slide += '</div>';
 
-                                        $('.slide-my-schedule').append(html_slide);
-                                        $('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,0));
-                                    }
-                                });
+										$('.slide-my-schedule').append(html_slide);
+										$('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,0));
+									}
+								});
 
-                                $('#top-my-schedules').css({"display":"block"});
-                                $('body').addClass('open-myschedule');
-                                $(this).addClass('active');
-                                $(this).find('img').attr('src',path + 'icon_CONFIRM-CLOSE.png');
-                            }
-                        });
+								$('#top-my-schedules').css({"display":"block"});
+								$('body').addClass('open-myschedule');
+								$(this).addClass('active');
+								$(this).find('img').attr('src',path + 'icon_CONFIRM-CLOSE.png');
+							}
+						});
 
                         $('.slot-available.active span.icon-users').live("click",function(){
                             $(this).addClass('popup');
@@ -21748,144 +21814,144 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }
                         });
 
-                        $('#btn-my-schedule').click(function(e){
-                            e.preventDefault();
-                            var id = $(this).attr("data-id");
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if($(this).hasClass('active')){
-                                $('#top-my-schedules').css({"display":"none"});
-                                $('body').removeClass('open-myschedule');
-                                $(this).removeClass('active');
-                                $(this).find('img').attr('src',path + 'icon_MySchedule_Top.png');
-                            }else{
-                                $.get(home_url + "/?r=ajax/get_my_schedules", {timezone: ''}, function (data) {
-                                    //console.log(data);
-                                    data = JSON.parse(data);
-                                    if (data.length > 0) {
-                                        $('.slide-my-schedule').html('');
-                                        $('.slide-my-schedule').removeClass('slick-initialized');
-                                        $('.slide-my-schedule').removeClass('slick-slider');
-                                        $.each(data, function (i, v) {
-                                            var html_slide = '';
-                                            html_slide += '<div class="item" data-fromhour="'+v.fromhour+'" data-fromminute="'+v.fromminute+'" data-tohour="'+v.tohour+'" data-tominute="'+v.tominute+'" data-day="'+v.day+'" data-type="'+v.totype+'">';
-                                                html_slide += '<div class="description-detail">';
-                                                    html_slide += '<p class="subject-detail">';
-                                                        html_slide += '<span class="name-subject-tt">'+v.private_subject+'</span>';
-                                                    html_slide += '</p>';
-                                                    html_slide += '<p class="my-time-request">';
-                                                        html_slide += '<span class="label-timezone">Date:</span>';
-                                                        html_slide += '<span class="my-current-day">'+v.date+'</span>';
-                                                        html_slide += '<span class="my-stuff-day">'+v.stuff+'/</span>';
-                                                        html_slide += '<span class="my-time-current">'+v.time_view+'</span>';
-                                                    html_slide += '</p>';
-                                                    html_slide += '<p class="name-detail">';
-                                                        html_slide += '<span class="label-tutor">Tutor:</span>';
-                                                        html_slide += '<span class="name-tutor">'+v.tutor_name+'</span>';
-                                                    html_slide += '</p>';
-                                                    html_slide += '<p class="points-detail">';
-                                                        html_slide += '<span class="label-points">Points:</span>';
-                                                        html_slide += '<span class="name-points">'+v.total+' Points($)</span>';
-                                                    html_slide += '</p>';
-                                                html_slide += '</div>';
-                                                if(v.type_slide == 'current'){
-                                                    html_slide += '<button id="btn-start-now'+v.id+'" class="btn-dark-blue btn-start-now active" type="button" name="start-now" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0">Initiate Now!</button>';
-                                                }else{
-                                                    html_slide += '<button id="btn-start-now'+v.id+'" class="btn-dark-blue btn-start-now" type="button" name="start-now" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0">Initiate Now!</button>';
-                                                    html_slide += '<button id="btn-cancel-schedule'+v.id+'" class="btn-dark-blue btn-cancel-schedule active" type="button" name="cancel-schedule" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0"><img src="'+path+'icon_Most-Current-Arrow.png" alt=""> Most Current</button>';
-                                                }
-                                            html_slide += '</div>';
+						$('#btn-my-schedule').click(function(e){
+							e.preventDefault();
+							var id = $(this).attr("data-id");
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if($(this).hasClass('active')){
+								$('#top-my-schedules').css({"display":"none"});
+								$('body').removeClass('open-myschedule');
+								$(this).removeClass('active');
+								$(this).find('img').attr('src',path + 'icon_MySchedule_Top.png');
+							}else{
+								$.get(home_url + "/?r=ajax/get_my_schedules", {timezone: ''}, function (data) {
+									//console.log(data);
+									data = JSON.parse(data);
+									if (data.length > 0) {
+										$('.slide-my-schedule').html('');
+										$('.slide-my-schedule').removeClass('slick-initialized');
+										$('.slide-my-schedule').removeClass('slick-slider');
+										$.each(data, function (i, v) {
+											var html_slide = '';
+											html_slide += '<div class="item" data-fromhour="'+v.fromhour+'" data-fromminute="'+v.fromminute+'" data-tohour="'+v.tohour+'" data-tominute="'+v.tominute+'" data-day="'+v.day+'" data-type="'+v.totype+'">';
+												html_slide += '<div class="description-detail">';
+													html_slide += '<p class="subject-detail">';
+														html_slide += '<span class="name-subject-tt">'+v.private_subject+'</span>';
+													html_slide += '</p>';
+													html_slide += '<p class="my-time-request">';
+														html_slide += '<span class="label-timezone">Date:</span>';
+														html_slide += '<span class="my-current-day">'+v.date+'</span>';
+														html_slide += '<span class="my-stuff-day">'+v.stuff+'/</span>';
+														html_slide += '<span class="my-time-current">'+v.time_view+'</span>';
+													html_slide += '</p>';
+													html_slide += '<p class="name-detail">';
+														html_slide += '<span class="label-tutor">Tutor:</span>';
+														html_slide += '<span class="name-tutor">'+v.tutor_name+'</span>';
+													html_slide += '</p>';
+													html_slide += '<p class="points-detail">';
+														html_slide += '<span class="label-points">Points:</span>';
+														html_slide += '<span class="name-points">'+v.total+' Points($)</span>';
+													html_slide += '</p>';
+												html_slide += '</div>';
+												if(v.type_slide == 'current'){
+													html_slide += '<button id="btn-start-now'+v.id+'" class="btn-dark-blue btn-start-now active" type="button" name="start-now" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0">Initiate Now!</button>';
+												}else{
+													html_slide += '<button id="btn-start-now'+v.id+'" class="btn-dark-blue btn-start-now" type="button" name="start-now" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0">Initiate Now!</button>';
+													html_slide += '<button id="btn-cancel-schedule'+v.id+'" class="btn-dark-blue btn-cancel-schedule active" type="button" name="cancel-schedule" data-id="'+v.id+'" data-student-id="'+v.id_user+'" data-teacher-id="'+v.tutor_id+'" tabindex="0"><img src="'+path+'icon_Most-Current-Arrow.png" alt=""> Most Current</button>';
+												}
+											html_slide += '</div>';
 
-                                            $('.slide-my-schedule').append(html_slide);
-                                        });
-                                        if(data.length > 1)
-                                            $('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,1));
-                                        else
-                                            $('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,0));
-                                    }else{
-                                        $('.slide-my-schedule').html('');
-                                        $('.slide-my-schedule').removeClass('slick-initialized');
-                                        $('.slide-my-schedule').removeClass('slick-slider');
-                                        var html_slide = '';
-                                        html_slide += '<div class="item no-detail-schedule">';
-                                            html_slide += '<div class="description-detail">';
-                                                html_slide += '<p class="subject-detail">';
-                                                    html_slide += '<span class="name-subject-tt">Currently there\'s no schedules</span>';
-                                                html_slide += '</p>';
-                                                html_slide += '<p class="my-time-request">';
-                                                    html_slide += '<span class="label-timezone">Date:</span>';
-                                                    html_slide += '<span class="my-current-day">N/A</span>';
-                                                    html_slide += '<span class="my-stuff-day"></span>';
-                                                    html_slide += '<span class="my-time-current"></span>';
-                                                html_slide += '</p>';
-                                                html_slide += '<p class="name-detail">';
-                                                    html_slide += '<span class="label-tutor">Tutor:</span>';
-                                                    html_slide += '<span class="name-tutor">N/A</span>';
-                                                html_slide += '</p>';
-                                                html_slide += '<p class="points-detail">';
-                                                    html_slide += '<span class="label-points">Points:</span>';
-                                                    html_slide += '<span class="name-points">0 Points($)</span>';
-                                                html_slide += '</p>';
-                                            html_slide += '</div>';
-                                            html_slide += '<button id="btn-cancel-schedule" class="btn-dark-blue btn-cancel-schedule no-active" type="button" name="cancel-schedule" data-id="" data-student-id="" data-teacher-id="" tabindex="0"><img src="'+path+'icon_Most-Current-Arrow.png" alt=""> Most Current</button>';
-                                        html_slide += '</div>';
+											$('.slide-my-schedule').append(html_slide);
+										});
+										if(data.length > 1)
+											$('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,1));
+										else
+											$('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,0));
+									}else{
+										$('.slide-my-schedule').html('');
+										$('.slide-my-schedule').removeClass('slick-initialized');
+										$('.slide-my-schedule').removeClass('slick-slider');
+										var html_slide = '';
+										html_slide += '<div class="item no-detail-schedule">';
+											html_slide += '<div class="description-detail">';
+												html_slide += '<p class="subject-detail">';
+													html_slide += '<span class="name-subject-tt">Currently there\'s no schedules</span>';
+												html_slide += '</p>';
+												html_slide += '<p class="my-time-request">';
+													html_slide += '<span class="label-timezone">Date:</span>';
+													html_slide += '<span class="my-current-day">N/A</span>';
+													html_slide += '<span class="my-stuff-day"></span>';
+													html_slide += '<span class="my-time-current"></span>';
+												html_slide += '</p>';
+												html_slide += '<p class="name-detail">';
+													html_slide += '<span class="label-tutor">Tutor:</span>';
+													html_slide += '<span class="name-tutor">N/A</span>';
+												html_slide += '</p>';
+												html_slide += '<p class="points-detail">';
+													html_slide += '<span class="label-points">Points:</span>';
+													html_slide += '<span class="name-points">0 Points($)</span>';
+												html_slide += '</p>';
+											html_slide += '</div>';
+											html_slide += '<button id="btn-cancel-schedule" class="btn-dark-blue btn-cancel-schedule no-active" type="button" name="cancel-schedule" data-id="" data-student-id="" data-teacher-id="" tabindex="0"><img src="'+path+'icon_Most-Current-Arrow.png" alt=""> Most Current</button>';
+										html_slide += '</div>';
 
-                                        $('.slide-my-schedule').append(html_slide);
-                                        $('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,0));
-                                    }
-                                });
+										$('.slide-my-schedule').append(html_slide);
+										$('.slide-my-schedule').not('.slick-initialized').slick(getSliderSettings(true,0));
+									}
+								});
 
-                                $('#top-my-schedules').css({"display":"block"});
-                                $('body').addClass('open-myschedule');
-                                $(this).addClass('active');
-                                $(this).find('img').attr('src',path + 'icon_CONFIRM-CLOSE.png');
+								$('#top-my-schedules').css({"display":"block"});
+								$('body').addClass('open-myschedule');
+								$(this).addClass('active');
+								$(this).find('img').attr('src',path + 'icon_CONFIRM-CLOSE.png');
 
-                                //$('.btn-cancel-schedule').attr('data-id',id);
-                            }
-                        });
+								//$('.btn-cancel-schedule').attr('data-id',id);
+							}
+						});
 
-                        $('.go-to-calendar').click(function(){
-                            var path = '<?php echo get_template_directory_uri() ?>/library/images/';
-                            if($('#btn-my-schedule').hasClass('active')){
-                                $('#top-my-schedules').css({"display":"none"});
-                                $('body').removeClass('open-myschedule');
-                                $('#btn-my-schedule').removeClass('active');
-                                $('#btn-my-schedule').find('img').attr('src',path + 'icon_MySchedule_Top.png');
-                            }
+						$('.go-to-calendar').click(function(){
+							var path = '<?php echo get_template_directory_uri() ?>/library/images/';
+							if($('#btn-my-schedule').hasClass('active')){
+								$('#top-my-schedules').css({"display":"none"});
+								$('body').removeClass('open-myschedule');
+								$('#btn-my-schedule').removeClass('active');
+								$('#btn-my-schedule').find('img').attr('src',path + 'icon_MySchedule_Top.png');
+							}
 
-                            $("#create-account").removeClass("active");
-                            $("#create-account").removeClass("in");
-                            $("#login-user").removeClass("active");
-                            $("#login-user").removeClass("in");
-                            $("#updateinfo").removeClass("active");
-                            $("#updateinfo").removeClass("in");
-                            $("#subscription").removeClass("active");
-                            $("#subscription").removeClass("in");
-                            $("#profile").removeClass("active");
-                            $("#profile").removeClass("in");
-                            $("#tutor-regis-tab").removeClass("active");
-                            $("#tutor-regis-tab").removeClass("in");
-                            $("#earn-pay").removeClass("active");
-                            $("#earn-pay").removeClass("in");
-                            $("#tutoring-preference").removeClass("active");
-                            $("#tutoring-preference").removeClass("in");
-                            $("#my-subject").removeClass("active");
-                            $("#my-subject").removeClass("in");
-                            $("#my-lesson").removeClass("active");
-                            $("#my-lesson").removeClass("in");
-                            $("#public-lib").removeClass("active");
-                            $("#public-lib").removeClass("in");
-                            $("#my-library").removeClass("active");
-                            $("#my-library").removeClass("in");
-                            $("#ready-lesson").removeClass("active");
-                            $("#ready-lesson").removeClass("in");
-                            $("#create-class").removeClass("active");
-                            $("#create-class").removeClass("in");
-                            $("#manage-class").removeClass("active");
-                            $("#manage-class").removeClass("in");
-                            $("#tutoring-main").addClass("active");
-                            $("#tutoring-main").addClass("in");
+							$("#create-account").removeClass("active");
+							$("#create-account").removeClass("in");
+							$("#login-user").removeClass("active");
+							$("#login-user").removeClass("in");
+							$("#updateinfo").removeClass("active");
+							$("#updateinfo").removeClass("in");
+							$("#subscription").removeClass("active");
+							$("#subscription").removeClass("in");
+							$("#profile").removeClass("active");
+							$("#profile").removeClass("in");
+							$("#tutor-regis-tab").removeClass("active");
+							$("#tutor-regis-tab").removeClass("in");
+							$("#earn-pay").removeClass("active");
+							$("#earn-pay").removeClass("in");
+							$("#tutoring-preference").removeClass("active");
+							$("#tutoring-preference").removeClass("in");
+							$("#my-subject").removeClass("active");
+							$("#my-subject").removeClass("in");
+							$("#my-lesson").removeClass("active");
+							$("#my-lesson").removeClass("in");
+							$("#public-lib").removeClass("active");
+							$("#public-lib").removeClass("in");
+							$("#my-library").removeClass("active");
+							$("#my-library").removeClass("in");
+							$("#ready-lesson").removeClass("active");
+							$("#ready-lesson").removeClass("in");
+							$("#create-class").removeClass("active");
+							$("#create-class").removeClass("in");
+							$("#manage-class").removeClass("active");
+							$("#manage-class").removeClass("in");
+							$("#tutoring-main").addClass("active");
+							$("#tutoring-main").addClass("in");
 
-                            $('.new-request-list').text('SCHEDULE');      
+							$('.new-request-list').text('SCHEDULE');      
                             //$("#summary-btn-tutor").text('Summary');
                             //$("#summary-btn-tutor").attr("data-type","summary");  
                             $('#custom-timezone').attr("data-type","");
@@ -21897,7 +21963,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }
 
                             $('.radio_tutor_search').attr('checked',false);
-                            var day = $('#summary-btn-tutor').attr('data-day');
+							var day = $('#summary-btn-tutor').attr('data-day');
                             get_list_schedule_tutor();
 
                             get_scheduled_day_tutor(day);
@@ -21925,29 +21991,29 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }else{
                                 $('#tab-tutor-content .border-selectall').find('.col-md-4').css('width','72.65%');
                             }
-                        });
+						});
 
-                        $('.btn-cancel-schedule').live("click",function(){
-                            var id = $(this).attr("data-id");
-                            $('.slide-my-schedule').slick('slickGoTo', 0);
-                        });
+						$('.btn-cancel-schedule').live("click",function(){
+							var id = $(this).attr("data-id");
+							$('.slide-my-schedule').slick('slickGoTo', 0);
+						});
 
-                        $('.btn-start-now').live('click', function () {
-                            var id = $(this).attr("data-id");
-                            var student_id = $(this).attr("data-student-id");
-                            var teacher_id = $(this).attr("data-teacher-id");
-                            if($(this).hasClass('active')){
-                                $('<a href="https://notepad.iktutor.com/en/?sid='+id+'&user_id='+student_id+'&teacher_id='+teacher_id+'" target="_blank">Link</a>')[0].click();
-                            }
-                        });
+						$('.btn-start-now').live('click', function () {
+							var id = $(this).attr("data-id");
+							var student_id = $(this).attr("data-student-id");
+							var teacher_id = $(this).attr("data-teacher-id");
+							if($(this).hasClass('active')){
+								$('<a href="https://notepad.iktutor.com/en/?sid='+id+'&user_id='+student_id+'&teacher_id='+teacher_id+'" target="_blank">Link</a>')[0].click();
+							}
+						});
 
-                        $(".slide-my-schedule").on('swipe', function(event, slick, direction){
-                            
-                        });
+						$(".slide-my-schedule").on('swipe', function(event, slick, direction){
+							
+						});
 
-                        $('.slick-my-schedule').live('click', function () {
-                
-                        });
+						$('.slick-my-schedule').live('click', function () {
+				
+						});
 
                         $(".arrow-english-subject").click(function () {
                             if ($(".english-subject").hasClass("sethidden")) {
@@ -22041,42 +22107,30 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }
                         });
 
-                        $("#tutoring-type").delegate("#timelot_one_tutoring","change",function () {
-                            if($("#tutoring-type").children().length > 1){
-                                var check_timelot = $(this).is(":checked");
-                                if (check_timelot == true) {
-                                    $("#timelot_group_tutoring").prop('checked', false);
-                                }else{
-                                    console.log("false");
-                                    $("#timelot_group_tutoring").prop('checked', true);
-                                }
+                        $("input[name=timelot_one_tutoring]").change(function () {
+                            var check_timelot = $(this).is(":checked");
+                            if (check_timelot == true) {
+                                $("input[name=timelot_group_tutoring]").attr('checked', false);
                             }else{
-                                $("input[name=timelot_one_tutoring]").prop('checked', true);
+                                $("input[name=timelot_group_tutoring]").attr('checked', true);
                             }
                         });
 
-                        $("#tutoring-type").delegate("#timelot_group_tutoring","change",function () {
-                            if($("#tutoring-type").children().length > 1){
-                                var check_timelot = $(this).is(":checked");
-                                if (check_timelot == true) {
-                                    $("input[name=timelot_one_tutoring]").prop('checked', false);
-                                }else{
-                                    $("input[name=timelot_one_tutoring]").prop('checked', true);
-                                }
+                        $("input[name=timelot_group_tutoring]").change(function () {
+                            var check_timelot = $(this).is(":checked");
+                            if (check_timelot == true) {
+                                $("input[name=timelot_one_tutoring]").attr('checked', false);
                             }else{
-                                $("input[name=timelot_group_tutoring]").prop('checked', true);
+                                $("input[name=timelot_one_tutoring]").attr('checked', true);
                             }
                         });
 
                         $(".manage-preference").click(function () {
-
                             $('.img-one-icon').attr('data-tab','tutoring-main');
                             $('.img-one-icon').attr('data-menu','sub-schedule-li');
 
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-tutoring-preference").addClass("active");
-                            
-        
                         });
 
                         $(".tab-tutoring-preference").click(function () {
@@ -22085,17 +22139,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-tutoring-preference").addClass("active");
-                        });
-
-                         $("#tab-schedule").click(function () {
-                            
-                            $(".sub-menu-left li").removeClass("active");
-                            $("#sub-schedule-li").addClass("active");
-                        });
-                         $(".tab-schedule").click(function () {
-                            
-                            $(".sub-menu-left li").removeClass("active");
-                            $("#sub-schedule-li").addClass("active");
                         });
 
                         $('.img-one-icon').click(function () {
@@ -22122,25 +22165,27 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $('#update-preference').attr('data-type','');
                             $('#cancel-update-preference').attr('data-type','');
                         });
-                        $(".title-div").click( function (e){
-                        $("#my-timezone").css("display","none");
-                        });
+
                         $("#btn-my-timezone").click(function () {
                             $('#my-timezone').toggle();
                         });
 
                         $(".close-timelot").click(function () {
                             $("#popup-option-timelot").css("display","none");
-                            document.getElementById("timelot_group_tutoring").checked = false;
-                            document.getElementById("timelot_one_tutoring").checked = true;
-                        });
+                        })
+
+                        // $("input[name=timelot_one_tutoring]").change(function () {
+                        //     var check_timelot = $(this).is(":checked");
+                        //     if (check_timelot == true) {
+                        //         $("input[name=timelot_group_tutoring]").attr('checked', false);
+                        //     }else{
+                        //         $("input[name=timelot_group_tutoring]").attr('checked', true);
+                        //     }
+                        // });
+
 
                         $("#cancel-timelot").click(function () {
                             $("#popup-option-timelot").css("display","none");
-                        
-                        document.getElementById("timelot_group_tutoring").checked = false;
-                        document.getElementById("timelot_one_tutoring").checked = true;
-            
                         });
 
                         $("#save-timelot").click(function () {
@@ -22180,7 +22225,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             if(form_valid){
                                 $.post(home_url + "/?r=ajax/save_timelot", {one_tutoring:enable_one_tutoring, group_tutoring:enable_group_tutoring, subject_name: subject_name, subject_type:subject_type, time_start:time_sc1, time_end:time_sc2, time: time, date: day}, function (data) {
-                            
                                     if ($.trim(data) == '1'){ 
                                         if(!$('#view-detail-schedule'+no).hasClass('active') || !$('#view-detail-schedule'+no).hasClass('slot-available')){
                                             var top = 0;
@@ -22233,6 +22277,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             $.get(home_url + "/?r=ajax/get_timelot", {time: timeview, date: day}, function (data) {
                                 data = JSON.parse(data);
+                                
                                 if (data.subject_type) {
                                     $("#select-timelot-subject").selectBoxIt('selectOption',data.subject_type.toString()).data("selectBox-selectBoxIt");
                                     $("#select-timelot-subject").data("selectBox-selectBoxIt").refresh();
@@ -22335,35 +22380,35 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         // Event custom scrollbar
                         $('.style-scrollbar').mCustomScrollbar({theme:"dark-thick"});
-                        
-                        function getSliderSettings(width, countSlide = 0){
-                            if(countSlide == 0)
-                                var count = <?php if(count($schedules) == 0) echo 0; else echo 1;?>;
-                            else
-                                var count = 1;
-                            if(width){
-                                return {
-                                    variableWidth: true,
-                                    arrows: true,
-                                    slidesToShow: count,
-                                    slidesToScroll: 1,
-                                    dots: false,
-                                    infinite: false,
-                                    prevArrow:"<img class='a-left slick-prev slick-my-schedule' src='<?php echo get_template_directory_uri(); ?>/library/images/icon_Arrow_Left.png'>",
-                                    nextArrow:"<img class='a-right slick-next slick-my-schedule' src='<?php echo get_template_directory_uri(); ?>/library/images/icon_Arrow_Right.png'>"
-                                }
-                            }else{
-                                return {
-                                    arrows: true,
-                                    slidesToShow: 1,
-                                    slidesToScroll: 1,
-                                    dots: false,
-                                    infinite: false,
-                                    prevArrow:"<img class='a-left slick-prev' src='<?php echo get_template_directory_uri(); ?>/library/images/icon_Arrow_Left.png'>",
-                                    nextArrow:"<img class='a-right slick-next' src='<?php echo get_template_directory_uri(); ?>/library/images/icon_Arrow_Right.png'>"
-                                } 
-                            }
-                        }
+						
+						function getSliderSettings(width, countSlide = 0){
+							if(countSlide == 0)
+								var count = <?php if(count($schedules) == 0) echo 0; else echo 1;?>;
+							else
+								var count = 1;
+							if(width){
+								return {
+									variableWidth: true,
+									arrows: true,
+									slidesToShow: count,
+									slidesToScroll: 1,
+									dots: false,
+									infinite: false,
+									prevArrow:"<img class='a-left slick-prev slick-my-schedule' src='<?php echo get_template_directory_uri(); ?>/library/images/icon_Arrow_Left.png'>",
+									nextArrow:"<img class='a-right slick-next slick-my-schedule' src='<?php echo get_template_directory_uri(); ?>/library/images/icon_Arrow_Right.png'>"
+								}
+							}else{
+								return {
+									arrows: true,
+									slidesToShow: 1,
+									slidesToScroll: 1,
+									dots: false,
+									infinite: false,
+									prevArrow:"<img class='a-left slick-prev' src='<?php echo get_template_directory_uri(); ?>/library/images/icon_Arrow_Left.png'>",
+									nextArrow:"<img class='a-right slick-next' src='<?php echo get_template_directory_uri(); ?>/library/images/icon_Arrow_Right.png'>"
+								} 
+							}
+						}
 
                         function initTimeClock(timezone_name){
                             var date_utc = moment.utc().format('YYYY-MM-DD HH:mm:ss');
@@ -22405,7 +22450,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         function initMyTimeClock(timezone_name){
                             var date_utc = moment.utc().format('YYYY-MM-DD');
                             var date_my = moment.tz(timezone_name).format('YYYY-MM-DD');
-                            var ct = 0;
+							var ct = 0;
 
                             let mytime = moment.tz(timezone_name).format('hh:mm A');
                             if (document.getElementById('mytime-clock')) {
@@ -22423,30 +22468,30 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#mytime-clock').attr('data-hour',moment.tz(timezone_name).format('H'));
                                 $('#mytime-clock').attr('data-minute',moment.tz(timezone_name).format('m'));
                                 $('#mytime-clock').attr('data-type',moment.tz(timezone_name).format('a'));
-                                
-                                ct++;
-                                if(ct == 60){
-                                    ct = 0;
-                                    var schedule_now = false;
-                                    var iSlide = 0;
-                                         
-                                    $('.slide-my-schedule .slick-slide').each(function () {
-                                        var index = $(this).attr('data-slick-index');
-                                        var hour =  $(this).find('.item').attr('data-tohour');
-                                        var minute =  $(this).find('.item').attr('data-tominute');
-                                        var type =  $(this).find('.item').attr('data-type');
-                                        var day =  $(this).find('.item').attr('data-day');
+								
+								ct++;
+								if(ct == 60){
+									ct = 0;
+									var schedule_now = false;
+									var iSlide = 0;
+										 
+									$('.slide-my-schedule .slick-slide').each(function () {
+										var index = $(this).attr('data-slick-index');
+										var hour =  $(this).find('.item').attr('data-tohour');
+										var minute =  $(this).find('.item').attr('data-tominute');
+										var type =  $(this).find('.item').attr('data-type');
+										var day =  $(this).find('.item').attr('data-day');
 
-                                        var chour =  moment.tz(timezone_name).format('H');
-                                        var cminute =  moment.tz(timezone_name).format('m');
-                                        var ctype =  moment.tz(timezone_name).format('a');
-                                        var today = $('#today-tutor').val();
-                                      
-                                        if(today == day && parseInt(chour) >= parseInt(hour) && parseInt(cminute) >= parseInt(minute)){
-                                            $('.slide-my-schedule').slick('slickRemove',index).slick('refresh');
-                                        }
-                                        iSlide++;
-                                    });
+										var chour =  moment.tz(timezone_name).format('H');
+										var cminute =  moment.tz(timezone_name).format('m');
+										var ctype =  moment.tz(timezone_name).format('a');
+										var today = $('#today-tutor').val();
+									  
+										if(today == day && parseInt(chour) >= parseInt(hour) && parseInt(cminute) >= parseInt(minute)){
+											$('.slide-my-schedule').slick('slickRemove',index).slick('refresh');
+										}
+										iSlide++;
+									});
 
                                     var current_hour =  parseInt(moment.tz(timezone_name).format('H'));
                                     var current_minute = parseInt(moment.tz(timezone_name).format('m'));
@@ -22460,7 +22505,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         var day = $('#summary-btn-tutor').attr('data-day');
                                         getCountStudents(day);
                                     }
-                                }
+								}
                                 
                             }, 1000);
 
@@ -22633,9 +22678,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         weekday[5] = "Fri";
                                         weekday[6] = "Sat";                                
                                     var n = weekday[day.getDay()];
-                                    const monthNames = ["January", "February", "March", "April", "May", "June",
-                                        "July", "August", "September", "October", "November", "December"];
-                                    $('.current-day-tutor').text(monthNames[full_date.split("/")[0]-1] + ' ' + day.getDate());
+                                    $('.current-day-tutor').text(month_text + ' ' + day.getDate());
                                     $('.stuff-day-tutor').text(' (' + n + ')');
 
                                     var prev = new Date(full_date.replace("/", ","));
@@ -22669,20 +22712,20 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $("#summary-btn-tutor").attr('data-day',formattedDate);
                                     $(".schedule-leftbtn").attr('data-day',yyyy+'-'+mm+'-'+dd);
                                     $(".schedule-rightbtn").attr('data-day',yyyy_n+'-'+mm_n+'-'+dd_n);
-                                    
-                                    $('#list-schedule-status').css("display","none");
-                                    $('#table-status-schedule').html('');
-                                    $("#open-menu-schedule").css("display","none");
-                                    $(".main-view-status").css("display","none");
+									
+									$('#list-schedule-status').css("display","none");
+									$('#table-status-schedule').html('');
+									$("#open-menu-schedule").css("display","none");
+									$(".main-view-status").css("display","none");
 
-                                    if($('#body-my-scheduled').hasClass('status-schedule')){
-                                        $('#body-my-scheduled').removeClass('status-schedule')
-                                    }
+									if($('#body-my-scheduled').hasClass('status-schedule')){
+										$('#body-my-scheduled').removeClass('status-schedule')
+									}
 
                                     if($('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                         $('.header-schedule-tutor').removeClass('header-detail-schedule')
                                     }
-                                    
+									
                                     if($(this).hasClass('today')){
                                         var th = $('#time-clock').attr('data-hour');
                                         get_list_schedule_tutor('schedule', th);
@@ -22749,46 +22792,46 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }
                             return month
                         }
-                        
-                        function get_status_schedule(type = 'all'){
+						
+						function get_status_schedule(type = 'all'){
                             if($('#tutoring-scheduled-tutor').hasClass('active')){
                                 $('#tutoring-scheduled-tutor').removeClass('active');
                             }
-                            $("#table-listschedule-tutor").html('');
-                            $("#tutoring-scheduled-tutor").html('');
-                            var tbody_request = $("#table-status-schedule");
-                            tbody_request.html('');
-                            $.get(home_url + "/?r=ajax/get_request_status", {type: type}, function (data) {
-                                //console.log(data);
-                                data = JSON.parse(data);
-                                if (data.status.length > 0) {
-                                    $.each(data.status, function (i, v) {  
-                                        //var icon = getIconTutoring(v.subject);   
-                                        if(v.confirmed == 1){
-                                            var cl = ' accepted'; 
-                                            var icon = 'TimeIcon_Completed.png';                                        
-                                        }else if(v.canceled == 1){
-                                            var cl = ' canceled';  
-                                            var icon = 'TimeIcon_Expired.png';  
-                                        }else{
-                                            var cl = ' wait';
-                                            var icon = 'TimeIcon_Scheduled.png';
-                                        }  
-                                        
-                                        if(v.subject == "")
-                                            var private_subject = v.private_subject;
-                                        else
-                                            var private_subject = v.subject;
-                                        
-                                        var tr = '<tr class="tr-status">';
-                                            tr += '<td class="view-status-scheduled' + cl + '" data-id="' + v.id + '" data-teacher-id="' + v.tutor_id + '" data-student-id="' + v.id_user + '" data-subject="' + v.subject + '" data-private-subject="' + v.private_subject + '" data-message="' + v.short_message + '" data-note="' + v.note + '" data-student-name="' + v.student_name + '" data-time="' + v.time + '" data-location="' + v.location + '" data-status="' + v.status + '" data-accepted="' + v.accepted + '" data-confirmed="' + v.confirmed + '" data-date="' + v.date_view + '" data-icon="' + icon + '" data-class="' + cl + '" data-total="' + v.total + '" data-time-view="' + v.time_view2 + '" data-create-on="' + v.create_on + '" data-tutor-name="' + v.tutor_name + '" data-stuff="' + v.stuff + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '" data-total-time="' + v.total_time + '" data-canceled="' + v.canceled + '" data-created="' + v.created + '"><span>' + private_subject + '</span></td>'; 
-                                            tr += '<td class="time-request-status">' + v.date + v.stuff +' '+ v.time_view + '</td>';
-                                            tr += '</tr>';
-                                        tbody_request.append(tr);
-                                    });
-                                }
-                            });
-                        }
+							$("#table-listschedule-tutor").html('');
+							$("#tutoring-scheduled-tutor").html('');
+							var tbody_request = $("#table-status-schedule");
+							tbody_request.html('');
+							$.get(home_url + "/?r=ajax/get_request_status", {type: type}, function (data) {
+								//console.log(data);
+								data = JSON.parse(data);
+								if (data.status.length > 0) {
+									$.each(data.status, function (i, v) {  
+										//var icon = getIconTutoring(v.subject);   
+										if(v.confirmed == 1){
+											var cl = ' accepted'; 
+											var icon = 'TimeIcon_Completed.png';										
+										}else if(v.canceled == 1){
+											var cl = ' canceled';  
+											var icon = 'TimeIcon_Expired.png';	
+										}else{
+											var cl = ' wait';
+											var icon = 'TimeIcon_Scheduled.png';
+										}  
+										
+										if(v.subject == "")
+											var private_subject = v.private_subject;
+										else
+											var private_subject = v.subject;
+										
+										var tr = '<tr class="tr-status">';
+											tr += '<td class="view-status-scheduled' + cl + '" data-id="' + v.id + '" data-teacher-id="' + v.tutor_id + '" data-student-id="' + v.id_user + '" data-subject="' + v.subject + '" data-private-subject="' + v.private_subject + '" data-message="' + v.short_message + '" data-note="' + v.note + '" data-student-name="' + v.student_name + '" data-time="' + v.time + '" data-location="' + v.location + '" data-status="' + v.status + '" data-accepted="' + v.accepted + '" data-confirmed="' + v.confirmed + '" data-date="' + v.date_view + '" data-icon="' + icon + '" data-class="' + cl + '" data-total="' + v.total + '" data-time-view="' + v.time_view2 + '" data-create-on="' + v.create_on + '" data-tutor-name="' + v.tutor_name + '" data-stuff="' + v.stuff + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '" data-total-time="' + v.total_time + '" data-canceled="' + v.canceled + '" data-created="' + v.created + '"><span>' + private_subject + '</span></td>'; 
+											tr += '<td class="time-request-status">' + v.date + v.stuff +' '+ v.time_view + '</td>';
+											tr += '</tr>';
+										tbody_request.append(tr);
+									});
+								}
+							});
+						}
 
                         function get_scheduled_day_tutor(day = '', type = 'schedule'){
                             if(type == 'schedule'){
@@ -22827,17 +22870,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $('#'+$.trim(v.start_id)).find('button').attr('data-accept',v.accept);
                                         //$('#'+$.trim(v.start_id)).find('button').attr('data-tid',v.id);
 
-                                        if(index_ed1 < 0)
-                                            var top1 = index_st1 * 48 + 8 + Math.abs(index_ed1);
-                                        else
-                                            var top1 = index_st1 * 48 + 8 + index_ed1;
+										if(index_ed1 < 0)
+											var top1 = index_st1 * 48 + 8 + Math.abs(index_ed1);
+										else
+											var top1 = index_st1 * 48 + 8 + index_ed1;
 
                                         height1 = index_ed1 - index_st1;
-                                        
-                                        if(v.users == 0)
-                                            var slot_available = 'ffffe5';
-                                        else
-                                            var slot_available = 'e7feff';
+										
+										if(v.users == 0)
+											var slot_available = 'ffffe5';
+										else
+											var slot_available = 'e7feff';
 
                                         if(type == 'schedule'){                                        
                                             var h1 = 48;                                        
@@ -22847,7 +22890,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             if(height1 < 0 && (index_ed1 == 0 || Math.abs(height1) == 23)){
                                                 top1 = top1 + 24;
                                             }
-                                            if(height1 < 0 && index_ed1 < 0){
+											if(height1 < 0 && index_ed1 < 0){
                                                 top1 = top1 + index_st1;
                                             }
                                             //console.log(top1 +'|'+height1+'|'+index_st1+'|'+index_ed1);
@@ -22872,17 +22915,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             var count_user = v.users;
                                         }
 
-                                        if(v.users == 0){
-                                            var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + '" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
-                                            li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
-                                            li += '<span class="subject-scheduled">Available</span>';
-                                            li += '</span><span id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">0</span></span></li>';
-                                        }else{
-                                            var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + ' active" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
-                                            li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
-                                            li += '<span class="subject-scheduled">'+ txt_accept +'</span>';
-                                            li += '</span><span id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">'+ count_user +'</span></span></li>';
-                                        }
+										if(v.users == 0){
+											var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + '" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
+											li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
+											li += '<span class="subject-scheduled">Available</span>';
+											li += '</span><span id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">0</span></span></li>';
+										}else{
+											var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + ' active" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
+											li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
+											li += '<span class="subject-scheduled">'+ txt_accept +'</span>';
+											li += '</span><span id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">'+ count_user +'</span></span></li>';
+										}
                                         ul_scheduled.append(li);
                                     });
                                 }else{
@@ -22890,7 +22933,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $('#tutoring-scheduled-tutor').removeClass('active');
                                     }
                                 }
-                                /*
+								/*
                                 if (data.scheduled.length > 0) {
                                     $.each(data.scheduled, function (i, v) {                                   
                                         var height = 0;
@@ -22932,7 +22975,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         ul_scheduled.append(li);
                                     });
                                 }
-                                */
+								*/
                                 if (data.confirmed.length > 0) {
                                     $.each(data.confirmed, function (i, v) {
                                         var li = '<li><span class="time-upcoming-tutor">' + v.date_view + v.stuff + ' ' + v.time_view + '</span><span>' + v.private_subject + '</span></li>';
@@ -23116,15 +23159,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }
                         }
 
-                        $(document).ready(function(){
-                            var name = $('#select-timezone :selected').attr("data-name");
-                            var city = $('#select-timezone :selected').attr("data-city");
-                            var timezone = $('#select-timezone :selected').attr("data-value");
-                            var index = $("#select-timezoneSelectBoxItText").attr("data-val");
-                            $(".today").removeClass("today");
-                            initDateTimePicker(name, index, timezone, city);
-                        });
-
                         function initDateTimePicker(timezone_name = 'Europe/London', timezone_index = 18, time_zone = 0, location_time = 'London', type = 'schedule'){
                             var ptype = $('#custom-timezone').attr("data-type");
                             var pday = $('#custom-timezone').attr("data-day");
@@ -23250,25 +23284,25 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 //$('#btn-sent-request').attr('data-day',yyyy_s+'-'+mm_s+'-'+dd_s);
                                 $(".schedule-leftbtn").attr('data-day',yyyy+'-'+mm+'-'+dd);
                                 $(".schedule-rightbtn").attr('data-day',yyyy_n+'-'+mm_n+'-'+dd_n);
-                                
-                                $('#list-schedule-status').css("display","none");
-                                $('#table-status-schedule').html('');
-                                $("#open-menu-schedule").css("display","none");
-                                $(".main-view-status").css("display","none");
+								
+								$('#list-schedule-status').css("display","none");
+								$('#table-status-schedule').html('');
+								$("#open-menu-schedule").css("display","none");
+								$(".main-view-status").css("display","none");
 
-                                if($('#body-my-scheduled').hasClass('status-schedule')){
-                                    $('#body-my-scheduled').removeClass('status-schedule')
-                                }
+								if($('#body-my-scheduled').hasClass('status-schedule')){
+									$('#body-my-scheduled').removeClass('status-schedule')
+								}
 
                                 if($('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                     $('.header-schedule-tutor').removeClass('header-detail-schedule')
                                 }
 
-                                var day_selected = yyyy_n+'-'+mm_n+'-'+dd_n;
-                                if(day_selected == mDate)
-                                    get_list_schedule_tutor('schedule', moment.utc(dpDate).format('H'));
-                                else
-                                    get_list_schedule_tutor('schedule', 0);
+								var day_selected = yyyy_n+'-'+mm_n+'-'+dd_n;
+								if(day_selected == mDate)
+									get_list_schedule_tutor('schedule', moment.utc(dpDate).format('H'));
+								else
+									get_list_schedule_tutor('schedule', 0);
                                 get_scheduled_day_tutor(yyyy_s+'-'+mm_s+'-'+dd_s,'schedule');
 
                                 //console.log('Timzone UTC: '+date_utc+' | to '+timezone_name+ ' ' +time_zone +': '+dpDate+'->'+mDate+'|'+yyyy_s+'-'+mm_s+'-'+dd_s);
@@ -23342,25 +23376,25 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 //$('#btn-sent-request').attr('data-day',yyyy_s+'-'+mm_s+'-'+dd_s);
                                 $(".schedule-leftbtn").attr('data-day',yyyy+'-'+mm+'-'+dd);
                                 $(".schedule-rightbtn").attr('data-day',yyyy_n+'-'+mm_n+'-'+dd_n);
-                                
-                                $('#list-schedule-status').css("display","none");
-                                $('#table-status-schedule').html('');
-                                $("#open-menu-schedule").css("display","none");
-                                $(".main-view-status").css("display","none");
+								
+								$('#list-schedule-status').css("display","none");
+								$('#table-status-schedule').html('');
+								$("#open-menu-schedule").css("display","none");
+								$(".main-view-status").css("display","none");
 
-                                if($('#body-my-scheduled').hasClass('status-schedule')){
-                                    $('#body-my-scheduled').removeClass('status-schedule')
-                                }
+								if($('#body-my-scheduled').hasClass('status-schedule')){
+									$('#body-my-scheduled').removeClass('status-schedule')
+								}
 
                                 if($('.header-schedule-tutor').hasClass('header-detail-schedule')){
                                     $('.header-schedule-tutor').removeClass('header-detail-schedule')
                                 }
-                                
-                                var day_selected = yyyy_n+'-'+mm_n+'-'+dd_n;
-                                if(day_selected == mDate)
-                                    get_list_schedule_tutor('schedule', moment.utc(dpDate).format('H'));
-                                else
-                                    get_list_schedule_tutor('schedule', 0);
+								
+								var day_selected = yyyy_n+'-'+mm_n+'-'+dd_n;
+								if(day_selected == mDate)
+									get_list_schedule_tutor('schedule', moment.utc(dpDate).format('H'));
+								else
+									get_list_schedule_tutor('schedule', 0);
                                 get_scheduled_day_tutor(yyyy_s+'-'+mm_s+'-'+dd_s,'schedule');
 
                                 //console.log('Timzone UTC: '+date_utc+' | to '+timezone_name+ ' ' +time_zone +': '+dmDate+'->'+mDate+'|'+yyyy_s+'-'+mm_s+'-'+dd_s);
@@ -23564,10 +23598,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 tr_24 += '<td></td>';
                                 tr_24 += '</tr>';
                                 tbody_schedule.append(tr_24);
-                        }
-                        
-                        function get_subject_options(){
-
                         }
 
                         function get_update_info(){
@@ -24009,7 +24039,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     else
                                         distance = 60;
                                     break;
-                                case 'Select Time Zone':
+				                case 'Select Time Zone':
                                     if(type == 'Firefox')
                                         distance = -40;
                                     else
@@ -24031,10 +24061,46 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                    
                     
                 })(jQuery);
-                $(".modal-body-signup").click( function (e){
-                    $("#my-timezone").css("display","none");
-                });
 
             </script>
+             <script language="javascript">
+
             
-            
+
+            document.getElementById("cancel-timelot").onclick = function () {
+                document.getElementById("timelot_group_tutoring").checked = false;
+                document.getElementById("timelot_one_tutoring").checked = true;
+            };
+
+        </script>
+        
+       <!--  
+        <script language="javascript">
+            document.getElementById('update-preference').onclick = function()
+            {
+                // Khai báo tham số
+                var checkbox = document.getElementsByName('english_subject');
+                var thunghiem = "";
+                
+                // Lặp qua từng checkbox để lấy giá trị
+                for (var i = 0; i < checkbox.length; i++){
+                    if (checkbox[i].checked === true){
+                       thunghiem += ' <option value="english_subject|'+ checkbox[i].value+'">'+ checkbox[i].value +'</option> ';
+                    }
+                }
+                    
+                
+                document.getElementById("english_grammar").innerHTML = thunghiem;
+            };
+        </script> -->
+        <!-- <script language="javascript">
+            document.getElementById('tenglish_grammar').onclick = function(e){
+                if (this.checked){
+                     document.getElementById("english_grammar").innerHTML = 'English: Grammar';
+                }
+                else{
+                    document.getElementById("english_grammar").innerHTML = '';
+                
+                }
+            };
+        </script> -->
