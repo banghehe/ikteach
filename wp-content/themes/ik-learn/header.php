@@ -2110,13 +2110,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 <div id="tutoring-preference" class="tab-pane fade">
                                     <div class="teacher-center">
                                         <div class="row">
-                                            <div class="col-sm-8 col-md-8 col-xs-8">
+                                            <div class="col-sm-10 col-md-10 col-xs-10">
                                                 <p class="mt-bottom-12 student-center-title">TUTORING</p>
                                                 <div class="new-request-lists">Tutoring Preference</div>
                                             </div>
-                                            <div id="manage-preference" class="col-sm-4 col-md-4 col-xs-4 text-right">
-                                                <a class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="true">Schedule</a>
-                                                <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="true">Tutoring Preference</a>
+                                            <div class="col-sm-2 col-md-2 col-xs-2 text-right">
+                                                <img class="img-one-icon" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -2448,7 +2447,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="new-request-list">SCHEDULE</div>
                                             </div>
                                             <div class="col-sm-4 col-md-4 col-xs-4 text-right">
-                                                <a class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="true">Schedule</a>
+                                                <a class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="false">Schedule</a>
                                                 <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="true">Tutoring Preference</a>
                                             </div>
                                         </div>
@@ -2824,7 +2823,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                                 <?php } ?>
 
                                                                                 <?php if(in_array('english_grammar', $tenglish_subject)){ ?>
-                                                                                <option value="english_subject|english_grammar" data-name="Enlgish: Grammar">Enlgish: Grammar</option>
+                                                                                <option value="english_subject|english_grammar" data-name="English: Grammar">Engish: Grammar</option>
                                                                                 <?php } ?>
 
                                                                                 <?php if(in_array('english_writting', $tenglish_subject)){ ?>
@@ -19755,34 +19754,33 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             } 
                         });
                         // trigger type of close
-                        // $(".tab-tutoring-preference, .manage-preference").click(()=> {
-                        //     if($('#popup-option-timelot').css('display') == 'block'){
-                        //         setCloseButton("close");
-                        //     }else{
-                        //         setCloseButton("link");
-                        //     }
+                        $(".tab-tutoring-preference, .manage-preference").click(()=> {
+                            if($('#popup-option-timelot').css('display') == 'block'){
+                                setCloseButton("close");
+                            }else{
+                                setCloseButton("link");
+                            }
                             
-                        // });
+                        });
 
                         // set close button
-                        // let setCloseButton = (state) => {   
-                        //     let closeButton = `<img class="img-one-icon" data-toggle="tab" href="#tutoring-main" src="<?php //echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt="">`;
-                        //     let closeLinkButton = ` <a id="tab-schedule" class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="true">Schedule</a>
-                        //                             <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="false">Tutoring Preference</a>`;
+                        let setCloseButton = (state) => {   
+                            let closeButton = `<div id="close-timelot-option"><img  class="img-one-icon close-timelot-option" data-toggle="tab" href="#tutoring-main" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt=""></div>`;
+                            let closeLinkButton = ` <a id="tab-schedule" class="tab-schedule change-tab" data-toggle="tab" href="#tutoring-main" aria-expanded="false">Schedule</a>
+                                                    <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="false">Tutoring Preference</a>`;
                             
-                        //     $("#tutoring-preference .teacher-center .row:first-of-type ").empty();
-                        //     $("#tutoring-preference .teacher-center .row:first-of-type ").append(`<div class="row">
-                        //                 <div class="col-sm-8 col-md-8 col-xs-8">
-                        //                     <p class="mt-bottom-12 student-center-title">TUTORING</p>
-                        //                     <div class="new-request-lists">Tutoring Preference</div>
-                        //                 </div>
+                            $("#tutoring-preference .teacher-center .row:first-of-type ").empty();
+                            $("#tutoring-preference .teacher-center .row:first-of-type ").append(`<div class="row">
+                                        <div class="col-sm-8 col-md-8 col-xs-8" >
+                                            <p class="mt-bottom-12 student-center-title">TUTORING</p>
+                                            <div class="new-request-lists">Tutoring Preference</div>
+                                        </div>
                     
-                        //                  <div class="col-sm-4 col-md-4 col-xs-4 text-right">
-                        //                         <a id="tab-schedule" class="tab-schedule" data-toggle="tab" href="#tutoring-main" aria-expanded="true">Schedule</a>
-                        //                         <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="true">Tutoring Preference</a>
-                        //                     </div>
-                        //             </div>`)
-                        // }
+                                         <div class="col-sm-4 col-md-4 col-xs-4 text-right" style="margin-left:-8px">
+                                            ${state=="close"?closeButton:closeLinkButton}
+                                        </div>
+                                    </div>`)
+                        }
 
                         $(".btn-option-timelot").live("click", (event) => {
                             // let state = $( event.target ).closest($(".btn-new-request")).html();
@@ -22097,10 +22095,22 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-tutoring-preference").addClass("active");
-                            
-        
+                             
                         });
 
+                         $('body').on('click', '#close-timelot-option', function () {
+                             
+
+
+                             
+                            $(".sub-menu-left li").removeClass("active");
+                            $("#sub-schedule-li").addClass("active");
+                         });
+                          $('body').on('click', '#tab-schedule', function () {
+                            $(".sub-menu-left li").removeClass("active");
+                            $("#sub-schedule-li").addClass("active");
+                          });
+                             
                         $(".tab-tutoring-preference").click(function () {
                             $('.img-one-icon').attr('data-tab','tutoring-main');
                             $('.img-one-icon').attr('data-menu','sub-schedule-li');
@@ -22114,11 +22124,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-schedule-li").addClass("active");
                         });
-                         $(".tab-schedule").click(function () {
-                            
+                         $("#change-tab").click(function(){
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-schedule-li").addClass("active");
-                        });
+                         });
 
                         $('.img-one-icon').click(function () {
                             var name = $(this).attr("data-tab");
@@ -22147,6 +22156,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         
                         $("#btn-my-timezone").click(function () {
                             $('#my-timezone').toggle();
+                            
+
                         });
 
                         $(".close-timelot").click(function () {
