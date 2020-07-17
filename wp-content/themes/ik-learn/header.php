@@ -19538,84 +19538,99 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         });
 
                         function update_timelot_subject_item(data){
-                            // console.log(data);
                             var english = data.english_subject;
                             var science = data.science_subject;
                             var math = data.math_subject;
+                            var id = 2;
                             
-                            $('#select-timelot-subject').empty();
-                            $('#select-timelot-subject').append('<option value="0" data-name="">Select Subject</option>');
-                            $('#select-timelot-subject').append('<option value="all" data-name="Any Subjects">Any Subjects from My Preference</option>');
+                            $('#select-timelot-subjectSelectBoxItOptions').empty();
+                            $('#select-timelot-subjectSelectBoxItOptions')
+                                .append(`<li data-id="0" data-val="0" data-disabled="false" class="selectboxit-option  selectboxit-option-first selectboxit-selected" data-name="" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Select Subject</a></li>`);
+                            $('#select-timelot-subjectSelectBoxItOptions')
+                                .append('<li data-id="1" data-val="all" data-disabled="false" class="selectboxit-option" data-name="Any Subjects" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Any Subjects from My Preference</a></li>');
                             if(english.length > 4){
-                                $('#select-timelot-subject')
-                                            .append('<option value="english_subject|all" data-name="English Only">English Only</option>');
+                                $('#select-timelot-subjectSelectBoxItOptions')
+                                .append('<option value="english_subject|all" data-name="English Only">English Only</option>');
                             }else if(english.length > 0 && english.length <= 4){
                                 english.forEach(function(item, index){
                                     if(item == 'english_conversation'){
-                                        $('#select-timelot-subject')
-                                            .append('<option value="english_subject|english_conversation" data-name="English: Conversation for Foreigns Students">English: Conversation for Foreign Students</option>');
-                                    }
-                                    else if(item == 'english_grammar'){
-                                        $('#select-timelot-subject')
-                                            .append(' <option value="english_subject|english_grammar" data-name="Enlgish: Grammar">Enlgish: Grammar</option>');
-                                    }else if(item == 'english_writting'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="english_subject|english_writting" data-name="English Writting">English Writting</option>');
-                                    }else if(item == 'english_reading_comprehension'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="english_subject|english_reading_comprehension" data-name="English: Reading Comprehension">English: Reading Comprehension</option>');
-                                    }
-                                    else if(item == 'others'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="english_subject|others" data-name="English: Others">English: Others</option>');
-                                    }
-                                });
-                            }
+                                        $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="english_subject|english_conversation" data-disabled="false" class="selectboxit-option" data-name="English: Conversation for Foreign Students" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>English Conversation for Foreign Students</a></li>`);
+                                        }
+                                        else if(item == 'english_grammar'){
+                                            $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="english_subject|english_grammar" data-disabled="false" class="selectboxit-option" data-name="English: Grammar" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>English: Grammar</a></li>`);
+                                        }else if(item == 'english_writting'){
+                                            $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="english_subject|english_writting" data-disabled="false" class="selectboxit-option  selectboxit-option-last" data-name="English Writting" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>English Writting</a></li>`);
+                                        }else if(item == 'english_reading_comprehension'){
+                                            $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="english_subject|english_reading_comprehension" data-disabled="false" class="selectboxit-option" data-name="English: Reading Comprehension" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>English: Reading Comprehension</a></li>`);
+                                        }
+                                        else if(item == 'others'){
+                                            $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="english_subject|others" data-disabled="false" class="selectboxit-option" data-name="English: Others" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>English: Others</a></li>`);
+                                        }
+                                    });
+                                }
+                                
+                                if(math.length > 4){
+                                    $('#select-timelot-subjectSelectBoxItOptions')
+                                    .append(`<li data-id="${id++}" data-val="math_subject|all" data-disabled="false" class="selectboxit-option" data-name="Math Only" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Math Only</a></li>`);
+                                }else if(math.length <= 4 && math.length >0){
+                                    math.forEach(function(item, index){
+                                        if(item == 'elemenatary_school_math'){
+                                            $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="math_subject|elemenatary_school_math" data-disabled="false" class="selectboxit-option" data-name="Math: Elementary" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Math: Elementary</a></li>`);
+                                        }else if(item == 'middle_school_math'){
+                                            $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="math_subject|middle_school_math" data-disabled="false" class="selectboxit-option" data-name="Math: Middle School" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Math: Middle School</a></li>`);
+                                        }else if(item == 'high_school_math'){
+                                            $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="math_subject|high_school_math" data-disabled="false" class="selectboxit-option" data-name="Math: High School" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Math: High School</a></li>`);
+                                        }else if(item == 'advanced_math'){
+                                            $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="math_subject|advanced_math" data-disabled="false" class="selectboxit-option" data-name="Math: Advanced" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Math: Advanced</a></li>`);
+                                        }else if(item == 'others'){
+                                            $('#select-timelot-subjectSelectBoxItOptions')
+                                            .append(`<li data-id="${id++}" data-val="math_subject|others" data-disabled="false" class="selectboxit-option" data-name="Math: Others" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Math: Others</a></li>`);
+                                        }
+                                    });
 
-                            if(math.length > 4){
-                                $('#select-timelot-subject')
-                                            .append('<option value="math_subject|all" data-name="Math Only">Math Only</option>');
-                            }else if(math.length <= 4 && math.length >0){
-                                math.forEach(function(item, index){
-                                    if(item == 'elemenatary_school_math'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="math_subject|elemenatary_school_math" data-name="Math: Elementary">Math: Elementary</option>');
-                                    }else if(item == 'middle_school_math'){
-                                        $('#select-timelot-subject')
-                                .append(' <option value="math_subject|middle_school_math" data-name="Math: Middle School">Math: Middle School</option>');
-                                    }else if(item == 'high_school_math'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="math_subject|high_school_math" data-name="Math: High School">Math: High School</option>');
-                                    }else if(item == 'advanced_math'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="math_subject|advanced_math" data-name="Math: Advanced">Math: Advanced</option>');
-                                    }else if(item == 'others'){
-                                        $('#select-timelot-subject')
-                                .append(' <option value="math_subject|others" data-name="Math: Others">Math: Others</option>');
-                                    }
-                                });
-                            }
-
+                                    
+                                }
+                            
+                            
                             if(science.length > 3){
-                                $('#select-timelot-subject')
-                                            .append('<option value="science_subject|all" data-name="Science Only">Science Only </option>');
+                                $('#select-timelot-subjectSelectBoxItOptions')
+                                .append(`<li data-id="${id++}" data-val="science_subject|all" data-disabled="false" class="selectboxit-option" data-name="Science Only" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Science Only</a></li>`);
                             }else if(science.length <= 3 && science.length >0){
                                 science.forEach(function(item, index){
                                     if(item == 'science_middle_school'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="science_subject|science_middle_school" data-name="Science: Elementary/Middle School">Science: Elementary/Middle School</option>');
+                                        $('#select-timelot-subjectSelectBoxItOptions')
+                                        .append(`<li data-id="${id++}" data-val="science_subject|science_middle_school" data-disabled="false" class="selectboxit-option" data-name="Science: Elementary/Middle School" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Science: Elementary/Middle School</a></li>`);
                                     }else if(item == 'physics_high_school'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="science_subject|physics_high_school" data-name="Science: High School">Science: High School</option>');
+                                        $('#select-timelot-subjectSelectBoxItOptions')
+                                        .append(`<li data-id="${id++}" data-val="science_subject|physics_high_school" data-disabled="false" class="selectboxit-option" data-name="Science: Physics for High School" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Science: Physics for High School</a></li>`);
                                     }else if(item == 'chemistry_high_school'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="science_subject|chemistry_high_school" data-name="Science: Chemistry for High School">Science: Chemistry for High School</option>');
+                                        $('#select-timelot-subjectSelectBoxItOptions')
+                                        .append(`<li data-id="${id++}" data-val="science_subject|chemistry_high_school" data-disabled="false" class="selectboxit-option" data-name="Science: Chemistry for High School" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Science: Chemistry for High School</a></li>`);
                                     }else if(item == 'others'){
-                                        $('#select-timelot-subject')
-                                .append('<option value="science_subject|others" data-name="Science: Others">Science: Others</option>');
+                                        $('#select-timelot-subjectSelectBoxItOptions')
+                                        .append(`<li data-id="${id++}" data-val="science_subject|others" data-disabled="false" class="selectboxit-option" data-name="Science: Others" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectboxit-option-icon  selectboxit-container"></i></span>Science: Others</a></li>`);
                                     }
                                 });
                             }
+                                var childs = $('#select-timelot-subjectSelectBoxItOptions').children();
+                                var all = english.length + math.length + science.length +2;
+                                console.log(all);
+                                if(!(childs.length != all)){
+                                    childs.each(function(){
+                                        if($(this).attr('data-id')== (all-1)){
+                                            console.log($(this).addClass('selectboxit-option-last'));
+                                        }
+                                    });
+                                }
                             $('#select-timelot-subject').prop('selectedIndex', 0);
                         }
 
@@ -19643,6 +19658,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
 
                             }
+
                         }
 
                         $('#update-preference').click(function(){
@@ -19750,10 +19766,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     enable_group_tutoring: enable_group_tutoring,
                                     type: "tutoring"
                                 }
+                                console.log(post_data);
                             if(form_valid){
                                 $.post(home_url + "/?r=ajax/update_info",post_data , function (data) {
-                                update_timelot_subject_item(post_data);
-                                 update_timelot_tutor_types(post_data);
+                                    update_timelot_subject_item(post_data);
+                                    update_timelot_tutor_types(post_data);
                                     if ($.trim(data) == '1') {
                                         $('#chk-price-tutoring').val(price_tutoring);
                                         $('#popup-message').html('<p class="text-used">Tutoring Preference has been updated successfully</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn" data-id="sub-tutoring-preference" data-tab="tutoring-preference" data-type="' + direct_type + '">Got it</button>'); //got-scheduled

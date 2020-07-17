@@ -7661,6 +7661,10 @@ textarea.textarea-style2 {
     background: #CCCCCC;
     color: #000000;
 }
+.selectboxit-container .selectboxit-options :hover{
+    background: #ff0000;
+    color: #000000;
+}
 .selectboxit-container .selectboxit-options li{
     color: #000000;
 }
