@@ -2755,7 +2755,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     </tbody>
                                                                 </table>
                                                                 <ul id="tutoring-scheduled-tutor">
-                                                                    
+                                                                   
+
                                                                 </ul>
                                                             </div>
                                                             <div class="clearfix"></div>
@@ -19740,8 +19741,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
                             if(form_valid){
                                 $.post(home_url + "/?r=ajax/update_info",post_data , function (data) {
-                                update_timelot_subject_item(post_data);
-                                 update_timelot_tutor_types(post_data);
+                                    update_timelot_subject_item(post_data);
+                                    update_timelot_tutor_types(post_data);
                                     if ($.trim(data) == '1') {
                                         $('#chk-price-tutoring').val(price_tutoring);
                                         $('#popup-message').html('<p class="text-used">Tutoring Preference has been updated successfully</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn" data-id="sub-tutoring-preference" data-tab="tutoring-preference" data-type="' + direct_type + '">Got it</button>'); //got-scheduled
@@ -22095,14 +22096,13 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-tutoring-preference").addClass("active");
+                           
                              
                         });
 
                          $('body').on('click', '#close-timelot-option', function () {
                              
-
-
-                             
+                            
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-schedule-li").addClass("active");
                          });
@@ -22156,6 +22156,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         
                         $("#btn-my-timezone").click(function () {
                             $('#my-timezone').toggle();
+                           
                             
 
                         });
@@ -22843,7 +22844,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 data = JSON.parse(data);
                                 $('.btn-new-request').attr('data-points',data.points);
                                 $('.btn-new-request').attr('data-price-tutoring',data.price_tutoring);
-
+                                
                                 if (data.availables.length > 0) {
                                     if(!$('#tutoring-scheduled-tutor').hasClass('active')){
                                         $('#tutoring-scheduled-tutor').addClass('active');
@@ -22908,19 +22909,24 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
                                             li += '<span class="subject-scheduled">Available</span>';
                                             li += '</span><span id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">0</span></span></li>';
-                                        }else{
+                                        }else if(v.users > 0){
                                             var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + ' active" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
                                             li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
                                             li += '<span class="subject-scheduled">'+ txt_accept +'</span>';
                                             li += '</span><span id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">'+ count_user +'</span></span></li>';
                                         }
                                         ul_scheduled.append(li);
+
+
+
                                     });
+            
                                 }else{
                                     if($('#tutoring-scheduled-tutor').hasClass('active')){
                                         $('#tutoring-scheduled-tutor').removeClass('active');
                                     }
                                 }
+                                
                                 /*
                                 if (data.scheduled.length > 0) {
                                     $.each(data.scheduled, function (i, v) {                                   
@@ -22981,9 +22987,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         ul_upcoming.append(li);
                                     }
                                 }
+                            
                             });
                         }
-
                         function getCountStudents(day = ''){
                             $.get(home_url + "/?r=ajax/get_students_count", {day: day}, function (data) {
                                 //console.log(data);
@@ -22995,13 +23001,13 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $('#'+$.trim(v.start_id)).find('button').attr('data-accept',v.accept);
                                         //$('#'+$.trim(v.start_id)).find('button').attr('data-tid',v.id);
 
-                                        if(v.users == 0){
-                                            if($('#view-detail-schedule'+i).hasClass('active')){
-                                                $('#view-detail-schedule'+i).removeClass('active');
-                                            }
-                                        }else{
+                                        if(v.users != 0){
                                             if(!$('#view-detail-schedule'+i).hasClass('active')){
                                                 $('#view-detail-schedule'+i).addClass('active');
+                                            }
+                                        }else{
+                                            if($('#view-detail-schedule'+i).hasClass('active')){
+                                                $('#view-detail-schedule'+i).removeClass('active');
                                             }
                                         }
 
