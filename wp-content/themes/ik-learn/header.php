@@ -22457,7 +22457,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#mytime-clock').attr('data-type',moment.tz(timezone_name).format('a'));
                                 
                                 ct++;
-                                if(ct == 60){
+                                if(ct == 5){
                                     ct = 0;
                                     var schedule_now = false;
                                     var iSlide = 0;
@@ -22996,11 +22996,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 data = JSON.parse(data);
 
                                 if (data.availables.length > 0) {
-                                    $.each(data.availables, function (i, v) {
+                                    $.each(data.availables, function (x, v) {
+                                        
+                                        for( var i=0; i<48; i++){
                                         $('#'+$.trim(v.start_id)).find('button').attr('data-users',v.users);
                                         $('#'+$.trim(v.start_id)).find('button').attr('data-accept',v.accept);
                                         //$('#'+$.trim(v.start_id)).find('button').attr('data-tid',v.id);
-
+                                        var data_id = $('#view-detail-schedule'+i).attr('data-id');
+                                        if(data_id == v.id){
                                         if(v.users != 0){
                                             if(!$('#view-detail-schedule'+i).hasClass('active')){
                                                 $('#view-detail-schedule'+i).addClass('active');
@@ -23026,6 +23029,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $('#view-detail-schedule'+i).find('span.number-users').text(count_user);
                                         $('#view-detail-schedule'+i).attr('data-users',count_user);
                                         $('#view-detail-schedule'+i).find('button').attr('data-accept',v.accept);
+                                    }
+                                    }
                                     });
                                 }
                             });
