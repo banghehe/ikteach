@@ -2813,14 +2813,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     <?php } ?>
                                                                 </div> <!-- Close tutoring type choose -->
                                                                     <div class="form-group border-ras select-style">
-                                                                        <select class="select-box-it form-control" name="timelot_subject" id="select-timelot-subject">
+                                                                        <select class="form-control" name="timelot_subject" id="select-timelot-subject" >
                                                                             <option value="0" data-name="">Select Subject</option>
                                                                             <option value="all" data-name="Any Subjects">Any Subjects from My Preference</option>
                                                                             <?php if(count($tenglish_subject) > 4){ ?>
                                                                             <option value="english_subject|all" data-name="English Only">English Only</option>
                                                                             <?php }else{ ?>
                                                                                 <?php if(in_array('english_conversation', $tenglish_subject)){ ?>
-                                                                                <option value="english_subject|english_conversation" data-name="English: Conversation for Foreigns Students">English: Conversation for Foreign Students</option>
+                                                                                <option value="english_subject|english_conversation" data-name="English: Conversation for Foreigns Students"><p style="margin: 10px">English: Conversation for Foreign Students<p></option>
                                                                                 <?php } ?>
 
                                                                                 <?php if(in_array('english_grammar', $tenglish_subject)){ ?>

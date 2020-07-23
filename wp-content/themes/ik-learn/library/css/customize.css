@@ -16180,3 +16180,21 @@ font-weight: bold;
 #number-participant{
     padding-left: 145px !important;
 }
+#select-timelot-subject{
+    display: block !important;
+    font-family: Myriad_Regular;
+    color: #9c9c9c !important;
+    font-size: 15px;
+    
+    height: 28px;
+    min-width: 100%;
+    border-radius: 15px;
+    padding-top: 2px;
+
+}
+#select-timelot-subject option{
+    height: 28px; 
+    text-indent: 20px;  
+     margin:10px 10px;
+      font-family: Myriad_Regular, Calibri;
+}
