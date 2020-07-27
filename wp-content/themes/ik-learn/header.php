@@ -2210,7 +2210,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-xs-12 cb-type3">
                                                 <label>
                                                     <input type="checkbox" class="radio_buttons option-input-3 radio" value="english_writting" name="english_subject" <?php if(count($english_subject) > 0 && in_array("english_writting", $english_subject)) echo 'checked="checked"'; ?>>
-                                                    <span>English Writting</span>
+                                                    <span>English Writing</span>
                                                 </label>
                                             </div>
                                             <div class="col-xs-12 cb-type3">
@@ -2254,7 +2254,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-xs-12 cb-type3">
                                                 <label>
                                                     <input type="checkbox" class="radio_buttons option-input-3 radio" value="elemenatary_school_math" name="math_subject" <?php if(count($math_subject) > 0 && in_array("elemenatary_school_math", $math_subject)) echo 'checked="checked"'; ?>>
-                                                    <span>Elemenatary School Math</span>
+                                                    <span>Elementary School Math</span>
                                                 </label>
                                             </div>
                                             <div class="col-xs-12 cb-type3">
@@ -2309,7 +2309,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-xs-12 cb-type3">
                                                 <label>
                                                     <input type="checkbox" class="radio_buttons option-input-3 radio" value="science_middle_school" name="science_subject" <?php if(count($science_subject) > 0 && in_array("science_middle_school", $science_subject)) echo 'checked="checked"'; ?>>
-                                                    <span>Science for Middle/Elemenatary School</span>
+                                                    <span>Science for Middle/Elementary School</span>
                                                 </label>
                                             </div>
                                             <div class="col-xs-12 cb-type3">
@@ -2483,7 +2483,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     <div class="form__boolean chk-subject-type mt-bottom-10 clearfix" id="checkBoxSearch" style="margin-top: 0">
                                                                         <div class="col-sm-4 col-md-2 col-xs-4 cb-type3">
                                                                             <label>
-                                                                                <input type="radio" class="radio_buttons option-input-2 radio radio_tutor_search" data-subject="english_writting" value="english_writting" name="subject_type_search"/> English Writting
+                                                                                <input type="radio" class="radio_buttons option-input-2 radio radio_tutor_search" data-subject="english_writting" value="english_writting" name="subject_type_search"/> English Writing
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-4 col-md-2 col-xs-4 cb-type3">
@@ -2816,9 +2816,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                         <select class="form-control" name="timelot_subject" id="select-timelot-subject" >
                                                                             <option value="0" data-name="">Select Subject</option>
                                                                             <option value="all" data-name="Any Subjects">Any Subjects from My Preference</option>
-                                                                            <?php if(count($tenglish_subject) > 4){ ?>
-                                                                            <option value="english_subject|all" data-name="English Only">English Only</option>
-                                                                            <?php }else{ ?>
+                                                                            <?php if(count($tenglish_subject) > 0){ ?>
                                                                                 <?php if(in_array('english_conversation', $tenglish_subject)){ ?>
                                                                                 <option value="english_subject|english_conversation" data-name="English: Conversation for Foreigns Students"><p style="margin: 10px">English: Conversation for Foreign Students<p></option>
                                                                                 <?php } ?>
@@ -2828,7 +2826,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                                 <?php } ?>
 
                                                                                 <?php if(in_array('english_writting', $tenglish_subject)){ ?>
-                                                                                <option value="english_subject|english_writting" data-name="English Writting">English Writting</option>
+                                                                                <option value="english_subject|english_writting" data-name="English Writting">English Writing</option>
                                                                                 <?php } ?>
 
                                                                                 <?php if(in_array('english_reading_comprehension', $tenglish_subject)){ ?>
@@ -2836,13 +2834,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                                 <?php } ?>
 
                                                                                 <?php if(in_array('others', $tenglish_subject)){ ?>
-                                                                                <option value="english_subject|others" data-name="English: Others">English: Others</option>
+                                                                                <option value="english_subject|others" data-name="English: Others">English: Other - <?php echo $english_subject_desc ?></option>
                                                                                 <?php } ?>
                                                                             <?php } ?>
 
-                                                                            <?php if(count($tmath_subject) > 4){ ?>
-                                                                            <option value="math_subject|all" data-name="Math Only">Math Only</option>
-                                                                            <?php }else{ ?>
+                                                                            <?php if(count($tmath_subject) > 0){ ?>
                                                                                 <?php if(in_array('elemenatary_school_math', $tmath_subject)){ ?>
                                                                                 <option value="math_subject|elemenatary_school_math" data-name="Math: Elementary">Math: Elementary</option>
                                                                                 <?php } ?>
@@ -2860,13 +2856,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                                 <?php } ?>
 
                                                                                 <?php if(in_array('others', $tmath_subject)){ ?>
-                                                                                <option value="math_subject|others" data-name="Math: Others">Math: Others</option>
+                                                                                <option value="math_subject|others" data-name="Math: Others">Math: Others - <?php echo $math_subject_desc ?></option>
                                                                                 <?php } ?>
-                                                                            <?php } ?>
+                                                                            <?php } ?> 
 
-                                                                            <?php if(count($tscience_subject) > 3){ ?>
-                                                                            <option value="science_subject|all" data-name="Science Only">Science Only </option>
-                                                                            <?php }else{ ?>
+                                                                            <?php if(count($tscience_subject) > 0){ ?>                                                                 
                                                                                 <?php if(in_array('science_middle_school', $tscience_subject)){ ?>
                                                                                 <option value="science_subject|science_middle_school" data-name="Science: Elementary/Middle School">Science: Elementary/Middle School</option>
                                                                                 <?php } ?>
@@ -2880,16 +2874,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                                 <?php } ?>
 
                                                                                 <?php if(in_array('others', $tscience_subject)){ ?>
-                                                                                <option value="science_subject|others" data-name="Science: Others">Science: Others</option>
+                                                                                <option value="science_subject|others" data-name="Science: Others">Science: Others - <?php echo $science_subject_desc ?></option>
                                                                                 <?php } ?>
-                                                                            <?php } ?>
+                                                                            <?php } ?> 
 
                                                                             <?php if(count($tother_preference) > 0){ ?>
-                                                                            <option value="other_preference|others" data-name="Other Subjects Only">Other Subjects Only</option>
+                                                                            <option value="other_preference|others" data-name="Other Subjects Only">Other Subjects: - <?php echo $description_preference ?></option>
                                                                             <?php } ?>
 
                                                                             
-                                                                        </select>
+                                                                        </select>   
                                                                     </div>
                                                                     <p class="text-right">
                                                                         <a class="manage-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="true">Manage Preference</a>
@@ -8905,6 +8899,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }); 
                             $('#update-preference').attr('data-type','profile');
                             $('#cancel-update-preference').attr('data-type','profile');
+                            setCloseButton("link");
                         });
 
                         $("#sub-profile a").click(function (e) {
@@ -19531,40 +19526,44 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var english = data.english_subject;
                             var science = data.science_subject;
                             var math = data.math_subject;
-                            
+                            var othe = data.other_preference;
+                            var english_others = $("input[name='english_subject_desc']").val();
+                            var math_others = $("input[name='math_subject_desc']").val();
+                            var science_others = $("input[name='science_subject_desc']").val();
+                            var subject_others = $("input[name='description_preference']").val();
+
                             $('#select-timelot-subject').empty();
+                            // $('#select-timelot-subjectSelectBoxItOptions').empty();
                             $('#select-timelot-subject').append('<option value="0" data-name="">Select Subject</option>');
+                            // $('#select-timelot-subjectSelectBoxItOptions').append('<li data-id="0" data-val="0" data-disabled="false" class="selectboxit-option  selectboxit-option-first" data-name=""role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i          class="selectboxit-option-icon  selectboxit-container"></i></span>Select Subject</a></li>');
                             $('#select-timelot-subject').append('<option value="all" data-name="Any Subjects">Any Subjects from My Preference</option>');
-                            if(english.length > 4){
-                                $('#select-timelot-subject')
-                                            .append('<option value="english_subject|all" data-name="English Only">English Only</option>');
-                            }else if(english.length > 0 && english.length <= 4){
+                            // $('#select-timelot-subjectSelectBoxItOptions').append('<li data-id="1" data-val="all" data-disabled="false" class="selectboxit-option" data-name="Any Subjects"    role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i          class="selectboxit-option-icon  selectboxit-container"></i></span>Any Subjects from My Preference</a></li>')
+                            if(english.length > 0){
                                 english.forEach(function(item, index){
                                     if(item == 'english_conversation'){
                                         $('#select-timelot-subject')
                                             .append('<option value="english_subject|english_conversation" data-name="English: Conversation for Foreigns Students">English: Conversation for Foreign Students</option>');
+                                        // $('#select-timelot-subjectSelectBoxItOptions').append('<li data-id="2" data-val="english_subject|english_conversation" data-disabled="false" class="selectboxit-option"    data-name="English: Conversation for Foreigns Students" role="option"><a class="selectboxit-option-anchor"><span        class="selectboxit-option-icon-container"><i          class="selectboxit-option-icon  selectboxit-container"></i></span>English: Conversation for Foreign Students</a></li>');
                                     }
                                     else if(item == 'english_grammar'){
                                         $('#select-timelot-subject')
                                             .append(' <option value="english_subject|english_grammar" data-name="Enlgish: Grammar">Enlgish: Grammar</option>');
+                                        // $('#select-timelot-subjectSelectBoxItOptions').append('');
                                     }else if(item == 'english_writting'){
                                         $('#select-timelot-subject')
-                                .append('<option value="english_subject|english_writting" data-name="English Writting">English Writting</option>');
+                                .append('<option value="english_subject|english_writting" data-name="English Writting">English Writing</option>');
                                     }else if(item == 'english_reading_comprehension'){
                                         $('#select-timelot-subject')
                                 .append('<option value="english_subject|english_reading_comprehension" data-name="English: Reading Comprehension">English: Reading Comprehension</option>');
                                     }
                                     else if(item == 'others'){
                                         $('#select-timelot-subject')
-                                .append('<option value="english_subject|others" data-name="English: Others">English: Others</option>');
+                                .append('<option value="english_subject|others" data-name="English: Others">English: Others - '+english_others+'</option>');
                                     }
                                 });
                             }
 
-                            if(math.length > 4){
-                                $('#select-timelot-subject')
-                                            .append('<option value="math_subject|all" data-name="Math Only">Math Only</option>');
-                            }else if(math.length <= 4 && math.length >0){
+                            if(math.length > 0){
                                 math.forEach(function(item, index){
                                     if(item == 'elemenatary_school_math'){
                                         $('#select-timelot-subject')
@@ -19580,15 +19579,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 .append('<option value="math_subject|advanced_math" data-name="Math: Advanced">Math: Advanced</option>');
                                     }else if(item == 'others'){
                                         $('#select-timelot-subject')
-                                .append(' <option value="math_subject|others" data-name="Math: Others">Math: Others</option>');
+                                .append(' <option value="math_subject|others" data-name="Math: Others">Math: Others - '+math_others+'</option>');
                                     }
                                 });
                             }
 
-                            if(science.length > 3){
-                                $('#select-timelot-subject')
-                                            .append('<option value="science_subject|all" data-name="Science Only">Science Only </option>');
-                            }else if(science.length <= 3 && science.length >0){
+                            if(science.length > 0){
                                 science.forEach(function(item, index){
                                     if(item == 'science_middle_school'){
                                         $('#select-timelot-subject')
@@ -19601,10 +19597,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 .append('<option value="science_subject|chemistry_high_school" data-name="Science: Chemistry for High School">Science: Chemistry for High School</option>');
                                     }else if(item == 'others'){
                                         $('#select-timelot-subject')
-                                .append('<option value="science_subject|others" data-name="Science: Others">Science: Others</option>');
+                                .append('<option value="science_subject|others" data-name="Science: Others">Science: Others - '+science_others+'</option>');
                                     }
                                 });
                             }
+                            if(othe.length > 0){
+                                $('#select-timelot-subject')
+                                .append('<option value="other_preference|others" data-name="Other Subjects Only">Other Subjects: - '+subject_others+'</option>');
+                            }
+
                             $('#select-timelot-subject').prop('selectedIndex', 0);
                         }
 
@@ -19755,15 +19756,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             } 
                         });
                         // trigger type of close
-                        $(".tab-tutoring-preference, .manage-preference").click(()=> {
-                            if($('#popup-option-timelot').css('display') == 'block'){
+                        $(".manage-preference").click(()=> {
+                           
                                 setCloseButton("close");
-                            }else{
-                                setCloseButton("link");
-                            }
+                          
                             
                         });
-
+                         $(".tab-tutoring-preference").click(()=>{
+                              setCloseButton("link");
+                         });
                         // set close button
                         let setCloseButton = (state) => {   
                             let closeButton = `<div id="close-timelot-option"><img  class="img-one-icon close-timelot-option" data-toggle="tab" href="#tutoring-main" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt=""></div>`;
@@ -21186,7 +21187,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             get_list_schedule_tutor('schedule');
                             get_scheduled_day_tutor(cur_day,type);
                         });
-
+                        setTimeout(function(){
+                            var day = $(".schedule-rightbtn").attr("data-day");
+                            var type = $(".schedule-rightbtn").attr("data-type");
+                            var day = day.split("-");
+                            day[2] = day[2] - 1;
+                            var cur_day = day[0] + "-" + day[1] + "-" + day[2];
+                            console.log(cur_day);
+                            get_list_schedule_tutor('schedule');
+                            get_scheduled_day_tutor(cur_day,type);
+                        }, 5000);
                         $(".schedule-rightbtn").click(function(){
                             if($('#btn-find-tutoring').hasClass('active')){
                                 $('#btn-find-tutoring').removeClass('active');

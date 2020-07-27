@@ -8199,6 +8199,10 @@ h1.title_english span{font-size:18pt;}
     .popup_sat h4 {
         margin: 40px 20px 20px 20px;
     }
+    .footer{ height: 100% ; }
+    body{ height: 100%; }
+    html{ height: 100%; }
+    #container{ height: 100%; overflow: hidden ;}
 }
 
 @media (min-width:1366px){
@@ -16199,4 +16203,5 @@ font-weight: bold;
     text-indent: 20px;  
      margin:10px 10px;
       font-family: Myriad_Regular, Calibri;
+    
 }
