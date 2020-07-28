@@ -2582,7 +2582,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                         <div class="box-schedule-right">
                                                             <div class="header-schedule-tutor clearfix">
-                                                                <div class="col-xs-2 col-sm-2 col-md-2 no-padding-l">
+                                                                <div class="col-xs-2 col-sm-2 col-md-2 no-padding-l" style="margin-left:-9px ">
                                                                     <img class="schedule-leftbtn" src="<?php echo get_template_directory_uri(); ?>/library/images/Chalendar_icon_Left_circle.png" data-day="<?php echo $dt_yesterday->format('Y-m-d') ?>" data-type="schedule">
                                                                     <img class="schedule-rightbtn" src="<?php echo get_template_directory_uri(); ?>/library/images/Chalendar_icon_Rightt_circle.png"  data-day="<?php echo $dt_tomorrow->format('Y-m-d') ?>" data-type="schedule">
                                                                 </div>
@@ -2603,7 +2603,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                        </div>
                                                                        <div class="col-sm-4 col-md-4 col-xs-4 no-padding text-right">
                                                                     <button type="button" class="btn-orange2 border-btn"  id="summary-btn-tutor" data-day="<?php echo $dt->format('Y-m-d') ?>" data-type="menu">
-                                                                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Menu_Dropdown.png">
+                                                                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/TimeIcon_Menu_Dropdown.png" style="margin-right: -4px">
                                                                     </button>
                                                                     <ul id="open-menu-schedule">
                                                                         <li>
@@ -19753,7 +19753,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }else{
                                 $('#popup-message').html('<p class="text-used">' + msg + '</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
                                 $('#top-popup-message').css("display", "block");
-                            } 
+                            }
+
+
                         });
                         // trigger type of close
                         $(".manage-preference").click(()=> {
@@ -22106,6 +22108,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-tutoring-preference").addClass("active");
+
                            
                              
                         });
@@ -22127,6 +22130,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-tutoring-preference").addClass("active");
+                            $("#popup-option-timelot").css("display","none");
                         });
 
                          $("#tab-schedule").click(function () {
