@@ -14760,6 +14760,9 @@ font-weight: bold;
 .main-list-students .table{
     margin-bottom: 12px;
     margin-top: 10px;
+    margin-left: 5px;
+    /* margin-right: 100px; */
+    width: 99%;
 }
 .view-detail-student td{
     padding: 0!important;
@@ -14844,6 +14847,8 @@ font-weight: bold;
 }
 .btn-dark-blue.btn-confirm-student{
     background: #cecece;
+    margin-left: 33px;
+    width: 93%;
 }
 .btn-dark-blue.btn-confirm-student.active{
     background: #64c762;
@@ -14857,6 +14862,7 @@ font-weight: bold;
     border-top: 1px solid #DCDCDC;
     margin: 20px 0 0;
     padding: 2px 0 0;
+        margin-left: 35px;
 }
 #list-student-schedule .toggle-btn img {
     float: none;
@@ -16189,9 +16195,9 @@ font-weight: bold;
     display: block !important;
     font-family: Myriad_Regular;
     color: #9c9c9c !important;
-    font-size: 15px;
+    font-size: 13px;
     
-    background: #f5f7f6;
+    background: #f4f7f7;
     height: 28px;
     min-width: 100%;
     border-radius: 15px;
@@ -16205,4 +16211,17 @@ font-weight: bold;
      margin:10px 10px;
       font-family: Myriad_Regular, Calibri;
     
+}
+#select-timelot-subjectSelectBoxIt{
+    margin-top: -27px;
+    opacity: 0;
+}
+#select-timelot-subjectSelectBoxItContainer ul li a{
+    background: white;
+}
+#select-timelot-subjectSelectBoxItContainer ul li a:hover{
+    background: #F4f7f7;
+}
+#select-timelot-subjectSelectBoxItContainer ul li{
+    margin-bottom: 0 !important;
 }
