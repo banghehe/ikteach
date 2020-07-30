@@ -2886,7 +2886,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                             
                                                                         </select>   
                                                                     </div>
-                                                                    <p class="text-right">
+                                                                    <p class="manage-close text-right">
                                                                         <a class="manage-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="true">Manage Preference</a>
                                                                     </p>
                                                                 </div>
@@ -24141,15 +24141,21 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         }
                         $("#open-menu-schedule").css("display","none");
                         $("#my-timezone").css("display","none");
+                        $("#select-timelot-subjectSelectBoxItOptions").css("display","none");
 
                 });
                 $(".teacher-center").click( function (){
                         $("#open-menu-schedule").css("display","none");
+                        $("#select-timelot-subjectSelectBoxItOptions").css("display","none");
                 });
                 $(".body-my-scheduled-tutor").click( function (){
-
+                        $("#select-timelot-subjectSelectBoxItOptions").css("display","none");
                         $("#open-menu-schedule").css("display","none");
                 });
+                $(".manage-close, .header-timelot, #tutoring-type").click( function (){
+                         $("#select-timelot-subjectSelectBoxItOptions").css("display","none");
+                         });
+                
             </script>
             
             
