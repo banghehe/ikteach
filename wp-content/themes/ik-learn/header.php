@@ -2812,7 +2812,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     </div>    
                                                                     <?php } ?>
                                                                 </div> <!-- Close tutoring type choose -->
-                                                                    <div class="form-group border-ras select-style">
+                                                                    <div id="select-timelot" class="form-group border-ras select-style">
                                                                         <select class="select-box-it 
                                                                         form-control" name="timelot_subject" id="select-timelot-subject" >
                                                                             <option value="0" data-name="">Select Subject</option>
