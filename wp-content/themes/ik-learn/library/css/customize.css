@@ -9844,13 +9844,6 @@ textarea:focus {
     font-family: Myriad_regular;
 }
 
-#myForm input,
-#createAccount input,
-#myUpdate input,
-#tutorForm input,
-#earningFrom input{
-    border: 1px solid #e0e0e0;
-}
 
 #myForm input.option-input-2,
 #createAccount input.option-input-2,
@@ -10040,7 +10033,11 @@ textarea:focus {
 }
 #user-upload-img,
 #user-upload-avatar{
-    border-radius: 50%;
+    border-radius: 5%;
+}
+#user-upload-img{
+    height: 50px;
+    width: 100%;
 }
 .img-profile{
     padding-left: 7px;
@@ -13022,7 +13019,7 @@ font-weight: bold;
 }
 /*end Style Message posts in Manage class*/
 .tiny-gutter .select-box-it{
-    background: #F4f7f7 !important;
+    background: white !important;
 }
 .message-list{
     font-size: 17px;
@@ -16229,7 +16226,7 @@ font-weight: bold;
     margin-bottom: 0 !important;
 }
 #select-timelot:after {
-content: 'a';
+
 position: absolute;
 background-image: url(../images/icon_dropdown_arrow.png) !important;
 background-repeat: no-repeat;
@@ -16237,6 +16234,7 @@ background-repeat: no-repeat;
     background-position-y: 14px;
         content: 'aa';
     color: #f4f7f7;
+  
     position: absolute;
     margin-left: -30px;
     margin-top: -30px;
@@ -16257,4 +16255,47 @@ background-repeat: no-repeat;
     
     width: 6px;
 
+}
+.find-general-border{
+    padding-right: 13px;
+    padding-left: 15px;
+    max-height: 50px;
+    border: solid 1px;
+    border-color: #d9d9d9;
+    border-radius: 10px;
+    /*margin-bottom: 14px;*/
+}
+.find-general-border div input{
+    border: 0 !important;
+    
+
+}
+
+.language_drop{
+    
+    background: white;
+    border: 1px solid #d9d9d9;
+    position: absolute;
+    z-index: 100;
+     display: none;
+     padding: 10px;
+    width: 90%;
+    margin: 12px;
+    border-top: 0;
+}
+.language_drop ul li{
+   
+    padding: 2px 8px;
+}
+.Available-lg{
+    padding-left: 8px;
+    font-weight: bold;
+}
+.show-language{
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis;
+    height: 30px;
+    margin-top: 3px;
+    cursor: pointer;
 }
