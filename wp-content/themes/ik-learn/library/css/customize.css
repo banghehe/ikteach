@@ -14241,12 +14241,11 @@ font-weight: bold;
     top: 5px;
     text-transform: uppercase;
 }
-#set-now-preference,
-#set-now-preference:hover{
-    background: #CECECE;
+#set-now-preference{
+    cursor: pointer;
     display: inline-block;
-    width: 130px;
-    margin-left: 10px;
+    text-decoration: underline;
+    color: #009dcb;
     outline: none;
 }
 #tutoring-preference .form-group{
@@ -16298,4 +16297,7 @@ background-repeat: no-repeat;
     height: 30px;
     margin-top: 3px;
     cursor: pointer;
+}
+#update-teacher, #cancel-update-teacher, #cancel-lg, #save-lg{
+    border-radius: 8px !important;
 }
