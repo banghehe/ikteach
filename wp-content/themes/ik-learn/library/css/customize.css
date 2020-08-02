@@ -9838,8 +9838,8 @@ textarea:focus {
 #myUpdate input[type=password],
 .style-form textarea,
 #tutoring-preference input[type=text]{
-    font-size: 13px;
-    color: #4b4b4b;
+    font-size: 13pt;
+    color: #515151;
     border-radius: 25px;
     font-family: Myriad_regular;
 }
@@ -11003,9 +11003,9 @@ background: url(../images/chevron-l.png) no-repeat !important;
 }
 .select-style .select-box-it {
     border: none !important;
-    background: #F4f7f7!important;
+    /*background: #F4f7f7!important;*/
     height: 28px !important;
-     padding-left: 20px !important;
+    /* padding-left: 20px !important;*/
          padding-top: 0;
      
 }
@@ -11050,8 +11050,8 @@ background: url(../images/chevron-l.png) no-repeat !important;
 }
 .select-style .selectboxit-container *{
       font-family:Myriad_regular;
-       color: #9c9c9c !important;
-       font-size: 13px !important;
+       color: #515151 !important;
+       font-size: 13pt !important;
      
 }
 .delete-worksheet img,.delete-subject img{
@@ -13019,7 +13019,7 @@ font-weight: bold;
 }
 /*end Style Message posts in Manage class*/
 .tiny-gutter .select-box-it{
-    background: white !important;
+    background: none !important;
 }
 .message-list{
     font-size: 17px;
@@ -13536,6 +13536,9 @@ font-weight: bold;
 #tutor-regis-update h4{
     margin-top: 18px;
 }
+#update_birth_g{
+    background: white !important;   
+}
 #update_birth_g_pc,
 #update_birth_g_mb{
     background: #F4F7F7;
@@ -13543,7 +13546,7 @@ font-weight: bold;
     border: 0!important;
 }
 #update_username{
-    background: #F4F7F7;
+    background: none;
     border: 0!important;
 }
 .placeholder{
@@ -16262,12 +16265,25 @@ background-repeat: no-repeat;
     border: solid 1px;
     border-color: #d9d9d9;
     border-radius: 10px;
+    font-size: 13pt;
     /*margin-bottom: 14px;*/
 }
 .find-general-border div input{
     border: 0 !important;
-    
+    margin-top: -5px;
+    background: none;
+    margin-left: -11px;
+}
+.find-general-border div .selectboxit-container{
+        margin-top: -5px;
 
+}
+.find-general-border div .selectboxit-container .selectboxit{
+    margin-left: -10px;
+    overflow: visible;
+}
+.find-general-border div .selectboxit-container .selectboxit .selectboxit-arrow-container{
+margin-right: -30px;
 }
 
 .language_drop{
@@ -16295,9 +16311,27 @@ background-repeat: no-repeat;
     overflow: hidden;  
     text-overflow: ellipsis;
     height: 30px;
-    margin-top: 3px;
+    margin-top: -3px;
     cursor: pointer;
 }
 #update-teacher, #cancel-update-teacher, #cancel-lg, #save-lg{
     border-radius: 8px !important;
+}
+
+.find-label{
+    font-family:'Myriad_regular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 11pt !important;
+    color:#9c9c9c !important;
+    margin-bottom:0px !important;
+}
+.add-more{
+    color:  #009dcb;
+    text-decoration: underline;
+    text-align: right;
+    padding-top: 10px;
+    width: 100px;
+float: right;
+}
+#list-language li .option-input-3:checked + span {
+    color: #4eacc8;
 }

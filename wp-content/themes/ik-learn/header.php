@@ -918,9 +918,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $subject_type_update = array();
                                     $update_school_name = '';
                                     $update_school_name_02 = '';
+                                    $update_school_name_03 = '';
+                                    $update_school_name_04 = '';
+                                    $update_school_name_05 = '';
+                                    
                                     $update_teaching_link = '';
                                     $update_teaching_subject = '';
                                     $update_teaching_subject_02 = '';
+                                    $update_teaching_subject_03 = '';
+                                    $update_teaching_subject_04 = '';
+                                    $update_teaching_subject_05 = '';
                                     $update_years = '';
                                     $update_school_attend = '';
                                     $update_gpa = '';
@@ -928,8 +935,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $update_major = '';
                                     $update_school_name1 = '';
                                     $update_school_name2 = '';
+                                    $update_school_name3 = '';
+                                    $update_school_name4 = '';
+                                    $update_school_name5 = '';
                                     $update_school_link1 = '';
                                     $update_school_link2 = '';
+                                    $update_school_link3 = '';
+                                    $update_school_link4 = '';
+                                    $update_school_link5 = '';
                                     $update_any_other = '';
                                     $update_description = '';
                                     $update_student_link = '';
@@ -964,10 +977,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $subject_type = get_user_meta($current_user->ID, 'subject_type', true);
                                         if($subject_type != '') $subject_type_update = explode(',', $subject_type);
                                         $update_school_name = get_user_meta($current_user->ID, 'school_name', true);
-                                        $update_school_name_2 = get_user_meta($current_user->ID, 'school_name_02', true);
+                                        $update_school_name_02 = get_user_meta($current_user->ID, 'school_name_02', true);
+                                        $update_school_name_03 = get_user_meta($current_user->ID, 'school_name_03', true);
+                                        $update_school_name_04 = get_user_meta($current_user->ID, 'school_name_04', true);
+                                        $update_school_name_05 = get_user_meta($current_user->ID, 'school_name_05', true);
                                         $update_teaching_link = get_user_meta($current_user->ID, 'teaching_link', true);
                                         $update_teaching_subject = get_user_meta($current_user->ID, 'teaching_subject', true);
                                         $update_teaching_subject_02 = get_user_meta($current_user->ID, 'teaching_subject_02', true);
+                                        $update_teaching_subject_03 = get_user_meta($current_user->ID, 'teaching_subject_03', true);
+                                        $update_teaching_subject_04 = get_user_meta($current_user->ID, 'teaching_subject_04', true);
+                                        $update_teaching_subject_05 = get_user_meta($current_user->ID, 'teaching_subject_05', true);
+
                                         $update_student_link = get_user_meta($current_user->ID, 'student_link', true);
                                         $update_years = get_user_meta($current_user->ID, 'user_years', true);
                                         $update_school_attend = get_user_meta($current_user->ID, 'school_attend', true);
@@ -976,8 +996,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $update_major = get_user_meta($current_user->ID, 'user_major', true);
                                         $update_school_name1 = get_user_meta($current_user->ID, 'school_name1', true);
                                         $update_school_name2 = get_user_meta($current_user->ID, 'school_name2', true);
+                                        $update_school_name3 = get_user_meta($current_user->ID, 'school_name3', true);
+                                        $update_school_name4 = get_user_meta($current_user->ID, 'school_name4', true);
+                                        $update_school_name5 = get_user_meta($current_user->ID, 'school_name5', true);
                                         $update_school_link1 = get_user_meta($current_user->ID, 'school_link1', true);
                                         $update_school_link2 = get_user_meta($current_user->ID, 'school_link2', true);
+                                        $update_school_link3 = get_user_meta($current_user->ID, 'school_link3', true);
+                                        $update_school_link4 = get_user_meta($current_user->ID, 'school_link4', true);
+                                        $update_school_link5 = get_user_meta($current_user->ID, 'school_link5', true);
                                         $update_any_other = get_user_meta($current_user->ID, 'any_other', true);
                                         $update_description = get_user_meta($current_user->ID, 'subject_description', true);
                                     }
@@ -1013,7 +1039,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 mt-top-14">
                                                 <div class="find-general-border">
                                                 <div class="form-group border-ras select-style">
-                                                    <span class=""><?php _e('Password', 'iii-dictionary') ?>:</span>
+                                                    <span class="find-label"><?php _e('Password', 'iii-dictionary') ?>:</span>
                                                     <input id="update_password" class="form-control border-ras" name="update_password" type="text" value="<?php echo $update_user_password ?>" required>
                                                     
                                                 </div>
@@ -1124,7 +1150,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="form-group">
                                                 <h4><?php _e('Language', 'iii-dictionary') ?> & <?php _e('My Time Zone', 'iii-dictionary') ?>   </h4>
                                                 <div class="row">
-                                            <div id="language-timezone" class="col-sm-12 col-md-6 col-xs-6 mt-top-mb-12">
+                                            <div id="language-timezone" class="col-sm-6 col-md-6 col-xs-6 mt-top-mb-12">
                                                 
                                                 <div  class="find-general-border language-input">
                                                 <span class="find-label"><?php _e('Language', 'iii-dictionary') ?></span>
@@ -1133,17 +1159,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                          $languagelist = "";
                                                         if(count($update_language) > 0){
                                                        
-                                                        if(in_array("en", $update_language)){$languagelist +'English, ';}
-                                                        if(in_array("ja", $update_language)){$languagelist + 'Japanese, ';}
-                                                        if(in_array("ko", $update_language)){$languagelist + 'Korean, ';}
-                                                        if(in_array("zh", $update_language)){$languagelist + 'Chinese, ';}
-                                                        if(in_array("zh-tw", $update_language)){$languagelist + 'Traditional Chinese, ';}
-                                                        if(in_array("vi", $update_language)){$languagelist + 'Vietnamese, ';}
-                                                        if(in_array("ot", $update_language)){$languagelist +'Others, ';}
+                                                        if(in_array("en", $update_language)){$languagelist = $languagelist."English, ";}
+                                                        if(in_array("ja", $update_language)){$languagelist = $languagelist."Japanese, ";}
+                                                        if(in_array("ko", $update_language)){$languagelist = $languagelist."Korean, ";}
+                                                        if(in_array("zh", $update_language)){$languagelist = $languagelist."Chinese, ";}
+                                                        if(in_array("zh-tw", $update_language)){$languagelist = $languagelist."Traditional Chinese, ";}
+                                                        if(in_array("vi", $update_language)){$languagelist = $languagelist."Vietnamese, ";}
+                                                        if(in_array("ot", $update_language)){$languagelist = $languagelist."Others, ";}
 
                                                         };
-                                                        // rtrim($language_list, ", ");
-                                                        echo $language_list;
+                                                        echo rtrim($languagelist,", ");
+                                                        
                                                         ?>
                                                 </div>
                                                 </div>
@@ -1152,37 +1178,37 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     <ul id="list-language">
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="en" <?php if(count($update_language) > 0 && in_array("en", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            English
+                                                            <span>English</span>
                                                         </li>
                                                         
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="ja" <?php if(count($update_language) > 0 && in_array("ja", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Japanese
+                                                            <span>Japanese</span>
                                                         </li>
                                                     
                                                         <li>
                                                             <input type="checkbox"  class="radio_buttons option-input-3 radio" value="ko" <?php if(count($update_language) > 0 && in_array("ko", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Korean
+                                                            <span>Korean</span>
                                                         </li>
                                                     
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="zh" <?php if(count($update_language) > 0 && in_array("zh", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Chinese
+                                                            <span>Chinese</span>
                                                         </li>
                                                     
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="zh-tw" <?php if(count($update_language) > 0 && in_array("zh-tw", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Traditional Chinese
+                                                            <span>Traditional Chinese</span>
                                                         </li>
                                                     
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="vi" <?php if(count($update_language) > 0 && in_array("vi", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Vietnamese
+                                                            <span>Vietnamese</span>
                                                         </li>
                                                     
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="ot" <?php if(count($update_language) > 0 && in_array("ot", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Others
+                                                            <span>Others</span>
                                                         </li>
                                                     </ul>
                                                     <div style="padding:12px 0;">
@@ -1265,7 +1291,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             
                                             
                                             <div class="clearfix"></div>
-                                            <div style="border-bottom: 1px solid #9c9c9c; padding-top: 25px"></div>
+                                            <div style="border-bottom: 1px solid #d9d9d9; padding-top: 25px;width: 102%;margin-left: -3%;"></div>
                                             <?php 
                                             if ($is_user_logged_in && (is_mw_qualified_teacher($current_user->ID) || is_mw_registered_teacher($current_user->ID)))
                                                 $style = 'style="display: block;"';
@@ -1331,49 +1357,28 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     </div>
                                                 </div>
                                                 <h4 class="mt-top-10 mt-bottom-12">Tagline</h4>
-                                                <div id="desc-class2" class="mt-bottom-10">
-                                                    <span class="editor-top-left"></span>
-                                                    <span class="editor-top-right"></span>
-                                                    <span class="editor-bottom-left"></span>
-                                                    <span class="editor-bottom-right"></span>
-                                                    <?php
-                                                    $editor_settings = array(
-                                                        'wpautop' => false,
-                                                        'media_buttons' => false,
-                                                        'quicktags' => false,
-                                                        'editor_height' => 50,
-                                                        'textarea_rows' => 3,
-                                                        'tinymce' => array(
-                                                            'toolbar1' => 'bold,italic,strikethrough,image,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,spellchecker,fullscreen,wp_adv'
-                                                        )
-                                                    );
-                                                    ?>
-                                                    <?php wp_editor($update_previous_school, 'update_previous_school', $editor_settings); ?>
-                                                    <div class="clear-both"></div>
+                                                <div class="mt-bottom-10">
+                                                    <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Tutor\'s Tagline (Marketing)', 'iii-dictionary') ?>:</span>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="previous_school" value="<?php echo $update_previous_school ?>" id="previous-school-update">
+                                                    </div>
+                                                    </div>
                                                 </div>
-
-                                                <h4 class="mt-top-10 mt-bottom-12">Tell me why you like Tutoring and Teaching</h4>
-                                                <div id="desc-class2" class="mt-bottom-10">
-                                                    <span class="editor-top-left"></span>
-                                                    <span class="editor-top-right"></span>
-                                                    <span class="editor-bottom-left"></span>
-                                                    <span class="editor-bottom-right"></span>
-                                                    <?php
-                                                    $editor_settings = array(
-                                                        'wpautop' => false,
-                                                        'media_buttons' => false,
-                                                        'quicktags' => false,
-                                                        'editor_height' => 50,
-                                                        'textarea_rows' => 3,
-                                                        'tinymce' => array(
-                                                            'toolbar1' => 'bold,italic,strikethrough,image,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,spellchecker,fullscreen,wp_adv'
-                                                        )
-                                                    );
-                                                    ?>
-                                                    <?php wp_editor($desc_tell_update, 'desc_tell_update', $editor_settings); ?>
+                                                    
                                                     <div class="clear-both"></div>
-                                                </div>
+                                                
 
+                                                <h4 class="mt-top-10 mt-bottom-12">Why you like Tutoring and Teaching</h4>
+                                                <div class="mt-bottom-10">
+                                                    <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('How would you help student', 'iii-dictionary') ?>:</span>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="desc_tell_update" value="<?php echo $desc_tell_update ?>" id="desc_tell_update">
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clear-both"></div>    
                                                 <h4 class="mt-top-9 mt-bottom-7">Teaching experience (if any)</h4>
                                                 <div class="row mt-top-9">
                                                     <div class="col-sm-6 col-md-6 col-xs-12">
@@ -1400,6 +1405,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                     </div>
                                                     </div>
+                                                    <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
                                                     <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('School/Institute Name 2', 'iii-dictionary') ?>:</span>
@@ -1419,12 +1425,76 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    <!-- <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                    <?php 
+                                                        if($update_school_name_03 != ""){ ?>
+                                                            <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
+                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('School/Institute Name 3', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="years" value="<?php echo $update_years ?>" id="years-update">
-                                                            <span class="placeholder"><?php _e('Years', 'iii-dictionary') ?>:</span>
+                                                            <input type="text" class="form-control" name="school_name_03" value="<?php echo $update_school_name_03 ?>" id="school-name-update-03">
+                                                            
                                                         </div>
-                                                    </div> -->
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="teaching_subject_03" value="<?php echo $update_teaching_subject_03 ?>" id="subject-update-03">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>   
+                                                      <?php  }  ?>
+                                                    <?php 
+                                                        if($update_school_name_04 != ''){ ?>
+                                                            <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
+                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('School/Institute Name 4', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_name_04" value="<?php echo $update_school_name_04 ?>" id="school-name-update-04">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="teaching_subject_04" value="<?php echo $update_teaching_subject_04 ?>" id="subject-update-04">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>   
+                                                      <?php  }  ?>
+                                                      <?php 
+                                                        if($update_school_name_05 != ""){ ?>
+                                                            <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
+                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('School/Institute Name 5', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_name_05" value="<?php echo $update_school_name_05 ?>" id="school-name-update-05">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="teaching_subject_05" value="<?php echo $update_teaching_subject_05 ?>" id="subject-update-05">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>   
+                                                      <?php  }  ?>
+                                                    <div id="add-more-school" class="col-sm-12 col-md-12 col-xs-12 add-more">+Add More</div>
                                                 </div>
                                                 <!-- <label class="mt-top-9 mt-bottom-7">If you are a student: currently attending which school (if any)</label>
                                                 <div class="row mt-top-9">
@@ -1478,33 +1548,105 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     </div>
                                                     <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
                                                         <div class="find-general-border">
-                                                            <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
+                                                            <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_link1" value="<?php echo $update_school_link1 ?>" id="school-link1-update">
                                                             
                                                         </div>
                                                     </div>
                                                     </div>
-                                                </div>
-                                                <div class="row mt-top-14">
-                                                    <div class="col-sm-6 col-md-6 col-xs-12">
+
+                                                <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
                                                         <div class="find-general-border">
                                                              <span class="find-label"><?php _e('School/Institute Name 2', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name2" value="<?php echo $update_school_name2 ?>" id="school-name2-update">
-                                                            <span class="placeholder"><?php _e('School Name 2', 'iii-dictionary') ?>:</span>
+                                                            
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
                                                         <div class="find-general-border">
-                                                            <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
+                                                            <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_link2" value="<?php echo $update_school_link2 ?>" id="school-link2-update">
+
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <?php
+                                                    if($update_school_name3 != ""){ ?>
+                                                        <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
+                                                       <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                             <span class="find-label"><?php _e('School/Institute Name 3', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_name3" value="<?php echo $update_school_name3 ?>" id="school-name3-update">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_link3" value="<?php echo $update_school_link3 ?>" id="school-link3-update">
+
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+        
+                                                    <?php } ?>
+                                                    <?php
+                                                    if($update_school_name4 != ""){ ?>
+                                                        <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
+                                                       <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                             <span class="find-label"><?php _e('School/Institute Name 4', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_name4" value="<?php echo $update_school_name4 ?>" id="school-name4-update">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_link4" value="<?php echo $update_school_link4 ?>" id="school-link4-update">
+
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+        
+                                                    <?php } ?>
+                                                    <?php
+                                                    if($update_school_name5 != ""){ ?>
+                                                        <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
+                                                       <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                             <span class="find-label"><?php _e('School/Institute Name 5', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_name5" value="<?php echo $update_school_name5 ?>" id="school-name5-update">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_link5" value="<?php echo $update_school_link5 ?>" id="school-link5-update">
+
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+        
+                                                    <?php } ?>
+                                                     <div id="add-more-school-edu" class="col-sm-12 col-md-12 col-xs-12 add-more">+Add More</div>
                                                 </div>
+
                                                 <!-- <div class="row mt-top-14">
                                                     <div class="col-sm-12 col-md-12 col-xs-12">
                                                         <div class="form-group">
@@ -1513,13 +1655,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                     </div>
                                                 </div> -->
+                                               
                                                 <div class="row mt-top-14">
                                                     <div class="col-sm-12 col-md-12 col-xs-12">
                                                         <h4>Set Tutoring Preference</h4>
                                                         
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-xs-12">
-                                                    If you want to change what subjects you can tutor, click the link.&ensp 
+                                                    If you want to change what subjects you can tutor, click the link.&ensp; 
                                                     <p id="set-now-preference" name="set_now">Go to Tutoring Preference</p>
                                                     </div>
                                                 </div>
@@ -8720,10 +8863,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var subject_description = $('#description-update').val();
                             var school_name = $('#school-name-update').val();
                             var school_name_02 = $('#school-name-update-02').val();
+                            var school_name_03 = $('#school-name-update-03').val();
+                            var school_name_04 = $('#school-name-update-04').val();
+                            var school_name_05 = $('#school-name-update-05').val();
                             var teaching_link = $('#teaching-link-update').val();
 
                             var teaching_subject = $('#subject-update').val();
                             var teaching_subject_02 = $('#subject-update-02').val();
+                            var teaching_subject_03 = $('#subject-update-03').val();
+                            var teaching_subject_04 = $('#subject-update-04').val();
+                            var teaching_subject_05 = $('#subject-update-05').val();
+                            
                             var student_link = $('#student-link-update').val();
                             var user_years = $('#years-update').val();
                             var school_attend = $('#school-attend-update').val();
@@ -8732,11 +8882,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             var school_name1 = $('#school-name1-update').val();
                             var school_name2 = $('#school-name2-update').val();
+                            var school_name3 = $('#school-name3-update').val();
+                            var school_name4 = $('#school-name4-update').val();
+                            var school_name5 = $('#school-name5-update').val();
                             var school_link1 = $('#school-link1-update').val();
                             var school_link2 = $('#school-link2-update').val();
+                            var school_link3 = $('#school-link3-update').val();
+                            var school_link4 = $('#school-link4-update').val();
+                            var school_link5 = $('#school-link5-update').val();
                             var any_other = $('#any-other-update').val();
                             var user_grade = $("#grade-updateSelectBoxItText").attr("data-val");
-                            var desc_tell_me = $('#desc_tell_update_ifr').contents().find('#tinymce').text();
+                            var desc_tell_me = $('#desc_tell_update').val();
 
                             
                             var birth_m = $("#update_birth_mSelectBoxItText").attr("data-val");
@@ -8843,10 +8999,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     desc_tell_me: desc_tell_me,
                                     user_grade: user_grade,
                                     any_other: any_other,
-                                    school_link2: school_link2,
                                     school_link1: school_link1,
-                                    school_name2: school_name2,
+                                    school_link2: school_link2,
+                                    school_link3: school_link3,
+                                    school_link4: school_link4,
+                                    school_link5: school_link5,
                                     school_name1: school_name1,
+                                    school_name2: school_name2,
+                                    school_name3: school_name3,
+                                    school_name4: school_name4,
+                                    school_name5: school_name5,                                    
                                     user_major: user_major,
                                     user_gpa: user_gpa,
                                     school_attend: school_attend,
@@ -8854,9 +9016,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     student_link: student_link,
                                     teaching_subject: teaching_subject,
                                     teaching_subject_02: teaching_subject_02,
+                                    teaching_subject_03: teaching_subject_03,
+                                    teaching_subject_04: teaching_subject_04,
+                                    teaching_subject_05: teaching_subject_05,
+                                    
                                     teaching_link: teaching_link,
                                     school_name: school_name,
                                     school_name_02: school_name_02,
+                                    school_name_03: school_name_03,
+                                    school_name_04: school_name_04,
+                                    school_name_05: school_name_05,
                                     subject_description: subject_description,
                                     last_school: last_school,
                                     previous_school: previous_school,
@@ -19626,6 +19795,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             var teaching_subject = $('#teaching-subject').val();
                             var teaching_subject_02 = $('#teaching-subject-02').val();
+                            var teaching_subject_03 = $('#teaching-subject-03').val();
+                            var teaching_subject_04 = $('#teaching-subject-04').val();
+                            var teaching_subject_05 = $('#teaching-subject-05').val();
+
                             var student_link = $('#student-link').val();
                             var user_years = $('#user-years').val();
                             var school_attend = $('#school_attend').val();
@@ -19634,8 +19807,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             var school_name1 = $('#school-name1').val();
                             var school_name2 = $('#school-name2').val();
+                            var school_name3 = $('#school-name3').val();
+                            var school_name4 = $('#school-name4').val();
+                            var school_name5 = $('#school-name5').val();
                             var school_link1 = $('#school-link1').val();
                             var school_link2 = $('#school-link2').val();
+                            var school_link3 = $('#school-link3').val();
+                            var school_link4 = $('#school-link4').val();
+                            var school_link5 = $('#school-link5').val();
                             var any_other = $('#any-other').val();
                             var user_grade = $("#user-gradeSelectBoxItText").attr("data-val");
                             var desc_tell_me = $('#desc_tell_me_ifr').contents().find('#tinymce').text();
@@ -19684,10 +19863,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     desc_tell_me: desc_tell_me,
                                     user_grade: user_grade,
                                     any_other: any_other,
-                                    school_link2: school_link2,
                                     school_link1: school_link1,
-                                    school_name2: school_name2,
+                                    school_link2: school_link2,
+                                    school_link3: school_link3,
+                                    school_link4: school_link4,
+                                    school_link5: school_link5,
                                     school_name1: school_name1,
+                                    school_name2: school_name2,
+                                    school_name3: school_name3,
+                                    school_name4: school_name4,
+                                    school_name5: school_name5, 
                                     user_major: user_major,
                                     user_gpa: user_gpa,
                                     school_attend: school_attend,
@@ -19695,9 +19880,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     student_link: student_link,
                                     teaching_subject: teaching_subject,
                                     teaching_subject_02: teaching_subject_02,
+                                    teaching_subject_03: teaching_subject_03,
+                                    teaching_subject_04: teaching_subject_04,
+                                    teaching_subject_05: teaching_subject_05,
                                     teaching_link: teaching_link,
                                     school_name: school_name,
                                     school_name_02: school_name_02,
+                                    school_name_03: school_name_03,
+                                    school_name_04: school_name_04,
+                                    school_name_05: school_name_05,
                                     subject_description: subject_description,
                                     last_school: last_school,
                                     previous_school: previous_school,
@@ -23899,10 +24090,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#description-update').val(data.subject_description);
                                 $('#school-name-update').val(data.school_name);
                                 $('#school-name-update-02').val(data.school_name_02);
+                                $('#school-name-update-03').val(data.school_name_03);
+                                $('#school-name-update-04').val(data.school_name_04);
+                                $('#school-name-update-05').val(data.school_name_05);
                                 $('#teaching-link-update').val(data.teaching_link);
 
                                 $('#subject-update').val(data.teaching_subject);
                                 $('#subject-update-02').val(data.teaching_subject_02);
+                                $('#subject-update-03').val(data.teaching_subject_03);
+                                $('#subject-update-04').val(data.teaching_subject_04);
+                                $('#subject-update-05').val(data.teaching_subject_05);
                                 $('#student-link-update').val(data.student_link);
                                 $('#years-update').val(data.user_years);
                                 $('#school-attend-update').val(data.school_attend);
@@ -23911,8 +24108,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                 $('#school-name1-update').val(data.school_name1);
                                 $('#school-name2-update').val(data.school_name2);
+                                $('#school-name3-update').val(data.school_name3);
+                                $('#school-name4-update').val(data.school_name4);
+                                $('#school-name5-update').val(data.school_name5);
                                 $('#school-link1-update').val(data.school_link1);
                                 $('#school-link2-update').val(data.school_link2);
+                                $('#school-link3-update').val(data.school_link3);
+                                $('#school-link4-update').val(data.school_link4);
+                                $('#school-link5-update').val(data.school_link5);
                                 $('#any-other-update').val(data.any_other);
                                 $('#profile-value').val(data.profile_value); 
                                 $("#user-upload-img").attr('src',data.user_avatar);
@@ -24394,4 +24597,69 @@ function set_my_mce_editor_placeholder( $textarea_html ){
             }
     }
     });
+            $('#add-more-school').click(function(){
+                
+                for(i=3; i<6; i++){
+                    if(!document.getElementById("school-name-update-0"+i)){
+                                       
+                            var html = '';    
+                              
+                        html +=    '<div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">';
+                                                    html += '<div class="find-general-border">';
+                                                    html += `<span class="find-label">School/Institute Name ${i}:</span>`;
+                                                    html+= '<div class="form-group">';
+                                                    html+=  `<input type="text" class="form-control" name="school_name_0${i}" value="" id="school-name-update-0${i}">`;
+                                                    html+= '</div>';
+                                                    html+= '</div>';
+                                                    html+= '</div>';
+
+                                                    html+= '<div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">';
+                                                    html+= '<div class="find-general-border">';
+                                                    html+= '<span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?></span>';
+                                                    html+= '<div class="form-group">';
+                                                    html+= `<input type="text" class="form-control" name="teaching_subject_0${i}" value="" id="subject-update-0${i}">`;
+                                                            
+                                                    html+= '</div>';
+                                                    html+= '</div>';
+                                                    html+= '</div>';
+
+
+                            $(this).before(html);
+                            break;
+                        };
+                        };
+
+            });
+            $('#add-more-school-edu').click(function(){
+                
+                for(i=3; i<6; i++){
+                    if(!document.getElementById("school-name"+i+"-update")){
+                                       
+                            var html = ''; 
+                            
+                            html += `<div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">`;
+                                html += `<div class="find-general-border">`;
+                                    html += `<span class="find-label">School/Institute Name ${i}:</span>`;
+                                        html += `<div class="form-group">`;
+                                            html += `<input type="text" class="form-control" name="school_name${i}" value="" id="school-name${i}-update">`;
+                                                            
+                                        html += `</div>`;
+                                html += `</div>`;
+                            html += `</div>`;
+                            html += `<div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb mt-top-14">`;
+                                html += `<div class="find-general-border">`;
+                                 html += `<span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>`;
+                                    html += `<div class="form-group">`;
+                                        html += `<input type="text" class="form-control" name="school_link${i}" value="" id="school-link${i}-update">`;
+                                    html += `</div>`;
+                                html += `</div>`;
+                            html += `</div>`;
+
+                $(this).before(html);
+                            break;
+                        };
+                        };
+                    });
+
+
 </script>

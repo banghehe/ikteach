@@ -2582,9 +2582,15 @@ if ($task == "get_user_info") {
     if($subject_type != '') $subject_type_update = explode(',', $subject_type);
     $school_name = get_user_meta($user->ID, 'school_name', true);
     $school_name_02 = get_user_meta($user->ID, 'school_name_02', true);
+    $school_name_03 = get_user_meta($user->ID, 'school_name_03', true);
+    $school_name_04 = get_user_meta($user->ID, 'school_name_04', true);
+    $school_name_05 = get_user_meta($user->ID, 'school_name_05', true);
     $teaching_link = get_user_meta($user->ID, 'teaching_link', true);
     $teaching_subject = get_user_meta($user->ID, 'teaching_subject', true);
     $teaching_subject_02 = get_user_meta($user->ID, 'teaching_subject_02', true);
+    $teaching_subject_03 = get_user_meta($user->ID, 'teaching_subject_03', true);
+    $teaching_subject_04 = get_user_meta($user->ID, 'teaching_subject_04', true);
+    $teaching_subject_05 = get_user_meta($user->ID, 'teaching_subject_05', true);
     $student_link = get_user_meta($user->ID, 'student_link', true);
     $user_years = get_user_meta($user->ID, 'user_years', true);
     $school_attend = get_user_meta($user->ID, 'school_attend', true);
@@ -2593,8 +2599,14 @@ if ($task == "get_user_info") {
     $user_major = get_user_meta($user->ID, 'user_major', true);
     $school_name1 = get_user_meta($user->ID, 'school_name1', true);
     $school_name2 = get_user_meta($user->ID, 'school_name2', true);
+    $school_name3 = get_user_meta($user->ID, 'school_name3', true);
+    $school_name4 = get_user_meta($user->ID, 'school_name4', true);
+    $school_name5 = get_user_meta($user->ID, 'school_name5', true);
     $school_link1 = get_user_meta($user->ID, 'school_link1', true);
     $school_link2 = get_user_meta($user->ID, 'school_link2', true);
+    $school_link3 = get_user_meta($user->ID, 'school_link3', true);
+    $school_link4 = get_user_meta($user->ID, 'school_link4', true);
+    $school_link5 = get_user_meta($user->ID, 'school_link5', true);
     $any_other = get_user_meta($user->ID, 'any_other', true);
     $subject_description = get_user_meta($user->ID, 'subject_description', true);
 
@@ -2629,9 +2641,15 @@ if ($task == "get_user_info") {
                 'subject_type' => $subject_type_update,
                 'school_name' => $school_name,
                 'school_name_02' => $school_name_02,
+                'school_name_03' => $school_name_03,
+                'school_name_04' => $school_name_04,
+                'school_name_05' => $school_name_05,
                 'teaching_link' => $teaching_link,
                 'teaching_subject' => $teaching_subject,
                 'teaching_subject_02' => $teaching_subject_02,
+                'teaching_subject_03' => $teaching_subject_03,
+                'teaching_subject_04' => $teaching_subject_04,
+                'teaching_subject_05' => $teaching_subject_05,
                 'user_years' => $user_years,
                 'school_attend' => $school_attend,
                 'user_gpa' => $user_gpa,
@@ -2639,8 +2657,14 @@ if ($task == "get_user_info") {
                 'user_major' => $user_major,
                 'school_name1' => $school_name1,
                 'school_name2' => $school_name2,
+                'school_name3' => $school_name3,
+                'school_name4' => $school_name4,
+                'school_name5' => $school_name5,
                 'school_link1' => $school_link1,
                 'school_link2' => $school_link2,
+                'school_link3' => $school_link3,
+                'school_link4' => $school_link4,
+                'school_link5' => $school_link5,
                 'any_other' => $any_other,
                 'subject_description' => $subject_description,
                 'date_of_birth' => $date_of_birth,
@@ -2835,8 +2859,14 @@ if ($task == "update_info") {
     $any_other = $_REQUEST['any_other'];
     $school_link2 = $_REQUEST['school_link2'];
     $school_link1 = $_REQUEST['school_link1'];
+    $school_link3 = $_REQUEST['school_link3'];
+    $school_link4 = $_REQUEST['school_link4'];
+    $school_link5 = $_REQUEST['school_link5'];
     $school_name2 = $_REQUEST['school_name2'];
     $school_name1 = $_REQUEST['school_name1'];
+    $school_name3 = $_REQUEST['school_name3'];
+    $school_name4 = $_REQUEST['school_name4'];
+    $school_name5 = $_REQUEST['school_name5'];
     $user_major = $_REQUEST['user_major'];
     $user_gpa = $_REQUEST['user_gpa'];
     $school_attend = $_REQUEST['school_attend'];
@@ -2844,9 +2874,15 @@ if ($task == "update_info") {
     $student_link = $_REQUEST['student_link'];
     $teaching_subject = $_REQUEST['teaching_subject'];
     $teaching_subject_02 = $_REQUEST['teaching_subject_02'];
+    $teaching_subject_03 = $_REQUEST['teaching_subject_03'];
+    $teaching_subject_04 = $_REQUEST['teaching_subject_04'];
+    $teaching_subject_05 = $_REQUEST['teaching_subject_05'];
     $teaching_link = $_REQUEST['teaching_link'];
     $school_name = $_REQUEST['school_name'];
     $school_name_02 = $_REQUEST['school_name_02'];
+    $school_name_03 = $_REQUEST['school_name_03'];
+    $school_name_04 = $_REQUEST['school_name_04'];
+    $school_name_05 = $_REQUEST['school_name_05'];
     $subject_description = $_REQUEST['subject_description'];
     $type = $_REQUEST['type'];
     $time_zone = $_REQUEST['time_zone'];
@@ -2928,6 +2964,21 @@ if ($task == "update_info") {
             update_user_meta($current_user->ID, 'school_link1', $school_link1);
         }
 
+        if (isset($school_link3) && trim($school_link3) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'school_link3', $school_link3);
+        }
+
+        if (isset($school_link4) && trim($school_link4) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'school_link4', $school_link4);
+        }
+
+        if (isset($school_link5) && trim($school_link5) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'school_link5', $school_link5);
+        }
+
         if (isset($school_name2) && trim($school_name2) != '') {
             $form_valid = true;
             update_user_meta($current_user->ID, 'school_name2', $school_name2);
@@ -2936,6 +2987,21 @@ if ($task == "update_info") {
         if (isset($school_name1) && trim($school_name1) != '') {
             $form_valid = true;
             update_user_meta($current_user->ID, 'school_name1', $school_name1);
+        }
+
+        if (isset($school_name3) && trim($school_name3) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'school_name3', $school_name3);
+        }
+
+        if (isset($school_name4) && trim($school_name4) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'school_name4', $school_name4);
+        }
+
+        if (isset($school_name5) && trim($school_name5) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'school_name5', $school_name5);
         }
 
         if (isset($user_major) && trim($user_major) != '') {
@@ -2973,6 +3039,22 @@ if ($task == "update_info") {
             update_user_meta($current_user->ID, 'teaching_subject_02', $teaching_subject_02);
         }
 
+
+        if (isset($teaching_subject_03) && trim($teaching_subject_03) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'teaching_subject_03', $teaching_subject_03);
+        }
+
+        if (isset($teaching_subject_04) && trim($teaching_subject_04) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'teaching_subject_04', $teaching_subject_04);
+        }
+
+        if (isset($teaching_subject_05) && trim($teaching_subject_05) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'teaching_subject_05', $teaching_subject_05);
+        }
+
         if (isset($teaching_link) && trim($teaching_link) != '') {
             $form_valid = true;
             update_user_meta($current_user->ID, 'teaching_link', $teaching_link);
@@ -2986,6 +3068,21 @@ if ($task == "update_info") {
         if (isset($school_name_02) && trim($school_name_02) != '') {
             $form_valid = true;
             update_user_meta($current_user->ID, 'school_name_02', $school_name_02);
+        }
+
+        if (isset($school_name_03) && trim($school_name_03) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'school_name_03', $school_name_03);
+        }
+
+        if (isset($school_name_04) && trim($school_name_04) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'school_name_04', $school_name_04);
+        }
+
+        if (isset($school_name_05) && trim($school_name_05) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'school_name_05', $school_name_05);
         }
 
         if (isset($subject_description) && trim($subject_description) != '') {
@@ -3215,6 +3312,18 @@ if ($task == "update_info") {
                 update_user_meta($current_user->ID, 'school_link1', $school_link1);
             }
 
+            if (isset($school_link3) && trim($school_link3) != '') {
+                update_user_meta($current_user->ID, 'school_link3', $school_link3);
+            }
+
+            if (isset($school_link4) && trim($school_link4) != '') {
+                update_user_meta($current_user->ID, 'school_link4', $school_link4);
+            }
+
+            if (isset($school_link5) && trim($school_link5) != '') {
+                update_user_meta($current_user->ID, 'school_link5', $school_link5);
+            }
+
             if (isset($school_name2) && trim($school_name2) != '') {
                 update_user_meta($current_user->ID, 'school_name2', $school_name2);
             }
@@ -3223,6 +3332,17 @@ if ($task == "update_info") {
                 update_user_meta($current_user->ID, 'school_name1', $school_name1);
             }
 
+            if (isset($school_name3) && trim($school_name3) != '') {
+                update_user_meta($current_user->ID, 'school_name3', $school_name3);
+            }
+
+            if (isset($school_name4) && trim($school_name4) != '') {
+                update_user_meta($current_user->ID, 'school_name4', $school_name4);
+            }
+
+            if (isset($school_name5) && trim($school_name5) != '') {
+                update_user_meta($current_user->ID, 'school_name5', $school_name5);
+            }
             if (isset($user_major) && trim($user_major) != '') {
                 update_user_meta($current_user->ID, 'user_major', $user_major);
             }
@@ -3251,6 +3371,19 @@ if ($task == "update_info") {
                 update_user_meta($current_user->ID, 'teaching_subject_02', $teaching_subject_02);
             }
 
+            if (isset($teaching_subject_03) && trim($teaching_subject_03) != '') {
+                update_user_meta($current_user->ID, 'teaching_subject_03', $teaching_subject_03);
+            }
+
+            if (isset($teaching_subject_04) && trim($teaching_subject_04) != '') {
+                update_user_meta($current_user->ID, 'teaching_subject_04', $teaching_subject_04);
+            }
+
+            if (isset($teaching_subject_05) && trim($teaching_subject_05) != '') {
+                update_user_meta($current_user->ID, 'teaching_subject_05', $teaching_subject_05);
+            }
+
+
             if (isset($teaching_link) && trim($teaching_link) != '') {
                 update_user_meta($current_user->ID, 'teaching_link', $teaching_link);
             }
@@ -3261,6 +3394,18 @@ if ($task == "update_info") {
 
             if (isset($school_name_02) && trim($school_name_02) != '') {
                 update_user_meta($current_user->ID, 'school_name_02', $school_name_02);
+            }
+
+            if (isset($school_name_03) && trim($school_name_03) != '') {
+                update_user_meta($current_user->ID, 'school_name_03', $school_name_03);
+            }
+
+            if (isset($school_name_04) && trim($school_name_04) != '') {
+                update_user_meta($current_user->ID, 'school_name_04', $school_name_04);
+            }
+
+            if (isset($school_name_05) && trim($school_name_05) != '') {
+                update_user_meta($current_user->ID, 'school_name_05', $school_name_05);
             }
 
             if (isset($subject_description) && trim($subject_description) != '') {
