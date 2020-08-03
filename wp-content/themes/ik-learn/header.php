@@ -974,198 +974,193 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     }
                                     ?>
                                     <h3>Update My Account</h3>                                    
-                                    <form method="post" id="myUpdate" action="" name="updateAccount" enctype="multipart/form-data">
-                                        <h4>Basic Account Info:</h4>
+                                    <form class="update-account" method="post" id="myUpdate" action="" name="updateAccount" enctype="multipart/form-data">
+                                        <h4>Basic Account Info: <img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"></h4>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-12">
+                                            <div class="col-sm-8 col-md-8">
                                                 <div class="form-group">
+                                                    <label class="create-label mt-bottom-5"><?php _e('Email Address', 'iii-dictionary') ?>:</label>
                                                     <input id="update_username" class="form-control" name="update_username" type="text" value="<?php echo $update_username ?>" readonly="">
-                                                    <span class="placeholder"><?php _e('User Name', 'iii-dictionary') ?>:</span>
+                                                    <!-- <span class="placeholder"></span> -->
                                                 </div>
                                             </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-sm-5 col-md-5 mt-top-14">
-                                                <div class="form-group">
-                                                    <input id="update_password" class="form-control border-ras" name="update_password" type="text" value="<?php echo $update_user_password ?>" required>
-                                                    <span class="placeholder"><?php _e('Password', 'iii-dictionary') ?>:</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5 col-md-5 mt-top-14 mt-top-mb-24">
-                                                <div class="form-group">
-                                                    <input id="update_confirmpass" class="form-control border-ras" name="update_confirmpass" type="text" value="<?php echo $update_user_password ?>" required>
-                                                    <span class="placeholder"><?php _e('Confirm Password', 'iii-dictionary') ?>:</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-sm-2 col-md-2 mt-top-14 gender-pc">
-                                                <div id="update-gender-pc">
+                                            <div class="col-sm-4 col-md-4 gender-pc">
+                                                <div id="update-gender-pc">          
                                                     <div class="form-group">
-                                                        <div class="border-ras select-style" id="gender">
-                                                            <input type="text" class="form-control" name="update_birth_g_pc" value="<?php if($update_birth_g != '') echo $update_birth_g; else echo 'Gender'; ?>" id="update_birth_g_pc" readonly="">
+                                                    <label class="create-label"><?php _e('Gender', 'iii-dictionary') ?>:</label>
+                                                        <div class="border-ras select-style" id="gender_up">
+                                                            <?php if($update_birth_g != ''){ ?>
+                                                            <input type="text" class="form-control" name="update_birth_g_pc" value="<?php echo $update_birth_g; ?>" id="update_birth_g_pc" readonly="">
+                                                            <?php }else{ ?>
+                                                            <select id="update_birth_g_pc" class="select-box-it form-control" name="update_birth_g_pc">
+                                                                <option value="">Gender</option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                            </select>
+                                                            <?php
+                                                            }
+                                                            ?>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>                                            
+                                            </div>
                                             <div class="clearfix"></div>
                                             <div class="col-sm-6 col-md-6 mt-top-14">
                                                 <div class="form-group">
-                                                    <input id="update_first_name" class="form-control" name="update_first_name" type="text" value="<?php echo $update_first_name ?>" required>
-                                                    <span class="placeholder"><?php _e('First Name', 'iii-dictionary') ?>:</span>
+                                                    <label class="create-label mt-bottom-5"><?php _e('Password', 'iii-dictionary') ?>:</label>
+                                                    <input id="update_password" class="form-control border-ras" name="update_password" type="text" value="<?php echo $update_user_password ?>" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-6 mt-top-14 mt-top-mb-24">
                                                 <div class="form-group">
-                                                    <input id="update_last_name" class="form-control" name="update_last_name" type="text" value="<?php echo $update_last_name ?>" required>
-                                                    <span class="placeholder"><?php _e('Last Name', 'iii-dictionary') ?>:</span>
+                                                    <label class="create-label mt-bottom-5"><?php _e('Confirm Password', 'iii-dictionary') ?>:</label>
+                                                    <input id="update_confirmpass" class="form-control border-ras" name="update_confirmpass" type="text" value="<?php echo $update_user_password ?>" required>
                                                 </div>
                                             </div>
+                                            
+                                            <div class="clearfix"></div>
+                                            <div class="col-sm-6 col-md-6 mt-top-14">
+                                                <div class="form-group">
+                                                    <label class="create-label mt-bottom-5"><?php _e('First Name', 'iii-dictionary') ?>:</label>
+                                                    <input id="update_first_name" class="form-control" name="update_first_name" type="text" value="<?php echo $update_first_name ?>" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 mt-top-14 mt-top-mb-24">
+                                                <div class="form-group">
+                                                    <label class="create-label mt-bottom-5"><?php _e('Last Name', 'iii-dictionary') ?>:</label>    
+                                                    <input id="update_last_name" class="form-control" name="update_last_name" type="text" value="<?php echo $update_last_name ?>" required>
+                                                </div>
+                                            </div>
+                                            
                                             <div class="clearfix"></div>
                                             <div class="col-sm-12 col-md-12 mt-top-9">
-                                                <div class="form-group">
-                                                    <label class="create-label mt-bottom-11"><?php _e('Date of Birth', 'iii-dictionary') ?></label>
+                                                <h4>Date of Birth <img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"></h4>
                                                     <div class="row tiny-gutter">
-                                                        <div class="col-xs-12 col-sm-4 col-md-4 border-ras select-style" id="update_month">
-                                                            <select id="update_birth_m" class="select-box-it form-control" name="update-birth-m">
-                                                                <option value="">(Month)</option>
-                                                                <?php 
-                                                                for ($i = 1; $i <= 12; $i++) : 
-                                                                    $pad_str = str_pad($i, 2, '0', STR_PAD_LEFT);
-                                                                    if($pad_str == $update_birth_m)
-                                                                        $sel_um = 'selected="selected"';
-                                                                    else
-                                                                        $sel_um = ''; 
-                                                                ?>
-                                                                    <option value="<?php echo $pad_str ?>" <?php echo $sel_um ?>><?php echo $pad_str ?></option>
-                                                                <?php endfor ?>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-4 col-md-4 border-ras select-style" id="update_date">
-                                                            <select id="update_birth_d" class="select-box-it form-control" name="update-birth-d">
-                                                                <option value="">(Day)</option>
-                                                                <?php 
-                                                                for ($i = 1; $i <= 31; $i++): 
-                                                                    $pad_str = str_pad($i, 2, '0', STR_PAD_LEFT);
-                                                                    if($pad_str == $update_birth_d)
-                                                                        $sel_ud = 'selected="selected"';
-                                                                    else
-                                                                        $sel_ud = ''; 
-                                                                ?>
-                                                                    <option value="<?php echo $pad_str ?>" <?php echo $sel_ud ?>><?php echo $pad_str ?></option>
-                                                                <?php endfor ?>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-4 col-md-4 year-mb">
-                                                            <input id="update_birth_y" class="form-control" name="update-birth-y" type="text" value="<?php echo $update_birth_y ?>" required>
-                                                            <span class="placeholder"><?php _e('Year', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                        
-                                                        <div class="col-xs-12 col-sm-4 col-md-4 gender-mb">
-                                                            <div id="update-gender-mb">
-                                                                <div class="form-group">
-                                                                    <div class="border-ras select-style" id="update_gender">
-                                                                        <input readonly="" type="text" name="update_birth_g_mb" class="form-control" value="<?php if($update_birth_g != '') echo $update_birth_g; else echo 'Gender'; ?>" id="update_birth_g_mb">
-                                                                    </div>
-                                                                </div>
+                                                        <div class="col-xs-4 col-sm-4 col-md-4 border-ras select-style" id="update_month">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e('Month', 'iii-dictionary') ?>:</label>    
+                                                                <select id="update_birth_m" class="select-box-it form-control" name="update-birth-m">
+                                                                    <option value="">(Month)</option>
+                                                                    <?php 
+                                                                    for ($i = 1; $i <= 12; $i++) : 
+                                                                        $pad_str = str_pad($i, 2, '0', STR_PAD_LEFT);
+                                                                        if($pad_str == $update_birth_m)
+                                                                            $sel_um = 'selected="selected"';
+                                                                        else
+                                                                            $sel_um = ''; 
+                                                                    ?>
+                                                                    <option value="<?php echo $pad_str ?>" <?php echo $sel_um ?>>
+                                                                        <?php echo $pad_str ?>
+                                                                    </option>
+                                                                    <?php endfor ?>
+                                                                </select>
                                                             </div>
                                                         </div>
+                                                        <div class="col-xs-4 col-sm-4 col-md-4 border-ras select-style" id="update_date">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e('Date', 'iii-dictionary') ?>:</label>    
+                                                                <select id="update_birth_d" class="select-box-it form-control" name="update-birth-d">
+                                                                    <option value="">(Day)</option>
+                                                                    <?php 
+                                                                    for ($i = 1; $i <= 31; $i++): 
+                                                                        $pad_str = str_pad($i, 2, '0', STR_PAD_LEFT);
+                                                                        if($pad_str == $update_birth_d)
+                                                                            $sel_ud = 'selected="selected"';
+                                                                        else
+                                                                            $sel_ud = ''; 
+                                                                    ?>
+                                                                    <option value="<?php echo $pad_str ?>" <?php echo $sel_ud ?>>
+                                                                        <?php echo $pad_str ?>
+                                                                    </option>
+                                                                    <?php endfor ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-4 col-sm-4 col-md-4 year-mb">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e('Year', 'iii-dictionary') ?>:</label>    
+                                                                <input id="update_birth_y" class="form-control" name="update-birth-y" type="text" value="<?php echo $update_birth_y ?>" required>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form__boolean mt-bottom-10 clearfix" style="margin-top: 0">
+                                                    <div class="form-group">
+                                                        <label class="create-label">
+                                                            <?php _e('Language', 'iii-dictionary') ?>
+                                                        </label>
+                                                        <div class="border-ras select-style" id="gender">
+                                                            <select id="checkBoxSearch" class="select-box-it form-control" name="cb-lang">
+                                                                <option value="">Language</option>
+                                                                <option value="en" data-lang="ot">English</option>
+                                                                <option value="ja" data-lang="ja">Japanese</option>
+                                                                <option value="ko" data-lang="ko">Korean</option>
+                                                                <option value="zh" data-lang="zh">Chinese</option>
+                                                                <option value="zh-tw" data-lang="zh-tw">Traditional Chinese</option>
+                                                                <option value="vi" data-lang="vi">Vietnamese</option>
+                                                                <option value="ot" data-lang="ot">Others</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
                                                 </div>
                                             </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-sm-12 col-md-12">
-                                                <label class="create-label mt-top-10"><?php _e('Language', 'iii-dictionary') ?></label>
-                                                <div class="form__boolean mt-bottom-10 clearfix" id="checkBoxSearch" style="margin-top: 0">
-                                                    <div class="col-md-2 col-xs-4 cb-type2">
-                                                        <label>
-                                                            <input type="checkbox" class="radio_buttons option-input-2 radio" value="en" <?php if(count($update_language) > 0 && in_array("en", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            English
+
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form__boolean mt-bottom-10 clearfix" style="margin-top: 0">
+                                                    <div class="form-group">
+                                                        <label class="create-label">
+                                                            <?php _e('My Time Zone', 'iii-dictionary') ?>
                                                         </label>
-                                                    </div>
-                                                    <div class="col-md-2 col-xs-4 cb-type2">
-                                                        <label>
-                                                            <input type="checkbox" class="radio_buttons option-input-2 radio" value="ja" <?php if(count($update_language) > 0 && in_array("ja", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Japanese
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-2 col-xs-4 cb-type2">
-                                                        <label>
-                                                            <input type="checkbox"  class="radio_buttons option-input-2 radio" value="ko" <?php if(count($update_language) > 0 && in_array("ko", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Korean
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-2 col-xs-4 cb-type2">
-                                                        <label>
-                                                            <input type="checkbox" class="radio_buttons option-input-2 radio" value="zh" <?php if(count($update_language) > 0 && in_array("zh", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Chinese
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-2 col-xs-4 cb-type2">
-                                                        <label>
-                                                            <input type="checkbox" class="radio_buttons option-input-2 radio" value="zh-tw" <?php if(count($update_language) > 0 && in_array("zh-tw", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Traditional Chinese
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-2 col-xs-4 cb-type2">
-                                                        <label>
-                                                            <input type="checkbox" class="radio_buttons option-input-2 radio" value="vi" <?php if(count($update_language) > 0 && in_array("vi", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Vietnamese
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-2 col-xs-4 cb-type2">
-                                                        <label>
-                                                            <input type="checkbox" class="radio_buttons option-input-2 radio" value="ot" <?php if(count($update_language) > 0 && in_array("ot", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
-                                                            Others
-                                                        </label>
+                                                        <select class="select-box-it form-control" name="time_zone" id="update-time-zone">
+                                                                <option value="0" data-value="0" data-name="Europe/London" data-city="London" <?php if($time_zone_index == '0' ) echo 'selected="selected"'; ?>>Select Time Zone</option>
+                                                                <option value="1" data-value="-5" data-city="New York" data-name="America/New_York" <?php if($time_zone_index == '1' ) echo 'selected="selected"'; ?>>New York</option>
+                                                                <option value="2" data-value="-6" data-city="Minneapolis" data-name="America/Chicago" <?php if($time_zone_index == '2' ) echo 'selected="selected"'; ?>>Minneapolis</option>
+                                                                <option value="3" data-value="-5" data-city="Colorado" data-name="America/Denver" <?php if($time_zone_index == '3' ) echo 'selected="selected"'; ?>>Colorado</option>
+                                                                <option value="4" data-value="-7" data-city="San Francisco" data-name="America/Los_Angeles" <?php if($time_zone_index == '4' ) echo 'selected="selected"'; ?>>San Francisco</option>
+                                                                <option value="5" data-value="-10" data-city="Hawaii" data-name="Pacific/Honolulu" <?php if($time_zone_index == '5' ) echo 'selected="selected"'; ?>>Hawaii</option>
+                                                                <option value="6" data-value="+10" data-city="Guam" data-name="Pacific/Guam" <?php if($time_zone_index == '6' ) echo 'selected="selected"'; ?>>Guam</option>
+                                                                <option value="7" data-value="+9" data-city="Tokyo" data-name="Asia/Tokyo" <?php if($time_zone_index == '7' ) echo 'selected="selected"'; ?>>Tokyo</option>
+                                                                <option value="8" data-value="+9" data-city="Seoul" data-name="Asia/Seoul" <?php if($time_zone_index == '8' ) echo 'selected="selected"'; ?>>Seoul</option>
+                                                                <option value="9" data-value="+8" data-city="Beijing" data-name="Asia/Shanghai" <?php if($time_zone_index == '9' ) echo 'selected="selected"'; ?>>Beijing</option>
+                                                                <option value="10" data-value="+8" data-city="Xianyang" data-name="Asia/Shanghai" <?php if($time_zone_index == '10' ) echo 'selected="selected"'; ?>>Xianyang</option>
+                                                                <option value="11" data-value="+7" data-city="Hanoi" data-name="Asia/Ho_Chi_Minh" <?php if($time_zone_index == '11' ) echo 'selected="selected"'; ?>>Hanoi</option>
+                                                                <option value="12" data-value="+7" data-city="Bangkok" data-name="Asia/Bangkok" <?php if($time_zone_index == '12' ) echo 'selected="selected"'; ?>>Bangkok</option>
+                                                                <option value="13" data-value="+7" data-city="Myanmar" data-name="Asia/Rangoon" <?php if($time_zone_index == '13' ) echo 'selected="selected"'; ?>>Myanmar</option>
+                                                                <option value="14" data-value="+6" data-city="Bangladesh" data-name="Asia/Dhaka" <?php if($time_zone_index == '14' ) echo 'selected="selected"'; ?>>Bangladesh</option>
+                                                                <option value="15" data-value="+5" data-city="Sri Lanka" data-name="Asia/Colombo" <?php if($time_zone_index == '15' ) echo 'selected="selected"'; ?>>Sri Lanka</option>
+                                                                <option value="16" data-value="+5" data-city="New Delhi" data-name="Asia/Kolkata" <?php if($time_zone_index == '16' ) echo 'selected="selected"'; ?>>New Delhi</option>
+                                                                <option value="17" data-value="+5" data-city="Mumbai" data-name="Asia/Kolkata" <?php if($time_zone_index == '17' ) echo 'selected="selected"'; ?>>Mumbai</option>
+                                                                <option value="18" data-value="0" data-city="London" data-name="Europe/London" <?php if($time_zone_index == '18' ) echo 'selected="selected"'; ?>>London</option>
+                                                                <option value="19" data-value="+5" data-city="Sydney" data-name="Australia/Sydney" <?php if($time_zone_index == '19' ) echo 'selected="selected"'; ?>>Sydney</option>
+                                                            </select>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-12 col-md-12 profile-pic mt-top-14" style="clear: both;">
-                                                <label class="create-label img-profile">Profile Picture (optional)</label>
+                                                <label class="create-label img-profile">Profile Picture (optional) <img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"></label>
                                                 <div class="row">
                                                     <div class="col-sm-4 col-md-4 mt-top-9">
-                                                        <div class="form-group">
+                                                        <div class="user-image-container">
                                                             <img id="user-upload-img" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Image_Person.png" alt="Profile Picture" style="display: inline-block; margin-right: 14px;">
-                                                            <input class="form-control input-file" type="file" id="input-image" value="" >
-                                                            <button class="btn-dark-blue border-btn" style="background: #cecece; display: inline-block; width: 82%" type="button" name="upload"  onclick="document.getElementById('input-image').click();"><?php _e('Browse', 'iii-dictionary') ?></button>
+                                                            <input class="form-control input-file" type="file" id="input-image" value="">
+                                                            <button class="btn-dark-blue border-btn" style="background: #cecece; display: inline-block; width: 82%" type="button" name="upload" onclick="document.getElementById('input-image').click();">
+                                                                <?php _e('Browse', 'iii-dictionary') ?>
+                                                            </button>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-sm-8 col-md-8 mt-top-9" >
+                                                    <div class="col-sm-8 col-md-8 mt-top-9">
                                                         <div class="form-group">
                                                             <input class="form-control input-path" id="profile-value" type="text" value="<?php echo $profile_value ?>">
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-sm-6 col-md-6 col-xs-6 mt-top-mb-12">
-                                                <label class="create-label mt-top-10">
-                                                    <?php _e('My Time Zone', 'iii-dictionary') ?>
-                                                </label>
-                                                <div class="form-group border-ras select-style user-timezone mt-top-8">
-                                                    <select class="select-box-it form-control" name="time_zone" id="update-time-zone">
-                                                        <option value="0" data-value="0" data-name="Europe/London" data-city="London" <?php if($time_zone_index == '0' ) echo 'selected="selected"'; ?>>Select Time Zone</option>
-                                                        <option value="1" data-value="-5" data-city="New York" data-name="America/New_York" <?php if($time_zone_index == '1' ) echo 'selected="selected"'; ?>>New York</option>
-                                                        <option value="2" data-value="-6" data-city="Minneapolis" data-name="America/Chicago" <?php if($time_zone_index == '2' ) echo 'selected="selected"'; ?>>Minneapolis</option>
-                                                        <option value="3" data-value="-5" data-city="Colorado" data-name="America/Denver" <?php if($time_zone_index == '3' ) echo 'selected="selected"'; ?>>Colorado</option>
-                                                        <option value="4" data-value="-7" data-city="San Francisco" data-name="America/Los_Angeles" <?php if($time_zone_index == '4' ) echo 'selected="selected"'; ?>>San Francisco</option>
-                                                        <option value="5" data-value="-10" data-city="Hawaii" data-name="Pacific/Honolulu" <?php if($time_zone_index == '5' ) echo 'selected="selected"'; ?>>Hawaii</option>
-                                                        <option value="6" data-value="+10" data-city="Guam" data-name="Pacific/Guam" <?php if($time_zone_index == '6' ) echo 'selected="selected"'; ?>>Guam</option>
-                                                        <option value="7" data-value="+9" data-city="Tokyo" data-name="Asia/Tokyo" <?php if($time_zone_index == '7' ) echo 'selected="selected"'; ?>>Tokyo</option>
-                                                        <option value="8" data-value="+9" data-city="Seoul" data-name="Asia/Seoul" <?php if($time_zone_index == '8' ) echo 'selected="selected"'; ?>>Seoul</option>
-                                                        <option value="9" data-value="+8" data-city="Beijing" data-name="Asia/Shanghai" <?php if($time_zone_index == '9' ) echo 'selected="selected"'; ?>>Beijing</option>
-                                                        <option value="10" data-value="+8" data-city="Xianyang" data-name="Asia/Shanghai" <?php if($time_zone_index == '10' ) echo 'selected="selected"'; ?>>Xianyang</option>
-                                                        <option value="11" data-value="+7" data-city="Hanoi" data-name="Asia/Ho_Chi_Minh" <?php if($time_zone_index == '11' ) echo 'selected="selected"'; ?>>Hanoi</option>
-                                                        <option value="12" data-value="+7" data-city="Bangkok" data-name="Asia/Bangkok" <?php if($time_zone_index == '12' ) echo 'selected="selected"'; ?>>Bangkok</option>
-                                                        <option value="13" data-value="+7" data-city="Myanmar" data-name="Asia/Rangoon" <?php if($time_zone_index == '13' ) echo 'selected="selected"'; ?>>Myanmar</option>
-                                                        <option value="14" data-value="+6" data-city="Bangladesh" data-name="Asia/Dhaka" <?php if($time_zone_index == '14' ) echo 'selected="selected"'; ?>>Bangladesh</option>
-                                                        <option value="15" data-value="+5" data-city="Sri Lanka" data-name="Asia/Colombo" <?php if($time_zone_index == '15' ) echo 'selected="selected"'; ?>>Sri Lanka</option>
-                                                        <option value="16" data-value="+5" data-city="New Delhi" data-name="Asia/Kolkata" <?php if($time_zone_index == '16' ) echo 'selected="selected"'; ?>>New Delhi</option>
-                                                        <option value="17" data-value="+5" data-city="Mumbai" data-name="Asia/Kolkata" <?php if($time_zone_index == '17' ) echo 'selected="selected"'; ?>>Mumbai</option>
-                                                        <option value="18" data-value="0" data-city="London" data-name="Europe/London" <?php if($time_zone_index == '18' ) echo 'selected="selected"'; ?>>London</option>
-                                                        <option value="19" data-value="+5" data-city="Sydney" data-name="Australia/Sydney" <?php if($time_zone_index == '19' ) echo 'selected="selected"'; ?>>Sydney</option>
-                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
@@ -1176,163 +1171,156 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 $style = 'style="display: none;"';
                                             ?>
                                             <div id="tutor-regis-update" class="col-md-12" <?php echo $style ?>>
-                                                <h4>Teacher and Tutor Account Info:</h4>
+                                                <h4>Tutor Personal Info: <img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"></h4>
                                                 <div id="info-update">
                                                     <div class="row">                                                    
                                                         <div class="col-sm-6 col-md-6 col-xs-12">
                                                             <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e('Mobile Number', 'iii-dictionary') ?>:</label>    
                                                                 <input type="text" class="form-control" name="mobile_number" value="<?php echo $update_mobile_number ?>" id="mobile-number-update">
-                                                                <span class="placeholder"><?php _e('Mobile Number', 'iii-dictionary') ?>:</span>
                                                             </div>
                                                         </div>
-
                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
                                                             <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e('Current Profession', 'iii-dictionary') ?>:</label>    
                                                                 <input type="text" class="form-control" name="profession" value="<?php echo $update_profession ?>" id="profession-update">
-                                                                <span class="placeholder"><?php _e('Profession', 'iii-dictionary') ?>:</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
                                                             <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e('Last School Attended', 'iii-dictionary') ?>:</label>    
                                                                 <input type="text" class="form-control" name="last_school" value="<?php echo $update_last_school ?>" id="last-school-update">
-                                                                <span class="placeholder"><?php _e('Last School Attended', 'iii-dictionary') ?>:</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" name="previous_school" value="<?php echo $update_previous_school ?>" id="previous-school-update">
-                                                                <span class="placeholder"><?php _e('School Taught At (if any)', 'iii-dictionary') ?>:</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
-                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e('Skype ID (Optional)', 'iii-dictionary') ?>:</label>    
                                                                 <input type="text" class="form-control" name="skype" value="<?php echo $update_skype ?>" id="skype-update">
-                                                                <span class="placeholder"><?php _e('Skype ID (if any)', 'iii-dictionary') ?>:</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-12 profile-pic mt-top-14" style="clear: both;">
+                                                            <h4>Main Image (Optional) <img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"></h4>
+                                                            <div class="row">
+                                                                <div class="col-sm-4 col-md-4 mt-top-9">
+                                                                    <div class="user-image-container">
+                                                                        <input class="form-control input-file" type="file" id="input-image" value="">
+                                                                        <button class="btn-dark-blue border-btn" style="background: #cecece; display: inline-block; width: 100%" type="button" name="upload" onclick="document.getElementById('input-image').click();">
+                                                                            <?php _e('Browse', 'iii-dictionary') ?>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-8 col-md-8 mt-top-9">
+                                                                    <div class="form-group">
+                                                                        <input class="form-control input-path" id="profile-value" type="text" value="<?php echo $profile_value ?>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>                
+                                                        <div class="col-sm-12 col-md-12 profile-pic mt-top-14" style="clear: both;">
+                                                            <h4>Tagline <img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"></h4>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-md-12 mt-top-9">
+                                                                    <div class="form-group">
+                                                                        <label class="create-label mt-bottom-5"><?php _e("Tutor's tagline (Marketing)", 'iii-dictionary') ?>:</label>    
+                                                                        <input type="text" class="form-control" name="skype" value="<?php echo $update_skype ?>" id="skype-update">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-12 profile-pic mt-top-14" style="clear: both;">
+                                                    <h4>Why I Like Tutoring? </h4>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12 mt-top-9">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e("How would you help student?", 'iii-dictionary') ?>:</label>    
+                                                                <input type="text" class="form-control" name="desc_tell_update" value="<?php echo $update_skype ?>" id="skype-update">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <label class="mt-top-10 mt-bottom-12">Tell me why you like Tutoring and Teaching</label>
-                                                <div id="desc-class2" class="mt-bottom-10">
+                                                <div class="col-sm-12 col-md-12 profile-pic mt-top-14" style="clear: both;">
+                                                    <h4>Teaching Experience (Optional) <img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"></h4>
                                                     
-                                                    
-                                                    <?php wp_editor($desc_tell_update, 'desc_tell_update', $editor_settings); ?>
-                                                    <div class="clear-both"></div>
+                                                    <div class="row mt-top-9">
+                                                        <div class="col-sm-6 col-md-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e("School / Institute Name 1", 'iii-dictionary') ?>:</label>    
+                                                                <input type="text" class="form-control" name="teaching_exp_name1" value="<?php echo $update_school_name1 ?>" id="school-name1-update">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e("Subject and What Year (divided by comma)", 'iii-dictionary') ?>:</label>    
+                                                                <input type="text" class="form-control" name="teaching_exp_link1" value="<?php echo $update_school_link1 ?>" id="school-link1-update">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-top-9">
+                                                        <div class="col-sm-6 col-md-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e("School / Institute Name 2", 'iii-dictionary') ?>:</label>    
+                                                                <input type="text" class="form-control" name="teaching_exp_name2" value="<?php echo $update_school_name2 ?>" id="school-name2-update">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e("Subject and What Year (divided by comma)", 'iii-dictionary') ?>:</label>    
+                                                                <input type="text" class="form-control" name="teaching_exp_link2" value="<?php echo $update_school_link2 ?>" id="school-link2-update">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        
+                                                        
+                                                </div>
+                                                
+                                                
+                                                <div class="col-sm-12 col-md-12 profile-pic mt-top-14" style="clear: both;">
+                                                    <h4>Educational Background (Optional) <img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"></h4>
+                                                    <div class="row mt-top-9">
+                                                        <div class="col-sm-6 col-md-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e("School / Institute Name 1", 'iii-dictionary') ?>:</label>    
+                                                                <input type="text" class="form-control" name="school_name1" value="<?php echo $update_school_name1 ?>" id="school-name1-update">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">                                            
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e("Subject and What Year (divided by comma)", 'iii-dictionary') ?>:</label>    
+                                                                <input type="text" class="form-control" name="school_link1" value="<?php echo $update_school_link1 ?>" id="school-link1-update">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-top-9">
+                                                        <div class="col-sm-6 col-md-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e("School / Institute Name 2", 'iii-dictionary') ?>:</label>    
+                                                                <input type="text" class="form-control" name="school_name2" value="<?php echo $update_school_name2 ?>" id="school-name2-update">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
+                                                            <div class="form-group">
+                                                                <label class="create-label mt-bottom-5"><?php _e("Subject and What Year (divided by comma)", 'iii-dictionary') ?>:</label>    
+                                                                <input type="text" class="form-control" name="school_link2" value="<?php echo $update_school_link2 ?>" id="school-link2-update">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
-                                                <label class="mt-top-9 mt-bottom-7">Teaching experience (if any)</label>
-                                                <div class="row mt-top-9">
-                                                    <div class="col-sm-6 col-md-6 col-xs-12">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_name" value="<?php echo $update_school_name ?>" id="school-name-update">
-                                                            <span class="placeholder"><?php _e('School Name', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_link" value="<?php echo $update_teaching_link ?>" id="teaching-link-update">
-                                                            <span class="placeholder"><?php _e('Link (if any)', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject" value="<?php echo $update_teaching_subject ?>" id="subject-update">
-                                                            <span class="placeholder"><?php _e('Subject', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="years" value="<?php echo $update_years ?>" id="years-update">
-                                                            <span class="placeholder"><?php _e('Years', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <label class="mt-top-9 mt-bottom-7">If you are a student: currently attending which school (if any)</label>
-                                                <div class="row mt-top-9">
-                                                    <div class="col-sm-6 col-md-6 col-xs-12">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_attend" value="<?php echo $update_school_attend ?>" id="school-attend-update">
-                                                            <span class="placeholder"><?php _e('Attending', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="student_link" value="<?php echo $update_student_link ?>" id="student-link-update">
-                                                            <span class="placeholder"><?php _e('Link (if any)', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-top-14">
-                                                    <div class="col-sm-4 col-md-4 cb-type4">
-                                                        <div class="form-group border-ras select-style">
-                                                            <select class="select-box-it form-control" name="birth-m" id="grade-update">
-                                                                <option value="1" <?php if($update_grade == '1') echo 'selected="selected"'; ?>>Freshman</option>
-                                                                <option value="2" <?php if($update_grade == '2') echo 'selected="selected"'; ?>>Sophomore</option>
-                                                                <option value="3" <?php if($update_grade == '3') echo 'selected="selected"'; ?>>Junior</option>
-                                                                <option value="4" <?php if($update_grade == '4') echo 'selected="selected"'; ?>>Senior</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 cb-type4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="gpa" value="<?php echo $update_gpa ?>" id="gpa-update">
-                                                            <span class="placeholder"><?php _e('GPA', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 cb-type4 mt-top-mb">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="major" value="<?php echo $update_major ?>" id="major-update">
-                                                            <span class="placeholder"><?php _e('Major', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <label class="mt-top-9 mt-bottom-7">Educational Background</label>
-                                                <div class="row mt-top-9">
-                                                    <div class="col-sm-6 col-md-6 col-xs-12">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_name1" value="<?php echo $update_school_name1 ?>" id="school-name1-update">
-                                                            <span class="placeholder"><?php _e('School Name 1', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_link1" value="<?php echo $update_school_link1 ?>" id="school-link1-update">
-                                                            <span class="placeholder"><?php _e('Link (if any)', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-top-14">
-                                                    <div class="col-sm-6 col-md-6 col-xs-12">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_name2" value="<?php echo $update_school_name2 ?>" id="school-name2-update">
-                                                            <span class="placeholder"><?php _e('School Name 2', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_link2" value="<?php echo $update_school_link2 ?>" id="school-link2-update">
-                                                            <span class="placeholder"><?php _e('Link (if any)', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-top-14">
-                                                    <div class="col-sm-12 col-md-12 col-xs-12">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="any_other" value="<?php echo $update_any_other ?>" id="any-other-update">
-                                                            <span class="placeholder"><?php _e('Others', 'iii-dictionary') ?>:</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-top-14">
-                                                    <div class="col-sm-12 col-md-12 col-xs-12">
-                                                        <label>Set Tutoring Preference<img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"></label>
-                                                        <button id="set-now-preference" class="btn-dark-blue border-btn" style="background: #CECECE;" type="button" name="set_now">Set Now</button>
-                                                    </div>
+                                                <div class="col-sm-12 col-md-12 profile-pic mt-top-14" style="clear: both;">
+                                                    <h4>Tutoring Preference <img class="icon-more-info" data-type="set-now-preference" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_MoreInfo.png"> </h4>
+                                                    <label> If you want to change what subjects you can tutor, click the link <a href="">Go to Tutoring Preference</a></label>
                                                 </div>
                                             </div>
                                         </div>                                        
-                                        <div class="row mt-top-14">
+                                        <div class="row mt-top-14 tutor-regis-update">
                                             <div class="col-sm-6 col-md-6 col-xs-12 mt-top-4">
                                                 <div class="form-group">
                                                     <button id="update-teacher" class="btn-dark-blue border-btn" style="background: #65C762;" type="button" name="send-tutor">
@@ -1371,12 +1359,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control" name="last_school" value="" id="last-school">
                                                                  <span class="placeholder"><?php _e('Last School Attended', 'iii-dictionary') ?>:</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" name="previous_school" value="" id="previous-school">
-                                                                <span class="placeholder"><?php _e('School Taught At (if any)', 'iii-dictionary') ?>:</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">

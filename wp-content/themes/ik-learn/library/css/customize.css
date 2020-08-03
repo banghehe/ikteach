@@ -11006,7 +11006,7 @@ background: url(../images/chevron-l.png) no-repeat !important;
 }
 .select-style .select-box-it {
     border: none !important;
-    background: #F4f7f7!important;
+    /* background: #F4f7f7!important; */
     height: 28px !important;
      padding-left: 20px !important;
          padding-top: 0;
@@ -13317,8 +13317,8 @@ font-weight: bold;
     cursor: pointer;
 }
 .icon-more-info{
-    width: 17px;
-    height: 17px;
+    width: 17px !important;
+    height: 17px !important;
     display: inline-block;
     margin-left: 5px;
     cursor: pointer;
@@ -13541,7 +13541,7 @@ font-weight: bold;
 }
 #update_birth_g_pc,
 #update_birth_g_mb{
-    background: #F4F7F7;
+    /* background: #F4F7F7; */
     color: #9c9c9c!important;
     border: 0!important;
 }
@@ -15199,6 +15199,63 @@ font-weight: bold;
 ::-ms-input-placeholder {
   color: #a4a4a4;
 }
+
+
+/* Rifky Customize */
+
+.update-account .form-group {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    padding: 10px;
+}
+.update-account .form-control {
+    border: none !important;
+    padding-left: 0;
+    background-color: transparent !important;
+}
+
+.update-account .selectboxit {
+    padding-left: 0px !important;
+}
+
+.update-account .selectboxit-option-icon-container {
+    margin-left: 0px !important;
+}
+
+.update-account .selectboxit-text {
+    text-indent: 0px;
+    color: #4b4b4b !important;
+}
+
+.selectboxit-list .selectboxit-option-anchor {
+    color: #000 !important;
+}
+
+.user-image-container {
+    display: flex;
+}
+
+.user-image-container img, .user-image-container button { 
+    border-radius: 5px !important;
+    height: 50px;
+}
+
+.user-image-container img{
+    width: 50px;
+}
+
+.user-image-container button{
+    width: 200px;
+}
+
+.tutor-regis-update .form-group{
+    border: none !important;
+}
+
+#gender_up {
+    margin-bottom: 0;
+}
+
 @media(min-width: 992px){
     #tutorForm .chk-subject-type .col-md-2,
     #myUpdate .chk-subject-type .col-md-2{
