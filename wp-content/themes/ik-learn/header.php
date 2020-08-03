@@ -156,7 +156,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
             <script>(function ($) {
                     $(function () {
                         if (localStorage.getItem('boologin') == null) {
-                            console.log(localStorage.getItem('boologin'));
                             $("#myModal-login").modal("show");
                             localStorage.setItem('boologin', 1);
                         }
@@ -7856,11 +7855,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
                                 else{
                                     if (document.documentMode || /Edge/.test(navigator.userAgent)) {
-                                        //console.log("Edge");
                                         var offset = getDistancePlace(text, "Edge");
                                     }else if (navigator.userAgent.search("Firefox") >= 0){
                                         var offset = getDistancePlace(text, "Firefox");
-                                        //console.log("Firefox");
                                     }else{
                                         var offset = 18;
                                     }
@@ -8511,11 +8508,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         }
                                         else{
                                             if (document.documentMode || /Edge/.test(navigator.userAgent)) {
-                                                //console.log("Edge");
                                                 var offset = getDistancePlace(text, "Edge");
                                             }else if (navigator.userAgent.search("Firefox") >= 0){
                                                 var offset = getDistancePlace(text, "Firefox");
-                                                //console.log("Firefox");
                                             }else{
                                                 var offset = 18;
                                             }
@@ -8833,11 +8828,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
                                 else{
                                     if (document.documentMode || /Edge/.test(navigator.userAgent)) {
-                                        //console.log("Edge");
                                         var offset = getDistancePlace(text, "Edge");
                                     }else if (navigator.userAgent.search("Firefox") >= 0){
                                         var offset = getDistancePlace(text, "Firefox");
-                                        //console.log("Firefox");
                                     }else{
                                         var offset = 18;
                                     }
@@ -8857,11 +8850,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
                                 else{
                                     if (document.documentMode || /Edge/.test(navigator.userAgent)) {
-                                        //console.log("Edge");
                                         var offset = getDistancePlace(text, "Edge");
                                     }else if (navigator.userAgent.search("Firefox") >= 0){
                                         var offset = getDistancePlace(text, "Firefox");
-                                        //console.log("Firefox");
                                     }else{
                                         var offset = 18;
                                     }
@@ -19623,11 +19614,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }
                                 var childs = $('#select-timelot-subjectSelectBoxItOptions').children();
                                 var all = english.length + math.length + science.length +2;
-                                console.log(all);
                                 if(!(childs.length != all)){
                                     childs.each(function(){
                                         if($(this).attr('data-id')== (all-1)){
-                                            console.log($(this).addClass('selectboxit-option-last'));
                                         }
                                     });
                                 }
@@ -19766,7 +19755,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     enable_group_tutoring: enable_group_tutoring,
                                     type: "tutoring"
                                 }
-                                console.log(post_data);
                             if(form_valid){
                                 $.post(home_url + "/?r=ajax/update_info",post_data , function (data) {
                                     update_timelot_subject_item(post_data);
@@ -20860,7 +20848,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     index: index
                                 }, function (data) {
                                     active_day_tutor.push(date);
-                                    console.log(active_day_tutor);
                                     //$('#active-day-tutor').val(active_day_tutor);
                                     initCalendar('update');
                                 });   
@@ -21296,7 +21283,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var day = day.split("-");
                             day[2] = day[2] - 1;
                             var cur_day = day[0] + "-" + day[1] + "-" + day[2];
-                            console.log(cur_day);
                             get_list_schedule_tutor('schedule');
                             get_scheduled_day_tutor(cur_day,type);
                         });
@@ -22246,6 +22232,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#top-popup-message').css("display", "block");
                             }
                             $("#popup-option-timelot").css("display","none");
+                            var day = $(".schedule-rightbtn").attr("data-day");
+                            var type = $(".schedule-rightbtn").attr("data-type");
+                            var day = day.split("-");
+                            day[2] = day[2] - 1;
+                            var cur_day = day[0] + "-" + day[1] + "-" + day[2];
+                            get_list_schedule_tutor('schedule');
+                            get_scheduled_day_tutor(cur_day,type);
+                            
                         });
 
                         $(".btn-option-timelot").live('click', function () {
@@ -22430,11 +22424,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var text = $('#select-timezoneSelectBoxItText').text();
                             var font = $('#select-timezoneSelectBoxItText').css("font");
                             if (document.documentMode || /Edge/.test(navigator.userAgent)) {
-                                //console.log("Edge");
                                 var offset = getDistancePlace(text, "Edge");
                             }else if (navigator.userAgent.search("Firefox") >= 0){
                                 var offset = getDistancePlace(text, "Firefox");
-                                //console.log("Firefox");
                             }else{
                                 var offset = getDistancePlace(text, "Chrome");
                             }
@@ -22566,7 +22558,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
                                 
                                 if($.inArray(formattedDate, activeDay) != -1){
-                                    //console.log('Sau: '+activeDay);
                                     if(!$(this).hasClass('activeClass')){
                                         $(this).addClass('activeClass');
                                     }
@@ -22582,7 +22573,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 if(active_Day != ''){
                                     activeDay = $.parseJSON(active_Day);
                                 }
-                                //console.log('update');
                                 $('#sandbox-container-tutor td.day').each(function () {
                                     var full_date = $(this).attr('data-day');
                                     var st = full_date.split("/");
@@ -22606,7 +22596,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 if(active_Day != ''){
                                     activeDay = $.parseJSON(active_Day);
                                 }
-                                //console.log('change');
                                 $('#sandbox-container-tutor td.day').each(function () {
                                     var full_date = $(this).attr('data-day');
                                     var st = full_date.split("/");
@@ -22638,7 +22627,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     if(active_Day != ''){
                                         activeDay = $.parseJSON(active_Day);
                                         $('#sandbox-container-tutor td.day').removeClass('activeClass');    
-                                        //console.log(activeDay);
                                     }
                                     $('#sandbox-container-tutor td.day').each(function () {
                                         var full_date = $(this).attr('data-day');
@@ -22800,7 +22788,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var tbody_request = $("#table-status-schedule");
                             tbody_request.html('');
                             $.get(home_url + "/?r=ajax/get_request_status", {type: type}, function (data) {
-                                //console.log(data);
                                 data = JSON.parse(data);
                                 if (data.status.length > 0) {
                                     $.each(data.status, function (i, v) {  
@@ -22849,7 +22836,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             ul_scheduled.html("");
                             ul_upcoming.html("");
                             $.get(home_url + "/?r=ajax/get_scheduled_day_tutor", {day: day}, function (data) {
-                                // console.log(data);
                                 data = JSON.parse(data);
                                 $('.btn-new-request').attr('data-points',data.points);
                                 $('.btn-new-request').attr('data-price-tutoring',data.price_tutoring);
@@ -22891,7 +22877,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             if(height1 < 0 && index_ed1 < 0){
                                                 top1 = top1 + index_st1;
                                             }
-                                            //console.log(top1 +'|'+height1+'|'+index_st1+'|'+index_ed1);
                                             //background: #' + slot_available +';
 
                                             if(top1 < 0) top1 = top1 - 8;
@@ -22912,12 +22897,28 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             var txt_accept = 'Available';
                                             var count_user = v.users;
                                         }
+                                        
+                                        var img = 'library/images/icon_1on1.png'
+
+                                        if(v.group_tutoring){
+                                            img = 'library/images/icon_Group.png'
+                                        }
+
+                                        var anySubject = "All my subject"
+
+                                        if(v.subject_type){
+                                            if(v.subject_type != "any"){
+                                                anySubject = v.subject_name
+                                            }
+                                        }else{
+                                            anySubject = "No Subject Selected"
+                                        }
 
                                         if(v.users == 0){
                                             var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + '" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
                                             li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
-                                            li += '<span class="subject-scheduled">Available</span>';
-                                            li += '</span><span id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">0</span></span></li>';
+                                            li += '<span class="subject-scheduled"><img style="max-height:15px;" src="<?php echo get_template_directory_uri(); ?>/'+img+'"> &nbsp; '+anySubject+'</span>';
+                                            li += '</span><span style="display:table-cell;width:25%;" id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">0</span></span></li>';
                                         }else{
                                             var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + ' active" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
                                             li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
@@ -22996,7 +22997,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         function getCountStudents(day = ''){
                             $.get(home_url + "/?r=ajax/get_students_count", {day: day}, function (data) {
-                                //console.log(data);
                                 data = JSON.parse(data);
 
                                 if (data.availables.length > 0) {
@@ -23085,7 +23085,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             if(formattedDate == date){
                                 minute = $('#time-clock').attr('data-minute');
                             }
-                            //console.log(formattedDate+'|'+date+'|'+time);
                             for (var i = time; i < 24; i++) {                            
                                 var id = i;
                                 if (i > 11){
@@ -23312,7 +23311,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     get_list_schedule_tutor('schedule', 0);
                                 get_scheduled_day_tutor(yyyy_s+'-'+mm_s+'-'+dd_s,'schedule');
 
-                                //console.log('Timzone UTC: '+date_utc+' | to '+timezone_name+ ' ' +time_zone +': '+dpDate+'->'+mDate+'|'+yyyy_s+'-'+mm_s+'-'+dd_s);
                             }else{
                                 var gday = $('#summary-btn-tutor').attr('data-day');
                                 var formattedDate = gday + ' ' + moment.utc().format('HH:mm:ss');
@@ -23404,9 +23402,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     get_list_schedule_tutor('schedule', 0);
                                 get_scheduled_day_tutor(yyyy_s+'-'+mm_s+'-'+dd_s,'schedule');
 
-                                //console.log('Timzone UTC: '+date_utc+' | to '+timezone_name+ ' ' +time_zone +': '+dmDate+'->'+mDate+'|'+yyyy_s+'-'+mm_s+'-'+dd_s);
                             }
-                            //console.log(yyyy_s+'-'+mm_s+'-'+dd_s);
                         }
                         
                         function updateDescList(type, gid, lid, child, desc, prefix){
@@ -23528,7 +23524,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             ul_scheduled.html("");
                             ul_upcoming.html("");
                             $.get(home_url + "/?r=ajax/get_scheduled_day", {day: day}, function (data) {
-                                //console.log(data);
                                 data = JSON.parse(data);
                                 if (data.scheduled.length > 0) {
                                     $.each(data.scheduled, function (i, v) {
@@ -23613,7 +23608,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         function get_update_info(){
                             $.get(home_url + "/?r=ajax/get_user_info", {userid: ''}, function (data) {
-                                //console.log(data);
                                 data = JSON.parse(data);
                                 if(data.chk_teacher == 1)
                                     $('#tutor-regis-update').css("display","block");
@@ -23693,7 +23687,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         function get_profile_info(){
                             $.get(home_url + "/?r=ajax/get_user_profile", {userid: ''}, function (data) {
-                                //console.log(data);
                                 data = JSON.parse(data);                                
 
                                 $('#profile-user-avatar').attr("src",data.user_avatar);
@@ -23757,7 +23750,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var tbody_request = $("#table-new-request");
                             tbody_request.html("");
                             $.get(home_url + "/?r=ajax/get_tutoring_plan", {search: search}, function (data) {
-                                //console.log(data);
                                 data = JSON.parse(data);
                                 if (data.tutorings.length > 0) {
                                     $.each(data.tutorings, function (i, v) {
