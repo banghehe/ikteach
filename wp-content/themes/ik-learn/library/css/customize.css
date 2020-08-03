@@ -16271,7 +16271,7 @@ background-repeat: no-repeat;
 .find-general-border div input{
     border: 0 !important;
     margin-top: -5px;
-    background: none;
+   background: none;
     margin-left: -11px;
 }
 .find-general-border div .selectboxit-container{
@@ -16304,7 +16304,9 @@ margin-right: -30px;
 }
 .Available-lg{
     padding-left: 8px;
-    font-weight: bold;
+    font-family: semibold;
+    font-size: 13pt;
+    color: #515151;
 }
 .show-language{
     white-space: nowrap;  
@@ -16334,4 +16336,21 @@ float: right;
 }
 #list-language li .option-input-3:checked + span {
     color: #4eacc8;
+}
+#img-info{
+   width: 13px;
+   height: 100%;
+margin-left: 5px;
+margin-bottom: 3px;
+}
+.clear-input{
+    background: url(../images/Icon_Close.png) ;
+    background-repeat: no-repeat;
+background-size: 8px;
+background-position-y: 14px;
+float: right;
+margin-top: -35px;
+height: 30px;
+width: 10px;
+cursor: pointer;
 }

@@ -1010,7 +1010,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     ?>
                                     <h3>Update My Account</h3>                                    
                                     <form method="post" id="myUpdate" action="" name="updateAccount" enctype="multipart/form-data">
-                                        <h4>Basic Account Info:</h4>
+                                        <h4>Basic Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                         <div class="row">
                                             <div class="col-sm-9 col-md-9">
                                                 <div class="find-general-border">
@@ -1020,15 +1020,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 </div> 
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3 col-md-3 mt-top-3 gender-pc">
+                                            <div class="col-sm-3 col-md-3 mt-top-3 ">
                                                 <div class="find-general-border" id="update-gender-pc">
                                                     <div class="form-group border-ras select-style">
                                                         <span class="find-label">Gender</span>
                                                         <div class="border-ras select-style" id="gender">
                                                            <select id="update_birth_g" class="select-box-it form-control" name="update_birth_g">
-                                                                
+                                                                <option value="" <?php if($update_birth_g == '') echo 'selected="selected"' ?>>Gender</option>
                                                                 <option value="Male" <?php if($update_birth_g == 'Male') echo 'selected="selected"' ?>>Male</option>
-                                                                <option value="Female" <?php if($update_birth_g == 'FeMale') echo 'selected="selected"' ?>>Female</option>
+                                                                <option value="Female" <?php if($update_birth_g == 'Female') echo 'selected="selected"' ?>>Female</option>
                                                             </select>
                                                             
                                                         </div>
@@ -1041,6 +1041,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="form-group border-ras select-style">
                                                     <span class="find-label"><?php _e('Password', 'iii-dictionary') ?>:</span>
                                                     <input id="update_password" class="form-control border-ras" name="update_password" type="text" value="<?php echo $update_user_password ?>" required>
+                                                    <div class="clear-input" onclick="document.getElementById('update_password').value=null;"></div>
                                                     
                                                 </div>
                                             </div>
@@ -1050,7 +1051,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="form-group border-ras select-style">
                                                     <span class="find-label"><?php _e('Confirm Password', 'iii-dictionary') ?>:</span>
                                                     <input id="update_confirmpass" class="form-control border-ras" name="update_confirmpass" type="text" value="<?php echo $update_user_password ?>" required>
-                                                    
+                                                    <div class="clear-input" onclick="document.getElementById('update_confirmpass').value=null;"></div>
                                                 </div>
                                             </div>
                                             </div>
@@ -1062,6 +1063,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="form-group">
                                                     <span class="find-label"><?php _e('First Name', 'iii-dictionary') ?>:</span>
                                                     <input id="update_first_name" class="form-control" name="update_first_name" type="text" value="<?php echo $update_first_name ?>" required>
+                                                    <div class="clear-input" onclick="document.getElementById('update_first_name').value=null;"></div>
                                                     
                                                 </div>
                                             </div>
@@ -1071,6 +1073,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="form-group">
                                                     <span class="find-label"><?php _e('Last Name', 'iii-dictionary') ?>:</span>
                                                     <input id="update_last_name" class="form-control" name="update_last_name" type="text" value="<?php echo $update_last_name ?>" required>
+                                                    <div class="clear-input" onclick="document.getElementById('update_last_name').value=null;"></div>
                                                     
                                                 </div>
                                             </div>
@@ -1078,7 +1081,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="clearfix"></div>
                                             <div class="col-sm-12 col-md-12 mt-top-9">
                                                 <div class="form-group">
-                                                    <h4 class="create-label mt-bottom-11"><?php _e('Date of Birth', 'iii-dictionary') ?></h4>
+                                                    <h4 class="create-label mt-bottom-11"><?php _e('Date of Birth', 'iii-dictionary') ?><img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                                     <div class="row tiny-gutter">
                                                         
                                                         <div class="col-xs-12 col-sm-4 col-md-4 border-ras select-style" id="update_month">
@@ -1126,12 +1129,13 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Year', 'iii-dictionary') ?>:</span>
                                                             <div class="form-group">
                                                             <input id="update_birth_y" class="form-control" name="update-birth-y" type="text" value="<?php echo $update_birth_y ?>" required>
+                                                            <div class="clear-input" onclick="document.getElementById('update_birth_y').value=null;"></div>
                                                             
                                                         </div>
                                                         </div>
                                                         </div>
                                                         
-                                                        <div class="col-xs-12 col-sm-4 col-md-4 gender-mb">
+                                                        <!-- <div class="col-xs-12 col-sm-4 col-md-4 gender-mb">
                                                             <div class="find-general-border">
                                                                 <span class="find-label">Gender</span>
                                                             <div id="update-gender-mb">
@@ -1141,20 +1145,21 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
                                              <div class="col-sm-12 col-md-12 mt-top-9">
                                                 <div class="form-group">
-                                                <h4><?php _e('Language', 'iii-dictionary') ?> & <?php _e('My Time Zone', 'iii-dictionary') ?>   </h4>
+                                                <h4><?php _e('Language', 'iii-dictionary') ?> & <?php _e('My Time Zone', 'iii-dictionary') ?>  <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"> </h4>
                                                 <div class="row">
                                             <div id="language-timezone" class="col-sm-6 col-md-6 col-xs-6 mt-top-mb-12">
                                                 
                                                 <div  class="find-general-border language-input">
                                                 <span class="find-label"><?php _e('Language', 'iii-dictionary') ?></span>
                                                 <div id="show-language" class="show-language">
+
                                                     <?php 
                                                          $languagelist = "";
                                                         if(count($update_language) > 0){
@@ -1171,11 +1176,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         echo rtrim($languagelist,", ");
                                                         
                                                         ?>
+                                                        <span class="selectboxit-arrow-container" style="margin-top: -2.5px;"><i style="opacity:0;">0</i></span>
                                                 </div>
                                                 </div>
                                                 <div class="form__boolean mt-bottom-10 clearfix language_drop" id="checkBoxSearch" style="margin-top: 0">
                                                     <span class="Available-lg">Available language</span>
-                                                    <ul id="list-language">
+                                                    <ul id="list-language" style="font-size: 11pt; color: #9c9c9c;">
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="en" <?php if(count($update_language) > 0 && in_array("en", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
                                                             <span>English</span>
@@ -1218,7 +1224,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                             </button>
                                                 </div>
                                                 <div class="ol-sm-6 col-md-6">
-                                                     <button id="cancel-lg" class="btn-dark-blue border-btn" style="background: #CECECE;" type="button" name="cancel_timelot" >
+                                                     <button id="cancel-lg" class="btn-dark-blue border-btn" style="background: #CECECE;" type="reset" name="cancel_timelot" >
                                                                                 CANCEL
                                                                             </button>
                                                 </div>
@@ -1262,7 +1268,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="clearfix"></div>
     
                                             <div class="col-sm-12 col-md-12 profile-pic mt-top-14" style="clear: both;">
-                                                <h4 class="create-label img-profile">Profile Picture (optional)</h4>
+                                                <h4 class="create-label img-profile">Profile Picture (optional) <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                                 <div class="row">
                                                     <div class="col-sm-3 col-md-3 mt-top-9">
                                                         <div class="row">
@@ -1283,6 +1289,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label">Image Location</span>
                                                             <div class="form-group">
                                                                 <input class="form-control input-path" id="profile-value" type="text" value="<?php echo $profile_value ?>">
+                                                                <div class="clear-input" onclick="document.getElementById('profile-value').value=null;"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1299,7 +1306,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 $style = 'style="display: none;"';
                                             ?>
                                             <div id="tutor-regis-update" class="col-md-12" <?php echo $style ?>>
-                                                <h4>Tutor’s Personal Info </h4>
+                                                <h4>Tutor’s Personal Info <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                                 <div id="info-update">
                                                     <div class="row">                                                    
                                                         <div class="col-sm-6 col-md-6 col-xs-12">
@@ -1307,6 +1314,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <span class="find-label"><?php _e('Mobile Number', 'iii-dictionary') ?>:</span>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control" name="mobile_number" value="<?php echo $update_mobile_number ?>" id="mobile-number-update">
+                                                                    <div class="clear-input" onclick="document.getElementById('mobile-number-update').value=null;"></div>
                                                                 </div>   
                                                             </div>
                                                         </div>
@@ -1316,6 +1324,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <span class="find-label"><?php _e('Profession', 'iii-dictionary') ?>:</span>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control" name="profession" value="<?php echo $update_profession ?>" id="profession-update">
+                                                                    <div class="clear-input" onclick="document.getElementById('profession-update').value=null;"></div>
                                                                     
                                                                 </div>
                                                             </div>
@@ -1325,6 +1334,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <span class="find-label"><?php _e('Last School Attended', 'iii-dictionary') ?>:</span>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control" name="last_school" value="<?php echo $update_last_school ?>" id="last-school-update">
+                                                                    <div class="clear-input" onclick="document.getElementById('last-school-update').value=null;"></div>
                                                                     
                                                                 </div>
                                                             </div>
@@ -1335,13 +1345,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <span class="find-label"><?php _e('Skype ID (if any)', 'iii-dictionary') ?>:</span>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control" name="skype" value="<?php echo $update_skype ?>" id="skype-update">
+                                                                    <div class="clear-input" onclick="document.getElementById('skype-update').value=null;"></div>
                                                                     
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h4>Main Image (Optional)</h4>
+                                                <h4>Main Image (Optional) <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                                 <div class="row">
                                                     <div class="col-sm-3 col-md-3 col-xs-3">
                                                         <input class="form-control input-file" type="file" id="main-image" value="" style="display: none">
@@ -1351,17 +1362,19 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label">Image Location</span>
                                                             <div class="form-group">
-                                                                <input class="form-control input-path" id="" type="text" value="<?php echo $profile_value ?>">
+                                                                <input class="form-control input-path" id="main-value" type="text" value="<?php echo $profile_value ?>">
+                                                                <div class="clear-input" onclick="document.getElementById('main-value').value=null;"></div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h4 class="mt-top-10 mt-bottom-12">Tagline</h4>
+                                                <h4 class="mt-top-10 mt-bottom-12">Tagline <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                                 <div class="mt-bottom-10">
                                                     <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Tutor\'s Tagline (Marketing)', 'iii-dictionary') ?>:</span>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" name="previous_school" value="<?php echo $update_previous_school ?>" id="previous-school-update">
+                                                        <div class="clear-input" onclick="document.getElementById('previous-school-update').value=null;"></div>
                                                     </div>
                                                     </div>
                                                 </div>
@@ -1369,23 +1382,25 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     <div class="clear-both"></div>
                                                 
 
-                                                <h4 class="mt-top-10 mt-bottom-12">Why you like Tutoring and Teaching</h4>
+                                                <h4 class="mt-top-10 mt-bottom-12">Why you like Tutoring and Teaching <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                                 <div class="mt-bottom-10">
                                                     <div class="find-general-border">
                                                             <span class="find-label"><?php _e('How would you help student', 'iii-dictionary') ?>:</span>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" name="desc_tell_update" value="<?php echo $desc_tell_update ?>" id="desc_tell_update">
+                                                        <div class="clear-input" onclick="document.getElementById('desc_tell_update').value=null;"></div>
                                                     </div>
                                                     </div>
                                                 </div>
                                                 <div class="clear-both"></div>    
-                                                <h4 class="mt-top-9 mt-bottom-7">Teaching experience (if any)</h4>
+                                                <h4 class="mt-top-9 mt-bottom-7">Teaching experience (if any) <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                                 <div class="row mt-top-9">
                                                     <div class="col-sm-6 col-md-6 col-xs-12">
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('School/Institute Name 1', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name" value="<?php echo $update_school_name ?>" id="school-name-update">
+                                                            <div class="clear-input" onclick="document.getElementById('school-name-update').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1401,6 +1416,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="teaching_subject" value="<?php echo $update_teaching_subject ?>" id="subject-update">
+                                                            <div class="clear-input" onclick="document.getElementById('subject-update').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1411,7 +1427,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('School/Institute Name 2', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name_02" value="<?php echo $update_school_name_02 ?>" id="school-name-update-02">
-                                                            
+                                                            <div class="clear-input" onclick="document.getElementById('school-name-update-02').value=null;"></div>
                                                         </div>
                                                     </div>
                                                     </div>
@@ -1421,6 +1437,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="teaching_subject_02" value="<?php echo $update_teaching_subject_02 ?>" id="subject-update-02">
+                                                            <div class="clear-input" onclick="document.getElementById('subject-update-02').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1433,6 +1450,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('School/Institute Name 3', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name_03" value="<?php echo $update_school_name_03 ?>" id="school-name-update-03">
+                                                            <div class="clear-input" onclick="document.getElementById('school-name-update-03').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1443,6 +1461,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="teaching_subject_03" value="<?php echo $update_teaching_subject_03 ?>" id="subject-update-03">
+                                                            <div class="clear-input" onclick="document.getElementById('subject-update-03').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1456,6 +1475,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('School/Institute Name 4', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name_04" value="<?php echo $update_school_name_04 ?>" id="school-name-update-04">
+                                                            <div class="clear-input" onclick="document.getElementById('school-name-update-04').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1466,6 +1486,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="teaching_subject_04" value="<?php echo $update_teaching_subject_04 ?>" id="subject-update-04">
+                                                            <div class="clear-input" onclick="document.getElementById('subject-update-04').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1479,7 +1500,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('School/Institute Name 5', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name_05" value="<?php echo $update_school_name_05 ?>" id="school-name-update-05">
-                                                            
+                                                            <div class="clear-input" onclick="document.getElementById('school-name-update-05').value=null;"></div>
                                                         </div>
                                                     </div>
                                                     </div>
@@ -1489,7 +1510,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="teaching_subject_05" value="<?php echo $update_teaching_subject_05 ?>" id="subject-update-05">
-                                                            
+                                                            <div class="clear-input" onclick="document.getElementById('subject-update-05').value=null;"></div>
                                                         </div>
                                                     </div>
                                                     </div>   
@@ -1535,13 +1556,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                     </div>
                                                 </div> -->
-                                                <h4 class="mt-top-9 mt-bottom-7">Educational Background</h4>
+                                                <h4 class="mt-top-9 mt-bottom-7">Educational Background <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                                 <div class="row mt-top-9">
                                                     <div class="col-sm-6 col-md-6 col-xs-12">
                                                         <div class="find-general-border">
                                                              <span class="find-label"><?php _e('School/Institute Name 1', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name1" value="<?php echo $update_school_name1 ?>" id="school-name1-update">
+                                                            <div class="clear-input" onclick="document.getElementById('school-name1-update').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1551,6 +1573,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_link1" value="<?php echo $update_school_link1 ?>" id="school-link1-update">
+                                                            <div class="clear-input" onclick="document.getElementById('school-link1-update').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1562,6 +1585,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                              <span class="find-label"><?php _e('School/Institute Name 2', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name2" value="<?php echo $update_school_name2 ?>" id="school-name2-update">
+                                                            <div class="clear-input" onclick="document.getElementById('school-name2-update').value=null;"></div>
                                                             
                                                         </div>
                                                     </div>
@@ -1571,7 +1595,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_link2" value="<?php echo $update_school_link2 ?>" id="school-link2-update">
-
+                                                            <div class="clear-input" onclick="document.getElementById('school-link2-update').value=null;"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1583,7 +1607,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                              <span class="find-label"><?php _e('School/Institute Name 3', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name3" value="<?php echo $update_school_name3 ?>" id="school-name3-update">
-                                                            
+                                                            <div class="clear-input" onclick="document.getElementById('school-name3-update').value=null;"></div>
                                                         </div>
                                                     </div>
                                                     </div>
@@ -1592,7 +1616,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_link3" value="<?php echo $update_school_link3 ?>" id="school-link3-update">
-
+                                                            <div class="clear-input" onclick="document.getElementById('school-link3-update').value=null;"></div>
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -1606,7 +1630,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                              <span class="find-label"><?php _e('School/Institute Name 4', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name4" value="<?php echo $update_school_name4 ?>" id="school-name4-update">
-                                                            
+                                                            <div class="clear-input" onclick="document.getElementById('school-name4-update').value=null;"></div>
                                                         </div>
                                                     </div>
                                                     </div>
@@ -1615,7 +1639,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_link4" value="<?php echo $update_school_link4 ?>" id="school-link4-update">
-
+                                                            <div class="clear-input" onclick="document.getElementById('school-link4-update').value=null;"></div>
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -1629,7 +1653,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                              <span class="find-label"><?php _e('School/Institute Name 5', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name5" value="<?php echo $update_school_name5 ?>" id="school-name5-update">
-                                                            
+                                                            <div class="clear-input" onclick="document.getElementById('school-name5-update').value=null;"></div>
                                                         </div>
                                                     </div>
                                                     </div>
@@ -1638,7 +1662,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_link5" value="<?php echo $update_school_link5 ?>" id="school-link5-update">
-
+                                                            <div class="clear-input" onclick="document.getElementById('school-link5-update').value=null;"></div>
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -1658,7 +1682,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                
                                                 <div class="row mt-top-14">
                                                     <div class="col-sm-12 col-md-12 col-xs-12">
-                                                        <h4>Set Tutoring Preference</h4>
+                                                        <h4>Set Tutoring Preference <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
                                                         
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-xs-12">
@@ -9077,7 +9101,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 lg += 'Other, ';
                             }
                             var sl = lg.substring(0, lg.length - 2);
-                            document.getElementById("show-language").innerHTML = sl;
+                            document.getElementById("show-language").innerHTML = sl+'<span class="selectboxit-arrow-container" style="margin-top: -2.5px;"><i style="opacity:0;">0</i></span>';
                         });
                         $("#cancel-lg").click(function () {
                             $('.language_drop').css('display','none');
@@ -24140,16 +24164,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $("#grade-update").data("selectBox-selectBoxIt").refresh();
                                 }
 
-                                var viewport = getViewport();
-                                if(viewport.width < 650){
-                                    if(data.gender != ''){
-                                        $("#update_birth_g_mb").val(data.gender);
-                                    }
-                                }else{
-                                    if(data.gender != ''){
-                                        $("#update_birth_g_pc").val(data.gender);
-                                    }
-                                }
+                                
                                 $('input[name="update-cb-lang"]').each(function () {
                                     if( $.inArray(this.value, data.cb_lang) >= 0 ) {
                                         $(this).attr("checked",true);
@@ -24660,6 +24675,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         };
                         };
                     });
+            //  $('.clear-input').click(function(){
+            
+            // document.getElementById('desc_tell_update').value=null;
+            //  });
+
 
 
 </script>
