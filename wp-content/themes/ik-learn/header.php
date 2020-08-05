@@ -22726,6 +22726,13 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#top-popup-message').css("display", "block");
                             }
                             $("#popup-option-timelot").css("display","none");
+                            var day = $(".schedule-rightbtn").attr("data-day");
+                            var type = $(".schedule-rightbtn").attr("data-type");
+                            var day = day.split("-");
+                            day[2] = day[2] - 1;
+                            var cur_day = day[0] + "-" + day[1] + "-" + day[2];
+                            get_list_schedule_tutor('schedule');
+                            get_scheduled_day_tutor(cur_day,type);
                         });
 
                         $(".btn-option-timelot").live('click', function () {
@@ -23392,12 +23399,27 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             var txt_accept = 'Available';
                                             var count_user = v.users;
                                         }
+                                        var img = 'library/images/icon_1on1.png'
+
+                                        if(v.group_tutoring){
+                                            img = 'library/images/icon_Group.png'
+                                        }
+
+                                        var anySubject = "All my subject"
+
+                                        if(v.subject_type){
+                                            if(v.subject_type != "any"){
+                                                anySubject = v.subject_name
+                                            }
+                                        }else{
+                                            anySubject = "No Subject Selected"
+                                        }
 
                                         if(v.users == 0){
                                             var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + '" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
                                             li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
-                                            li += '<span class="subject-scheduled">Available</span>';
-                                            li += '</span><span id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">0</span></span></li>';
+                                            li += '<span class="subject-scheduled"><img style="max-height:15px;" src="<?php echo get_template_directory_uri(); ?>/'+img+'"> &nbsp; '+anySubject+'</span>';
+                                            li += '</span><span style="display:table-cell;width:25%;" id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">0</span></span></li>';
                                         }else if(v.users > 0){
                                             var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + ' active" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
                                             li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';

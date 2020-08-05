@@ -11051,7 +11051,7 @@ background: url(../images/chevron-l.png) no-repeat !important;
 .select-style .selectboxit-container *{
       font-family:Myriad_regular;
        color: #515151 !important;
-       font-size: 13pt !important;
+       font-size: 13px !important;
      
 }
 .delete-worksheet img,.delete-subject img{

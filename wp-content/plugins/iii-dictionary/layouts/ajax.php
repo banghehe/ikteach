@@ -172,10 +172,10 @@ if ($task == 'question') {
     if (isset($_GET['hid']) && is_numeric($_GET['hid'])) {
         $sheet = $wpdb->get_row($wpdb->prepare(
                         'SELECT s.*, hs.id AS result_id, finished_question
-				FROM ' . $wpdb->prefix . 'dict_homeworks AS h
-				JOIN ' . $wpdb->prefix . 'dict_sheets AS s ON s.id = h.sheet_id
-				LEFT JOIN ' . $wpdb->prefix . 'dict_homework_results AS hs ON hs.homework_id = h.id
-				WHERE h.id = %d AND (userid = %d OR userid IS NULL)', $_GET['hid'], $current_user_id
+                FROM ' . $wpdb->prefix . 'dict_homeworks AS h
+                JOIN ' . $wpdb->prefix . 'dict_sheets AS s ON s.id = h.sheet_id
+                LEFT JOIN ' . $wpdb->prefix . 'dict_homework_results AS hs ON hs.homework_id = h.id
+                WHERE h.id = %d AND (userid = %d OR userid IS NULL)', $_GET['hid'], $current_user_id
         ));
 
         if (is_null($sheet->result_id)) {
@@ -189,9 +189,9 @@ if ($task == 'question') {
     if (isset($_GET['sid']) && is_numeric($_GET['sid'])) {
         $sheet = $wpdb->get_row($wpdb->prepare(
                         'SELECT s.*, p.id AS pid, p.answers AS practice_answers
-				FROM ' . $wpdb->prefix . 'dict_sheets AS s
-				LEFT JOIN ' . $wpdb->prefix . 'dict_practice_results AS p ON p.sheet_id = s.id AND p.user_id = ' . $current_user_id . '
-				WHERE s.id = %s', $_GET['sid']
+                FROM ' . $wpdb->prefix . 'dict_sheets AS s
+                LEFT JOIN ' . $wpdb->prefix . 'dict_practice_results AS p ON p.sheet_id = s.id AND p.user_id = ' . $current_user_id . '
+                WHERE s.id = %s', $_GET['sid']
         ));
     }
 
@@ -209,8 +209,8 @@ if ($task == 'question') {
 
         $results = $wpdb->get_results(
                 'SELECT id, entry, sound, sound_url, definition 
-				FROM ' . $wpdb->prefix . $dict_table . ' 
-				WHERE entry IN (' . implode(',', $insql) . ')'
+                FROM ' . $wpdb->prefix . $dict_table . ' 
+                WHERE entry IN (' . implode(',', $insql) . ')'
         );
 
         foreach ($results as $item) {
@@ -407,8 +407,8 @@ if ($task == 'homework') {
         } else {
             $result_sheet = $wpdb->get_row($wpdb->prepare(
                             'SELECT answers, correct_answers_count, score 
-					FROM ' . $wpdb->prefix . 'dict_homework_results 
-					WHERE id = %d', $rid
+                    FROM ' . $wpdb->prefix . 'dict_homework_results 
+                    WHERE id = %d', $rid
             ));
 
             $answers = json_decode($result_sheet->answers, true);
@@ -838,9 +838,9 @@ if ($task == 'validatecredit') {
 
     $code = $wpdb->get_row(
             $wpdb->prepare('SELECT c.*, us.activated_by, COUNT(activated_by) AS activated_times
-							FROM ' . $wpdb->prefix . 'dict_credit_codes AS c
-							LEFT JOIN ' . $wpdb->prefix . 'dict_user_subscription AS us ON us.activation_code_id = c.id
-							WHERE encoded_code = %s', $_POST['c'])
+                            FROM ' . $wpdb->prefix . 'dict_credit_codes AS c
+                            LEFT JOIN ' . $wpdb->prefix . 'dict_user_subscription AS us ON us.activation_code_id = c.id
+                            WHERE encoded_code = %s', $_POST['c'])
     );
 
     if (is_null($code)) {
@@ -998,8 +998,8 @@ if ($task == 'flashcard') {
             );
         } else {
             $wpdb->query('UPDATE ' . $wpdb->prefix . 'dict_flashcard_userdata 
-							  SET memorized = ' . $value . '
-							  WHERE flashcard_id = ' . $flashcard_id . ' AND user_id = ' . $current_user_id);
+                              SET memorized = ' . $value . '
+                              WHERE flashcard_id = ' . $flashcard_id . ' AND user_id = ' . $current_user_id);
         }
 
         die;
@@ -1119,16 +1119,16 @@ if ($task === 'math_worksheet') {
             }
         }
         $query = 'SELECT ms.id, sheet_name , homework_type_id
-						FROM ' . $wpdb->prefix . 'dict_sheets AS ms
-						JOIN ' . $wpdb->prefix . 'dict_grades AS gr ON gr.id = ms.grade_id
-						JOIN (
-							SELECT id, name AS level_name, parent_id AS level_parent_id 
-							FROM ' . $wpdb->prefix . 'dict_grades WHERE level = 1
-						) AS lgr ON lgr.id = gr.parent_id
-						JOIN (
-							SELECT id, name AS level_category_name 
-							FROM ' . $wpdb->prefix . 'dict_grades WHERE level = 0
-						) AS cgr ON cgr.id = lgr.level_parent_id';
+                        FROM ' . $wpdb->prefix . 'dict_sheets AS ms
+                        JOIN ' . $wpdb->prefix . 'dict_grades AS gr ON gr.id = ms.grade_id
+                        JOIN (
+                            SELECT id, name AS level_name, parent_id AS level_parent_id 
+                            FROM ' . $wpdb->prefix . 'dict_grades WHERE level = 1
+                        ) AS lgr ON lgr.id = gr.parent_id
+                        JOIN (
+                            SELECT id, name AS level_category_name 
+                            FROM ' . $wpdb->prefix . 'dict_grades WHERE level = 0
+                        ) AS cgr ON cgr.id = lgr.level_parent_id';
 
         if (!empty($_GET['cid'])) {
             $cat_id = $_GET['cid'];
@@ -1187,8 +1187,8 @@ if ($task === 'math_worksheet') {
 if ($task === 'worksheet') {
     if ($do === 'get') {
         $query = 'SELECT [columns]
-					  FROM ' . $wpdb->prefix . 'dict_sheets AS s
-					  JOIN ' . $wpdb->prefix . 'dict_grades AS gr ON gr.id = s.grade_id';
+                      FROM ' . $wpdb->prefix . 'dict_sheets AS s
+                      JOIN ' . $wpdb->prefix . 'dict_grades AS gr ON gr.id = s.grade_id';
 
         $columns[] = 's.*, gr.name AS grade';
 
@@ -1254,8 +1254,8 @@ if ($task === 'worksheet') {
 if ($task === 'worksheetmath') {
     if ($do === 'get') {
         $query = 'SELECT [columns]
-					  FROM ' . $wpdb->prefix . 'dict_sheets AS s
-					  JOIN ' . $wpdb->prefix . 'dict_grades AS gr ON gr.id = s.grade_id';
+                      FROM ' . $wpdb->prefix . 'dict_sheets AS s
+                      JOIN ' . $wpdb->prefix . 'dict_grades AS gr ON gr.id = s.grade_id';
 
         $columns[] = 's.*, gr.name AS grade';
 
@@ -1335,7 +1335,7 @@ if ($task == 'status_msg') {
     if ($id != 0) {
         $result = $wpdb->query(
                 'UPDATE ' . $wpdb->prefix . 'dict_private_message_inbox 
-				SET status = 1 WHERE id = ' . $id
+                SET status = 1 WHERE id = ' . $id
         );
     }
     exit;
@@ -1384,7 +1384,7 @@ if ($task == 'chat') {
                 'status' => 0
             );
             $check_exists = $wpdb->get_results('SELECT * FROM ' . $wpdb->prefix . 'dict_chat_session AS dcs 
-												WHERE dcs.sheet_id = ' . esc_sql($_sheet_id) . ' AND dcs.user_id = ' . esc_sql($_user_id) . ' AND dcs.status != 2');
+                                                WHERE dcs.sheet_id = ' . esc_sql($_sheet_id) . ' AND dcs.user_id = ' . esc_sql($_user_id) . ' AND dcs.status != 2');
 
             if (count($check_exists) == 0) {
                 $result = $wpdb->insert($wpdb->prefix . 'dict_chat_session', $data);
@@ -1605,7 +1605,7 @@ if ($task == "update_edit_class") {
         $query .= ' AND id <> ' . esc_sql($group_id);
     }
     $row = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'dict_groups 
-															WHERE id = %d', $group_id));
+                                                            WHERE id = %d', $group_id));
     $pass = isset($row->password) ? $row->password : "";
     if ($wpdb->query($query) && trim($name) != '') {
         $html .= '<div class="error-message">';
@@ -3534,8 +3534,8 @@ if ($task == "credit_code") {
 
 // check to see if user can still add this code
         $result = $wpdb->get_col('SELECT COUNT(*) 
-								  FROM ' . $wpdb->prefix . 'dict_user_subscription
-								  WHERE activation_code_id = ' . $code->id);
+                                  FROM ' . $wpdb->prefix . 'dict_user_subscription
+                                  WHERE activation_code_id = ' . $code->id);
 
         if (!empty($result) && $result[0] >= $code->no_of_students) {
 // max number of activation reached
@@ -3551,7 +3551,7 @@ if ($task == "credit_code") {
         $cur_points += $code->num_points;
         update_user_meta($user->ID, 'user_points', $cur_points);
     }
-// SAT Preparation		
+// SAT Preparation      
     else {
         $no_of_months = $code->no_of_months_sat;
     }
@@ -3712,9 +3712,9 @@ if ($task == 'show_eng_tab') {
     if ($cid) { // view a sheet
         $current_sheet = $wpdb->get_row($wpdb->prepare(
                         'SELECT s.*, gr.name AS grade
-					FROM ' . $wpdb->prefix . 'dict_sheets AS s
-					JOIN ' . $wpdb->prefix . 'dict_grades AS gr ON gr.id = s.grade_id
-					WHERE s.id = %s', $cid
+                    FROM ' . $wpdb->prefix . 'dict_sheets AS s
+                    JOIN ' . $wpdb->prefix . 'dict_grades AS gr ON gr.id = s.grade_id
+                    WHERE s.id = %s', $cid
         ));
 
         $data['assignment-id'] = $current_sheet->assignment_id;
@@ -5802,9 +5802,9 @@ if ($task == 'get_message_group') {
 //    var_dump($result);
     $user_id = get_current_user_id();
     $query2=' SELECT * FROM ' . $wpdb->prefix . 'dict_private_message_inbox AS pmo
-			JOIN ' . $wpdb->prefix . 'dict_messages AS m ON m.id = pmo.message_id
-			LEFT JOIN ' . $wpdb->users . ' AS u ON u.ID = pmo.sender_id
-			WHERE pmo.user_id = '.$user_id.' ORDER BY pmo.received_on DESC';
+            JOIN ' . $wpdb->prefix . 'dict_messages AS m ON m.id = pmo.message_id
+            LEFT JOIN ' . $wpdb->users . ' AS u ON u.ID = pmo.sender_id
+            WHERE pmo.user_id = '.$user_id.' ORDER BY pmo.received_on DESC';
     $receives = $wpdb->get_results($query2);
     $arr = array();
     $tz_offset = get_location_timezone();
@@ -5823,7 +5823,7 @@ if ($task == 'get_message_group') {
                 'subject'=>$value->subject,
                 'status'=>$value->status,
                 'private'=>true,
-				'received_on' => $received_on
+                'received_on' => $received_on
             );
         }
     }
@@ -5841,13 +5841,13 @@ if ($task == 'get_message_group') {
                 'message' => $v->message,
                 'posted_on' => date('Y-m-d / h:i a', $posted_on),
                 'posted_by' => $v->display_name,
-				'status'=>$v->status,
-				'received_on' => $posted_on
+                'status'=>$v->status,
+                'received_on' => $posted_on
             );
         }
     }
-	if(count($arr) > 0){
-    	array_multisort(           
+    if(count($arr) > 0){
+        array_multisort(           
             array_column($arr, 'status'), SORT_NUMERIC, SORT_DESC,
             array_column($arr, 'received_on'), SORT_NUMERIC, SORT_DESC,
             $arr
@@ -6625,11 +6625,11 @@ if($task == 'get_scheduled_day_tutor'){
                     $end_id3 = '12_'.$datetime_ed3->format('i_a');
                 else
                     $end_id3 = $datetime_ed3->format('G_i_a');
-				
-				$query_count = "SELECT tp.*
-						FROM " . $wpdb->prefix . "dict_tutoring_plan AS tp
-						WHERE tp.tutor_id = ".$user_id." AND tp.date = '".$date."' AND tp.time = '".$item->time."' AND tp.status = 2";
-				$results_count = $wpdb->get_results($query_count);
+                
+                $query_count = "SELECT tp.*
+                        FROM " . $wpdb->prefix . "dict_tutoring_plan AS tp
+                        WHERE tp.tutor_id = ".$user_id." AND tp.date = '".$date."' AND tp.time = '".$item->time."' AND tp.status = 2";
+                $results_count = $wpdb->get_results($query_count);
 
                 $query_accept = "SELECT tp.*
                         FROM " . $wpdb->prefix . "dict_tutoring_plan AS tp
@@ -6646,12 +6646,16 @@ if($task == 'get_scheduled_day_tutor'){
                     'tutor_id' => $item->tutor_id,
                     'start_id' => $start_id3,
                     'end_id' => $end_id3,
+                    'one_tutoring'=>$item->enable_one_tutoring,
+                    'group_tutoring' => $item->enable_group_tutoring,
+                    'subject_name'=>$item->subject_name,
+                    'subject_type'=>$item->subject_type,
                     'fromtime' => $item->time_start,
                     'totime' => $item->time_end,
                     'time' => $item->time,
                     'day' => $item->date,
                     'stime' => strtotime($datetime_st3->format('Y-m-d H:i:s')),
-					'users' => $ct_users,
+                    'users' => $ct_users,
                     'accept' => count($results_accept)
                 );
             }            
@@ -6969,7 +6973,7 @@ if($task == 'save_student_one_tutor'){
 if($task == 'get_request_status'){
     $type = $_REQUEST['type'];
     $user_id = get_current_user_id();
-	/*
+    /*
     if($type == 'confirmed'){
         $where = 'tp.confirmed = 1 AND tp.canceled = 0 AND ';
     }else if($type == 'canceled'){
@@ -6979,7 +6983,7 @@ if($task == 'get_request_status'){
     }else{
         $where = '';
     }*/
-	$where = '';
+    $where = '';
     $query = "SELECT tp.*, u.display_name AS student_name
             FROM " . $wpdb->prefix . "dict_tutoring_plan AS tp
             LEFT JOIN " . $wpdb->users . " AS u ON u.ID = tp.tutor_id
@@ -6994,83 +6998,83 @@ if($task == 'get_request_status'){
     $u_time_zone_index = empty($u_time_zone_index)? 0 : $u_time_zone_index;
     $time_zone_name = get_user_meta($user_id, 'time_zone_name', true);
     $timezone_name = empty($time_zone_name)? convert_timezone_to_name($u_time_zone_index):$time_zone_name;   
-	
-	$dt = new DateTime('now', new DateTimezone($timezone_name));
-	
+    
+    $dt = new DateTime('now', new DateTimezone($timezone_name));
+    
     if(count($results) > 0){
         foreach ($results as $value) {
-			$date_time = explode('~', $value->time);
-			$start = substr(trim($date_time[0]),0,-3).' '.strtoupper(substr(trim($date_time[0]),-2));
-			$end = substr(trim($date_time[1]),0,-3).' '.strtoupper(substr(trim($date_time[1]),-2));
-			$timezone_scheduled = convert_timezone_to_name($value->time_zone_index);
-			
-			$original_datetime_st = $value->date.' '.$start;
-			$original_timezone_st = new DateTimeZone($timezone_scheduled);
-			$datetime_st = new DateTime($original_datetime_st, $original_timezone_st);
-			$target_timezone_st = new DateTimeZone($timezone_name);
-			$datetime_st->setTimeZone($target_timezone_st);
-		
-			$original_datetime_ed = $value->date.' '.$end;
-			$original_timezone_ed = new DateTimeZone($timezone_scheduled);
-			$datetime_ed = new DateTime($original_datetime_ed, $original_timezone_ed);
-			$target_timezone_ed = new DateTimeZone($timezone_name);
-			$datetime_ed->setTimeZone($target_timezone_ed);
-			
-			$original_datetime_ct = $value->created_on;
-			$original_timezone_ct = new DateTimeZone($timezone_scheduled);
-			$datetime_ct = new DateTime($original_datetime_ct, $original_timezone_ct);
-			$target_timezone_ct = new DateTimeZone($timezone_name);
-			$datetime_ct->setTimeZone($target_timezone_ct);
+            $date_time = explode('~', $value->time);
+            $start = substr(trim($date_time[0]),0,-3).' '.strtoupper(substr(trim($date_time[0]),-2));
+            $end = substr(trim($date_time[1]),0,-3).' '.strtoupper(substr(trim($date_time[1]),-2));
+            $timezone_scheduled = convert_timezone_to_name($value->time_zone_index);
+            
+            $original_datetime_st = $value->date.' '.$start;
+            $original_timezone_st = new DateTimeZone($timezone_scheduled);
+            $datetime_st = new DateTime($original_datetime_st, $original_timezone_st);
+            $target_timezone_st = new DateTimeZone($timezone_name);
+            $datetime_st->setTimeZone($target_timezone_st);
+        
+            $original_datetime_ed = $value->date.' '.$end;
+            $original_timezone_ed = new DateTimeZone($timezone_scheduled);
+            $datetime_ed = new DateTime($original_datetime_ed, $original_timezone_ed);
+            $target_timezone_ed = new DateTimeZone($timezone_name);
+            $datetime_ed->setTimeZone($target_timezone_ed);
+            
+            $original_datetime_ct = $value->created_on;
+            $original_timezone_ct = new DateTimeZone($timezone_scheduled);
+            $datetime_ct = new DateTime($original_datetime_ct, $original_timezone_ct);
+            $target_timezone_ct = new DateTimeZone($timezone_name);
+            $datetime_ct->setTimeZone($target_timezone_ct);
             
             $time = $datetime_st->format('h:ia').' - '.$datetime_ed->format('h:ia');
-			$time2 = $datetime_st->format('h:i A').' - '.$datetime_ed->format('h:i A');
-			
-			$chour = (int)$dt->format('G');
-			$cminute = (int)$dt->format('i');
-			$uhour = (int)$datetime_ed->format('G');
-			$uminute = (int)$datetime_ed->format('i');
+            $time2 = $datetime_st->format('h:i A').' - '.$datetime_ed->format('h:i A');
+            
+            $chour = (int)$dt->format('G');
+            $cminute = (int)$dt->format('i');
+            $uhour = (int)$datetime_ed->format('G');
+            $uminute = (int)$datetime_ed->format('i');
 
-			$user = get_user_by('id', $value->tutor_id);
-			
+            $user = get_user_by('id', $value->tutor_id);
+            
             if($user){
                 $tutor_name = $user->display_name;
             }else{
                 $tutor_name = '';
             }
-			
-			if($datetime_st->format('Y-m-d') == $dt->format('Y-m-d')){
-				//echo $chour .'|'. $uhour.'<br>';
-				//echo $chour. ':'.$cminute.'|'. $uhour. ':'.$uminute.'<br>';
-				if($value->confirmed == 0 && $value->canceled == 0 && ($chour > $uhour || ($uhour == $chour && $cminute >= $uminute))){
-					$canceled = 1;
-					$confirmed = 0;
-				}else{
-					$confirmed = $value->confirmed;
-					$canceled  = $value->canceled;
-				}
-			}else{
-				if(strtotime($datetime_st->format('Y-m-d')) < strtotime($dt->format('Y-m-d')) && $value->confirmed == 0 && $value->canceled == 0){
-					$confirmed = 0;
-					$canceled  = 1;
-				}else{
-					$confirmed = $value->confirmed;
-					$canceled  = $value->canceled;
-				}
-			}
+            
+            if($datetime_st->format('Y-m-d') == $dt->format('Y-m-d')){
+                //echo $chour .'|'. $uhour.'<br>';
+                //echo $chour. ':'.$cminute.'|'. $uhour. ':'.$uminute.'<br>';
+                if($value->confirmed == 0 && $value->canceled == 0 && ($chour > $uhour || ($uhour == $chour && $cminute >= $uminute))){
+                    $canceled = 1;
+                    $confirmed = 0;
+                }else{
+                    $confirmed = $value->confirmed;
+                    $canceled  = $value->canceled;
+                }
+            }else{
+                if(strtotime($datetime_st->format('Y-m-d')) < strtotime($dt->format('Y-m-d')) && $value->confirmed == 0 && $value->canceled == 0){
+                    $confirmed = 0;
+                    $canceled  = 1;
+                }else{
+                    $confirmed = $value->confirmed;
+                    $canceled  = $value->canceled;
+                }
+            }
 
             $total = (int)$value->total_time*$pst/100;
             $location = convert_timezone_to_location($value->time_zone_index);
-			
-			if($confirmed == 0 && $canceled == 0 && $value->accepted != 2){
-				$arr_waiting[] = array(
+            
+            if($confirmed == 0 && $canceled == 0 && $value->accepted != 2){
+                $arr_waiting[] = array(
                         'id' => $value->id,
                         'subject' => $value->subject,
                         'date' => $datetime_st->format('F d, Y'),
                         'stuff' => $datetime_st->format('(D)'),
                         'time' => $datetime_st->format('h:i:a').' ~ '.$datetime_ed->format('h:i:a'),
                         'time_view' => $time,
-						'date_view' => $datetime_st->format('m/d/Y'),
-						'time_view2' => $time2,
+                        'date_view' => $datetime_st->format('m/d/Y'),
+                        'time_view2' => $time2,
                         'confirmed' => $confirmed,
                         'canceled' => $canceled,
                         'time_zone' => $value->time_zone,
@@ -7078,7 +7082,7 @@ if($task == 'get_request_status'){
                         'tutor_id' => $value->tutor_id,
                         'private_subject' => $value->private_subject,
                         'short_message' => $value->short_message,
-						'note' => $value->note,                        
+                        'note' => $value->note,                        
                         'student_name' => $value->student_name,
                         'tutor_name' => $tutor_name,
                         'status'    => $value->status,
@@ -7097,16 +7101,16 @@ if($task == 'get_request_status'){
                         'day' => $datetime_st->format('Y-m-d'),
                         'created' => date('Y-m-d H:i:s', strtotime($value->created_on))
                     );
-			}else if($confirmed == 1 && $canceled == 0){
-				$arr_confirmed[] = array(
+            }else if($confirmed == 1 && $canceled == 0){
+                $arr_confirmed[] = array(
                         'id' => $value->id,
                         'subject' => $value->subject,
                         'date' => $datetime_st->format('F d, Y'),
                         'stuff' => $datetime_st->format('(D)'),
                         'time' => $datetime_st->format('h:i:a').' ~ '.$datetime_ed->format('h:i:a'),
                         'time_view' => $time,
-						'date_view' => $datetime_st->format('m/d/Y'),
-						'time_view2' => $time2,
+                        'date_view' => $datetime_st->format('m/d/Y'),
+                        'time_view2' => $time2,
                         'confirmed' => $confirmed,
                         'canceled' => $canceled,
                         'time_zone' => $value->time_zone,
@@ -7114,7 +7118,7 @@ if($task == 'get_request_status'){
                         'tutor_id' => $value->tutor_id,
                         'private_subject' => $value->private_subject,
                         'short_message' => $value->short_message,  
-						'note' => $value->note,
+                        'note' => $value->note,
                         'student_name' => $value->student_name,
                         'tutor_name' => $tutor_name,
                         'status'    => $value->status,
@@ -7133,16 +7137,16 @@ if($task == 'get_request_status'){
                         'day' => $datetime_st->format('Y-m-d'),
                         'created' => date('Y-m-d H:i:s', strtotime($value->created_on))
                     );
-			}else{
-				$arr_canceled[] = array(
+            }else{
+                $arr_canceled[] = array(
                         'id' => $value->id,
                         'subject' => $value->subject,
                         'date' => $datetime_st->format('F d, Y'),
                         'stuff' => $datetime_st->format('(D)'),
                         'time' => $datetime_st->format('h:i:a').' ~ '.$datetime_ed->format('h:i:a'),
                         'time_view' => $time,
-						'date_view' => $datetime_st->format('m/d/Y'),
-						'time_view2' => $time2,
+                        'date_view' => $datetime_st->format('m/d/Y'),
+                        'time_view2' => $time2,
                         'confirmed' => $confirmed,
                         'canceled' => $canceled,
                         'time_zone' => $value->time_zone,
@@ -7150,7 +7154,7 @@ if($task == 'get_request_status'){
                         'tutor_id' => $value->tutor_id,
                         'private_subject' => $value->private_subject,
                         'short_message' => $value->short_message, 
-						'note' => $value->note,
+                        'note' => $value->note,
                         'student_name' => $value->student_name,
                         'tutor_name' => $tutor_name,
                         'status'    => $value->status,
@@ -7169,32 +7173,32 @@ if($task == 'get_request_status'){
                         'day' => $datetime_st->format('Y-m-d'),
                         'created' => date('Y-m-d H:i:s', strtotime($value->created_on))
                     );
-			}
+            }
         }
     }
-	
-	if(count($arr_confirmed) > 0){
-		array_multisort(
-			array_column($arr_confirmed, 'stime'), SORT_NUMERIC, SORT_DESC,
-			$arr_confirmed
-		);
-	}
-	
-	if(count($arr_canceled) > 0){
-		array_multisort(
-			array_column($arr_canceled, 'stime'), SORT_NUMERIC, SORT_DESC,
-			$arr_canceled
-		);
-	}
-	
-	if(count($arr_waiting) > 0){
-		array_multisort(
-			array_column($arr_waiting, 'stime'), SORT_NUMERIC, SORT_DESC,
-			$arr_waiting
-		);
-	}
-	
-	if($type == 'confirmed'){
+    
+    if(count($arr_confirmed) > 0){
+        array_multisort(
+            array_column($arr_confirmed, 'stime'), SORT_NUMERIC, SORT_DESC,
+            $arr_confirmed
+        );
+    }
+    
+    if(count($arr_canceled) > 0){
+        array_multisort(
+            array_column($arr_canceled, 'stime'), SORT_NUMERIC, SORT_DESC,
+            $arr_canceled
+        );
+    }
+    
+    if(count($arr_waiting) > 0){
+        array_multisort(
+            array_column($arr_waiting, 'stime'), SORT_NUMERIC, SORT_DESC,
+            $arr_waiting
+        );
+    }
+    
+    if($type == 'confirmed'){
         $arr_all = $arr_confirmed;
     }else if($type == 'canceled'){
         $arr_all = $arr_canceled;
@@ -7256,12 +7260,12 @@ if ($task == "get_tutoring_date_active") {
     }
 
     $arr_uni = array_unique($arr);
-	$arr_merge = array();
-	if(count($arr_uni) > 0){
-		foreach($arr_uni as $v){
-			$arr_merge[] = $v;
-		}
-	}
+    $arr_merge = array();
+    if(count($arr_uni) > 0){
+        foreach($arr_uni as $v){
+            $arr_merge[] = $v;
+        }
+    }
     echo json_encode($arr_merge);
     exit;
 }
@@ -7309,7 +7313,7 @@ if ($task == "save_tutor_available") {
                     'tutor_id' => $user_id,
                     'date' => $date,
                     'time_start' => $time_start,
-        			'time_end' => $time_end,
+                    'time_end' => $time_end,
                     'time' => $time,
                     'time_zone' => $timezone,
                     'time_zone_index' => $index,
