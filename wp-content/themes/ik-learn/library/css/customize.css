@@ -16354,3 +16354,19 @@ height: 30px;
 width: 10px;
 cursor: pointer;
 }
+.sign-pass {
+     color: #ffc168;
+    font-size: 14px;
+    font-family: Myriad_light;
+    cursor: pointer;
+text-decoration: underline;
+margin-left: 280px;
+margin-top: -51px;
+position: absolute;
+padding-bottom: 5px;
+}
+#done-it{
+    width: 263px;
+margin-bottom: 13px;
+background: #ffa422;
+}

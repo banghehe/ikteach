@@ -632,8 +632,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             $display_name = get_user_meta($current_user->ID, 'display_name', true);
                                                             if (!empty($display_name) && $display_name != '')
                                                                 echo $display_name;
-                                                            else
-                                                                _e('N/A', 'iii-dictionary');
+                                                            else{
+                                                                $ru_first_name = get_user_meta($current_user->ID, 'first_name', true);
+                                                            $ru_last_name = get_user_meta($current_user->ID, 'last_name', true);
+                                                            echo $ru_first_name.' '.$ru_last_name;
+                                                            }
                                                         } else
                                                             _e('N/A', 'iii-dictionary');
                                                         ?></span>
@@ -8198,6 +8201,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $("#lost-password").removeClass("active");
                             $("#login-user").addClass(" active");
                             $("#create-account").removeClass("active");
+                            
+                            $("#login-user").removeClass("hidden");
+                            $("#login-user").addClass("active");
+                            $("#login-user").addClass("in");
+                            // $("#lost-password").removeClass("active");
+                            // $("#lost-password").removeClass("in");
+                            // $("#lost-password").addClass("hidden");
+                            // $("#create-account").removeClass("active");
+                            // $("#create-account").removeClass("in");
                         });
                         $('#my-account-modal').on('show.bs.modal', function (e)
                         {
@@ -8713,9 +8725,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     else
                                         document.location.href = redirect;
                                 } else {
-                                    $('.box-title-1').html(data);
-                                    $('#done-btn').text('OK');
-                                    $('#modal-alert').modal('show');
+
+                                    $('.box-title-1').html('<p class="text-used" style=" color: #ffc168; ">' + data + '</p><button id="done-it" type="button" class="btn-orange form-control nopadding-r border-btn" style="height: 40px !important; margin-top: 30px;">OK</button><span class="sign-up sign-pass">Register now?</span><br><span class="forgot-pass sign-pass" style="margin-top:-43px">Forgot password?</span>');
+                                    $('#done-btn').css('display','none');
+                                    $('#modal-alert').css('display','block');
                                 }
                             });
                         });
@@ -24679,7 +24692,37 @@ function set_my_mce_editor_placeholder( $textarea_html ){
             
             // document.getElementById('desc_tell_update').value=null;
             //  });
+            $('body').on('click', '.sign-up', function () {
+                        $("#login-user").removeClass("active");
+                        $("#login-user").removeClass("in");
+                        $("#lost-password").removeClass("active");
+                        $("#lost-password").removeClass("in");
+                        $("#create-account").addClass("active");
+                        $("#create-account").addClass("in");
 
+                        var img = '<?php echo get_template_directory_uri() ?>/library/images/icon_Tutor_ID.png';
+                        $("#user-upload-avatar").attr('src',img);
+
+                        
+                        $("#modal-alert").css("display","none");
+                    });
+            $('body').on('click','.forgot-pass', function () {
+                        $("#login-user").addClass("hidden");
+                        $("#create-account").removeClass("active");
+                        $("#create-account").removeClass("in");
+                        $("#login-user").removeClass("active");
+                        $("#login-user").removeClass("in");
+                        $("#lost-password").removeClass("hidden");
+                        $("#lost-password").addClass("active");
+                        $("#lost-password").addClass("in");
+                    
+                        $("#modal-alert").css("display","none");
+                    });
+            $('body').on('click','#done-it', function () {
+                 
+                $("#modal-alert").css('display', 'none');
+                
+            });
 
 
 </script>
