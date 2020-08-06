@@ -724,15 +724,21 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         </div>
                                         <div class="row line-profile">
                                             <div class="col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <label><?php _e('Email Address (for login)', 'iii-dictionary') ?></label>
-                                                    <span class="color-black" id="profile-user-email"><?php
-                                                        if ($is_user_logged_in)
-                                                            echo $current_user->user_email;
-                                                        else
+                                                <label><?php _e('Gender', 'iii-dictionary') ?></label>
+                                                <span class="color-black" id="gender-show">
+                                                        <?php
+                                                        if ($is_user_logged_in) {
+                                                            $gender_show = get_user_meta($current_user->ID, 'gender', true);
+                                                            if (!empty($gender_show) && $gender_show != '')
+                                                                echo $gender_show;
+                                                            else
+                                                                _e('N/A', 'iii-dictionary');
+                                                        }else {
                                                             _e('N/A', 'iii-dictionary');
-                                                        ?></span>
-                                                </div>
+                                                        }
+                                                        ?>
+                                                    </span>
+        
                                                 <hr>
                                             </div>
                                             <div class="col-sm-6 col-md-6">
@@ -839,7 +845,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             </div>
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label><?php _e('Last School You Taught At (if any)', 'iii-dictionary') ?></label>
+                                                    <label><?php _e('Tagline', 'iii-dictionary') ?></label>
                                                     <span class="color-black" id="profile-last-tought">
                                                         <?php
                                                         if ($is_user_logged_in) {
@@ -896,7 +902,56 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 </div>
                                                 <hr>
                                             </div>
-                                        </div>                               
+                                        </div> 
+                                        <div class="row line-profile">
+                                            <div class="col-sm-6 col-md-6">
+                                                <label><?php _e('Time Zone', 'iii-dictionary') ?></label>
+                                                 <span class="color-black" id="profile-skype-id">
+                                                        <?php
+                                                        if ($is_user_logged_in) {
+                                                            
+                                                            if (!empty($my_timezone_index) && $my_timezone_index != ''){
+                                                                if($my_timezone_index == '1' ) echo 'New York';
+                                                                if($my_timezone_index == '2' ) echo 'Minneapolis';
+                                                                if($my_timezone_index == '3' ) echo 'Colorado';
+                                                                if($my_timezone_index == '4' ) echo 'San Francisco';
+                                                                if($my_timezone_index == '5' ) echo 'Hawaii';
+                                                                if($my_timezone_index == '6' ) echo 'Guam';
+                                                                if($my_timezone_index == '7') echo 'Tokyo';                     
+                                                                if($my_timezone_index == '8' ) echo 'Seoul';
+                                                                if($my_timezone_index == '9' ) echo 'Beijing';
+                                                                if($my_timezone_index == '10' ) echo 'Xianyang';
+                                                                if($my_timezone_index == '11' ) echo 'Hanoi';
+                                                                if($my_timezone_index == '12' ) echo 'Bangkok';
+                                                                if($my_timezone_index == '13' ) echo 'Myanmar';
+                                                                if($my_timezone_index == '14' ) echo 'Bangladesh';
+                                                                if($my_timezone_index == '15' ) echo 'Sri Lanka';
+                                                                if($my_timezone_index == '16' ) echo 'New Delhi';
+                                                                if($my_timezone_index == '17' ) echo 'Mumbai';
+                                                                if($my_timezone_index == '18' ) echo 'London';
+                                                                if($my_timezone_index == '19' ) echo 'Sydney';
+
+                                                            }
+                                                            else
+                                                                _e('N/A', 'iii-dictionary');
+                                                        }else {
+                                                            _e('N/A', 'iii-dictionary');
+                                                        }
+                                                        ?>
+                                                    </span>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label><?php _e('Email Address (for login)', 'iii-dictionary') ?></label>
+                                                    <span class="color-black" id="profile-user-email"><?php
+                                                        if ($is_user_logged_in)
+                                                            echo $current_user->user_email;
+                                                        else
+                                                            _e('N/A', 'iii-dictionary');
+                                                        ?></span>
+                                                </div>
+                                            </div>
+                                        </div>                              
                                     </form>
                                 </div>
 
@@ -1720,6 +1775,48 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     <form method="post" id="tutorForm" action="" name="registerform" enctype="multipart/form-data">
                                         <div class="row">
                                             <div id="tutor-regis" class="col-md-12">
+                                                <div id="info3">
+                                                    <label class="mt-bottom-10">Basic Accout</label>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="user_name" value="<?php echo $current_user->user_email;?>" readonly>
+                                                                <span class="placeholder"><?php _e('User Name', 'iii-dictionary') ?>:</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="gender" value="<?php
+                                                        if ($is_user_logged_in) {
+                                                            
+                                                            if (!empty($gender_show) && $gender_show != '')
+                                                                echo $gender_show;
+                                                            else
+                                                                _e('N/A', 'iii-dictionary');
+                                                        
+                                                        }
+                                                        ?>" readonly>
+                                                                <span class="placeholder"><?php _e('Gender', 'iii-dictionary') ?>:</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="birth-day" value="<?php echo $date_of_birth;?>" readonly>
+                                                                <span class="placeholder"><?php _e('Date of Birth (m/d/y)', 'iii-dictionary') ?>:</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="display-name" value="<?php if (!empty($display_name) && $display_name != '')
+                                                                    echo $display_name;
+                                                                    else{
+                                                                    echo $ru_first_name.' '.$ru_last_name;
+                                                                    };?>" readonly>  
+                                                                <span class="placeholder"><?php _e('My Name', 'iii-dictionary') ?>:</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div id="info2">
                                                     <label class="mt-bottom-10">Personal Information</label>
                                                     <div class="row">                                                    
@@ -8021,6 +8118,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             });
                         }else{
                             $('#a-link-managercourse').click(function (e) {
+                                if($('#tutor-regist').hasClass('hidden-teacher')){
                                 e.preventDefault();
                                 $("#my-account-modal").modal('show');
                                 $("#sub-createacc").removeClass("active");
@@ -8063,9 +8161,45 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $("#manage-class-red").addClass("active");
                                 $("#manage-class").addClass("active");
                                 $("#manage-class").addClass("in");
+                                }else{
+                                    e.preventDefault();
+                                $("#my-account-modal").modal('show');
+                                $("#sub-createacc").removeClass("active");
+                                $("#sub-profile").removeClass("active");
+                                $("#create-account").removeClass("active");
+                                $("#create-account").removeClass("in");
+                                $("#login-user").removeClass("active");
+                                $("#profile").removeClass("active");
+                                $("#profile").removeClass("in");
+                                $("#tutor-regis-tab").addClass("in");
+                                $("#tutor-regis-tab").addClass("active");
+                                $("#tutor-regist").addClass("active");
+                                $('span.placeholder').each(function () {
+                                var text = $(this).text();
+                                var font = $(this).css("font");
+                                if(text == 'Year:'){
+                                    var offset = 11;
+                                }
+                                else{
+                                    if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+                                        //console.log("Edge");
+                                        var offset = getDistancePlace(text, "Edge");
+                                    }else if (navigator.userAgent.search("Firefox") >= 0){
+                                        var offset = getDistancePlace(text, "Firefox");
+                                        //console.log("Firefox");
+                                    }else{
+                                        var offset = 18;
+                                    }
+                                }
+                                var left = (getTextWidth(text,font) + offset);
+                                $(this).prev().css("padding-left",left+"px");
+                            }); 
+                                
+                                };
                             });
 
                             $('#a-link-schedule').click(function (e) {
+                                if($('#tutor-regist').hasClass('hidden-teacher')){
                                 e.preventDefault();
                                 $("#my-account-modal").modal('show');
                                 $("#sub-createacc").removeClass("active");
@@ -8116,10 +8250,44 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                 $(".main-my-schedule-tutor").css("display","block");
                                 $(".main-status-request").css("display","none");
-                            
+
                                 $("#sub-schedule-li").addClass("active");
                                 $("#tutoring-main").addClass("active");
                                 $("#tutoring-main").addClass("in");
+                                 }else{
+                                    e.preventDefault();
+                                $("#my-account-modal").modal('show');
+                                $("#sub-createacc").removeClass("active");
+                                $("#sub-profile").removeClass("active");
+                                $("#create-account").removeClass("active");
+                                $("#create-account").removeClass("in");
+                                $("#login-user").removeClass("active");
+                                $("#profile").removeClass("active");
+                                $("#profile").removeClass("in");
+                                $("#tutor-regis-tab").addClass("in");
+                                $("#tutor-regis-tab").addClass("active");
+                                $("#tutor-regist").addClass("active");
+                                $('span.placeholder').each(function () {
+                                var text = $(this).text();
+                                var font = $(this).css("font");
+                                if(text == 'Year:'){
+                                    var offset = 11;
+                                }
+                                else{
+                                    if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+                                        //console.log("Edge");
+                                        var offset = getDistancePlace(text, "Edge");
+                                    }else if (navigator.userAgent.search("Firefox") >= 0){
+                                        var offset = getDistancePlace(text, "Firefox");
+                                        //console.log("Firefox");
+                                    }else{
+                                        var offset = 18;
+                                    }
+                                }
+                                var left = (getTextWidth(text,font) + offset);
+                                $(this).prev().css("padding-left",left+"px");
+                            }); 
+                                };
                             });
                         }
                         
@@ -8128,14 +8296,47 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var name = $(".display-name").text();
                             if (name !== '') {
                                 $("#sub-createacc").removeClass("active");
-                                $("#sub-profile").addClass("active");
+                                if($('#tutor-regist').hasClass('hidden-teacher')){
+                                    $("#sub-profile").addClass("active");
+                                    $("#profile").addClass("active");
+                                    $("#profile").addClass("in");
+                                    $("#tutor-regis-tab").removeClass("active");
+                                    $("#tutor-regis-tab").removeClass("in");
+                                }else{
+                                    $("#sub-profile").removeClass("active");
+                                    $('#tutor-regis-tab').addClass('in');
+                                    $('#tutor-regis-tab').addClass('active');
+                                    $("#profile").removeClass("active");
+                                    $("#profile").removeClass("in");
+                                    $('span.placeholder').each(function () {
+                                var text = $(this).text();
+                                var font = $(this).css("font");
+                                if(text == 'Year:'){
+                                    var offset = 11;
+                                }
+                                else{
+                                    if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+                                        //console.log("Edge");
+                                        var offset = getDistancePlace(text, "Edge");
+                                    }else if (navigator.userAgent.search("Firefox") >= 0){
+                                        var offset = getDistancePlace(text, "Firefox");
+                                        //console.log("Firefox");
+                                    }else{
+                                        var offset = 18;
+                                    }
+                                }
+                                var left = (getTextWidth(text,font) + offset);
+                                $(this).prev().css("padding-left",left+"px");
+                            }); 
+                                    
+                                };
+                                
                                 $("#create-account").removeClass("active");
                                 $("#create-account").removeClass("in");
                                 $("#login-user").removeClass("active");
                                 $("#updateinfo").removeClass("active");
                                 $("#updateinfo").removeClass("in");
-                                $("#tutor-regis-tab").removeClass("active");
-                                $("#tutor-regis-tab").removeClass("in");
+                                
                                 $("#earn-pay").removeClass("active");
                                 $("#earn-pay").removeClass("in");
                                 $("#subscription").removeClass("active");
@@ -8158,8 +8359,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $("#create-class").removeClass("in");
                                 $("#manage-class").removeClass("active");
                                 $("#manage-class").removeClass("in");
-                                $("#profile").addClass("active");
-                                $("#profile").addClass("in");
+                                
 
 
                             }else{
@@ -16985,7 +17185,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         });
 
                         $('#tutor-regist').click(function () {
-                            $("#tutorForm input").val('');
+                            
                             $(".radio_buttons").attr('checked', false);
                             $("#rdo-agreed2").attr('checked', false);
                             $('#desc_tell_me_ifr').contents().find('#tinymce').text('');
@@ -20327,6 +20527,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var direct_type = $(this).attr('data-type');
                         
                             if(direct_type == 'profile'){
+
                                 $('#profile').addClass('active in');
                                 $('#sub-profile').addClass('active');
                             }else if(direct_type == 'schedule'){ 

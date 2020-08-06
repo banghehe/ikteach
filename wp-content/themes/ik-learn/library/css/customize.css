@@ -16370,3 +16370,6 @@ padding-bottom: 5px;
 margin-bottom: 13px;
 background: #ffa422;
 }
+#info3 div input{
+    background: none;
+}
