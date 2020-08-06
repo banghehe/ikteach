@@ -20853,7 +20853,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 });   
                             }
                         });
-                        
                         $("#make-uncheck-all").click(function(){
                             var name = $('#select-timezone :selected').attr("data-name");
                             var city = $('#select-timezone :selected').attr("data-city");
@@ -21388,11 +21387,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                     var ul_scheduled = $("#tutoring-scheduled-tutor");
                                     var fl = ' class="icon-status"';
-                                    var icon_arrow = '<span id="icon-users' + no + '" class="icon-users" data-day="'+ day +'" data-time="'+ time +'" data-time-view="'+ time_sc1 + ' ~ ' + time_sc2 +'"><span class="number-users">0</span></span>';
+                                    var icon_arrow = '<span  style="display:table-cell;width:25%;" id="icon-users' + no + '" class="icon-users" data-day="'+ day +'" data-time="'+ time +'" data-time-view="'+ time_sc1 + ' ~ ' + time_sc2 +'"><span class="number-users">0</span></span>';
 
                                     var li = '<li id="view-detail-schedule' + no + '" class="view-detail-schedule' + class_type + '" ' + style + ' data-no="' + no + '" data-fromtime="' + fromtime + '" data-totime="' + time_duration + '" data-day="' + day + '"><span ' + fl + '>';
                                         li += '<span class="time-scheduled">' + time_sc1 + ' - ' + time_sc2 + '</span>';
-                                        li += '<span class="subject-scheduled">Available</span>';
+                                        // li += '<span class="subject-scheduled">BODDIEEE</span>';
+                                        li += '<span class="subject-scheduled"><img style="max-height:15px;" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_1on1.png"> &nbsp; No Subject Selected</span>';
                                         li += '</span>' + icon_arrow + '</li>';
                                     ul_scheduled.append(li);
 
