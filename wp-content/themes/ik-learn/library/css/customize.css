@@ -16373,3 +16373,17 @@ background: #ffa422;
 #info3 div input{
     background: none;
 }
+.complete-tutor{
+    position: absolute; 
+    margin-left: 18%; 
+    margin-top: -60px;
+    font-family: semibold; 
+    font-size: 15pt;
+    color: #009dcb
+}
+@media(min-width: 300px) and (max-width: 992px){
+    .complete-tutor{
+        margin-top: 0;
+        position: inherit;
+    }
+}

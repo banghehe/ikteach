@@ -2836,6 +2836,13 @@ if ($task == "get_user_profile") {
     echo json_encode($data);
     die;
 }
+if($task == "status_login"){
+    $status_login = get_user_meta($user->ID, 'status_login', true);
+    $status_login = $_REQUEST['status_login'];
+    $current_user = wp_get_current_user();
+    update_user_meta($current_user->ID, 'status_login', '0');
+
+}
 if ($task == "update_info") {
     $user_email = $_REQUEST['user_email'];
     $new_password = $_REQUEST['new_password'];

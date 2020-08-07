@@ -25,7 +25,17 @@ $cart_items = get_cart_items();
 
 $locale_code = explode('_', get_locale());
 
+
+  if($is_user_logged_in){
+   add_user_meta($current_user->ID,'status_login','1');
+   update_user_meta($current_user->ID, 'status_login', '1');
+
+};
+
+  
+
 if($is_user_logged_in){
+    
     $u_time_zone = get_user_meta($current_user->ID, 'user_timezone', true);
     $u_time_zone = empty($u_time_zone)? 0 : $u_time_zone;
     $u_time_zone_index = get_user_meta($current_user->ID, 'time_zone_index', true);
@@ -1771,6 +1781,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 </div>
 
                                 <div id="tutor-regis-tab" class="tab-pane fade in">
+                                    <P class="complete-tutor" >Please complete tutor registration!</p>
                                     <h3>Teacher & Tutor Account</h3>
                                     <form method="post" id="tutorForm" action="" name="registerform" enctype="multipart/form-data">
                                         <div class="row">
@@ -1778,10 +1789,20 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div id="info3">
                                                     <label class="mt-bottom-10">Basic Accout</label>
                                                     <div class="row">
-                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="col-sm-6 col-md-6 col-xs-12 ">
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control" name="user_name" value="<?php echo $current_user->user_email;?>" readonly>
                                                                 <span class="placeholder"><?php _e('User Name', 'iii-dictionary') ?>:</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" name="display-name" value="<?php if (!empty($display_name) && $display_name != '')
+                                                                    echo $display_name;
+                                                                    else{
+                                                                    echo $ru_first_name.' '.$ru_last_name;
+                                                                    };?>" readonly>  
+                                                                <span class="placeholder"><?php _e('My Name', 'iii-dictionary') ?>:</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
@@ -1805,16 +1826,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <span class="placeholder"><?php _e('Date of Birth (m/d/y)', 'iii-dictionary') ?>:</span>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" name="display-name" value="<?php if (!empty($display_name) && $display_name != '')
-                                                                    echo $display_name;
-                                                                    else{
-                                                                    echo $ru_first_name.' '.$ru_last_name;
-                                                                    };?>" readonly>  
-                                                                <span class="placeholder"><?php _e('My Name', 'iii-dictionary') ?>:</span>
-                                                            </div>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                                 <div id="info2">
@@ -8108,6 +8120,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         });
                         $('.logout-link').click(function (e) {
                             localStorage.clear();
+                             var status_login = '0';
+                            $.post(home_url + "/?r=ajax/status_login", {
+                                status_login: status_login,
+                                type: "update"
+                            });
+
                         });
 
                         if(!isuserloggedin){

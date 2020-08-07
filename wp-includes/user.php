@@ -1475,6 +1475,7 @@ function setup_userdata($for_user_id = '') {
 	$user_email = $user->user_email;
 	$user_url   = $user->user_url;
 	$user_identity = $user->display_name;
+	
 }
 
 /**
@@ -2047,7 +2048,7 @@ function wp_insert_user( $userdata ) {
 		$user_nicename = $alt_user_nicename;
 	}
 
-	$compacted = compact( 'user_pass', 'user_email', 'user_url', 'user_nicename', 'display_name', 'user_registered' );
+	$compacted = compact( 'user_pass', 'user_email', 'user_url', 'user_nicename', 'display_name', 'user_registered');
 	$data = wp_unslash( $compacted );
 
 	if ( $update ) {
