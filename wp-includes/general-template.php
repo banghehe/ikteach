@@ -310,6 +310,7 @@ function wp_logout_url($redirect = '') {
 
 	$logout_url = add_query_arg($args, site_url('wp-login.php', 'login'));
 	$logout_url = wp_nonce_url( $logout_url, 'log-out' );
+	
 
 	/**
 	 * Filter the logout URL.
@@ -320,6 +321,7 @@ function wp_logout_url($redirect = '') {
 	 * @param string $redirect   Path to redirect to on logout.
 	 */
 	return apply_filters( 'logout_url', $logout_url, $redirect );
+	
 }
 
 /**
