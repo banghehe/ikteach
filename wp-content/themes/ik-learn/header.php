@@ -915,7 +915,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         <div class="row line-profile">
                                             <div class="col-sm-6 col-md-6">
                                                 <label><?php _e('Time Zone', 'iii-dictionary') ?></label>
-                                                 <span class="color-black" id="profile-skype-id">
+                                                 <span class="color-black" id="profile-user-timzone">
                                                         <?php
                                                         if ($is_user_logged_in) {
                                                             
@@ -9113,6 +9113,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var birth_y = $('#update_birth_y').val();
                             
                             var time_zone = $('#update-time-zone :selected').attr("data-value");
+                            var time_zone_name = $('#update-time-zone :selected').text();
                             var name = $('#update-time-zone :selected').attr("data-name");
                             var time_zone_index = $("#update-time-zoneSelectBoxItText").attr("data-val");
                             var city = $('#update-time-zone :selected').attr("data-city");
@@ -9303,6 +9304,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     if ($.trim(data) == '1') {                                        
                                         $('#popup-message').html('<p class="text-used">Account Info Updated!<br/>Your account has been updated successfully.</p><button id="got-profile" type="button" class="btn-orange form-control nopadding-r border-btn" data-id="sub-update-info" data-tab="updateinfo">Got it</button>');
                                         $('#top-popup-message').css("display", "block");
+                                        $('#profile-user-timzone').html(time_zone_name);
                                     } else {
                                         $('#popup-message').html('<p class="text-used">' + data + msg +'</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
                                         $('#top-popup-message').css("display", "block");
@@ -9311,7 +9313,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }else{
                                 $('#popup-message').html('<p class="text-used">' + msg +'</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
                                 $('#top-popup-message').css("display", "block");
-                            }                         
+                            }
+                            
                         });
 
                         $("#save-lg").click(function () {
@@ -21873,16 +21876,6 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             get_scheduled_day_tutor(day,type);
                         });
                         
-                        $("#refresh-btn-tutor").click(function(){
-                            var day = $(".schedule-rightbtn").attr("data-day");
-                            var type = $(".schedule-rightbtn").attr("data-type");
-                            var day = day.split("-");
-                            day[2] = day[2] - 1;
-                            var cur_day = day[0] + "-" + day[1] + "-" + day[2];
-                            console.log(cur_day);
-                            get_list_schedule_tutor('schedule');
-                            get_scheduled_day_tutor(cur_day,type);
-                        });
                         setTimeout(function(){
                             var day = $(".schedule-rightbtn").attr("data-day");
                             var type = $(".schedule-rightbtn").attr("data-type");
@@ -23556,6 +23549,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             ul_upcoming.html("");
                             $.get(home_url + "/?r=ajax/get_scheduled_day_tutor", {day: day}, function (data) {
                                 data = JSON.parse(data);
+                                console.log(data)
                                 $('.btn-new-request').attr('data-points',data.points);
                                 $('.btn-new-request').attr('data-price-tutoring',data.price_tutoring);
                                 
@@ -24848,12 +24842,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
     // Đối tượng container chứa popup
     var containerlang = $("#language-timezone");
     // Nếu click bên ngoài đối tượng container thì ẩn nó đi
-    if (!container.is(e.target) && container.has(e.target).length === 0){
-        var isopened = containerlang.find('.language_drop').css("display");
-            if (isopened == 'block') {
-                containerlang.find('.language_drop').slideToggle(0);
-            }
-    }
+
+    // UNDEFINED container!
+    // if (!container.is(e.target) && container.has(e.target).length === 0){
+    //     var isopened = containerlang.find('.language_drop').css("display");
+    //         if (isopened == 'block') {
+    //             containerlang.find('.language_drop').slideToggle(0);
+    //         }
+    // }
     });
             $('#add-more-school').click(function(){
                 

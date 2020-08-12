@@ -16337,8 +16337,8 @@ float: right;
     color: #4eacc8;
 }
 #img-info{
-   width: 13px;
-   height: 100%;
+   width: 13px !important;
+   height: 13px !important;
 margin-left: 5px;
 margin-bottom: 3px;
 }
