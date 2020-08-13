@@ -2184,7 +2184,7 @@ class MWHtml {
 									</div>
 								<?php endforeach ?>
 							</div>
-							<img class="icon-close-classes-created" style="top: 25%" src="<?php echo get_template_directory_uri(); ?>/library/images/close_white.png">
+							<img id="close-white" class="icon-close-classes-created" style="top: 25%" src="<?php echo get_template_directory_uri(); ?>/library/images/close_white.png">
 						</div>
 					</div>
 					<?php if(!empty($other)) : ?>
@@ -2198,7 +2198,20 @@ class MWHtml {
 				</div>
 			  </div>
 			</div>
-			<script>(function($){ $(function(){ $("#site-messages-modal").modal("show"); }); })(jQuery);</script>
+			<script>(function($){ 
+				$(function(){ 
+					$("#site-messages-modal").modal("show");
+				}); 
+				$('#close-white').click(function(){
+					$("#site-messages-modal").removeClass('in');
+					$("#site-messages-modal").css('display','none');
+					$('body').removeClass('modal-open');
+					$('.modal-backdrop').removeClass('modal-backdrop');
+
+				});
+
+
+			})(jQuery);</script>
 			<?php
 			
 	endif;

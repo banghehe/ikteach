@@ -2399,7 +2399,37 @@ if ($task == "create_account") {
     $gender = $_REQUEST['gender'];
     $time_zone = $_REQUEST['time_zone'];
     $time_zone_index = $_REQUEST['time_zone_index'];
-
+    $mobile_number = $_REQUEST['mobile_number'];
+$user_profession = $_REQUEST['user_profession'];
+$last_school = $_REQUEST['last_school'];
+$skype_id = $_REQUEST['skype_id'];
+$previous_school = $_REQUEST['previous_school'];
+$desc_tell_me = $_REQUEST['desc_tell_me'];
+$school_name = $_REQUEST['school_name'];
+$school_name_02 = $_REQUEST['school_name_02'];
+$school_name_03 = $_REQUEST['school_name_03'];
+$school_name_04 = $_REQUEST['school_name_04'];
+$school_name_05 = $_REQUEST['school_name_05'];
+$teaching_subject = $_REQUEST['teaching_subject'];
+$teaching_subject_02 = $_REQUEST['teaching_subject_02'];
+$teaching_subject_03 = $_REQUEST['teaching_subject_03'];
+$teaching_subject_04 = $_REQUEST['teaching_subject_04'];
+$teaching_subject_05 = $_REQUEST['teaching_subject_05'];
+$school_name1 = $_REQUEST['school_name1'];
+$school_name2 = $_REQUEST['school_name2'];
+$school_name3 = $_REQUEST['school_name3'];
+$school_name4 = $_REQUEST['school_name4'];
+$school_name5 = $_REQUEST['school_name5'];
+$school_link1 = $_REQUEST['school_link1'];
+$school_link2 = $_REQUEST['school_link2'];
+$school_link3 = $_REQUEST['school_link3'];
+$school_link4 = $_REQUEST['school_link4'];
+$school_link5 = $_REQUEST['school_link5'];
+$school_attend = $_REQUEST['school_attend'];
+$student_link = $_REQUEST['student_link'];
+$user_gpa = $_REQUEST['user_gpa'];
+$user_major = $_REQUEST['user_major'];
+$user_grade = $_REQUEST['user_grad'];
     $html = '';
     $form_valid = true;
     if (is_email($user_name)) {
@@ -2514,6 +2544,41 @@ if ($task == "create_account") {
         update_user_meta($user_id, 'date_of_birth', $date_of_birth);
 
         update_user_meta($user_id, 'user_password', $user_password);
+        update_user_meta($user_id, 'mobile_number', $mobile_number);
+        
+        update_user_meta($user_id, 'user_profession', $user_profession);
+        update_user_meta($user_id, 'last_school', $last_school);
+        update_user_meta($user_id, 'skype_id', $skype_id);
+        update_user_meta($user_id, 'previous_school', $previous_school);
+        update_user_meta($user_id, 'desc_tell_me', $desc_tell_me);
+        update_user_meta($user_id, 'school_name', $school_name);
+        update_user_meta($user_id, 'school_name_02', $school_name_02);
+        update_user_meta($user_id, 'school_name_03', $school_name_03);
+        update_user_meta($user_id, 'school_name_04', $school_name_04);
+        update_user_meta($user_id, 'school_name_05', $school_name_05);
+        update_user_meta($user_id, 'teaching_subject', $teaching_subject);
+        update_user_meta($user_id, 'teaching_subject_02', $teaching_subject_02);
+        update_user_meta($user_id, 'teaching_subject_03', $teaching_subject_03);
+        update_user_meta($user_id, 'teaching_subject_04', $teaching_subject_04);
+        update_user_meta($user_id, 'teaching_subject_05', $teaching_subject_05);
+        update_user_meta($user_id, 'school_name1', $school_name1);
+        update_user_meta($user_id, 'school_name2', $school_name2);
+        update_user_meta($user_id, 'school_name3', $school_name3);
+        update_user_meta($user_id, 'school_name4', $school_name4);
+        update_user_meta($user_id, 'school_name5', $school_name5);
+        update_user_meta($user_id, 'school_link1', $school_link1);
+        update_user_meta($user_id, 'school_link2', $school_link2);
+        update_user_meta($user_id, 'school_link3', $school_link3);
+        update_user_meta($user_id, 'school_link4', $school_link4);
+        update_user_meta($user_id, 'school_link5', $school_link5);
+        update_user_meta($user_id, 'school_attend', $school_attend);
+        update_user_meta($user_id, 'student_link', $student_link);
+        update_user_meta($user_id, 'user_gpa', $user_gpa);
+        update_user_meta($user_id, 'user_major', $user_major);
+        update_user_meta($user_id, 'user_grade', $user_grade);
+
+
+
 
         update_user_meta($user_id, 'newuser', 1);
         
@@ -2525,17 +2590,14 @@ if ($task == "create_account") {
         // send confirmation email
         if (is_email($user_email)) {
             $title = __('Congratulations! You have successfully signed up for iklearn.com', 'iii-dictionary');
-            $message = __('You have successfully signed up for iklearn.com.', 'iii-dictionary') . "\r\n\r\n" .
-                    __('If you have questions or need support, please contact us at support@iklearn.com.', 'iii-dictionary') . "\r\n\r\n" .
-                    __('If you forgot your password, please click on the "forgot password" button after entering your username (email address).', 'iii-dictionary') . "\r\n\r\n" .
-                    __('Please enjoy the Merriam Webster dictionary and English learning tools.', 'iii-dictionary') . "\r\n\r\n" .
-                    __('For teachers - You may assign homework practice sheets available on this site. You can also create your own homework sheets. Please click here for details. The homework that is turned in by students is automatically graded and saved in your teacher\'s box. Currently, the available homework worksheets are (1) spelling practice and (2) vocabulary and grammar.', 'iii-dictionary') . "\r\n\r\n\r\n" .
-                    __('Happy learning!', 'iii-dictionary') . "\r\n\r\n\r\n" .
-                    __('Support', 'iii-dictionary');
 
-            if ($message && !wp_mail($user_email, wp_specialchars_decode($title), $message)) {
-                
-            }
+            $message = __('If you have questions or need support, please contact us at support@iktutor.com', 'iii-dictionary') . "/<br>" .
+                    __('If you forgot your password, please click on the "forgot password" button after entering your username (email address).', 'iii-dictionary') . "\r\n\r\n" .
+                    __('If you are student, you can take online course, or get a live tutor online.', 'iii-dictionary') . "\r\n\r\n\r\n" .
+                    __('If you are registered as a tutor, you can prove helps to students in learning in school and homework.', 'iii-dictionary') . "\r\n\r\n\r\n" .
+                    __('Enjoy!');
+
+            wp_mail($user_email, wp_specialchars_decode($title), $message);
         }
 
         $_SESSION['newuser'] = 1;

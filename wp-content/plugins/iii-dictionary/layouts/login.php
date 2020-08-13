@@ -240,18 +240,7 @@
 							</div>
 						</div>
 						<div class="clearfix"></div>
-						<div class="col-sm-12">
-							<div class="pull-left" style="margin-right: 15px">
-								<img alt="" src="<?php echo get_template_directory_uri() ?>/library/images/desktop-shortcut.png">
-							</div>
-							<div class="pull-left">
-								<p class="instructions-text"><?php _e('To make it easy to start up this site, download Desktop icon', 'iii-dictionary') ?></p>
-								<span class="downloads-block"><span class="icon-download"></span> <?php _e('DOWNLOAD:', 'iii-dictionary') ?>
-									<span class="downloads-links"><a href="<?php echo $link_url['mac']; ?>"><?php _e('Mac', 'iii-dictionary') ?></a> / <a href="<?php echo $link_url['win']; ?>"><?php _e('Windows', 'iii-dictionary') ?></a></span>
-								</span>
-								<p class="instructions-text"><?php _e('Mobile device, search for iklearn.com', 'iii-dictionary') ?></p>
-							</div>
-						</div>
+						<!--  -->
 					</div>  
 					<input name="redirect_to" value="<?php echo locale_home_url() ?>" type="hidden">
 				</form>

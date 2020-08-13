@@ -7420,7 +7420,7 @@ main.home #content .left-col {
         margin: auto;
         /*height: 855px;*/
         height: 703px;
-        background: url(../images/homemain2.png);
+        background: url(../images/homemain23.png);
         background-size: 100% 100%;
         background-repeat: round;
         position: relative;
@@ -10035,7 +10035,8 @@ textarea:focus {
 #user-upload-avatar{
     border-radius: 5%;
 }
-#user-upload-img{
+#user-upload-img,
+#user-upload-avatar{
     height: 50px;
     width: 100%;
 }
@@ -11051,7 +11052,7 @@ background: url(../images/chevron-l.png) no-repeat !important;
 .select-style .selectboxit-container *{
       font-family:Myriad_regular;
        color: #515151 !important;
-       font-size: 13px !important;
+       font-size: 13pt !important;
      
 }
 .delete-worksheet img,.delete-subject img{
@@ -16316,7 +16317,7 @@ margin-right: -30px;
     margin-top: -3px;
     cursor: pointer;
 }
-#update-teacher, #cancel-update-teacher, #cancel-lg, #save-lg{
+#update-teacher, #cancel-update-teacher, #cancel-lg, #save-lg, #save-lg-ct{
     border-radius: 8px !important;
 }
 
@@ -16386,4 +16387,45 @@ background: #ffa422;
         margin-top: 0;
         position: inherit;
     }
+}
+    input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  
+  
+  -webkit-box-shadow: 0 0 0px 0px #fffff inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.my-account{
+    font-family: Myriad_regular;
+    font-size: 13px;
+    color: #a1a1a1;
+    margin: 4px 0 -4px;
+}
+.tutor-acc{
+    color: #199eca;
+    font-size: 18px;
+    font-family: Semibold;
+    line-height: normal;
+    /*text-transform: none;*/
+    padding-left: 0;
+}
+#agree-create .option-input-3:checked + span {
+    color: #4eacc8 !important;
+}
+.required-star {
+    color: red;
+    padding-top: 6px;
+    position: absolute;
+    font-weight: bold;
+    padding-left: 2px;
+}
+#agree-buttom .option-input-3:checked + span{
+    color: #4eacc8 !important;
 }
