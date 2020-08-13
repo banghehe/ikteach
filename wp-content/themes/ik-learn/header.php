@@ -3007,7 +3007,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <div class="upcoming-schedule-tutor">
                                                                     <h4>Upcoming Tutoring Sessions</h4>
                                                                     <div class="upcoming-main style-scrollbar">
-                                                                        <ul id="upcoming-schedule-tutor">
+                                                                        <ul id="upcoming-schedule-tutor" style="margin-left: 30px;">
                                                                             <li>
                                                                                 <span class="time-upcoming-tutor">Dec 14, 2018 / 8:30am - 9:30am</span>
                                                                                 <span>English business conversation</span>

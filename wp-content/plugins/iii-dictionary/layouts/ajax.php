@@ -6541,7 +6541,7 @@ if($task == 'get_scheduled_day_tutor'){
     $query2 = "SELECT tp.*, u.display_name AS student_name
             FROM " . $wpdb->prefix . "dict_tutoring_plan AS tp
             LEFT JOIN " . $wpdb->users . " AS u ON u.ID = tp.id_user
-            WHERE tp.canceled = 0 AND tp.accepted = 1 AND tp.tutor_id = ".$user_id."
+            WHERE tp.canceled = 0 AND tp.accepted = 1 AND tp.date > '$date'  AND tp.tutor_id = ".$user_id."
             ORDER BY tp.date DESC";
     $results_cf = $wpdb->get_results($query2);
     $confirmed = array();
@@ -6567,6 +6567,7 @@ if($task == 'get_scheduled_day_tutor'){
             $time = $datetime_st2->format('h:i A').' - '.$datetime_ed2->format('h:i A');
         
             $confirmed[] = array(
+                            'dates' => $date,
                             'subject' => $v->subject,
                             'private_subject' => $v->private_subject,
                             'short_message' => $v->short_message,                        

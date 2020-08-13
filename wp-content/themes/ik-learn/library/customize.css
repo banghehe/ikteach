@@ -12143,7 +12143,7 @@ background: url(../images/chevron-l.png) no-repeat !important;
     margin-bottom: 40px;
 }
 .style-paginate{
-    border: 1px solid #ddddd;
+    border: 1px solid #dddddd;
     background: #DEDEDE;
     padding: 5px 10px;
     margin-right: 5px;
@@ -12256,8 +12256,9 @@ background: url(../images/chevron-l.png) no-repeat !important;
     margin-right: 10px;
     font-size: 14px;
     font-family: Myriad_bold;
-<<<<<<< HEAD
 }
-=======
+
+.mCSB_container{
+    margin-left: 0px !important;
+    list-style-type: none;
 }
->>>>>>> 1498df6c7e7294f901b588bfb2e517169b86a6a8
