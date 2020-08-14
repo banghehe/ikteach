@@ -31,6 +31,10 @@ $locale_code = explode('_', get_locale());
    update_user_meta($current_user->ID, 'status_login', '1');
 
 };
+if($is_user_logged_in)
+    {$link_ss = '?r=ajax/logged/'.$current_user->ID.'/'.session_id();}
+else
+    {$lin_ss = '';};
 
   
 
@@ -41,12 +45,31 @@ if($is_user_logged_in){
     $u_time_zone_index = get_user_meta($current_user->ID, 'time_zone_index', true);
     $u_time_zone_index = empty($u_time_zone_index)? 0 : $u_time_zone_index;
     $u_time_zone_name = get_user_meta($current_user->ID, 'time_zone_name', true);
-    $timezone_name = empty($u_time_zone_name)? convert_timezone_to_name($u_time_zone_index) : $u_time_zone_name;
+    // $timezone_name = empty($u_time_zone_name)? convert_timezone_to_name($u_time_zone_index) : $u_time_zone_name;
 }else{
     $u_time_zone = $u_time_zone_index = 0;
-    $timezone_name = convert_timezone_to_name($u_time_zone_index);
+    // $timezone_name = convert_timezone_to_name($u_time_zone_index);
 }
+// function file_get_contents_curl( $url ) {
+ 
+//   $ch = curl_init();
+ 
+//   curl_setopt( $ch, CURLOPT_AUTOREFERER, TRUE );
+//   curl_setopt( $ch, CURLOPT_HEADER, 0 );
+//   curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+//   curl_setopt( $ch, CURLOPT_URL, $url );
+//   curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, TRUE );
+ 
+//   $data = curl_exec( $ch );
+//   curl_close( $ch );
+ 
+//   return $data;
+ 
+// }
 
+$time_zone_user = json_decode(file_get_contents("http://ipinfo.io/"));
+$time_zone_user1 = $time_zone_user->region;
+$timezone_name = $time_zone_user->timezone;
 $my_timezone_index = $u_time_zone_index;
 $my_city = convert_timezone_to_location($u_time_zone_index);
 $dt = new DateTime('now', new DateTimezone($timezone_name));
@@ -219,7 +242,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         <div class="icon-close-classes-created">
                             <?php if ($is_user_logged_in) { ?>
                             <button type="button" id="btn-my-timezone" class="btn-my-schedule">
-                                <span id="mycity-name"><?php echo $my_city ?></span>
+                                <span id="mycity-name"><?php echo $time_zone_user1 ?></span>
                                 <span id="mytime-clock" data-hour="24" data-minute="0">2:35 PM</span>
                                 <img class="ic-my-schedule" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_TimeZone_Selector.png">
                             </button>
@@ -230,79 +253,79 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             <img class="ic-close7" id="close-modal" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png">
                             <ul id="my-timezone" style="display: none;">
                                 <li data-value="" data-city="London" <?php if($timezone_index == '0' ) echo 'class="active"'; ?>>Select Time Zone</li>
-                                <li class="my-timezone<?php if($my_timezone_index == '1' ) echo ' active'; ?>" data-index="1" data-value="-5" data-name="America/New_York" data-city="New York">
+                                <li class="my-timezone<?php if($timezone_name == 'America/New_York' ) echo ' active'; ?>" data-index="1" data-value="-5" data-name="America/New_York" data-city="New York">
                                     <span class="name-city" id="name-city1">New York</span>
                                     <span class="name-clock" id="name-clock1"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '2' ) echo ' active'; ?>" data-index="2" data-value="-6" data-name="America/Chicago" data-city="Minneapolis">
+                                <li class="my-timezone<?php if($timezone_name == 'America/Chicago' ) echo ' active'; ?>" data-index="2" data-value="-6" data-name="America/Chicago" data-city="Minneapolis">
                                     <span class="name-city" id="name-city2">Minneapolis</span>
                                     <span class="name-clock" id="name-clock2"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '3' ) echo ' active'; ?>" data-index="3" data-value="-5" data-name="America/Denver" data-city="Colorado">
+                                <li class="my-timezone<?php if( $timezone_name == 'America/Denver' ) echo ' active'; ?>" data-index="3" data-value="-5" data-name="America/Denver" data-city="Colorado">
                                     <span class="name-city" id="name-city3">Colorado</span>
                                     <span class="name-clock" id="name-clock3"></span>
                                 </li>
-                                <li class="my-timezone <?php if($my_timezone_index == '4' ) echo ' active'; ?>" data-index="4" data-value="-7" data-name="America/Los_Angeles" data-city="San Francisco">
+                                <li class="my-timezone <?php if($timezone_name == 'America/Los_Angeles' ) echo ' active'; ?>" data-index="4" data-value="-7" data-name="America/Los_Angeles" data-city="San Francisco">
                                     <span class="name-city" id="name-city4">San Francisco</span>
                                     <span class="name-clock" id="name-clock4"></span>
                                 </li>
-                                <li class="my-timezone <?php if($my_timezone_index == '5' ) echo ' active'; ?>" data-index="5" data-value="-10" data-name="Pacific/Honolulu" data-city="Hawaii">
+                                <li class="my-timezone <?php if($timezone_name == 'Pacific/Honolulu' ) echo ' active'; ?>" data-index="5" data-value="-10" data-name="Pacific/Honolulu" data-city="Hawaii">
                                     <span class="name-city" id="name-city5">Hawaii</span>
                                     <span class="name-clock" id="name-clock5"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '6' ) echo ' active'; ?>" data-index="6" data-value="+10" data-name="Pacific/Guam" data-city="Guam">
+                                <li class="my-timezone<?php if($timezone_name == 'Pacific/Guam' ) echo ' active'; ?>" data-index="6" data-value="+10" data-name="Pacific/Guam" data-city="Guam">
                                     <span class="name-city" id="name-city6">Guam</span>
                                     <span class="name-clock" id="name-clock6"></span>
                                 </li>
-                                <li class="my-timezone" data-index="7" data-value="+9" data-name="Asia/Tokyo" data-city="Tokyo">
+                                <li class="my-timezone<?php if($timezone_name == 'Asia/Tokyo' ) echo ' active'; ?>" data-index="7" data-value="+9" data-name="Asia/Tokyo" data-city="Tokyo">
                                     <span class="name-city" id="name-city7">Tokyo</span>
                                     <span class="name-clock" id="name-clock7"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '7' ) echo ' active'; ?>" data-index="8" data-value="+9" data-name="Asia/Seoul" data-city="Seoul" <?php if($my_timezone_index == '8' ) echo 'class="active"'; ?>>
+                                <li class="my-timezone<?php if($timezone_name == 'Asia/Seoul' ) echo ' active'; ?>" data-index="8" data-value="+9" data-name="Asia/Seoul" data-city="Seoul">
                                     <span class="name-city" id="name-city8">Seoul</span>
                                     <span class="name-clock" id="name-clock8"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '9' ) echo ' active'; ?>" data-index="9" data-value="+8" data-name="Asia/Shanghai" data-city="Beijing">
+                                <li class="my-timezone<?php if($timezone_name == 'Asia/Shanghai' ) echo ' active'; ?>" data-index="9" data-value="+8" data-name="Asia/Shanghai" data-city="Beijing">
                                     <span class="name-city" id="name-city9">Beijing</span>
                                     <span class="name-clock" id="name-clock9"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '10' ) echo ' active'; ?>" data-index="10" data-value="+8" data-name="Asia/Shanghai" data-city="Xianyang">
+                                <li class="my-timezone<?php if($timezone_name == 'Asia/Shanghai' ) echo ' active'; ?>" data-index="10" data-value="+8" data-name="Asia/Shanghai" data-city="Xianyang">
                                     <span class="name-city" id="name-city10">Xianyang</span>
                                     <span class="name-clock" id="name-clock10"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '11' ) echo ' active'; ?>" data-index="11" data-value="+7" data-name="Asia/Ho_Chi_Minh" data-city="Hanoi">
+                                <li class="my-timezone<?php if($timezone_name == 'Asia/Ho_Chi_Minh' ) echo ' active'; ?>" data-index="11" data-value="+7" data-name="Asia/Ho_Chi_Minh" data-city="Hanoi">
                                     <span class="name-city" id="name-city11">Hanoi</span>
                                     <span class="name-clock" id="name-clock11"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '12' ) echo ' active'; ?>" data-index="12" data-value="+7" data-name="Asia/Bangkok" data-city="Bangkok">
+                                <li class="my-timezone<?php if($timezone_name == 'Asia/Bangkok' ) echo ' active'; ?>" data-index="12" data-value="+7" data-name="Asia/Bangkok" data-city="Bangkok">
                                     <span class="name-city" id="name-city12">Bangkok</span>
                                     <span class="name-clock" id="name-clock12"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '13' ) echo ' active'; ?>" data-index="13" data-value="+7" data-name="Asia/Rangoon" data-city="Myanmar">
+                                <li class="my-timezone<?php if($timezone_name == 'Asia/Rangoon' ) echo ' active'; ?>" data-index="13" data-value="+7" data-name="Asia/Rangoon" data-city="Myanmar">
                                     <span class="name-city" id="name-city13">Myanmar</span>
                                     <span class="name-clock" id="name-clock13"></span>
                                 </li>
-                                <li class="my-timezone <?php if($my_timezone_index == '14' ) echo ' active'; ?>" data-index="14" data-value="+6" data-name="Asia/Dhaka" data-city="Bangladesh">
+                                <li class="my-timezone <?php if($timezone_name == 'Asia/Dhaka' ) echo ' active'; ?>" data-index="14" data-value="+6" data-name="Asia/Dhaka" data-city="Bangladesh">
                                     <span class="name-city" id="name-city14">Bangladesh</span>
                                     <span class="name-clock" id="name-clock14"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '15' ) echo ' active'; ?>" data-index="15" data-value="+5" data-name="Asia/Colombo" data-city="Sri Lanka">
+                                <li class="my-timezone<?php if($timezone_name == 'Asia/Colombo' ) echo ' active'; ?>" data-index="15" data-value="+5" data-name="Asia/Colombo" data-city="Sri Lanka">
                                     <span class="name-city" id="name-city15">Sri Lanka</span>
                                     <span class="name-clock" id="name-clock15"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '16' ) echo ' active'; ?>" data-index="16" data-value="+5" data-name="Asia/Kolkata" data-city="New Delhi">
+                                <li class="my-timezone<?php if($timezone_name == '16' ) echo ' active'; ?>" data-index="16" data-value="+5" data-name="Asia/Kolkata" data-city="New Delhi">
                                     <span class="name-city" id="name-city16">New Delhi</span>
                                     <span class="name-clock" id="name-clock16"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '17' ) echo ' active'; ?>" data-index="17" data-value="+5" data-name="Asia/Kolkata" data-city="Mumbai">
+                                <li class="my-timezone<?php if( $timezone_name== '17' ) echo ' active'; ?>" data-index="17" data-value="+5" data-name="Asia/Kolkata" data-city="Mumbai">
                                     <span class="name-city" id="name-city17">Mumbai</span>
                                     <span class="name-clock" id="name-clock17"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '18' ) echo ' active'; ?>" data-index="18" data-value="0" data-name="Europe/London" data-city="London">
+                                <li class="my-timezone<?php if($timezone_name == 'Europe/London' ) echo ' active'; ?>" data-index="18" data-value="0" data-name="Europe/London" data-city="London">
                                     <span class="name-city" id="name-city18">London</span>
                                     <span class="name-clock" id="name-clock18"></span>
                                 </li>
-                                <li class="my-timezone<?php if($my_timezone_index == '19' ) echo ' active'; ?>" data-index="19" data-value="+5" data-name="Australia/Sydney" data-city="Sydney">
+                                <li class="my-timezone<?php if($timezone_name == 'Australia/Sydney' ) echo ' active'; ?>" data-index="19" data-value="+5" data-name="Australia/Sydney" data-city="Sydney">
                                     <span class="name-city" id="name-city19">Sydney</span>
                                     <span class="name-clock" id="name-clock19"></span>
                                 </li>
@@ -437,7 +460,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="find-general-border">
                                                     <span class="find-label"><?php _e('Password', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                 <div class="form-group">
-                                                    <input id="user_password_signup" class="form-control border-ras" name="user_password" type="text" value="" required>
+                                                    <input id="user_password_signup" class="form-control border-ras" name="user_password" type="password" value="" required>
                                                     <div class="clear-input" onclick="document.getElementById('user_password_signup').value=null;"></div>
                                                     </div>
                                                 </div>
@@ -446,7 +469,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="find-general-border">
                                                     <span class="find-label"><?php _e('Confirm Password', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                 <div class="form-group">
-                                                    <input id="confirm_password" class="form-control border-ras" name="confirm_password" type="text" value="" required>
+                                                    <input id="confirm_password" class="form-control border-ras" name="confirm_password" type="password" value="" required>
                                                     <div class="clear-input" onclick="document.getElementById('confirm_password').value=null;"></div>
                                                     </div>
                                                 </div>
@@ -1241,7 +1264,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         <div class="row line-profile">
                                             <div class="col-sm-6 col-md-6">
                                                 <label><?php _e('Time Zone', 'iii-dictionary') ?></label>
-                                                 <span class="color-black" id="profile-skype-id">
+                                                 <span class="color-black" id="profile-timezone">
                                                         <?php
                                                         if ($is_user_logged_in) {
                                                             
@@ -1252,7 +1275,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 if($my_timezone_index == '4' ) echo 'San Francisco';
                                                                 if($my_timezone_index == '5' ) echo 'Hawaii';
                                                                 if($my_timezone_index == '6' ) echo 'Guam';
-                                                                if($my_timezone_index == '7') echo 'Tokyo';                     
+                                                                if($my_timezone_index == '7' ) echo 'Tokyo';                     
                                                                 if($my_timezone_index == '8' ) echo 'Seoul';
                                                                 if($my_timezone_index == '9' ) echo 'Beijing';
                                                                 if($my_timezone_index == '10' ) echo 'Xianyang';
@@ -1403,11 +1426,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     ?>
                                     <h3>Update My Account</h3>                                    
                                     <form method="post" id="myUpdate" action="" name="updateAccount" enctype="multipart/form-data">
-                                        <h4>Basic Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h4>
+                                        <h3 style="color: #36a93f;">Basic Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h3>
                                         <div class="row">
                                             <div class="col-sm-9 col-md-9">
                                                 <div class="find-general-border">
-                                                <span class="find-label"><?php _e('User Name', 'iii-dictionary') ?>:</span>
+                                                <span class="find-label"><?php _e('User Name', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                 <div class="form-group border-ras select-style">
                                                     <input id="update_username" class="form-control" name="update_username" type="text" value="<?php echo $update_username ?>" readonly="">
                                                 </div> 
@@ -1416,7 +1439,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-3 col-md-3 mt-top-3 ">
                                                 <div class="find-general-border" id="update-gender-pc">
                                                     <div class="form-group border-ras select-style">
-                                                        <span class="find-label">Gender</span>
+                                                        <span class="find-label">Gender<span class="required-star"> *</span></span>
                                                         <div class="border-ras select-style" id="gender">
                                                            <select id="update_birth_g" class="select-box-it form-control" name="update_birth_g">
                                                                 <option value="" <?php if($update_birth_g == '') echo 'selected="selected"' ?>>Gender</option>
@@ -1432,8 +1455,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 mt-top-14">
                                                 <div class="find-general-border">
                                                 <div class="form-group border-ras select-style">
-                                                    <span class="find-label"><?php _e('Password', 'iii-dictionary') ?>:</span>
-                                                    <input id="update_password" class="form-control border-ras" name="update_password" type="text" value="<?php echo $update_user_password ?>" required>
+                                                    <span class="find-label"><?php _e('Password', 'iii-dictionary') ?><span class="required-star"> *</span></span>
+                                                    <input id="update_password" class="form-control border-ras" name="update_password" type="password" value="<?php echo $update_user_password ?>" required>
                                                     <div class="clear-input" onclick="document.getElementById('update_password').value=null;"></div>
                                                     
                                                 </div>
@@ -1442,8 +1465,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 mt-top-14 mt-top-mb-24">
                                                 <div class="find-general-border">
                                                 <div class="form-group border-ras select-style">
-                                                    <span class="find-label"><?php _e('Confirm Password', 'iii-dictionary') ?>:</span>
-                                                    <input id="update_confirmpass" class="form-control border-ras" name="update_confirmpass" type="text" value="<?php echo $update_user_password ?>" required>
+                                                    <span class="find-label"><?php _e('Confirm Password', 'iii-dictionary') ?><span class="required-star"> *</span></span>
+                                                    <input id="update_confirmpass" class="form-control border-ras" name="update_confirmpass" type="password" value="<?php echo $update_user_password ?>" required>
                                                     <div class="clear-input" onclick="document.getElementById('update_confirmpass').value=null;"></div>
                                                 </div>
                                             </div>
@@ -1454,7 +1477,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 mt-top-14">
                                                 <div class="find-general-border">
                                                 <div class="form-group">
-                                                    <span class="find-label"><?php _e('First Name', 'iii-dictionary') ?>:</span>
+                                                    <span class="find-label"><?php _e('First Name', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <input id="update_first_name" class="form-control" name="update_first_name" type="text" value="<?php echo $update_first_name ?>" required>
                                                     <div class="clear-input" onclick="document.getElementById('update_first_name').value=null;"></div>
                                                     
@@ -1464,7 +1487,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 mt-top-14 mt-top-mb-24">
                                                 <div class="find-general-border">
                                                 <div class="form-group">
-                                                    <span class="find-label"><?php _e('Last Name', 'iii-dictionary') ?>:</span>
+                                                    <span class="find-label"><?php _e('Last Name', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <input id="update_last_name" class="form-control" name="update_last_name" type="text" value="<?php echo $update_last_name ?>" required>
                                                     <div class="clear-input" onclick="document.getElementById('update_last_name').value=null;"></div>
                                                     
@@ -1479,7 +1502,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         
                                                         <div class="col-xs-12 col-sm-4 col-md-4 border-ras select-style" id="update_month">
                                                             <div class="find-general-border">
-                                                            <span class="find-label">Month</span>
+                                                            <span class="find-label">Month<span class="required-star"> *</span></span>
                                                             <div class="form-group">
                                                             <select id="update_birth_m" class="select-box-it form-control" name="update-birth-m">
                                                                 <option value="">Month</option>
@@ -1499,7 +1522,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                         <div class="col-xs-12 col-sm-4 col-md-4 border-ras select-style" id="update_date">
                                                             <div class="find-general-border">
-                                                            <span class="find-label">Day</span>
+                                                            <span class="find-label">Day<span class="required-star"> *</span></span>
                                                             <div class="form-group">
                                                             <select id="update_birth_d" class="select-box-it form-control" name="update-birth-d">
                                                                 <option value="">(Day)</option>
@@ -1519,7 +1542,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                         <div class="col-xs-12 col-sm-4 col-md-4 year-mb">
                                                             <div class="find-general-border">
-                                                            <span class="find-label"><?php _e('Year', 'iii-dictionary') ?>:</span>
+                                                            <span class="find-label"><?php _e('Year', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                             <div class="form-group">
                                                             <input id="update_birth_y" class="form-control" name="update-birth-y" type="text" value="<?php echo $update_birth_y ?>" required>
                                                             <div class="clear-input" onclick="document.getElementById('update_birth_y').value=null;"></div>
@@ -1550,7 +1573,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div id="language-timezone" class="col-sm-6 col-md-6 col-xs-6 mt-top-mb-12">
                                                 
                                                 <div  class="find-general-border language-input">
-                                                <span class="find-label"><?php _e('Language', 'iii-dictionary') ?></span>
+                                                <span class="find-label"><?php _e('Language', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                 <div id="show-language" class="show-language">
 
                                                     <?php 
@@ -1627,7 +1650,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="col-sm-6 col-md-6 col-xs-6 mt-top-mb-12">
                                                 <div  class="find-general-border">
                                                 <span class="find-label">
-                                                    <?php _e('My Time Zone', 'iii-dictionary') ?>
+                                                    <?php _e('My Time Zone', 'iii-dictionary') ?><span class="required-star"> *</span>
                                                 </span>
                                                 <div class="form-group border-ras select-style user-timezone mt-top-8">
                                                     <select class="select-box-it form-control" name="time_zone" id="update-time-zone">
@@ -2113,11 +2136,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     
                                     <form method="post" id="tutorForm" action="" name="registerform" enctype="multipart/form-data">
                                         <div class="row">
-                                            <h3 style="color: #36a93f"> <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h3>
+                                            <h3 style="color: #36a93f"> Basic Registration <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h3>
                                         <div class="row">
                                             <div class="col-sm-9 col-md-9">
                                                 <div class="find-general-border">
-                                                <span class="find-label"><?php _e('User Name', 'iii-dictionary') ?>:</span>
+                                                <span class="find-label"><?php _e('User Name', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                 <div class="form-group border-ras select-style">
                                                     <input id="update_username" class="form-control" name="update_username" type="text" value="<?php echo $update_username ?>" readonly="">
                                                 </div> 
@@ -2126,7 +2149,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-3 col-md-3 mt-top-3 ">
                                                 <div class="find-general-border" id="update-gender-pc">
                                                     <div class="form-group border-ras select-style">
-                                                        <span class="find-label">Gender</span>
+                                                        <span class="find-label">Gender<span class="required-star"> *</span></span>
                                                         <div class="border-ras select-style" id="gender">
                                                            <select id="update_birth_g" class="select-box-it form-control" name="update_birth_g">
                                                                 <option value="" <?php if($update_birth_g == '') echo 'selected="selected"' ?>>Gender</option>
@@ -2142,7 +2165,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 mt-top-14">
                                                 <div class="find-general-border">
                                                 <div class="form-group border-ras select-style">
-                                                    <span class="find-label"><?php _e('Password', 'iii-dictionary') ?>:</span>
+                                                    <span class="find-label"><?php _e('Password', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <input id="update_password" class="form-control border-ras" name="update_password" type="password" value="<?php echo $update_user_password ?>" required>
                                                     <div class="clear-input" onclick="document.getElementById('update_password').value=null;"></div>
                                                     
@@ -2152,7 +2175,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 mt-top-14 mt-top-mb-24">
                                                 <div class="find-general-border">
                                                 <div class="form-group border-ras select-style">
-                                                    <span class="find-label"><?php _e('Confirm Password', 'iii-dictionary') ?>:</span>
+                                                    <span class="find-label"><?php _e('Confirm Password', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <input id="update_confirmpass" class="form-control border-ras" name="update_confirmpass" type="password" value="<?php echo $update_user_password ?>" required>
                                                     <div class="clear-input" onclick="document.getElementById('update_confirmpass').value=null;"></div>
                                                 </div>
@@ -2164,7 +2187,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 mt-top-14">
                                                 <div class="find-general-border">
                                                 <div class="form-group">
-                                                    <span class="find-label"><?php _e('First Name', 'iii-dictionary') ?>:</span>
+                                                    <span class="find-label"><?php _e('First Name', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <input id="update_first_name" class="form-control" name="update_first_name" type="text" value="<?php echo $update_first_name ?>" required>
                                                     <div class="clear-input" onclick="document.getElementById('update_first_name').value=null;"></div>
                                                     
@@ -2174,7 +2197,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 mt-top-14 mt-top-mb-24">
                                                 <div class="find-general-border">
                                                 <div class="form-group">
-                                                    <span class="find-label"><?php _e('Last Name', 'iii-dictionary') ?>:</span>
+                                                    <span class="find-label"><?php _e('Last Name', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <input id="update_last_name" class="form-control" name="update_last_name" type="text" value="<?php echo $update_last_name ?>" required>
                                                     <div class="clear-input" onclick="document.getElementById('update_last_name').value=null;"></div>
                                                     
@@ -2189,7 +2212,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         
                                                         <div class="col-xs-12 col-sm-4 col-md-4 border-ras select-style" id="update_month">
                                                             <div class="find-general-border">
-                                                            <span class="find-label">Month</span>
+                                                            <span class="find-label">Month<span class="required-star"> *</span></span>
                                                             <div class="form-group">
                                                             <select id="update_birth_m" class="select-box-it form-control" name="update-birth-m">
                                                                 <option value="">Month</option>
@@ -2209,7 +2232,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                         <div class="col-xs-12 col-sm-4 col-md-4 border-ras select-style" id="update_date">
                                                             <div class="find-general-border">
-                                                            <span class="find-label">Day</span>
+                                                            <span class="find-label">Day<span class="required-star"> *</span></span>
                                                             <div class="form-group">
                                                             <select id="update_birth_d" class="select-box-it form-control" name="update-birth-d">
                                                                 <option value="">(Day)</option>
@@ -2229,7 +2252,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                         <div class="col-xs-12 col-sm-4 col-md-4 year-mb">
                                                             <div class="find-general-border">
-                                                            <span class="find-label"><?php _e('Year', 'iii-dictionary') ?>:</span>
+                                                            <span class="find-label"><?php _e('Year', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                             <div class="form-group">
                                                             <input id="update_birth_y" class="form-control" name="update-birth-y" type="text" value="<?php echo $update_birth_y ?>" required>
                                                             <div class="clear-input" onclick="document.getElementById('update_birth_y').value=null;"></div>
@@ -2260,7 +2283,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div id="language-timezone" class="col-sm-6 col-md-6 col-xs-6 mt-top-mb-12">
                                                 
                                                 <div  class="find-general-border language-input">
-                                                <span class="find-label"><?php _e('Language', 'iii-dictionary') ?></span>
+                                                <span class="find-label"><?php _e('Language', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                 <div id="show-language" class="show-language">
 
                                                     <?php 
@@ -2337,7 +2360,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="col-sm-6 col-md-6 col-xs-6 mt-top-mb-12">
                                                 <div  class="find-general-border">
                                                 <span class="find-label">
-                                                    <?php _e('My Time Zone', 'iii-dictionary') ?>
+                                                    <?php _e('My Time Zone', 'iii-dictionary') ?><span class="required-star"> *</span>
                                                 </span>
                                                 <div class="form-group border-ras select-style user-timezone mt-top-8">
                                                     <select class="select-box-it form-control" name="time_zone" id="update-time-zone">
@@ -7534,7 +7557,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                     </div>
 
                     <div id="sub-logo">
-                        <a href="https://iktutor.com" rel="nofollow" title="Innovative Knowledge">
+                        <a href="https://iktutor.com<?php echo $link_ss ?>" rel="nofollow" title="Innovative Knowledge">
                             <img style="height: 25px; width: 100px;" src="<?php echo get_template_directory_uri(); ?>/library/images/ikTeach_Logo.png" alt="">
                         </a>
                     </div>
@@ -23814,16 +23837,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $(this).addClass('active');
                                 $('#mycity-name').text(city);
 
-                                $("#select-timezone").selectBoxIt('selectOption',index.toString()).data("selectBox-selectBoxIt");
-                                $("#select-timezone").data("selectBox-selectBoxIt").refresh();
+                                // $("#select-timezone").selectBoxIt('selectOption',index.toString()).data("selectBox-selectBoxIt");
+                                // $("#select-timezone").data("selectBox-selectBoxIt").refresh();
 
                                 $('#my-timezone').toggle();
 
-                                $.post(home_url + "/?r=ajax/update_timezone", {                                   
-                                    timezone: timezone,
-                                    name: name,
-                                    index: index
-                                }, function (data) {});
+                                // $.post(home_url + "/?r=ajax/update_timezone", {                                   
+                                //     timezone: timezone,
+                                //     name: name,
+                                //     index: index
+                                // }, function (data) {});
 
                                 initDateTimePicker(name, index, timezone, city);
                                 clearInterval(interval);
@@ -24391,7 +24414,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         if(v.users == 0){
                                             var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + '" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
                                             li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
-                                            li += '<span class="subject-scheduled"><img style="max-height:15px;" src="<?php echo get_template_directory_uri(); ?>/'+img+'"> &nbsp; '+anySubject+'</span>';
+                                            li += '<span class="subject-scheduled"><img style="max-width:43px;" src="<?php echo get_template_directory_uri(); ?>/'+img+'"> &nbsp; '+anySubject+'</span>';
                                             li += '</span><span style="display:table-cell;width:25%;" id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">0</span></span></li>';
                                         }else if(v.users > 0){
                                             var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + ' active" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
@@ -24652,6 +24675,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         });
 
                         function initDateTimePicker(timezone_name = 'Europe/London', timezone_index = 18, time_zone = 0, location_time = 'London', type = 'schedule'){
+                            var timezone_name = '<?php echo $timezone_name ?>';
                             var ptype = $('#custom-timezone').attr("data-type");
                             var pday = $('#custom-timezone').attr("data-day");
                             if($('.datepicker-days').find('.day').hasClass('active')){

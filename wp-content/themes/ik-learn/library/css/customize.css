@@ -15141,10 +15141,11 @@ font-weight: bold;
     color: #4eacc8!important;
     font-family: Myriad_regular;
     text-decoration: underline;
-    padding: 10px 0;
     display: block;
     width: 30%;
     margin-left: 70%;
+    margin-top: -5px;
+    padding-bottom: 10px;
 }
 .content-timelot p{
     margin: 0;
@@ -16234,13 +16235,14 @@ position: absolute;
 background-image: url(../images/icon_dropdown_arrow.png) !important;
 background-repeat: no-repeat;
     background-size: 10px;
-    background-position-y: 14px;
+   /* background-position-y: 14px;*/
         content: 'aa';
     color: #f4f7f7;
   
     position: absolute;
     margin-left: -30px;
-    margin-top: -30px;
+    margin-top: -15px;
+    cursor: pointer;
 }
 
 #select-timelot-subjectSelectBoxItOptions::-webkit-scrollbar-track {
@@ -16428,4 +16430,7 @@ select:-webkit-autofill:focus {
 }
 #agree-buttom .option-input-3:checked + span{
     color: #4eacc8 !important;
+}
+#select-timelot span ul li {
+    font-size: 13px !important;
 }
