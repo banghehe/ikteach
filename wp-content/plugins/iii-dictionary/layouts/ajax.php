@@ -69,6 +69,7 @@ if ($task == 'dictionary') {
 /*
  * return a random quiz
  */
+
 if ($task == 'randomquiz') {
     $dictionary = $_GET['d'];
     $sheet_category = $_GET['c'];
@@ -163,6 +164,7 @@ if ($task == 'sheets') {
     echo json_encode($json);
     die;
 }
+
 
 /*
  * return a question
@@ -2752,7 +2754,7 @@ if ($task == "get_user_profile") {
     $last_school = get_user_meta($user->ID, 'last_school', true);
     $previous_school = get_user_meta($user->ID, 'previous_school', true);
     $skype_id = get_user_meta($user->ID, 'skype_id', true);
-
+    $main_value = get_user_meta($user->ID, 'main_value', true);
     $price_tutoring = get_user_meta($user->ID, 'price_tutoring', true);
     $english_subject_desc = get_user_meta($user->ID, 'english_subject_desc', true);
     $math_subject_desc = get_user_meta($user->ID, 'math_subject_desc', true);
@@ -2893,7 +2895,8 @@ if ($task == "get_user_profile") {
                 'english_subject' => $english_subject,
                 'math_subject' => $math_subject,
                 'science_subject' => $science_subject,
-                'other_preference' => $other_preference
+                'other_preference' => $other_preference,
+                'main_value' => $main_value
             );
     echo json_encode($data);
     die;
@@ -2916,6 +2919,7 @@ if ($task == "update_info") {
     $user_profession = $_REQUEST['user_profession'];
     $cb_lang = $_REQUEST['cb_lang'];
     $profile_avatar = $_REQUEST['profile_avatar'];
+    $main_value = $_REQUEST['main_value'];
     $first_name = $_REQUEST['first_name'];
     $last_name = $_REQUEST['last_name'];
     $birth_y = $_REQUEST['birth_y'];
@@ -2998,6 +3002,10 @@ if ($task == "update_info") {
         if (isset($user_profession) && trim($user_profession) != '') {
             $form_valid = true;
             update_user_meta($current_user->ID, 'user_profession', $user_profession);
+        }
+        if (isset($main_value) && trim($main_value) != '') {
+            $form_valid = true;
+            update_user_meta($current_user->ID, 'main_value', $main_value);
         }
 
         if (isset($subject_type)) {
@@ -3347,6 +3355,10 @@ if ($task == "update_info") {
                 update_user_meta($current_user->ID, 'ik_user_avatar', $profile_avatar);
             }
 
+            if (isset($main_value) && trim($main_value) != '') {
+                update_user_meta($current_user->ID, 'main_value', $main_value);
+            }
+
             if (isset($cb_lang)) {
                 if (count($cb_lang) > 0) {
                     $language_type = implode(',', $cb_lang);
@@ -3521,6 +3533,40 @@ if ($task == "upload_avatar") {
             if (move_uploaded_file($file['tmp_name'], $upload_dir . $avatar_file_name)) {
                 $avatar_url = $wp_upload_dir['baseurl'] . '/' . $user_dir . '/' . $avatar_file_name;
                 echo $avatar_url;
+            } else {
+                echo '0';
+            }
+        } else {
+            echo '0';
+        }
+    } else {
+        echo '0';
+    }
+    die;
+}
+if ($task == "main_image") {
+
+    $file = $_FILES['file'];
+    $current_user = wp_get_current_user();
+    if (isset($current_user->user_login)) {
+        $user_dir = $current_user->user_login;
+    } else {
+        $user_dir = 'avatar';
+    }
+    if ($file['error'] == UPLOAD_ERR_OK) {
+        $allowedTypes = array('image/png', 'image/jpeg', 'image/gif');
+        $error = !in_array($file['type'], $allowedTypes);
+        if (!$error) {
+            $wp_upload_dir = wp_upload_dir();
+            $main_image_name = str_replace(' ', '_', $file['name']);
+            $upload_dir = $wp_upload_dir['basedir'] . '/' . $user_dir . '/';
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir);
+            }
+
+            if (move_uploaded_file($file['tmp_name'], $upload_dir . $main_image_name)) {
+                $main_image_url = $wp_upload_dir['baseurl'] . '/' . $user_dir . '/' . $main_image_name;
+                echo $main_image_url;
             } else {
                 echo '0';
             }

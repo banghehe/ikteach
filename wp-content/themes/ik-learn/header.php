@@ -50,24 +50,25 @@ if($is_user_logged_in){
     $u_time_zone = $u_time_zone_index = 0;
     // $timezone_name = convert_timezone_to_name($u_time_zone_index);
 }
-// function file_get_contents_curl( $url ) {
+function file_get_contents_curl( $url ) {
  
-//   $ch = curl_init();
+  $ch = curl_init();
  
-//   curl_setopt( $ch, CURLOPT_AUTOREFERER, TRUE );
-//   curl_setopt( $ch, CURLOPT_HEADER, 0 );
-//   curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-//   curl_setopt( $ch, CURLOPT_URL, $url );
-//   curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, TRUE );
+  curl_setopt( $ch, CURLOPT_AUTOREFERER, TRUE );
+  curl_setopt( $ch, CURLOPT_HEADER, 0 );
+  curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+  curl_setopt( $ch, CURLOPT_URL, $url );
+  curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, TRUE );
  
-//   $data = curl_exec( $ch );
-//   curl_close( $ch );
+  $data = curl_exec( $ch );
+  curl_close( $ch );
  
-//   return $data;
+  return $data;
  
-// }
+}
+// $ip_user = $_SERVER['REMOTE_ADDR'];
+$time_zone_user = json_decode(file_get_contents("https://ipinfo.io/"));
 
-$time_zone_user = json_decode(file_get_contents("http://ipinfo.io/"));
 $time_zone_user1 = $time_zone_user->region;
 $timezone_name = $time_zone_user->timezone;
 $my_timezone_index = $u_time_zone_index;
@@ -999,6 +1000,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             _e('N/A', 'iii-dictionary');
                                                         ?></span>
                                                 </div>
+                                                <div class="btn-dark-blue border-btn check-availability" id="edit-profile">Update Profile</div>
                                             </div>
                                             <hr>
                                         </div>
@@ -1424,7 +1426,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $update_description = get_user_meta($current_user->ID, 'subject_description', true);
                                     }
                                     ?>
-                                    <h3>Update My Account</h3>                                    
+                                    <div class="teacher-center">
+                                        <p class="my-account">MY ACCOUNT</p>
+                                        <p class="tutor-acc">Update My Account</p> 
+
+                                    </div>                                  
                                     <form method="post" id="myUpdate" action="" name="updateAccount" enctype="multipart/form-data">
                                         <h3 style="color: #36a93f;">Basic Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></h3>
                                         <div class="row">
@@ -7916,17 +7922,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $hashed = time() . ':' . $wp_hasher->HashPassword($key);
                             $wpdb->update($wpdb->users, array('user_activation_key' => $hashed), array('user_login' => $user_login));
 
-                            $message = '<p>';
-                            $message .= __('Someone requested that the password be reset for the following account:', 'iii-dictionary') . " ";
-                            $message .= network_home_url() . " ";
-                            $message .= sprintf(__('Username: %s', 'iii-dictionary'), $user_login) . " </p><p></p><p>";
-                            $message .= __('If this was a mistake, just ignore this email and nothing will happen.', 'iii-dictionary') . " </p><p></p><p>";
-                            $message .= __('To reset your password, visit the following address:', 'iii-dictionary') . " </p><p></p><p>";
-                            $message .= '' . network_site_url('?r=login&action=resetpass&key=' . $key . '&login=' . rawurlencode($user_login)) . " </p>";
-
+                            $message .= __('<p style="font-size: 14px; font-family: Lucida Console;">We’ve received a request to reset the password for your account: https://iktutor.com</p>', 'iii-dictionary') . " ";
+        
+                            $message .= sprintf(__('<p style="font-size: 14px; font-family: Lucida Console;">Username: %s</p>', 'iii-dictionary'), $user_login) ;
+        
+                            $message .= __('<p style="font-size: 14px; font-family: Lucida Console;">To reset your password, visit the following address:</p>', 'iii-dictionary');
+                            $message .= '<p style="font-size: 14px; font-family: Lucida Console;">' . network_site_url('?r=login&action=resetpass&key=' . $key . '&login=' . rawurlencode($user_login)).'</p>' ;
+                            $message .= __('<p style="font-size: 14px; font-family: Lucida Console;">If this was a mistake, just ignore this email and nothing will happen.</p>', 'iii-dictionary');
+                            
                             $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
 
-                            $title = sprintf(__('[%s] Password Reset', 'iii-dictionary'), $blogname);
+                            $title = sprintf(__('You have requested the password change', 'iii-dictionary'), $blogname);
 
                             $title = apply_filters('retrieve_password_title', $title);
 
@@ -7986,9 +7992,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         }
 
                         if (!$has_err && isset($_POST['pass1']) && !empty($_POST['pass1'])) {
+                            $user_email_re = $rp_login;
                             reset_password($user, $_POST['pass1']);
                             ik_enqueue_messages(__('Your password has been reset.', 'iii-dictionary'), 'success');
+                            $title = __('Your Password change has been accepted.', 'iii-dictionary');
+                            $message = __('<p style="font-size: 14px; font-family: Lucida Console;">Hi '. $user_email.', your password has been successfully reset.</p>', 'iii-dictionary') . "\r\n\r\n" .
+                    
+                            __('<p style="font-size: 14px; font-family: Lucida Console;">Sincerely, IK Tutor Support!<p>');
 
+                            wp_mail($user_email_re, wp_specialchars_decode($title), $message);
                             wp_redirect(locale_home_url() . '/?r=login');
                             exit;
                         }
@@ -22859,11 +22871,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                     var ul_scheduled = $("#tutoring-scheduled-tutor");
                                     var fl = ' class="icon-status"';
-                                    var icon_arrow = '<span id="icon-users' + no + '" class="icon-users" data-day="'+ day +'" data-time="'+ time +'" data-time-view="'+ time_sc1 + ' ~ ' + time_sc2 +'"><span class="number-users">0</span></span>';
-
+                                    var icon_arrow = '<span  style="display:table-cell;width:25%;" id="icon-users' + no + '" class="icon-users" data-day="'+ day +'" data-time="'+ time +'" data-time-view="'+ time_sc1 + ' ~ ' + time_sc2 +'"><span class="number-users">0</span></span>';
+                                    
                                     var li = '<li id="view-detail-schedule' + no + '" class="view-detail-schedule' + class_type + '" ' + style + ' data-no="' + no + '" data-fromtime="' + fromtime + '" data-totime="' + time_duration + '" data-day="' + day + '"><span ' + fl + '>';
                                         li += '<span class="time-scheduled">' + time_sc1 + ' - ' + time_sc2 + '</span>';
-                                        li += '<span class="subject-scheduled">Available</span>';
+                                        li += '<span class="subject-scheduled"><img style="max-width:43px;" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_1on1.png"> &nbsp; No Subject Selected</span>';
                                         li += '</span>' + icon_arrow + '</li>';
                                     ul_scheduled.append(li);
 
@@ -23822,6 +23834,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#subject-scheduled-popup').text(available_name);
 
                             $("#popup-option-timelot").css("display","block");
+
                         });
 
                         $('.my-timezone').click(function(){
@@ -25614,19 +25627,23 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         }
                         $("#open-menu-schedule").css("display","none");
                         $("#my-timezone").css("display","none");
-                        $("#select-timelot-subjectSelectBoxItOptions").css("display","none");
+                        $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
+                        $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
 
                 });
                 $(".teacher-center").click( function (){
                         $("#open-menu-schedule").css("display","none");
-                        $("#select-timelot-subjectSelectBoxItOptions").css("display","none");
+                        $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
+                        $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
                 });
                 $(".body-my-scheduled-tutor").click( function (){
-                        $("#select-timelot-subjectSelectBoxItOptions").css("display","none");
+                        $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
+                        $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
                         $("#open-menu-schedule").css("display","none");
                 });
                 $(".manage-close, .header-timelot, #tutoring-type").click( function (){
-                         $("#select-timelot-subjectSelectBoxItOptions").css("display","none");
+                         $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
+                        $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
                          });
             
            $('.language-input').click(function () {
@@ -25867,6 +25884,36 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                 $("#modal-alert").css('display', 'none');
                 
             });
+            
+            
+            $('#select-timelot').on('click','#select-timelot-subjectSelectBoxIt',function(){
+                                   
+                if($('#select-timelot-subjectSelectBoxItOptions').hasClass('show-display')){
+                    $('#select-timelot-subjectSelectBoxItOptions').removeClass('show-display');
+                    $('#select-timelot-subjectSelectBoxItOptions').addClass('hidden-display');
+                }else if($('#select-timelot-subjectSelectBoxItOptions').hasClass('hidden-display')){
+                    $('#select-timelot-subjectSelectBoxItOptions').removeClass('hidden-display');
+                    $('#select-timelot-subjectSelectBoxItOptions').addClass('show-display');
+                }else{
+                     $('#select-timelot-subjectSelectBoxItOptions').addClass('show-display'); 
+                }
+                 // if($('#select-timelot-subjectSelectBoxItOptions').hasClass('show-display')){
+                 //    $('#select-timelot-subjectSelectBoxItOptions').addClass('hidden');
+                 // };
+            });
+            $('#select-timelot-subjectSelectBoxItOptions').on('click','.selectboxit-focus',function(){
+                $('#select-timelot-subjectSelectBoxItOptions').removeClass('show-display');
+                $('#select-timelot-subjectSelectBoxItOptions').addClass('hidden-display');
+            });
+            $('#edit-profile').click(function(){
+               
+                $('#updateinfo').addClass('active in');
+                $('#profile').removeClass('active in');
+                $('#sub-update-info').addClass('active');
+                $('#sub-profile').removeClass('active');
+            });
+            
+
             
 
 </script>

@@ -16434,3 +16434,51 @@ select:-webkit-autofill:focus {
 #select-timelot span ul li {
     font-size: 13px !important;
 }
+.hidden-display{
+    display: none !important;
+}
+.show-display{
+    display: block;
+}
+#edit-profile{
+    width: 100px;
+    position: fixed;
+    
+    margin-left: 76%;
+    margin-top: -45px;
+    border-radius: 5px !important;
+    background: #FFA523;
+    cursor: pointer;
+}
+/*@media (max-width: 649px){
+    #edit-profile{
+        margin-left: 70%;
+        height: 30px;
+        font-size: 15px;
+    }
+    .price-span {
+        left: 62px;
+    margin-top: 43px;
+    }
+}
+@media (max-width: 924px){
+    .price-span {
+        left: 260px;
+    }
+}*/
+.price-input {
+    float: right;
+    border: 1px solid #c2c2c2 !important;
+    border-radius: 8px !important;;
+    width: 250px;
+    padding-left: 105px;
+    margin-top: 4px;
+}
+.price-span {
+    color: #a4a4a4;
+    font-family: Myriad_regular;
+    font-size: 13px;
+    position: absolute;
+    left: 222px;    
+    margin-top: 10px;
+}
