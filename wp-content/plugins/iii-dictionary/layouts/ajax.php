@@ -25,7 +25,15 @@ $task = $route[1];
 if (isset($route[2])) {
     $do = $route[2];
 }
+if ($task == 'get_status_login') {
 
+    $current_user = wp_get_current_user();
+    $status_login_2 = get_user_meta($current_user->ID, 'status_login_2', true);
+    if($status_login_2 == '0'){
+        echo $status_login_2;
+    }else echo $status_login_2;
+
+}
 /*
  * ajax search for dictionary
  */
@@ -3283,6 +3291,31 @@ if ($task == "update_info") {
 
         if (trim($new_password) != '' && strlen($new_password) < 6) {
             $html .= __('Passwords must be at least six characters long', 'iii-dictionary');
+            $html .= '<br/>';
+            $form_valid = false;
+        }
+        if($gender == 'Gender'){
+            $html .= __('Please choose Gender');
+            $html .= '<br/>';
+            $form_valid = false;
+        }
+        if($first_name == ''){
+            $html .= __('Please enter First Name');
+            $html .= '<br/>';
+            $form_valid = false;
+        }
+        if($last_name == ''){
+            $html .= __('Please enter Last Name');
+            $html .= '<br/>';
+            $form_valid = false;
+        }
+        if($time_zone_index == '0'){
+            $html .= __('Please choose Timezone');
+            $html .= '<br/>';
+            $form_valid = false;
+        }
+        if($cb_lang == ''){
+            $html .= __('Please choose Language');
             $html .= '<br/>';
             $form_valid = false;
         }
@@ -6767,6 +6800,8 @@ if($task == 'get_scheduled_day_tutor'){
                     'subject_type'=>$item->subject_type,
                     'fromtime' => $item->time_start,
                     'totime' => $item->time_end,
+                    'price_tutoring' => $item->price_tutoring,
+                    'price_group_tutoring' => $item->price_group_tutoring,
                     'time' => $item->time,
                     'day' => $item->date,
                     'stime' => strtotime($datetime_st3->format('Y-m-d H:i:s')),
@@ -7450,7 +7485,8 @@ if ($task == "save_timelot") {
     $enable_group_tutoring = $_REQUEST['group_tutoring'];
     $subject_name = $_REQUEST['subject_name'];
     $subject_type = $_REQUEST['subject_type'];
-
+    $price_tutoring = $_REQUEST['price_tutoring'];
+    $price_group_tutoring = $_REQUEST['price_group_tutoring'];
     $user_id = get_current_user_id();
     $query = "SELECT tp.*
                 FROM " . $wpdb->prefix . "dict_tutoring_available AS tp
@@ -7464,6 +7500,8 @@ if ($task == "save_timelot") {
                 'enable_group_tutoring' => $enable_group_tutoring,
                 'subject_name' => $subject_name,
                 'subject_type' => $subject_type,
+                // 'price_tutoring' => $price_tutoring,
+                // 'price_group_tutoring' => $price_group_tutoring,
             ), array('id' => $id)
         );
         echo $id;
@@ -7481,6 +7519,8 @@ if ($task == "save_timelot") {
                 'subject_type' => $subject_type,
                 'time_zone' => $timezone,
                 'time_zone_index' => $index,
+                'price_tutoring' => $price_tutoring,
+                'price_group_tutoring' => $price_group_tutoring,
             )
         );
         echo $wpdb->insert_id;

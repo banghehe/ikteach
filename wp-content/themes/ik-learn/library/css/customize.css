@@ -9838,10 +9838,11 @@ textarea:focus {
 #myUpdate input[type=password],
 .style-form textarea,
 #tutoring-preference input[type=text]{
-    font-size: 13pt;
+    font-size: 15px;
     color: #515151;
     border-radius: 25px;
     font-family: Myriad_regular;
+    
 }
 
 
@@ -9972,7 +9973,7 @@ textarea:focus {
     color: #9c9c9c !important;
     font-size: 12px !important;
     overflow-y: auto;
-    margin-top: 20px;
+   
 }
 .box-dis p{
     color: #9c9c9c !important;
@@ -10181,7 +10182,7 @@ background: url(../images/chevron-l.png) no-repeat !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-#sub-subscription,#sub-lesson-manager,#sub-class-manager,#sub-tutoring{
+#sub-subscription,#sub-lesson-manager,#sub-class-manager,#sub-tutoring,#sub-course{
     display:none;
 }
 .tab-style>ul,.tab-style1>ul{
@@ -11004,7 +11005,7 @@ background: url(../images/chevron-l.png) no-repeat !important;
 }
 .select-style .select-box-it {
     border: none !important;
-    /*background: #F4f7f7!important;*/
+    background: none !important;
     height: 28px !important;
     /* padding-left: 20px !important;*/
          padding-top: 0;
@@ -11052,7 +11053,8 @@ background: url(../images/chevron-l.png) no-repeat !important;
 .select-style .selectboxit-container *{
       font-family:Myriad_regular;
        color: #515151 !important;
-       font-size: 13pt !important;
+       font-size: 15px !important;
+       padding-top: 1px;
      
 }
 .delete-worksheet img,.delete-subject img{
@@ -11106,7 +11108,8 @@ background: url(../images/chevron-l.png) no-repeat !important;
 #myUpdate .selectboxit-arrow-container,
 .cb-type4 .selectboxit-arrow-container,
 #custom-timezone .selectboxit-arrow-container,
-#create-account .selectboxit-arrow-container{
+#create-account .selectboxit-arrow-container,
+#tutorForm .selectboxit-arrow-container{
     background-image: url(../images/icon_dropdown_arrow.png) !important;
     background-repeat: no-repeat;
     background-size: 10px;
@@ -14585,6 +14588,9 @@ font-weight: bold;
 #list-schedule-status{
     display: none;
     padding: 5px 0 7px;
+    border-bottom: 1px solid #E0E0E0;
+    padding-top: 9px;
+    position: relative
 }
 .all-status-btn,
 .scheduled-status-btn,
@@ -14872,6 +14878,7 @@ font-weight: bold;
 .mCSB_scrollTools{
     width: 8px;
     right: -1px;
+    z-index: 12;
 }
 .mCS-dark-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
     background-color: #C1C1C1; 
@@ -15157,8 +15164,7 @@ font-weight: bold;
     margin-top: 14px!important;
 }
 .buttons-timelot{
-    padding: 18px 14px 18px;
-    border-top: 1px solid #e0e0e0;
+    
     margin: 0!important;
 }
 #tab-tutor-content .border-selectall{
@@ -15194,6 +15200,8 @@ font-weight: bold;
 .content-timelot label .option-input-3:checked + span {
     color: #4eacc8;
 }
+
+
 .main-list-students{
     min-height: 477px;
 }
@@ -16204,9 +16212,9 @@ font-weight: bold;
     background: #f4f7f7;
     height: 28px;
     min-width: 100%;
-    border-radius: 15px;
+    border-radius: 8px;
     padding-top: 4px;
-    border: 1px solid #f5f7f6 !important;
+    border: 1px solid #d9d9d9 !important;
 
 }
 #select-timelot-subject option{
@@ -16268,17 +16276,18 @@ background-repeat: no-repeat;
     border: solid 1px;
     border-color: #d9d9d9;
     border-radius: 10px;
-    font-size: 13pt;
+    font-size: 15px;
     /*margin-bottom: 14px;*/
 }
 .find-general-border div input{
     border: 0 !important;
-    margin-top: -5px;
+    margin-top: -4px;
    background: none;
     margin-left: -11px;
+    padding-bottom: 10px;
 }
 .find-general-border div .selectboxit-container{
-        margin-top: -5px;
+        margin-top: -7px;
 
 }
 .find-general-border div .selectboxit-container .selectboxit{
@@ -16319,15 +16328,18 @@ margin-right: -30px;
     margin-top: -3px;
     cursor: pointer;
 }
-#update-teacher, #cancel-update-teacher, #cancel-lg, #save-lg, #save-lg-ct{
+#update-teacher, #cancel-update-teacher, #cancel-lg, #save-lg, #save-lg-ct,#cancel-lg-cr, #save-lg-cr{
     border-radius: 8px !important;
 }
 
 .find-label{
     font-family:'Myriad_regular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 11pt !important;
+    font-size: 12px !important;
     color:#9c9c9c !important;
     margin-bottom:0px !important;
+    display: inline-block;
+    margin-top: 5px;
+
 }
 .add-more{
     color:  #009dcb;
@@ -16337,9 +16349,10 @@ margin-right: -30px;
     width: 100px;
 float: right;
 }
-#list-language li .option-input-3:checked + span {
+#list-language li .option-input-3:checked + span,#list-language-cr li .option-input-3:checked +span {
     color: #4eacc8;
 }
+
 #img-info{
    width: 13px;
    height: 100%;
@@ -16423,7 +16436,7 @@ select:-webkit-autofill:focus {
 }
 .required-star {
     color: red;
-    padding-top: 6px;
+    padding-top: 2px;
     position: absolute;
     font-weight: bold;
     padding-left: 2px;
@@ -16442,30 +16455,34 @@ select:-webkit-autofill:focus {
 }
 #edit-profile{
     width: 100px;
-    position: fixed;
     
-    margin-left: 76%;
-    margin-top: -45px;
+    margin-left: 10%;
+    margin-top: -52px;
     border-radius: 5px !important;
     background: #FFA523;
     cursor: pointer;
+    height: 40px;
 }
-/*@media (max-width: 649px){
+@media (max-width: 649px){
     #edit-profile{
-        margin-left: 70%;
-        height: 30px;
-        font-size: 15px;
+        margin-left: 41% !important;
     }
     .price-span {
         left: 62px;
     margin-top: 43px;
+    }
+    #info-name{
+        margin-left: 50px;
     }
 }
 @media (max-width: 924px){
     .price-span {
         left: 260px;
     }
-}*/
+     #edit-profile{
+        margin-left: 20%;
+    }
+}
 .price-input {
     float: right;
     border: 1px solid #c2c2c2 !important;
@@ -16481,4 +16498,48 @@ select:-webkit-autofill:focus {
     position: absolute;
     left: 222px;    
     margin-top: 10px;
+}
+.heading-acc {
+    font-size: 17px;
+    font-family: semibold;
+}
+#table-status-show {
+    background: white;
+    height: 1450px;
+    display: none;
+    position: absolute;
+    z-index: 11;
+}
+#find-general-border input[type=text]{
+    padding-top: 0;
+}
+.price-group {
+    display: inline-block;
+        margin-top: 4px;
+    float: right;
+   color: #ababab;
+}
+#update_price_group, #update_price_tutoring {
+    border-radius: 8px !important;
+    border: 1px solid #d9d9d9 !important;
+    width: 250px;
+    padding-left: 110px;
+    color: #ababab;
+}
+.price_tutor {
+    position: absolute;
+    left: 220px;
+    padding-top: 5px;
+
+}
+.line-profile div div{
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#cancel-timelot, #save-timelot{
+    border-radius: 8px;
+    height: 50px;
+    font-size: 15pt;
 }
