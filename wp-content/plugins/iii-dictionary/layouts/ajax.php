@@ -2410,36 +2410,37 @@ if ($task == "create_account") {
     $time_zone = $_REQUEST['time_zone'];
     $time_zone_index = $_REQUEST['time_zone_index'];
     $mobile_number = $_REQUEST['mobile_number'];
-$user_profession = $_REQUEST['user_profession'];
-$last_school = $_REQUEST['last_school'];
-$skype_id = $_REQUEST['skype_id'];
-$previous_school = $_REQUEST['previous_school'];
-$desc_tell_me = $_REQUEST['desc_tell_me'];
-$school_name = $_REQUEST['school_name'];
-$school_name_02 = $_REQUEST['school_name_02'];
-$school_name_03 = $_REQUEST['school_name_03'];
-$school_name_04 = $_REQUEST['school_name_04'];
-$school_name_05 = $_REQUEST['school_name_05'];
-$teaching_subject = $_REQUEST['teaching_subject'];
-$teaching_subject_02 = $_REQUEST['teaching_subject_02'];
-$teaching_subject_03 = $_REQUEST['teaching_subject_03'];
-$teaching_subject_04 = $_REQUEST['teaching_subject_04'];
-$teaching_subject_05 = $_REQUEST['teaching_subject_05'];
-$school_name1 = $_REQUEST['school_name1'];
-$school_name2 = $_REQUEST['school_name2'];
-$school_name3 = $_REQUEST['school_name3'];
-$school_name4 = $_REQUEST['school_name4'];
-$school_name5 = $_REQUEST['school_name5'];
-$school_link1 = $_REQUEST['school_link1'];
-$school_link2 = $_REQUEST['school_link2'];
-$school_link3 = $_REQUEST['school_link3'];
-$school_link4 = $_REQUEST['school_link4'];
-$school_link5 = $_REQUEST['school_link5'];
-$school_attend = $_REQUEST['school_attend'];
-$student_link = $_REQUEST['student_link'];
-$user_gpa = $_REQUEST['user_gpa'];
-$user_major = $_REQUEST['user_major'];
-$user_grade = $_REQUEST['user_grad'];
+    $user_profession = $_REQUEST['user_profession'];
+    $last_school = $_REQUEST['last_school'];
+    $skype_id = $_REQUEST['skype_id'];
+    $previous_school = $_REQUEST['previous_school'];
+    $desc_tell_me = $_REQUEST['desc_tell_me'];
+    $school_name = $_REQUEST['school_name'];
+    $school_name_02 = $_REQUEST['school_name_02'];
+    $school_name_03 = $_REQUEST['school_name_03'];
+    $school_name_04 = $_REQUEST['school_name_04'];
+    $school_name_05 = $_REQUEST['school_name_05'];
+    $teaching_subject = $_REQUEST['teaching_subject'];
+    $teaching_subject_02 = $_REQUEST['teaching_subject_02'];
+    $teaching_subject_03 = $_REQUEST['teaching_subject_03'];
+    $teaching_subject_04 = $_REQUEST['teaching_subject_04'];
+    $teaching_subject_05 = $_REQUEST['teaching_subject_05'];
+    $school_name1 = $_REQUEST['school_name1'];
+    $school_name2 = $_REQUEST['school_name2'];
+    $school_name3 = $_REQUEST['school_name3'];
+    $school_name4 = $_REQUEST['school_name4'];
+    $school_name5 = $_REQUEST['school_name5'];
+    $school_link1 = $_REQUEST['school_link1'];
+    $school_link2 = $_REQUEST['school_link2'];
+    $school_link3 = $_REQUEST['school_link3'];
+    $school_link4 = $_REQUEST['school_link4'];
+    $school_link5 = $_REQUEST['school_link5'];
+    $school_attend = $_REQUEST['school_attend'];
+    $student_link = $_REQUEST['student_link'];
+    $user_gpa = $_REQUEST['user_gpa'];
+    $user_major = $_REQUEST['user_major'];
+    $user_grade = $_REQUEST['user_grad'];
+    $main_image = $_REQUEST['main_image'];
     $html = '';
     $form_valid = true;
     if (is_email($user_name)) {
@@ -2479,6 +2480,16 @@ $user_grade = $_REQUEST['user_grad'];
         $html .= '<br/>';
         $form_valid = false;
     }
+    if (trim($birth_m) == '') {
+        $html .= '<strong>' . __('Error', 'iii-dictionary') . '</strong>: ' . __('Please select your date of birth.', 'iii-dictionary');
+        $html .= '<br/>';
+        $form_valid = false;
+    }
+    if (trim($birth_d) == '') {
+        $html .= '<strong>' . __('Error', 'iii-dictionary') . '</strong>: ' . __('Please select your date of birth.', 'iii-dictionary');
+        $html .= '<br/>';
+        $form_valid = false;
+    }
 
     if ($birth_y != '' && is_numeric($birth_y)) {
         $y = date('Y',time()) - (int)$birth_y;
@@ -2507,6 +2518,26 @@ $user_grade = $_REQUEST['user_grad'];
 
     if (trim($time_zone) == '0') {
         $html .= '<strong>' . __('Error', 'iii-dictionary') . '</strong>: ' . __('Please choose Time Zone', 'iii-dictionary');
+        $html .= '<br/>';
+        $form_valid = false;
+    }
+    if (trim($mobile_number) == '') {
+        $html .= '<strong>' . __('Error', 'iii-dictionary') . '</strong>: ' . __('Mobile Number must not be empty', 'iii-dictionary');
+        $html .= '<br/>';
+        $form_valid = false;
+    }
+    if (trim($last_school) == '') {
+        $html .= '<strong>' . __('Error', 'iii-dictionary') . '</strong>: ' . __('Last School Attended must not be empty', 'iii-dictionary');
+        $html .= '<br/>';
+        $form_valid = false;
+    }
+    if (trim($user_profession) == '') {
+        $html .= '<strong>' . __('Error', 'iii-dictionary') . '</strong>: ' . __('Profession must not be empty', 'iii-dictionary');
+        $html .= '<br/>';
+        $form_valid = false;
+    }
+    if (trim($previous_school) == '') {
+        $html .= '<strong>' . __('Error', 'iii-dictionary') . '</strong>: ' . __('Tagline must not be empty', 'iii-dictionary');
         $html .= '<br/>';
         $form_valid = false;
     }
@@ -2555,7 +2586,7 @@ $user_grade = $_REQUEST['user_grad'];
 
         update_user_meta($user_id, 'user_password', $user_password);
         update_user_meta($user_id, 'mobile_number', $mobile_number);
-        
+        update_user_meta($user_id, 'main_image', $main_image);
         update_user_meta($user_id, 'user_profession', $user_profession);
         update_user_meta($user_id, 'last_school', $last_school);
         update_user_meta($user_id, 'skype_id', $skype_id);
@@ -2612,6 +2643,8 @@ $user_grade = $_REQUEST['user_grad'];
 
         $_SESSION['newuser'] = 1;
         echo '1';
+        $user1 = get_user_by('id', $user_id);
+        $user1->add_role('mw_registered_teacher'); 
     } else {
         echo $html;
     }
@@ -2927,7 +2960,7 @@ if ($task == "update_info") {
     $user_profession = $_REQUEST['user_profession'];
     $cb_lang = $_REQUEST['cb_lang'];
     $profile_avatar = $_REQUEST['profile_avatar'];
-    $main_value = $_REQUEST['main_value'];
+    
     $first_name = $_REQUEST['first_name'];
     $last_name = $_REQUEST['last_name'];
     $birth_y = $_REQUEST['birth_y'];
@@ -2983,6 +3016,8 @@ if ($task == "update_info") {
     $number_participant = $_REQUEST['number_participant'];
     $enable_one_tutoring = $_REQUEST['enable_one_tutoring'];
     $enable_group_tutoring = $_REQUEST['enable_group_tutoring'];
+    $main_image = $_REQUEST['main_image'];
+
 
     $current_user = wp_get_current_user();
     if($type == 'create'){
@@ -3011,9 +3046,9 @@ if ($task == "update_info") {
             $form_valid = true;
             update_user_meta($current_user->ID, 'user_profession', $user_profession);
         }
-        if (isset($main_value) && trim($main_value) != '') {
+        if (isset($main_image) && trim($main_image) != '') {
             $form_valid = true;
-            update_user_meta($current_user->ID, 'main_value', $main_value);
+            update_user_meta($current_user->ID, 'main_image', $main_image);
         }
 
         if (isset($subject_type)) {
@@ -3194,6 +3229,7 @@ if ($task == "update_info") {
     }else if($type == 'tutoring'){
         if (isset($price_tutoring) && trim($price_tutoring) != '') {
             update_user_meta($current_user->ID, 'price_tutoring', $price_tutoring);
+            
         }
 
         if (isset($english_subject_desc)) {
@@ -3265,20 +3301,23 @@ if ($task == "update_info") {
 
         if (isset($price_group_tutoring) && trim($price_group_tutoring) != '') {
             update_user_meta($current_user->ID, 'price_group_tutoring', $price_group_tutoring);
+            
         }
 
         if (isset($number_participant) && trim($number_participant) != '') {
             update_user_meta($current_user->ID, 'number_participant', $number_participant);
         }
 
-        if (isset($enable_one_tutoring) && trim($enable_one_tutoring) != '') {
+       
             update_user_meta($current_user->ID, 'enable_one_tutoring', $enable_one_tutoring);
-        }
+           
+        
 
-        if (isset($enable_group_tutoring) && trim($enable_group_tutoring) != '') {
+        
             update_user_meta($current_user->ID, 'enable_group_tutoring', $enable_group_tutoring);
-        }
-        echo 1; 
+            
+        
+         echo 1; 
     }else{
         $html = '';
         $form_valid = true;
@@ -3524,6 +3563,10 @@ if ($task == "update_info") {
 
             if (isset($subject_description) && trim($subject_description) != '') {
                 update_user_meta($current_user->ID, 'subject_description', $subject_description);
+            }
+
+            if (isset($main_image) && trim($main_image) != '') {
+                update_user_meta($current_user->ID, 'main_image', $main_image);
             }
 
             if (isset($time_zone) && trim($time_zone) != '') {
@@ -6802,6 +6845,8 @@ if($task == 'get_scheduled_day_tutor'){
                     'totime' => $item->time_end,
                     'price_tutoring' => $item->price_tutoring,
                     'price_group_tutoring' => $item->price_group_tutoring,
+                    'up_price_tutoring' => $item->up_price_tutoring,
+                    'up_price_group_tutoring' => $item->up_price_group_tutoring,
                     'time' => $item->time,
                     'day' => $item->date,
                     'stime' => strtotime($datetime_st3->format('Y-m-d H:i:s')),
@@ -7476,7 +7521,7 @@ if ($task == "save_tutor_available") {
 }
 if ($task == "save_timelot") {
     $timezone = $_REQUEST['timezone'];
-    $index = $_REQUEST['index'];
+    $date = $_REQUEST['index'];
     $date = $_REQUEST['date'];
     $time_start = $_REQUEST['time_start'];
     $time_end = $_REQUEST['time_end'];
@@ -7485,8 +7530,8 @@ if ($task == "save_timelot") {
     $enable_group_tutoring = $_REQUEST['group_tutoring'];
     $subject_name = $_REQUEST['subject_name'];
     $subject_type = $_REQUEST['subject_type'];
-    $price_tutoring = $_REQUEST['price_tutoring'];
-    $price_group_tutoring = $_REQUEST['price_group_tutoring'];
+    $price_tutoring = $_REQUEST['up_price_tutoring'];
+    $price_group_tutoring = $_REQUEST['up_price_group_tutoring'];
     $user_id = get_current_user_id();
     $query = "SELECT tp.*
                 FROM " . $wpdb->prefix . "dict_tutoring_available AS tp
@@ -7500,11 +7545,27 @@ if ($task == "save_timelot") {
                 'enable_group_tutoring' => $enable_group_tutoring,
                 'subject_name' => $subject_name,
                 'subject_type' => $subject_type,
-                // 'price_tutoring' => $price_tutoring,
-                // 'price_group_tutoring' => $price_group_tutoring,
+                
             ), array('id' => $id)
         );
-        echo $id;
+        $key = $date.$time_start;
+        $arrone = get_user_meta($user_id, 'price_array', true);
+        $arrgroup = get_user_meta($user_id, 'group_price_array', true);
+        if($arrone == ''){
+            $arrayprice_one[$key] =$price_tutoring;
+        }else{
+            $arrayprice_one = $arrone;
+             $arrayprice_one[$key] =$price_tutoring;
+        };
+        if($arrgroup == ''){
+            $arrayprice_group[$key] =$price_group_tutoring;
+        }else{
+            $arrayprice_group = $arrgroup;
+            $arrayprice_group[$key] =$price_group_tutoring;
+        }
+        update_user_meta($user_id,'price_array',$arrayprice_one);
+        update_user_meta($user_id,'group_price_array',$arrayprice_group);
+       
     }else{
         $wpdb->insert(
                 $wpdb->prefix . 'dict_tutoring_available', array(
@@ -7519,11 +7580,27 @@ if ($task == "save_timelot") {
                 'subject_type' => $subject_type,
                 'time_zone' => $timezone,
                 'time_zone_index' => $index,
-                'price_tutoring' => $price_tutoring,
-                'price_group_tutoring' => $price_group_tutoring,
+                
             )
         );
-        echo $wpdb->insert_id;
+        $key = $date.$time_start;
+        $arrone = get_user_meta($user_id, 'price_array', true);
+        $arrgroup = get_user_meta($user_id, 'group_price_array', true);
+        if($arrone == ''){
+            $arrayprice_one[$key] =$price_tutoring;
+        }else{
+            $arrayprice_one = $arrone;
+             $arrayprice_one[$key] =$price_tutoring;
+        };
+        if($arrgroup == ''){
+            $arrayprice_group[$key] =$price_group_tutoring;
+        }else{
+            $arrayprice_group = $arrgroup;
+            $arrayprice_group[$key] =$price_group_tutoring;
+        }
+        update_user_meta($user_id,'price_array',$arrayprice_one);
+        update_user_meta($user_id,'group_price_array',$arrayprice_group);
+         echo 1;
     }
     exit; 
 }
@@ -7573,4 +7650,29 @@ if ($task == "get_my_schedules"){
     $arr = MWDB::get_my_schedules();
     echo json_encode($arr);
     exit;
+}
+if ($task == "get_price"){
+    $day = $_REQUEST['date'];
+    $time = $_REQUEST['time'];
+    $user_id = get_current_user_id();
+    $keyarr = $day.$time;
+    $arrone = get_user_meta($user_id, 'price_array', true);
+    $arrgroup = get_user_meta($user_id, 'group_price_array', true);
+    $price_one = get_user_meta($user_id, 'price_tutoring', true);
+    $price_group =  get_user_meta($user_id, 'price_group_tutoring', true);
+    
+    if($arrone == ''){
+        $data1 = $price_one;
+       
+    }else{
+        $data1 = $arrone[$keyarr];
+        if($data1 == ''){$data1 = $price_one;};
+    };
+    if($arrgroup == ''){
+        $data2 = $price_group;  
+    }else{ 
+        $data2 = $arrgroup[$keyarr];
+        if($data2 == ''){$data2 = $price_group;};
+    };
+    echo $data1.','.$data2;
 }

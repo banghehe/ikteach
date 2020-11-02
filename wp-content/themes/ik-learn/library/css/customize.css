@@ -490,8 +490,7 @@ label {
 }
 
 .btn.orange {
-    background: -webkit-linear-gradient(#ffcb00, #fe9700);
-    background: linear-gradient(#ffcb00, #fe9700);
+    background: #ffa422;
     color: #312108;
 }
 a.btn.lock {
@@ -9831,6 +9830,9 @@ textarea:focus {
 #myForm input[type=text],
 #myUpdate input[type=text],
 #createAccount input[type=text],
+#createAccount textarea,
+#myUpdate textarea,
+#tutorForm textarea,
 #createAccount input[type=password],
 #earningFrom input[type=text],
 #tutorForm input[type=text],
@@ -11034,7 +11036,7 @@ background: url(../images/chevron-l.png) no-repeat !important;
         background-position-y: 14px;
 }
 .select-style .selectboxit-options a{
-    padding-left: 24px;
+    padding-left: 14px;
 }
 .select-style .selectboxit-list > .selectboxit-focus > .selectboxit-option-anchor {
   
@@ -11042,17 +11044,17 @@ background: url(../images/chevron-l.png) no-repeat !important;
     color: #4b4b4b;
 }
 .select-style  .selectboxit-option-first{
-    margin-top: 15px;
+    margin-top: 8px;
 }
 .select-style .selectboxit-option-last{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 .select-style .selectboxit-option-anchor{
       font-family:Myriad_regular !important;
 }
 .select-style .selectboxit-container *{
       font-family:Myriad_regular;
-       color: #515151 !important;
+       color: #929292;
        font-size: 15px !important;
        padding-top: 1px;
      
@@ -15105,9 +15107,9 @@ font-weight: bold;
     position: absolute;
     text-align: left;
     background: #fff;
-    width: 95%;
+    width: 93.5%;
 
-    right: 0;
+    right: 8px;
     box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.07);
     display: none;
     z-index: 11;
@@ -16204,7 +16206,7 @@ font-weight: bold;
     padding-left: 145px !important;
 }
 #select-timelot-subject{
-    display: block !important;
+   
     font-family: Myriad_Regular;
     color: #9c9c9c !important;
     font-size: 13px;
@@ -16225,17 +16227,26 @@ font-weight: bold;
     
 }
 #select-timelot-subjectSelectBoxIt{
-    margin-top: -27px;
+    /*margin-top: -27px;*/
     opacity: 0;
+    height: 26px !important;
 }
 #select-timelot-subjectSelectBoxItContainer ul li a{
     background: white;
+    color: #929292 ;
 }
 #select-timelot-subjectSelectBoxItContainer ul li a:hover{
     background: #F4f7f7;
+    color: #4b4b4b;
 }
 #select-timelot-subjectSelectBoxItContainer ul li{
     margin-bottom: 0 !important;
+}
+#select-timelot-subjectSelectBoxItContainer{
+    width: 93%;
+    padding-left: 15px;
+    /*height: 28px;*/
+        margin-top: -27px;
 }
 #select-timelot:after {
 
@@ -16248,9 +16259,17 @@ background-repeat: no-repeat;
     color: #f4f7f7;
   
     position: absolute;
-    margin-left: -30px;
+   
     margin-top: -15px;
     cursor: pointer;
+}
+#show-subject {
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+    padding: 4px;
+    padding-left: 15px;
+    color: #515151;
 }
 
 #select-timelot-subjectSelectBoxItOptions::-webkit-scrollbar-track {
@@ -16284,15 +16303,18 @@ background-repeat: no-repeat;
     margin-top: -4px;
    background: none;
     margin-left: -11px;
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
 }
 .find-general-border div .selectboxit-container{
-        margin-top: -7px;
+       top: -23px;
+
 
 }
 .find-general-border div .selectboxit-container .selectboxit{
     margin-left: -10px;
     overflow: visible;
+    height: 48.5px !important;
+    padding-top: 20px !important;
 }
 .find-general-border div .selectboxit-container .selectboxit .selectboxit-arrow-container{
 margin-right: -30px;
@@ -16305,7 +16327,7 @@ margin-right: -30px;
     position: absolute;
     z-index: 100;
      display: none;
-     padding: 10px;
+     padding: 10px 10px 3px 10px;
     width: 90%;
     margin: 12px;
     border-top: 0;
@@ -16316,20 +16338,28 @@ margin-right: -30px;
 }
 .Available-lg{
     padding-left: 8px;
-    font-family: semibold;
-    font-size: 13pt;
-    color: #515151;
+    font-size: 14px;
+    color: black;
+    font-family: Myriad_regular;
 }
+
 .show-language{
     white-space: nowrap;  
     overflow: hidden;  
     text-overflow: ellipsis;
     height: 30px;
-    margin-top: -3px;
+   
     cursor: pointer;
 }
-#update-teacher, #cancel-update-teacher, #cancel-lg, #save-lg, #save-lg-ct,#cancel-lg-cr, #save-lg-cr{
-    border-radius: 8px !important;
+#cancel-lg, #save-lg, #save-lg-ct,#cancel-lg-cr, #save-lg-cr, #cancel-lg-ct{
+    border-radius: 0px !important;
+    height: 36px;
+    width:  182px;
+    font-size: 15px;
+}
+#update-teacher, #cancel-update-teacher{
+     border-radius: 8px !important;
+
 }
 
 .find-label{
@@ -16500,7 +16530,7 @@ select:-webkit-autofill:focus {
     margin-top: 10px;
 }
 .heading-acc {
-    font-size: 17px;
+    font-size: 15px;
     font-family: semibold;
 }
 #table-status-show {
@@ -16523,14 +16553,17 @@ select:-webkit-autofill:focus {
     border-radius: 8px !important;
     border: 1px solid #d9d9d9 !important;
     width: 250px;
-    padding-left: 110px;
+    padding-left: 100px;
     color: #ababab;
+    font-size: 14px;
+    height: 28px;
+    padding-top: 2px;
 }
 .price_tutor {
     position: absolute;
     left: 220px;
-    padding-top: 5px;
-
+    padding-top: 6px;
+font-size: 13px;
 }
 .line-profile div div{
 
@@ -16539,7 +16572,31 @@ select:-webkit-autofill:focus {
     white-space: nowrap;
 }
 #cancel-timelot, #save-timelot{
-    border-radius: 8px;
+    border-radius: 0 !important;
     height: 50px;
-    font-size: 15pt;
+    font-size: 15px;
+    width: 232px;
+
+}
+.lg-buttom {
+    padding-left: 0 !important;
+margin-left: -7px;
+}
+.selectboxit-options::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: #d8d8d8;
+}
+.selectboxit-options::-webkit-scrollbar {
+    background-color: #ececec;
+    width: 6px;
+}
+
+
+.select-style .selectboxit-text {
+   font-size: 15px !important;
+    color: #515151 !important;
+}
+#tutoring-preference .form-control[disabled]{
+    background-color: #fff; 
+    color: #a4a4a4;
 }

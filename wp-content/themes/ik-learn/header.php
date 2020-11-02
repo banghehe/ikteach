@@ -1,4 +1,4 @@
-<?php
+ <?php
 $route = get_route();
 $main_categories = MWDB::get_grades(array('type' => 'MATH', 'level' => 0, 'admin_only' => 1, 'orderby' => 'ordering', 'order-dir' => 'asc'));
 $levels = MWDB::get_grades(array('type' => 'MATH', 'level' => 1, 'orderby' => 'ordering', 'order-dir' => 'asc'));
@@ -74,6 +74,8 @@ function file_get_contents_curl( $url ) {
 }
 $ip_user = $_SERVER['REMOTE_ADDR'];
 $time_zone_user = json_decode(file_get_contents_curl("https://ipinfo.io/{$ip_user}"));
+
+// $time_zone_user = json_decode(file_get_contents("https://ipinfo.io/"));
 
 $time_zone_user1 = $time_zone_user->region;
 $timezone_name = $time_zone_user->timezone;
@@ -340,8 +342,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         </div>
                         <img id="menu_Taggle" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Menu_Trigger.png">
                         <span class="modal-title text-uppercase">
-                            <a href="#">
-                                <img data-dismiss="modal" src="<?php echo get_template_directory_uri(); ?>/library/images/ikTeach_Logo.png">
+                            <a href="https://iktutor.com/en/<?php echo $link_ss?>">
+                                <img  src="<?php echo get_template_directory_uri(); ?>/library/images/ikTeach_Logo.png">
                             </a>
                         </span>
                     </div>
@@ -431,10 +433,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                 <div id="create-account" class="tab-pane fade in">
                                     <div class="teacher-center">
-                                        <p class="my-account">MY ACCOUNT</p>
+                                        <p class="my-account">My Account</p>
                                         <p class="tutor-acc">CREATE A TUTOR ACCOUNT</p>
                                     </div>
-                                    <p class="heading-acc" style="color: #36a93f;margin-top: -9px;font-size: 22px; font-family: Myriad_regular;">Create Basic Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"><span id="create-overview">overview</span></p>
+                                    <p class="heading-acc" style="color: #36a93f;margin-top: -9px;font-size: 20px; font-family: Myriad_regular;">Create Basic Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"><span id="create-overview">overview</span></p>
                                     <span style="color: red; font-size: 14px;"> (<span style="padding-top: 2px; position: absolute;  font-weight: bold;   padding-left: 2px;">*</span>&nbsp; &nbsp;) Required</span>
                                     <form method="post" id="createAccount" action="" name="registerform" enctype="multipart/form-data" style="margin-top: 10px;" autocomplete="off">
                                         <div class="row">
@@ -444,8 +446,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="form-group">
                                                     <input id="user_login_signup" class="form-control" name="user_login" type="text" value="" required>
                                                     
-                                                    <span id="checked-availability" class="not-check-available" style="    margin-right: 20px;"><span></span></span>
-                                                    <button class="btn-dark-blue border-btn check-availability" id="check-availability" style="background: #FFA523; width: 50px; margin-top: -39px; float: right; border-radius: 8px !important;" type="button" name="wp-submit">Check</button>
+                                                    <span id="checked-availability" class="not-check-available" style=" margin-right: 20px; margin-top: -9px;"><span></span></span>
+                                                    <button class="btn-dark-blue border-btn check-availability" id="check-availability" style="background: #FFA523; width: 50px; margin-top: -37px; float: right; border-radius: 8px !important;" type="button" name="wp-submit">Check</button>
                                                 </div>
 
                                                 </div>
@@ -455,7 +457,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     <span class="find-label"><?php _e('Gender', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <div class="form-group">
                                                         <div class="border-ras select-style" id="gender">
-                                                            <select id="birth_g_pc" class="select-box-it form-control" name="birth_g_pc">                                                     
+                                                            <select id="birth_g_pc" class="select-box-it form-control" name="birth_g_pc">   
+                                                                <option value="">Select a Gender</option>      
                                                                 <option value="Male">Male</option>
                                                                 <option value="Female">Female</option>
                                                             </select>
@@ -513,7 +516,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <span class="find-label"><?php _e('Month', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                                 <div class="form-group">
                                                             <select id="birth_m" class="select-box-it form-control" name="birth-m">
-                                                                
+                                                                <option value="">Select a Month</option>
                                                                 <?php for ($i = 1; $i <= 12; $i++) : ?>
                                                                     <?php $pad_str = str_pad($i, 2, '0', STR_PAD_LEFT) ?>
                                                                     <option value="<?php echo $pad_str ?>"><?php echo $pad_str ?></option>
@@ -527,7 +530,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <span class="find-label"><?php _e('Day', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                                 <div class="form-group">
                                                             <select id="birth_d" class="select-box-it form-control" name="birth-d">
-                                                                
+                                                                <option value="">Select a Day</option>
                                                                 <?php for ($i = 1; $i <= 31; $i++) : ?>
                                                                     <?php $pad_str = str_pad($i, 2, '0', STR_PAD_LEFT) ?>
                                                                     <option value="<?php echo $pad_str ?>"><?php echo $pad_str ?></option>
@@ -569,15 +572,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div  class="find-general-border language-input">
                                                 <span class="find-label"><?php _e('Language', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                 <div id="show-language-ct" class="show-language">
-
+                                                    Select Language
                                                     
-                                                <span class="selectboxit-arrow-container" style="margin-top: -2.5px;"><i style="opacity:0;">0</i></span>
+                                                <span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>
                                                 </div>
                                                 </div>
                                             
                                                 <div class="form__boolean mt-bottom-10 clearfix language_drop" id="checkBoxSearch" style="margin-top: 0">
                                                     <span class="Available-lg">Available language</span>
-                                                    <ul id="list-language" style="font-size: 11pt; color: #9c9c9c;">
+                                                    <ul id="list-language" style="font-size: 12px; color: #9c9c9c;">
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons class_cb_search option-input-3 radio" value="en" data-lang="en" name="cb-lang"/>
                                                             <span>English</span>
@@ -609,12 +612,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         
                                                     </ul>
                                                     <div style="padding:12px 0;">
-                                                    <div class="ol-sm-6 col-md-6">
-                                                        <button id="save-lg-ct" class="btn-dark-blue border-btn" style="background: #009dcb;" type="button" name="save_timelot">
+                                                    <div class="ol-sm-6 col-md-6 lg-buttom">
+                                                        <button id="save-lg-ct" class="btn-dark-blue border-btn " style="background: #009ccc;" type="button" name="save_timelot">
                                                                                 SAVE   
                                                                             </button>
                                                     </div>
-                                                    <div class="ol-sm-6 col-md-6">
+                                                    <div class="ol-sm-6 col-md-6" style="padding-left: 9px !important;">
                                                         <button id="cancel-lg-ct" class="btn-dark-blue border-btn" style="background: #CECECE;" type="button" name="cancel_timelot" >
                                                                                 CANCEL
                                                                             </button>
@@ -688,7 +691,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             </div>
                                             <div class="clearfix"></div>
                                              <div style="border-bottom: 1px solid #d9d9d9; padding-top: 25px;width: 102%;margin-left: -3%;"></div>       
-                                                <div class="col-sm-12 col-md-12 mt-top-14" ><p class="heading-acc" style="color: #36a93f font-size: 22px; font-family: Myriad_regular;">Tutor Registration <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>                               
+                                                <div class="col-sm-12 col-md-12 mt-top-14" ><p class="heading-acc" style="color: #36a93f; font-size: 20px; font-family: Myriad_regular;">Tutor Registration <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>                               
                                                         <div class="col-sm-6 col-md-6 col-xs-12">
                                                             <div  class="find-general-border">
                                                                 <span class="find-label"><?php _e('Mobile Number', 'iii-dictionary') ?><span class="required-star"> *</span></span>
@@ -764,11 +767,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-12 col-md-12 col-xs-12">
                                             <p class="mt-top-4 mt-bottom-12 heading-acc">Why you like Tutoring and Teaching <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
                                                 
-                                                    <div class="find-general-border">
+                                                    <div class="find-general-border" style="max-height: 150px;">
                                                             <span class="find-label"><?php _e('How would you help student', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" name="desc_tell_me" value="" id="desc_tell_me">
-                                                        <div class="clear-input" onclick="document.getElementById('desc_tell_me').value=null;"></div>
+                                                        <textarea id="desc_tell_me" style="border: none;border-radius: 0; margin: 0px;height: 100px;width: 100%;"></textarea>
+                                                        <!-- <input type="text" class="form-control" name="desc_tell_me" value="" id="desc_tell_me"> -->
+                                                        <div class="clear-input" onclick="document.getElementById('desc_tell_me').value=null;" style="position: absolute;right: 0; bottom: 0;background-color: white;"></div>
                                                     </div>
                                                     </div>
                                                 </div>
@@ -792,7 +796,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject" value="" id="teaching_subject">
+                                                            <input type="text" class="form-control" name="teaching_subject" value="" id="teaching_subject" placeholder="Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('teaching_subject').value=null;"></div>
                                                             
                                                         </div>
@@ -815,7 +819,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject_02" value="" id="teaching_subject_02">
+                                                            <input type="text" class="form-control" name="teaching_subject_02" value="" id="teaching_subject_02" placeholder="Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('teaching_subject_02').value=null;"></div>
                                                          </div>   
                                                         </div>
@@ -899,6 +903,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label"><?php _e('Grade Level', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group border-ras select-style" style="margin-top: 0;">
                                                             <select class="select-box-it form-control" name="user_grade" id="user-grade">
+                                                                <option>Select a Grade Level</option>
                                                                 <option value="1" >Freshman</option>
                                                                 <option value="2" >Sophomore</option>
                                                                 <option value="3" >Junior</option>
@@ -945,7 +950,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <div id="agree-create" class="form-group">
                                                                 <input id="rdo-agreed3" class="radio_buttons option-input-3"  type="checkbox" name="agree-english-teacher" value="1" >
                                                                 <span for="rdo-agreed3" style="font-size: 13px !important; margin-bottom: 0px !important; display: inline-block; color: #a4a4a4;">I agree to the terms and conditions <span class="required-star" style="padding-top: 3px"> *</span></span>
-                                                            </div>                                                            
+                                                            </div> 
+                                                            <div id='check-rdo-agreed3' style="display: none; color: red; font-family: semibold; "><i>*Please agree to the Terms and Conditions</i></div>                                                           
                                                         </div>   
                                                     </div>   
                                                 </div>
@@ -1436,7 +1442,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         if($language_type != '') $update_language = explode(',', $language_type);
 
                                         $profile_value = get_user_meta($current_user->ID, 'ik_user_avatar', true);
-
+                                        $main_image = get_user_meta($current_user->ID, 'main_image', true);
                                         $update_mobile_number = get_user_meta($current_user->ID, 'mobile_number', true);
                                         $update_profession = get_user_meta($current_user->ID, 'user_profession', true);
                                         $update_last_school = get_user_meta($current_user->ID, 'last_school', true);
@@ -1478,12 +1484,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     }
                                     ?>
                                     <div class="teacher-center">
-                                        <p class="my-account">MY ACCOUNT</p>
+                                        <p class="my-account">My Account</p>
                                         <p class="tutor-acc">UPDATE MY ACCOUNT</p> 
 
                                     </div>                                  
                                     <form method="post" id="myUpdate" action="" name="updateAccount" enctype="multipart/form-data" autocomplete="off">
-                                        <p Class="heading-acc" style="color: #36a93f;margin-top: -9px;font-size: 22px; font-family: Myriad_regular;">Basic Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
+                                        <p Class="heading-acc" style="color: #36a93f;margin-top: -9px;font-size: 20px; font-family: Myriad_regular;">Basic Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
                                         <span style="color: red; font-size: 14px; float: right; margin-top: -30px;"> (<span style="padding-top: 2px; position: absolute;  font-weight: bold;   padding-left: 2px;">*</span>&nbsp; &nbsp;) Required</span>
                                         <div class="row">
                                             <div class="col-sm-9 col-md-9">
@@ -1650,12 +1656,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         echo rtrim($languagelist,", ");
                                                         
                                                         ?>
-                                                        <span class="selectboxit-arrow-container" style="margin-top: -2.5px;"><i style="opacity:0;">0</i></span>
+                                                        <span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>
                                                 </div>
                                                 </div>
                                                 <div class="form__boolean mt-bottom-10 clearfix language_drop" id="checkBoxSearch" style="margin-top: 0">
                                                     <span class="Available-lg">Available language</span>
-                                                    <ul id="list-language" style="font-size: 11pt; color: #9c9c9c;">
+                                                    <ul id="list-language" style="font-size: 12px; color: #9c9c9c;">
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="en" <?php if(count($update_language) > 0 && in_array("en", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
                                                             <span>English</span>
@@ -1692,12 +1698,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </li>
                                                     </ul>
                                                     <div style="padding:12px 0;">
-                                                <div class="ol-sm-6 col-md-6">
-                                                   <button id="save-lg" class="btn-dark-blue border-btn" style="background: #009dcb;" type="button" name="save_timelot">
+                                                <div class="ol-sm-6 col-md-6 lg-buttom">
+                                                   <button id="save-lg" class="btn-dark-blue border-btn" style="background: #009ccc;" type="button" name="save_timelot">
                                                                                 SAVE   
                                                                             </button>
                                                 </div>
-                                                <div class="ol-sm-6 col-md-6">
+                                                <div class="ol-sm-6 col-md-6" style="padding-left: 9px !important;">
                                                      <button id="cancel-lg" class="btn-dark-blue border-btn" style="background: #CECECE;" type="reset" name="cancel_timelot" >
                                                                                 CANCEL
                                                                             </button>
@@ -1774,18 +1780,22 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="clearfix"></div>
                                             <div style="border-bottom: 1px solid #d9d9d9; padding-top: 25px;width: 102%;margin-left: -3.1%;"></div>
                                             <?php 
-                                            if ($is_user_logged_in && (is_mw_qualified_teacher($current_user->ID) || is_mw_registered_teacher($current_user->ID)))
-                                                $style = 'style="display: block;"';
-                                            else
+                                            if ($is_user_logged_in && (is_mw_qualified_teacher($current_user->ID) || is_mw_registered_teacher($current_user->ID))){
+                                                $style = 'style="display: block;"'; 
+                                              
+
+                                            }
+                                            else{                                                
                                                 $style = 'style="display: none;"';
+                                            }
                                             ?>
                                             <div id="tutor-regis-update" class="col-md-12 mt-top-14" <?php echo $style ?>>
-                                                <p class="heading-acc" style="color: #36a93f;">Tutor’s Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
+                                                <p class="heading-acc" style="color: #36a93f;font-size: 20px; font-family: Myriad_regular;">Tutor’s Account <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
                                                 <div id="info-update">
                                                     <div class="row mt-bottom-14">                                                    
                                                         <div class="col-sm-6 col-md-6 col-xs-12">
                                                             <div  class="find-general-border">
-                                                                <span class="find-label"><?php _e('Mobile Number', 'iii-dictionary') ?>:</span>
+                                                                <span class="find-label"><?php _e('Mobile Number', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control" name="mobile_number" value="<?php echo $update_mobile_number ?>" id="mobile-number-update">
                                                                     <div class="clear-input" onclick="document.getElementById('mobile-number-update').value=null;"></div>
@@ -1795,7 +1805,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
                                                             <div  class="find-general-border">
-                                                                <span class="find-label"><?php _e('Profession', 'iii-dictionary') ?>:</span>
+                                                                <span class="find-label"><?php _e('Profession', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control" name="profession" value="<?php echo $update_profession ?>" id="profession-update">
                                                                     <div class="clear-input" onclick="document.getElementById('profession-update').value=null;"></div>
@@ -1805,7 +1815,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </div>
                                                         <div class="col-sm-6 col-md-6 col-xs-12 mt-top-13">
                                                             <div  class="find-general-border">
-                                                                <span class="find-label"><?php _e('Last School Attended', 'iii-dictionary') ?>:</span>
+                                                                <span class="find-label"><?php _e('Last School Attended', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control" name="last_school" value="<?php echo $update_last_school ?>" id="last-school-update">
                                                                     <div class="clear-input" onclick="document.getElementById('last-school-update').value=null;"></div>
@@ -1829,15 +1839,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <p class="heading-acc">Main Image (Optional) <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
                                                 <div class="row">
                                                     <div class="col-sm-3 col-md-3 col-xs-3">
-                                                        <input class="form-control input-file" type="file" id="main-image" value="" style="display: none">
-                                                        <button class="btn-dark-blue border-btn" style="background: #cecece; display: inline-block; width: 100%; height: 50px; border-radius: 10px !important;" type="button" name="upload"  onclick="document.getElementById('main-image').click();"><?php _e('Browse', 'iii-dictionary') ?></button>
+                                                        <input class="form-control input-file" type="file" id="up-main-image" value="" style="display: none">
+                                                        <button class="btn-dark-blue border-btn" style="background: #cecece; display: inline-block; width: 100%; height: 50px; border-radius: 10px !important;" type="button" name="upload"  onclick="document.getElementById('up-main-image').click();"><?php _e('Browse', 'iii-dictionary') ?></button>
                                                     </div>
                                                     <div class="col-sm-9 col-md-9 col-xs-9">
                                                         <div class="find-general-border">
                                                             <span class="find-label">Image Location</span>
                                                             <div class="form-group">
-                                                                <input class="form-control input-path" id="main-value" type="text" value="<?php echo $profile_value ?>">
-                                                                <div class="clear-input" onclick="document.getElementById('main-value').value=null;"></div>
+                                                                <input class="form-control input-path" id="up-main-value" type="text" value="<?php echo $main_image ?>">
+                                                                <div class="clear-input" onclick="document.getElementById('up-main-value').value=null;"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1845,7 +1855,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <p class="heading-acc mt-top-14 mt-bottom-12">Tagline <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
                                                 <div class="mt-bottom-10">
                                                     <div class="find-general-border">
-                                                            <span class="find-label"><?php _e('Tutor\'s Tagline (Marketing)', 'iii-dictionary') ?>:</span>
+                                                            <span class="find-label"><?php _e('Tutor\'s Tagline (Marketing)', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" name="previous_school" value="<?php echo $update_previous_school ?>" id="previous-school-update">
                                                         <div class="clear-input" onclick="document.getElementById('previous-school-update').value=null;"></div>
@@ -1858,11 +1868,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                                 <p class="heading-acc mt-top-14 mt-bottom-12">Why you like Tutoring and Teaching <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
                                                 <div class="mt-bottom-10">
-                                                    <div class="find-general-border">
-                                                            <span class="find-label"><?php _e('How would you help student', 'iii-dictionary') ?>:</span>
+                                                    <div class="find-general-border" style="max-height: 150px">
+                                                            <span class="find-label"><?php _e('How would you help student', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" name="desc_tell_update" value="<?php echo $desc_tell_update ?>" id="desc_tell_update">
-                                                        <div class="clear-input" onclick="document.getElementById('desc_tell_update').value=null;"></div>
+                                                         <textarea id="desc_tell_update" style="border: none;border-radius: 0; margin: 0px;height: 100px;width: 100%;"><?php echo $desc_tell_update ?></textarea>
+                                                        
+                                                        <div class="clear-input" onclick="document.getElementById('desc_tell_update').value=null;" style="position: absolute;right: 0; bottom: 0;background-color: white;"></div>
+                                                        <!-- <input type="text" class="form-control" name="desc_tell_update" value="<?php echo $desc_tell_update ?>" id="desc_tell_update"> -->
+                                                        
                                                     </div>
                                                     </div>
                                                 </div>
@@ -1889,7 +1902,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject" value="<?php echo $update_teaching_subject ?>" id="subject-update">
+                                                            <input type="text" class="form-control" name="teaching_subject" value="<?php echo $update_teaching_subject ?>" id="subject-update" placeholder = "Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('subject-update').value=null;"></div>
                                                             
                                                         </div>
@@ -1910,7 +1923,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject_02" value="<?php echo $update_teaching_subject_02 ?>" id="subject-update-02">
+                                                            <input type="text" class="form-control" name="teaching_subject_02" value="<?php echo $update_teaching_subject_02 ?>" id="subject-update-02" placeholder = "Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('subject-update-02').value=null;"></div>
                                                             
                                                         </div>
@@ -1923,7 +1936,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('School/Institute Name 3', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_name_03" value="<?php echo $update_school_name_03 ?>" id="school-name-update-03">
+                                                            <input type="text" class="form-control" name="school_name_03" value="<?php echo $update_school_name_03 ?>" id="school-name-update-03" placeholder = "Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('school-name-update-03').value=null;"></div>
                                                             
                                                         </div>
@@ -1934,7 +1947,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject_03" value="<?php echo $update_teaching_subject_03 ?>" id="subject-update-03">
+                                                            <input type="text" class="form-control" name="teaching_subject_03" value="<?php echo $update_teaching_subject_03 ?>" id="subject-update-03"placeholder = "Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('subject-update-03').value=null;"></div>
                                                             
                                                         </div>
@@ -1959,7 +1972,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject_04" value="<?php echo $update_teaching_subject_04 ?>" id="subject-update-04">
+                                                            <input type="text" class="form-control" name="teaching_subject_04" value="<?php echo $update_teaching_subject_04 ?>" id="subject-update-04" placeholder = "Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('subject-update-04').value=null;"></div>
                                                             
                                                         </div>
@@ -1983,7 +1996,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject_05" value="<?php echo $update_teaching_subject_05 ?>" id="subject-update-05">
+                                                            <input type="text" class="form-control" name="teaching_subject_05" value="<?php echo $update_teaching_subject_05 ?>" id="subject-update-05" placeholder = "Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('subject-update-05').value=null;"></div>
                                                         </div>
                                                     </div>
@@ -2034,7 +2047,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="row mt-top-9">
                                                     <div class="col-sm-6 col-md-6 col-xs-12">
                                                         <div class="find-general-border">
-                                                             <span class="find-label"><?php _e('School/Institute Name 1', 'iii-dictionary') ?>:</span>
+                                                             <span class="find-label"><?php _e('School/Institute Name 1', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name1" value="<?php echo $update_school_name1 ?>" id="school-name1-update">
                                                             <div class="clear-input" onclick="document.getElementById('school-name1-update').value=null;"></div>
@@ -2056,7 +2069,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
                                                     <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
                                                         <div class="find-general-border">
-                                                             <span class="find-label"><?php _e('School/Institute Name 2', 'iii-dictionary') ?>:</span>
+                                                             <span class="find-label"><?php _e('School/Institute Name 2', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name2" value="<?php echo $update_school_name2 ?>" id="school-name2-update">
                                                             <div class="clear-input" onclick="document.getElementById('school-name2-update').value=null;"></div>
@@ -2078,7 +2091,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
                                                         <div class="find-general-border">
-                                                             <span class="find-label"><?php _e('School/Institute Name 3', 'iii-dictionary') ?>:</span>
+                                                             <span class="find-label"><?php _e('School/Institute Name 3', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name3" value="<?php echo $update_school_name3 ?>" id="school-name3-update">
                                                             <div class="clear-input" onclick="document.getElementById('school-name3-update').value=null;"></div>
@@ -2101,7 +2114,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
                                                         <div class="find-general-border">
-                                                             <span class="find-label"><?php _e('School/Institute Name 4', 'iii-dictionary') ?>:</span>
+                                                             <span class="find-label"><?php _e('School/Institute Name 4', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name4" value="<?php echo $update_school_name4 ?>" id="school-name4-update">
                                                             <div class="clear-input" onclick="document.getElementById('school-name4-update').value=null;"></div>
@@ -2124,7 +2137,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
                                                        <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
                                                         <div class="find-general-border">
-                                                             <span class="find-label"><?php _e('School/Institute Name 5', 'iii-dictionary') ?>:</span>
+                                                             <span class="find-label"><?php _e('School/Institute Name 5', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" name="school_name5" value="<?php echo $update_school_name5 ?>" id="school-name5-update">
                                                             <div class="clear-input" onclick="document.getElementById('school-name5-update').value=null;"></div>
@@ -2188,13 +2201,13 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                 <div id="tutor-regis-tab" class="tab-pane fade in">
                                     <div class="teacher-center" >
-                                        <p class="my-account" style="margin-left: -5px">MY ACCOUNT</p>
+                                        <p class="my-account" style="margin-left: -5px">My Account</p>
                                         <p class="tutor-acc" style="margin-left: -5px">PLEASE COMPELTE TUTOR REGISTRATION</p>
                                     </div>
                                     
                                     <form method="post" id="tutorForm" action="" name="registerform" enctype="multipart/form-data" autocomplete="off">
                                         <div class="row">
-                                            <p class="heading-acc" style="color: #36a93f ;font-size: 22px; font-family: Myriad_regular; "> Basic Registration <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></>
+                                            <p class="heading-acc" style="color: #36a93f ;font-size: 20px; font-family: Myriad_regular; "> Basic Registration <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></>
                                         <div class="row">
                                             <div class="col-sm-9 col-md-9">
                                                 <div class="find-general-border">
@@ -2210,7 +2223,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <span class="find-label">Gender<span class="required-star"> *</span></span>
                                                         <div class="border-ras select-style" id="gender">
                                                            <select id="update_birth_g" class="select-box-it form-control" name="update_birth_g">
-                                                                <option value="" <?php if($update_birth_g == '') echo 'selected="selected"' ?>>Gender</option>
+                                                                <option value="">Select a Gender</option>
                                                                 <option value="Male" <?php if($update_birth_g == 'Male') echo 'selected="selected"' ?>>Male</option>
                                                                 <option value="Female" <?php if($update_birth_g == 'Female') echo 'selected="selected"' ?>>Female</option>
                                                             </select>
@@ -2273,7 +2286,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label">Month<span class="required-star"> *</span></span>
                                                             <div class="form-group">
                                                             <select id="update_birth_m" class="select-box-it form-control" name="update-birth-m">
-                                                                <option value="">Month</option>
+                                                                <option value="">Select a Month</option>
                                                                 <?php 
                                                                 for ($i = 1; $i <= 12; $i++) : 
                                                                     $pad_str = str_pad($i, 2, '0', STR_PAD_LEFT);
@@ -2293,7 +2306,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                             <span class="find-label">Day<span class="required-star"> *</span></span>
                                                             <div class="form-group">
                                                             <select id="update_birth_d" class="select-box-it form-control" name="update-birth-d">
-                                                                <option value="">(Day)</option>
+                                                                <option value="">Select a Day</option>
                                                                 <?php 
                                                                 for ($i = 1; $i <= 31; $i++): 
                                                                     $pad_str = str_pad($i, 2, '0', STR_PAD_LEFT);
@@ -2360,12 +2373,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         echo rtrim($languagelist,", ");
                                                         
                                                         ?>
-                                                        <span class="selectboxit-arrow-container" style="margin-top: -2.5px;"><i style="opacity:0;">0</i></span>
+                                                        <span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>
                                                 </div>
                                                 </div>
                                                 <div class="form__boolean mt-bottom-10 clearfix language_drop" id="checkBoxSearch" style="margin-top: 0">
                                                     <span class="Available-lg">Available language</span>
-                                                    <ul id="list-language-cr" style="font-size: 11pt; color: #9c9c9c;">
+                                                    <ul id="list-language-cr" style="font-size: 12px; color: #9c9c9c;">
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="en" <?php if(count($update_language) > 0 && in_array("en", $update_language)){ echo 'checked="checked"'; }?> name="update-cb-lang-cr"/>
                                                             <span>English</span>
@@ -2402,12 +2415,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         </li>
                                                     </ul>
                                                     <div style="padding:12px 0;">
-                                                <div class="ol-sm-6 col-md-6">
-                                                   <button id="save-lg-cr" class="btn-dark-blue border-btn" style="background: #009dcb;" type="button" name="save_timelot">
+                                                <div class="ol-sm-6 col-md-6 lg-buttom">
+                                                   <button id="save-lg-cr" class="btn-dark-blue border-btn" style="background: #009ccc;" type="button" name="save_timelot">
                                                                                 SAVE   
                                                                             </button>
                                                 </div>
-                                                <div class="ol-sm-6 col-md-6">
+                                                <div class="ol-sm-6 col-md-6" style="padding-left: 9px !important;">
                                                      <button id="cancel-lg-cr" class="btn-dark-blue border-btn" style="background: #CECECE;" type="reset" name="cancel_timelot" >
                                                                                 CANCEL
                                                                             </button>
@@ -2482,7 +2495,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             </div>
                                                 <div class="clearfix"></div>
                                                 <div style="border-bottom: 1px solid #d9d9d9; padding-top: 25px;width: 101.5%;margin-left: -2.2%;"></div>       
-                                                <div class="col-sm-12 col-md-12 mt-top-14" ><p class="heading-acc" style="color: #36a93f font-size: 22px; font-family: Myriad_regular;">Tutor Registration <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>                               
+                                                <div class="col-sm-12 col-md-12 mt-top-14" ><p class="heading-acc" style="color: #36a93f; font-size: 20px; font-family: Myriad_regular;">Tutor Registration <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>                               
                                                         <div class="col-sm-6 col-md-6 col-xs-12">
                                                             <div  class="find-general-border">
                                                                 <span class="find-label"><?php _e('Mobile Number', 'iii-dictionary') ?><span class="required-star"> *</span></span>
@@ -2525,6 +2538,24 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 </div>
                                                             </div>
                                                         </div>
+                                             <div class="col-sm-12 col-md-12 mt-top-14"><p class="heading-acc">Main Image (Optional) <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>
+                                             <div class="col-sm-12 col-md-12 col-xs-12 mt-bottom-4">
+                                                <div class="row">
+                                                    <div class="col-sm-3 col-md-3 col-xs-3">
+                                                        <input class="form-control input-file" type="file" id="update-main-image" value="" style="display: none">
+                                                        <button class="btn-dark-blue border-btn" style="background: #cecece; display: inline-block; width: 100%; height: 50px; border-radius: 10px !important;" type="button" name="upload"  onclick="document.getElementById('update-main-image').click();"><?php _e('Browse', 'iii-dictionary') ?></button>
+                                                    </div>
+                                                    <div class="col-sm-9 col-md-9 col-xs-9">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label">Image Location</span>
+                                                            <div class="form-group">
+                                                                <input class="form-control input-path" id="update-main-value" type="text" value="<?php echo $main_image ?>">
+                                                                <div class="clear-input" onclick="document.getElementById('update-main-value').value=null;"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
                                              <div class="col-sm-12 col-md-12 mt-top-14"><p class="heading-acc mt-bottom-11">Tagline <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>
                                              <div class="col-sm-12 col-md-12 col-xs-12 mt-bottom-10">
                                              
@@ -2541,11 +2572,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-12 col-md-12 col-xs-12">
                                             <p class="heading-acc mt-top-8 mt-bottom-12">Why you like Tutoring and Teaching <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
                                                 
-                                                    <div class="find-general-border">
+                                                    <div class="find-general-border" style="max-height: 150px">
                                                             <span class="find-label"><?php _e('How would you help student', 'iii-dictionary') ?><span class="required-star"> *</span></span>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" name="desc_tell_me" value="" id="up_desc_tell_me">
-                                                        <div class="clear-input" onclick="document.getElementById('up_desc_tell_me').value=null;"></div>
+                                                        <textarea id="up_desc_tell_me" style="border: none;border-radius: 0; margin: 0px;height: 100px;width: 100%;"></textarea>
+                                                        
+                                                        <div class="clear-input" onclick="document.getElementById('up_desc_tell_me').value=null;" style="position: absolute;right: 0; bottom: 0;background-color: white;"></div>
+                                                        <!-- <input type="text" class="form-control" name="desc_tell_me" value="" id="up_desc_tell_me"> -->
+
                                                     </div>
                                                     </div>
                                                 </div>
@@ -2569,7 +2603,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject" value="" id="up_teaching_subject">
+                                                            <input type="text" class="form-control" name="teaching_subject" value="" id="up_teaching_subject" placeholder="Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('up_teaching_subject').value=null;"></div>
                                                             
                                                         </div>
@@ -2592,7 +2626,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <div class="find-general-border">
                                                             <span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="teaching_subject_02" value="" id="up_teaching_subject_02">
+                                                            <input type="text" class="form-control" name="teaching_subject_02" value="" id="up_teaching_subject_02" placeholder="Subject, yyyy-yyyy">
                                                             <div class="clear-input" onclick="document.getElementById('up_teaching_subject_02').value=null;"></div>
                                                          </div>   
                                                         </div>
@@ -3295,7 +3329,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             </p>
                                             <label class="label-preference mt-top-6">Price for 30 Minutes of Tutoring</label>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="price_tutoring" value="<?php echo $price_tutoring ?>" id="price-tutoring">
+                                                <input type="text" class="form-control blur-price" name="price_tutoring" value="<?php echo $price_tutoring ?>" id="price-tutoring" <?php if(!($enable_one_tutoring == 'one_tutoring')) echo 'disabled'; ?>>
                                                 <span class="placeholder">US Dollar/Points:</span>
                                             </div>
                                             <div class="form-group">
@@ -3319,14 +3353,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             <div class="col-sm-6 col-md-6 col-xs-12">
                                                 <label class="label-preference mt-top-6">Price for 30 Minutes of Tutoring</label>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="price_group_tutoring" value="<?php echo $price_group_tutoring ?>" id="price-group-tutoring">
+                                                    <input type="text" class="form-control blur-price" name="price_group_tutoring" value="<?php echo $price_group_tutoring ?>" id="price-group-tutoring" <?php if(!($enable_group_tutoring == 'group_tutoring')) echo 'disabled'; ?> >
                                                     <span class="placeholder">US Dollar/Points:</span>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-xs-12">
                                                 <label class="label-preference mt-top-6">Participant limits</label>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="number_participant" value="<?php echo $number_participant ?>" id="number-participant">
+                                                    <input type="text" class="form-control" name="number_participant" value="<?php echo $number_participant ?>" id="number-participant" <?php if(!($enable_group_tutoring == 'group_tutoring')) echo 'disabled'; ?>>
                                                     <span class="placeholder">Number of Participants:</span>
                                                 </div>
                                             </div>
@@ -3724,7 +3758,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 <div class="upcoming-schedule-tutor">
                                                                     <h4>Upcoming Tutoring Sessions</h4>
                                                                     <div class="upcoming-main style-scrollbar">
-                                                                        <ul id="upcoming-schedule-tutor">
+                                                                        <ul id="upcoming-schedule-tutor" style="padding-left: 30px;
+">
                                                                             <li>
                                                                                 <span class="time-upcoming-tutor">Dec 14, 2018 / 8:30am - 9:30am</span>
                                                                                 <span>English business conversation</span>
@@ -3942,7 +3977,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 </div>
                                                                 <div class="content-timelot">
                                                                     <p id="time-scheduled-popup">8:00am ~ 8:30am</p>
-                                                                    <p id="subject-scheduled-popup">Waiting for Confirmation</p>
+                                                                    
                                                                     <div id="tutoring-type">  <!-- Tutoring type choose -->
                                                                     <?php
                                                                     $tlenable_one_tutoring = '';
@@ -3972,8 +4007,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                             <span>Enables 1 on 1 Tutoring</span>
                                                                         </label>
                                                                         <div class="price-group">
-                                                                        <input id="update_price_tutoring" type="text" name="price_tutoring" value="<?php echo $price_tutoring ?>">
-                                                                        <span class="price_tutor">Custom price ($):</span>
+                                                                        <input id="update_price_tutoring" type="text" name="price_tutoring" value="<?php echo $price_tutoring ?>" autocomplete="off" style="color: #515151;">
+                                                                        <div id="clear-price-one" class="clear-input"  style="position: absolute;right: 30px;margin-top: -32px;"></div>
+                                                                        <span class="price_tutor">Custom Points:</span>
                                                                         </div>
                                                                     </div>
                                                                         <div  class="form-group">
@@ -3983,8 +4019,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                                                         </label>
                                                                             <div class="price-group">
-                                                                            <input id="update_price_group" type="text"  name="update_price_group" value="<?php echo $price_group_tutoring ?>">
-                                                                            <span class="price_tutor">Custom price ($):</span>
+                                                                            <input id="update_price_group" type="text"  name="update_price_group" value="<?php echo $price_group_tutoring ?>" autocomplete="off">
+                                                                            <div id="clear-price-group" class="clear-input"  style="position: absolute;right: 30px;margin-top: -32px;"></div>
+                                                                            <span class="price_tutor">Custom Points:</span>
                                                                             </div>
                                                                         
                                                                     </div>
@@ -3994,12 +4031,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">
                                                                             <span>Enables 1 on 1 Tutoring</span>
                                                                         </label>
+                                                                        <div class="price-group">
+                                                                        <input id="update_price_tutoring" type="text" name="price_tutoring" value="<?php echo $price_tutoring ?>" style="color: #515151;" autocomplete="off">
+                                                                        <span class="price_tutor">Custom Points:</span>
+                                                                        </div>
                                                                     </div>    
                                                                     <?php } ?>
                                                                 </div> <!-- Close tutoring type choose -->
                                                                     <div id="select-timelot" class="form-group border-ras select-style">
+                                                                        <div id="show-subject"></div>
                                                                         <select class="select-box-it 
-                                                                        form-control" name="timelot_subject" id="select-timelot-subject" >
+                                                                        form-control" name="timelot_subject" id="select-timelot-subject" onchange="validateSelectBox(this)" >
                                                                             <option value="0" data-name="">Select Subject</option>
                                                                             <option value="all" data-name="Any Subjects">Any Subjects from My Preference</option>
                                                                             <?php if(count($tenglish_subject) > 0){ ?>
@@ -4076,15 +4118,15 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     </p>
                                                                 </div>
                                                                 <div class="row buttons-timelot">
-                                                                    <div class="col-sm-6 col-md-6 col-xs-12">
-                                                                        <div class="form-group">
+                                                                    <div class="col-sm-6 col-md-6 col-xs-12" style="padding: 3px 0px 3px 3px !important;">
+                                                                        <div class="form-group" style=" margin-bottom: 0;">
                                                                             <button id="save-timelot" class="btn-dark-blue border-btn" style="background: #65C762;" type="button" name="save_timelot">
                                                                                 SAVE   
                                                                             </button>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-6 col-md-6 col-xs-12">
-                                                                        <div class="form-group">
+                                                                    <div class="col-sm-6 col-md-6 col-xs-12" style="padding: 3px 3px 3px 2px !important;">
+                                                                        <div class="form-group" style="margin-bottom: 0;">
                                                                             <button id="cancel-timelot" class="btn-dark-blue border-btn" style="background: #CECECE;" type="button" name="cancel_timelot" >
                                                                                 CANCEL
                                                                             </button>
@@ -5857,7 +5899,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     </div>
                                                                     <div class="col-md-3 col-sm-3 col-xs-12 nopadding-r">
                                                                         <div class="form-group">
-                                                                            <button type="submit" class="btn-orange2 form-control border-btn" name="btn-search-lesson" id="search-btn-lesson"</span><?php _e('Search', 'iii-dictionary') ?></button>
+                                                                            <button type="submit" class="btn-orange2 form-control border-btn" name="btn-search-lesson" id="search-btn-lesson"></span><?php _e('Search', 'iii-dictionary') ?></button>
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
@@ -7683,8 +7725,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             <li><a style="display: none;" class="home-icon2-custom" href="<?php echo locale_home_url() ?>" title="<?php _e('Home', 'iii-dictionary') ?>"><?php _e('Home', 'iii-dictionary') ?><span class="home-icon2"></span></a></li>
 
-                        <?php else : ?>
-                            <li><a class="logout-link" href="<?php echo wp_logout_url(locale_home_url()) ?>" title="<?php _e('Logout', 'iii-dictionary') ?>"><?php _e('Logout', 'iii-dictionary') ?><span class="login-icon"></span></a></li>
+                       
                         <?php endif ?>
                     </ul>
 
@@ -7759,7 +7800,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 <span style="float: right;" class="manage-name-span">Manage Worksheets</span>
                             </button>
                             <ul class="dropdown-menu manage-class-dropdown-menu manage-tutoring-dropdown-menu">
-                                <li><a href="<?php echo locale_home_url() ?>/?r=teaching/register"><span class="glyphicon glyphicon-arrow-right"></span>Tutor Registration</a></li>
+
                                 <li><a href="<?php echo locale_home_url() ?>/?r=teaching/purchase-worksheet"><span class="glyphicon glyphicon-arrow-right"></span>Review Free Whorksheet</a></li>
                                 <li><a href="<?php echo locale_home_url() ?>/?r=homework-assignment"><span class="glyphicon glyphicon-arrow-right"></span>Create your own Worksheets</a></li>
                                 <li><a href="<?php echo locale_home_url() ?>/?r=create-group&layout=create"><span class="glyphicon glyphicon-arrow-right"></span>Create Online Course</a></li>
@@ -7770,7 +7811,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             <button style="height: 40px; border: none; font-size: 18px;" class="dropdown-toggle tutoring-button manage-tutoring-button" type="button" data-toggle="dropdown"><span style="float: left; color: #004d52;" class="tutoring-name-span">Tutoring</span>
                                 <span class="manage-tutoring-caret"><img src="<?php echo get_template_directory_uri(); ?>/library/images/turoring_dropdown_arrow.png"></span></button>
                             <ul class="dropdown-menu tutoring-dropdown-menu manage-tutoring-dropdown-menu">
-                                <li><a href="<?php echo locale_home_url() ?>/?r=my-account#step4-collapse"><span class="glyphicon glyphicon-arrow-right"></span>Tutor Registration</a></li>
+                                <li><a href="<?php echo locale_home_url() ?>/?r=teaching/register"><span class="glyphicon glyphicon-arrow-right"></span>Tutor Registration</a></li>
                                 <li><a href="<?php echo locale_home_url() ?>/"><span class="glyphicon glyphicon-arrow-right"></span>Tutor English Conversation</a></li>
                                 <li><a href="<?php echo locale_home_url() ?>/?r=teaching/teach-class"><span class="glyphicon glyphicon-arrow-right"></span>Tutor English Writing</a></li>
                                 <li><a href="<?php echo locale_home_url() ?>/?r=teaching-math"><span class="glyphicon glyphicon-arrow-right"></span>Tutor Math</a></li>
@@ -8915,8 +8956,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $(".class-created").removeClass("sethidden");
                                 $(".class-created").slideDown("fast");
                                 $(".arrow-class-created img").attr("src", "<?php echo get_template_directory_uri(); ?>/library/images/Arrow_up.png");
-                            
+                                $("#tutoring-main").removeClass("active");
+                                $("#tutoring-main").removeClass("in");
+                                 $("#updateinfo").removeClass("active");
+                                $("#updateinfo").removeClass("in");
                                 $("#create-class-red").addClass("active");
+
                                 $("#create-class").addClass("active");
                                 $("#create-class").addClass("in");
                                 }else{
@@ -9705,6 +9750,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
                             });
                         });
+                        $('#rdo-agreed3').click(function(){
+                            $('#check-rdo-agreed3').css('display','none');
+                        });
+                                
 
                         $('#create-acc').click(function () {
                             var user_name = $('#user_login_signup').val();
@@ -9725,7 +9774,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 cb_lang.push(val);
                             });
                             
-                            
+                            var main_image = $('#main-value').val();
                             var gender = $("#birth_g_pcSelectBoxItText").attr("data-val");
                             var mobile_number = $('#mobile-number').val();
                             var user_profession = $('#user-profession').val();
@@ -9758,6 +9807,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var user_gpa = $('#user-gra').val();
                             var user_major = $('#user-major').val();
                             var user_grade = $('#user-gradeSelectBoxItText').attr("data-val");
+                            if(!$('#rdo-agreed3').prop('checked')){
+                                $('#check-rdo-agreed3').css('display','block');
+
+                            }else{
                             $.post(home_url + "/?r=ajax/create_account", {
                                 user_name: user_name,
                                 user_password: user_password,
@@ -9802,16 +9855,18 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 student_link: student_link,
                                 user_gpa: user_gpa,
                                 user_major: user_major,
-                                user_grade: user_grade
+                                user_grade: user_grade,
+                                main_image: main_image
                             }, function (data) {
                                 if ($.trim(data) == '1') {
-                                    $('#popup-message').html('<p class="text-used">Basic Account has been created successfully</p><button id="got-home" type="button" class="btn-orange form-control nopadding-r border-btn">Got it</button>');
+                                    $('#popup-message').html('<p class="text-used">Tutor Account has been created successfully</p><button id="got-home" type="button" class="btn-orange form-control nopadding-r border-btn">Got it</button>');
                                     $('#top-popup-message').css("display", "block");                                    
                                 } else {
                                     $('#popup-message').html('<p class="text-used">' + data + '</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
                                     $('#top-popup-message').css("display", "block");
                                 }
                             });
+                            }
                         });
 
                         $('.cancel-update-teacher').click(function () {
@@ -9970,6 +10025,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var cb_lang = [];
                             var subject_type = [];
                             var profile_avatar = $('#profile-value').val();
+                            var main_image = $('#up-main-value').val();
                             $('input[name="update-cb-lang"]:checked').each(function () {
                                 cb_lang.push(this.value);
                             });
@@ -10009,20 +10065,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     form_valid = false;
                                 }
 
-                                if(school_link1 == '' || $.trim(school_link1) == ''){
-                                    msg += 'Please enter School Link 1</br>';
-                                    form_valid = false;
-                                }
+                                
                             }
 
                             if((school_name2 == '' && $.trim(school_name1) == '') || ($.trim(school_name2) == '' && $.trim(school_name1) == '')){
                                 msg += 'Please enter School Name 2</br>';
                                 form_valid = false;
 
-                                if(school_link2 == '' || $.trim(school_link2) == ''){
-                                    msg += 'Please enter School Link 2</br>';
-                                    form_valid = false;
-                                }
+                               
                             }
                         
                             if((any_other == '' && $.trim(school_name1) == '' && $.trim(school_name2) == '') || ($.trim(any_other) == '' && $.trim(school_name1) == '' && $.trim(school_name2) == '')){
@@ -10111,6 +10161,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     time_zone: time_zone,
                                     time_zone_index: time_zone_index,
                                     time_zone_name: name,
+                                    main_image: main_image,
                                     type: "update"
                                 }, function (data) {
                                    
@@ -10153,8 +10204,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             if (cb[6].checked === true){
                                 lg += 'Other, ';
                             }
-                            var sl = lg.substring(0, lg.length - 2);
-                            document.getElementById("show-language").innerHTML = sl+'<span class="selectboxit-arrow-container" style="margin-top: -2.5px;"><i style="opacity:0;">0</i></span>';
+                            if(lg == ""){
+                                var sl = "Select Language";
+                            }else{
+                                var sl = lg.substring(0, lg.length - 2);
+                            }
+                            document.getElementById("show-language").innerHTML = sl+'<span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>';
                         });
                         $("#save-lg-ct").click(function () {
                             $('.language_drop').css('display','none');
@@ -10182,8 +10237,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             if (cb[6].checked === true){
                                 lg += 'Other, ';
                             }
-                            var sl = lg.substring(0, lg.length - 2);
-                            document.getElementById("show-language-ct").innerHTML = sl+'<span class="selectboxit-arrow-container" style="margin-top: -2.5px;"><i style="opacity:0;">0</i></span>';
+                            if(lg == ""){
+                                var sl = "Select Language";
+                            }else{
+                                var sl = lg.substring(0, lg.length - 2);
+                            }
+                            document.getElementById("show-language-ct").innerHTML = sl+'<span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>';
                          });
                         $("#save-lg-cr").click(function () {
                             $('.language_drop').css('display','none');
@@ -10211,8 +10270,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             if (cb[6].checked === true){
                                 lg += 'Other, ';
                             }
-                            var sl = lg.substring(0, lg.length - 2);
-                            document.getElementById("show-language-cr").innerHTML = sl+'<span class="selectboxit-arrow-container" style="margin-top: -2.5px;"><i style="opacity:0;">0</i></span>';
+                            if(lg == ""){
+                                var sl = "Select Language";
+                            }else{
+                                var sl = lg.substring(0, lg.length - 2);
+                            }
+                            document.getElementById("show-language-cr").innerHTML = sl+'<span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>';
                          });
 
                         $("#cancel-lg-ct").click(function () {
@@ -10253,6 +10316,83 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
                             });
                         });
+                        $("#up-main-image").change(function () {
+                            var file_data = $('#up-main-image').prop('files')[0];
+                            var type = file_data.type;
+                            var match = ["image/gif", "image/png", "image/jpg", ];
+                            var form_data = new FormData();
+                            form_data.append('file', file_data);
+                            $.ajax({
+                                url: home_url + "/?r=ajax/main_image",
+                                dataType: 'text',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,
+                                type: 'post',
+                                success: function (res) {
+                                    if ($.trim(res) != '0') {
+                                        
+                                       $("#up-main-value").val($.trim(res));
+                                    } else {
+                                        $('#popup-message').html('<p class="text-used">Error: There was an error uploading your file</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
+                                        $('#top-popup-message').css("display", "block");
+                                    }
+                                }
+                            });
+                        });
+
+                        $("#update-main-image").change(function () {
+                            var file_data = $('#update-main-image').prop('files')[0];
+                            var type = file_data.type;
+                            var match = ["image/gif", "image/png", "image/jpg", ];
+                            var form_data = new FormData();
+                            form_data.append('file', file_data);
+                            $.ajax({
+                                url: home_url + "/?r=ajax/main_image",
+                                dataType: 'text',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,
+                                type: 'post',
+                                success: function (res) {
+                                    if ($.trim(res) != '0') {
+                                        
+                                       $("#update-main-value").val($.trim(res));
+                                    } else {
+                                        $('#popup-message').html('<p class="text-used">Error: There was an error uploading your file</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
+                                        $('#top-popup-message').css("display", "block");
+                                    }
+                                }
+                            });
+                        });
+                        $("#main-image").change(function () {
+                            var file_data = $('#main-image').prop('files')[0];
+                            var type = file_data.type;
+                            var match = ["image/gif", "image/png", "image/jpg", ];
+                            var form_data = new FormData();
+                            form_data.append('file', file_data);
+                            $.ajax({
+                                url: home_url + "/?r=ajax/main_image",
+                                dataType: 'text',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,
+                                type: 'post',
+                                success: function (res) {
+                                    if ($.trim(res) != '0') {
+                                        
+                                       $("#main-value").val($.trim(res));
+                                    } else {
+                                        $('#popup-message').html('<p class="text-used">Error: There was an error uploading your file</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
+                                        $('#top-popup-message').css("display", "block");
+                                    }
+                                }
+                            });
+                        });
+
                         $("#up-input-image").change(function () {
                             var file_data = $('#up-input-image').prop('files')[0];
                             var type = file_data.type;
@@ -20987,7 +21127,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var school_attend = $('#up-school_attend').val();
                             var user_gpa = $('#up-user-gpa').val();
                             var user_major = $('#up-user-major').val();
-
+                            var main_image = $('#update-main-value').val();
                             var school_name1 = $('#up-school-name1').val();
                             var school_name2 = $('#up-school-name2').val();
                             var school_name3 = $('#up-school-name3').val();
@@ -21078,6 +21218,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     skype_id: skype_id,
                                     user_profession: user_profession,
                                     mobile_number: mobile_number,
+                                    main_image: main_image,
                                     type: "create"
                                 }, function (data) {
                                     if ($.trim(data) == '1') {
@@ -21123,12 +21264,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var science_others = $("input[name='science_subject_desc']").val();
                             var subject_others = $("input[name='description_preference']").val();
                             var id = 2;
-
+                            $('#show-subject').text('Select Subject');
                             $('#select-timelot-subject').empty();
                             $('#select-timelot-subjectSelectBoxItOptions').empty();
                             $('#select-timelot-subject').append('<option value="0" data-name="">Select Subject</option>');
                             $('#select-timelot-subjectSelectBoxItOptions').append('<li data-id="0" data-val="0" data-disabled="false" class="selectboxit-option  selectboxit-option-first" data-name=""role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i          class="selectboxit-option-icon  selectboxit-container"></i></span>Select Subject</a></li>');
-                            $('#select-timelot-subject').append('<option value="all" data-name="Any Subjects">Any Subjects from My Preference</option>');
+                            $('#select-timelot-subject').append('<option value="all" data-name="Any Subjects"  >Any Subjects from My Preference</option>');
                             $('#select-timelot-subjectSelectBoxItOptions').append('<li data-id="1" data-val="all" data-disabled="false" class="selectboxit-option" data-name="Any Subjects"    role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i          class="selectboxit-option-icon  selectboxit-container"></i></span>Any Subjects from My Preference</a></li>')
                             if(english.length > 0){
                                 english.forEach(function(item, index){
@@ -21226,36 +21367,55 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 .append(`<li data-id="${id++}" data-val="other_preference|others" data-disabled="false" class="selectboxit-option" data-name="Other Subjects Only" role="option"><a class="selectboxit-option-anchor"><span class="selectboxit-option-icon-container"><i class="selectbo    xit-option-icon  selectboxit-container"></i></span>Other Subjects - ${subject_others}</a></li>`);
                             }
                             $('#select-timelot-subjectSelectBoxItOptions')
-                                .append(`<p style="opacity: 0; font-size:10px">hide</p>`);
+                                .append(`<p style="opacity: 0; font-size:7px !important">hide</p>`);
                             $('#select-timelot-subject').prop('selectedIndex', 0);
                         }
 
                         // Update timelot tutor types
                         function update_timelot_tutor_types(data){
                             $('#tutoring-type').empty();
+                            var price_one = $('#price-tutoring').val();
+                            var price_group =  $('#price-group-tutoring').val();
                             if(data.enable_one_tutoring != null && data.enable_one_tutoring != undefined){
                                 $('#tutoring-type').append('<div class="form-group"><label> ' +
                                 '<input id="timelot_one_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">'+
-                                '<span>Enables 1 on 1 Tutoring</span></label></div> ');                            
+                                '<span>Enables 1 on 1 Tutoring</span></label><div class="price-group"> <input id="update_price_tutoring" type="text" name="price_tutoring" value="'+price_one+'" style="color: #515151;" autocomplete="off"><div class="clear-input" onclick="document.getElementById(\'update_price_tutoring\').value=null;" style="position: absolute;right: 30px;margin-top: -32px;"></div><span class="price_tutor">Custom Points:</span</div></div> ');                            
                             }
                             if(data.enable_group_tutoring !=null && data.enable_group_tutoring != undefined){
                                 if($("#tutoring-type").children().length > 0){
                                     $('#tutoring-type').append(
                                     '<div class="form-group"><label>' +
                                     '<input id="timelot_group_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_group_tutoring" name="timelot_group_tutoring">' +
-                                    '<span>Enables Groups Tutoring </span></label></div>'
+                                    '<span>Enables Groups Tutoring </span></label><div class="price-group"><input id="update_price_group" type="text" name="update_price_group" value="'+price_group+'" autocomplete="off"><div class="clear-input" onclick="document.getElementById(\'update_price_group\').value=null;" style="position: absolute;right: 30px;margin-top: -32px;"></div><span class="price_tutor">Custom Points:</span></div></div>'
                                     );
                                 }else{
                                     $('#tutoring-type').append(
                                     '<div class="form-group"><label>' +
                                     '<input id="timelot_group_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_group_tutoring" name="timelot_group_tutoring" checked="checked">' +
-                                    '<span>Enables Groups Tutoring </span></label></div>'
+                                    '<span>Enables Groups Tutoring </span></label><div class="price-group"><input id="update_price_group" type="text" name="update_price_group" value="'+price_group+'" autocomplete="off"><div class="clear-input" onclick="document.getElementById(\'update_price_group\').value=null;" style="position: absolute;right: 30px;margin-top: -32px;"></div><span class="price_tutor">Custom Points:</span></div></div>'
                                 );
-                                }
+                                } 
 
-                            }
+                            };
+                            var timez = $('#update-preference').attr('timez');
+                            var dayz = $('#update-preference').attr('dayz');
+                            $.get(home_url + "/?r=ajax/get_price", {time: timez, date: dayz}, function (data) {
+                                
+                                var priceall = $.trim(data);
+                                priceall = priceall.split(',');
+                                
+                                $('#update_price_tutoring').val(priceall[0]);
+                                $('#update_price_group').val(priceall[1]);
+                                
+                             
+                            });
+                            $("#update_price_tutoring").inputFilter(function(value) {
+                                return /^\d*$/.test(value); 
+                            });
+                            $("#update_price_group").inputFilter(function(value) {
+                                return /^\d*$/.test(value); 
+                            });
                         }
-
                         $('#update-preference').click(function(){
                             var direct_type = $(this).attr('data-type');
                             var price_tutoring = $('#price-tutoring').val();
@@ -21361,10 +21521,12 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     enable_group_tutoring: enable_group_tutoring,
                                     type: "tutoring"
                                 }
+                                
                             if(form_valid){
                                 $.post(home_url + "/?r=ajax/update_info",post_data , function (data) {
                                     update_timelot_subject_item(post_data);
                                     update_timelot_tutor_types(post_data);
+
                                     if ($.trim(data) == '1') {
                                         $('#chk-price-tutoring').val(price_tutoring);
                                         $('#popup-message').html('<p class="text-used">Tutoring Preference has been updated successfully</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn" data-id="sub-tutoring-preference" data-tab="tutoring-preference" data-type="' + direct_type + '">Got it</button>'); //got-scheduled
@@ -21375,6 +21537,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#popup-message').html('<p class="text-used">' + msg + '</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
                                 $('#top-popup-message').css("display", "block");
                             }
+                            
+                            
 
 
                         });
@@ -21390,7 +21554,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                          });
                         // set close button
                         let setCloseButton = (state) => {   
-                            let closeButton = `<div id="close-timelot-option"><img  class="img-one-icon close-timelot-option" data-toggle="tab" href="#tutoring-main" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt=""></div>`;
+                            
+                                let closeUpdateButton = `<div id="close-timelot-option" data-info="update"><img  class="img-one-icon close-timelot-option" data-toggle="tab" href="#updateinfo" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt=""></div>`;
+                            
+                                let closeButton = `<div id="close-timelot-option"><img  class="img-one-icon close-timelot-option" data-toggle="tab" href="#tutoring-main" src="<?php echo get_template_directory_uri(); ?>/library/images/Icon_Close.png" alt=""></div>`;
+                           
                             let closeLinkButton = ` <a id="tab-schedule" class="tab-schedule change-tab" data-toggle="tab" href="#tutoring-main" aria-expanded="false">Schedule</a>
                                                     <a class="tab-tutoring-preference" data-toggle="tab" href="#tutoring-preference" aria-expanded="false">Tutoring Preference</a>`;
                             
@@ -21402,39 +21570,40 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         </div>
                     
                                          <div class="col-sm-4 col-md-4 col-xs-4 text-right" style="margin-left:-8px">
-                                            ${state=="close"?closeButton:closeLinkButton}
+                                            ${state=="close"?closeButton:state=="update"?closeUpdateButton:closeLinkButton}
                                         </div>
                                     </div>`)
                         }
 
-                        $(".btn-option-timelot").live("click", (event) => {
-                            // let state = $( event.target ).closest($(".btn-new-request")).html();
+                        // $(".btn-option-timelot").live("click", (event) => {
+                        //     // let state = $( event.target ).closest($(".btn-new-request")).html();
                             
-                            $("#tutor-type").html(``);
-                            $("#popup-option-timelot #tutor-type").append(`
-                                    <div class="form-group">
-                                        <label>
-                                            <input id="timelot_one_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">
-                                            <span>Enables 1 on 1 Tutoring</span>
-                                        </label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>
-                                            <input id="timelot_group_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_group_tutoring" name="timelot_group_tutoring" >
-                                            <span>Enables Groups Tutoring</span>
-                                        </label>
-                                    </div>
-                                `);
+                        //     $("#tutor-type").html(``);
+                        //     $("#popup-option-timelot #tutor-type").append(`
+                        //             <div class="form-group">
+                        //                 <label>
+                        //                     <input id="timelot_one_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_one_tutoring" name="timelot_one_tutoring" checked="checked">
+                        //                     <span>Enables 1 on 1 Tutoring</span>
+                        //                 </label>
+                        //             </div>
+                        //             <div class="form-group">
+                        //                 <label>
+                        //                     <input id="timelot_group_tutoring" type="checkbox" class="radio_buttons option-input-3 radio" value="timelot_group_tutoring" name="timelot_group_tutoring" >
+                        //                     <span>Enables Groups Tutoring</span>
+                        //                 </label>
+                        //             </div>
+                        //         `);
 
-                            $("#timelot_one_tutoring").live("click", () => {
-                                $("#timelot_group_tutoring").attr('checked', false);
-                            });
+                        //     $("#timelot_one_tutoring").live("click", () => {
+                        //         $("#timelot_group_tutoring").attr('checked', false);
 
-                            $("#timelot_group_tutoring").live("click", () => {
-                                $("#timelot_one_tutoring").attr('checked', false);
-                            });
+                        //     });
+
+                        //     $("#timelot_group_tutoring").live("click", () => {
+                        //         $("#timelot_one_tutoring").attr('checked', false);
+                        //     });
                             
-                        });
+                        // });
 
                         $("#got-it, #got-cancel").live("click", function () {
                             $('#popup-message').html();
@@ -22412,7 +22581,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             var count_user = 1;
                                             var class_type = ' slot-available active';
                                         }else{
-                                            var subject = 'No Subject Selected';
+                                            var subject = 'Any Subjects';
                                             var count_user = users;
                                             var class_type = ' slot-available';
                                         }
@@ -22446,11 +22615,20 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     } 
                                 }                    
                             });
-
+                            
                             if(arr.length > 0){
                                 if(!$('#tutoring-scheduled-tutor').hasClass('active')){
                                     $('#tutoring-scheduled-tutor').addClass('active');
                                 }
+                                $.post(home_url + "/?r=ajax/get_tutoring_date_active", {
+                                    timezone: timezone,
+                                    name: name,
+                                    index: index
+                                }, function (data) {
+                                    var adt1 = data;
+
+                                });
+
                                 var date = $('#summary-btn-tutor').attr('data-day');
                                 $.post(home_url + "/?r=ajax/save_tutor_available", {
                                     date: '',
@@ -22461,9 +22639,20 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     timezone: timezone,
                                     index: index
                                 }, function (data) {
+                                    var name = $('#select-timezone :selected').attr("data-name");
+                                    
+                                    var timezone = $('#select-timezone :selected').attr("data-value");
+                                    var index = $("#select-timezoneSelectBoxItText").attr("data-val");
+                                    $.post(home_url + "/?r=ajax/get_tutoring_date_active", {
+                                        timezone: timezone,
+                                        name: name,
+                                        index: index
+                                        }, function (data) {
+
+                                            $('#active-day-tutor').val(data);
+                                            
+                                        });
                                     active_day_tutor.push(date);
-                                    console.log(active_day_tutor);
-                                    //$('#active-day-tutor').val(active_day_tutor);
                                     initCalendar('update');
                                 });   
                             }
@@ -22503,6 +22692,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     name: name,
                                     index: index
                                 }, function (data) {
+
                                     $('#active-day-tutor').val(data);
                                     initCalendar('update', data);
                                 });
@@ -23031,7 +23221,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     
                                     var li = '<li id="view-detail-schedule' + no + '" class="view-detail-schedule' + class_type + '" ' + style + ' data-no="' + no + '" data-fromtime="' + fromtime + '" data-totime="' + time_duration + '" data-day="' + day + '"><span ' + fl + '>';
                                         li += '<span class="time-scheduled">' + time_sc1 + ' - ' + time_sc2 + '</span>';
-                                        li += '<span class="subject-scheduled"><img style="max-width:43px;" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_1on1.png"> &nbsp; No Subject Selected</span>';
+                                        li += '<span class="subject-scheduled"><img style="max-width:43px;" src="<?php echo get_template_directory_uri(); ?>/library/images/icon_1on1.png"> &nbsp; Any Subjects </span>';
                                         li += '</span>' + icon_arrow + '</li>';
                                     ul_scheduled.append(li);
 
@@ -23712,18 +23902,50 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $(".other_preference_radio").attr('checked', false);
                             }
                         });
+                        $("input[name=enable_one_tutoring]").change(function () {
+                            var check_all = $(this).is(":checked");
+                            if (check_all == false) {
+                                $("#price-tutoring").prop('disabled', true);
+                            }else{
+                                $("#price-tutoring").prop('disabled', false);
+                            }
+                        });
+                        $("input[name=enable_group_tutoring]").change(function () {
+                            var check_all = $(this).is(":checked");
+                            if (check_all == false) {
+                                $("#number-participant").prop('disabled', true);
+                                $("#price-group-tutoring").prop('disabled', true);
+                            }else{
+                                $("#price-group-tutoring").prop('disabled', false);
+                                $("#number-participant").prop('disabled', false);
+                            }
+                        });
 
                         $("#tutoring-type").delegate("#timelot_one_tutoring","change",function () {
                             if($("#tutoring-type").children().length > 1){
                                 var check_timelot = $(this).is(":checked");
                                 if (check_timelot == true) {
                                     $("#timelot_group_tutoring").prop('checked', false);
-                                }else{
-                                    console.log("false");
+                                    $("#update_price_tutoring").css('color','#515151');
+                                    $("#update_price_group").css('color','#ababab');
+                                    $("#update_price_group").prop('disabled', true);
+                                    $("#update_price_tutoring").prop('disabled', false);
+                                    $('#clear-price-one').on('click', function(e) {document.getElementById('update_price_tutoring').value=null;});
+                                    $("#clear-price-group").off("click");
+                                }else{                                    
                                     $("#timelot_group_tutoring").prop('checked', true);
+                                    $("#update_price_tutoring").css('color','#ababab');
+                                    $("#update_price_group").css('color','#515151');
+                                    $("#update_price_group").prop('disabled', false);
+                                    $("#update_price_tutoring").prop('disabled', true);
+                                    $('#clear-price-group').on('click', function(e) {document.getElementById('update_price_group').value=null;});
+                                    $("#clear-price-one").off("click");
                                 }
                             }else{
                                 $("input[name=timelot_one_tutoring]").prop('checked', true);
+                                $("#update_price_tutoring").prop('disabled', false);
+                                $('#clear-price-one').on('click', function(e) {document.getElementById('update_price_tutoring').value=null;});
+                                $("#clear-price-group").off("click");
                             }
                         });
 
@@ -23732,16 +23954,35 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 var check_timelot = $(this).is(":checked");
                                 if (check_timelot == true) {
                                     $("input[name=timelot_one_tutoring]").prop('checked', false);
+                                    $("#update_price_tutoring").css('color','#ababab');
+                                    $("#update_price_group").css('color','#515151');
+                                    $("#update_price_group").prop('disabled', false);
+                                    $("#update_price_tutoring").prop('disabled', true);
+                                    $('#clear-price-group').on('click', function(e) {document.getElementById('update_price_group').value=null;});
+                                    $("#clear-price-one").off("click");
                                 }else{
                                     $("input[name=timelot_one_tutoring]").prop('checked', true);
+                                    $("#update_price_tutoring").css('color','#515151');
+                                    $("#update_price_group").css('color','#ababab');
+                                    $("#update_price_group").prop('disabled', true);
+                                    $("#update_price_tutoring").prop('disabled', false);
+                                    $('#clear-price-one').on('click', function(e) {document.getElementById('update_price_tutoring').value=null;});
+                                    $("#clear-price-group").off("click");
                                 }
                             }else{
                                 $("input[name=timelot_group_tutoring]").prop('checked', true);
+                                $("#update_price_group").prop('disabled', false);  
+                                $('#clear-price-group').on('click', function(e) {document.getElementById('update_price_group').value=null;});
+                                $("#clear-price-one").off("click"); 
+
                             }
                         });
 
                         $(".manage-preference").click(function () {
-
+                            var timez = $(this).attr('time');
+                            var dayz =$(this).attr('date');
+                            $('#update-preference').attr('timez',timez);
+                            $('#update-preference').attr('dayz',dayz);
                             $('.img-one-icon').attr('data-tab','tutoring-main');
                             $('.img-one-icon').attr('data-menu','sub-schedule-li');
 
@@ -23754,13 +23995,18 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                          $('body').on('click', '#close-timelot-option', function () {
                              
-                            
-                            $(".sub-menu-left li").removeClass("active");
-                            $("#sub-schedule-li").addClass("active");
+                            if($(this).attr('data-info') == "update"){
+                                $('#tutoring-preference').removeClass('active in');
+                                $('#updateinfo').addClass('active in');
+                            }else{
+                                $(".sub-menu-left li").removeClass("active");
+                                $("#sub-schedule-li").addClass("active");
+                            }
                          });
                           $('body').on('click', '#tab-schedule', function () {
                             $(".sub-menu-left li").removeClass("active");
                             $("#sub-schedule-li").addClass("active");
+                            $("#sub-schedule-li a").click();
                           });
                              
                         $(".tab-tutoring-preference").click(function () {
@@ -23797,6 +24043,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         $("#set-now-preference").click(function () {
                             get_profile_info();
+                            setCloseButton("update");
                             $("#my-account-modal").scrollTop(0);
                             $('#tutoring-preference').addClass('active in');
                             $('#sub-tutoring-preference').addClass('active');
@@ -23816,12 +24063,59 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         $(".close-timelot").click(function () {
                             $("#popup-option-timelot").css("display","none");
+                                var day = $(".schedule-rightbtn").attr("data-day");
+                                var day1 = $(".schedule-leftbtn").attr("data-day");                                
+                                var type = $(".schedule-rightbtn").attr("data-type");
+                                day = day.split("-");
+                                
+                                if(day[2] == 1){
+                                    day = day1.split("-");
+                                    day[2] = parseInt(day[2]) + 1;
+                                }else{
+                                    day[2] = day[2] - 1;
+                                }
+                                if(day[2]<10){day[2] = '0'+day[2];};
+                                var cur_day = day[0] + "-" + day[1] + "-" + day[2];
+                                get_list_schedule_tutor('schedule');
+                                
+                                get_scheduled_day_tutor(cur_day,type);
                             document.getElementById("timelot_group_tutoring").checked = false;
                             document.getElementById("timelot_one_tutoring").checked = true;
                         });
 
                         $("#cancel-timelot").click(function () {
                             $("#popup-option-timelot").css("display","none");
+                                var day = $(".schedule-rightbtn").attr("data-day");
+                                var day1 = $(".schedule-leftbtn").attr("data-day");                                
+                                var type = $(".schedule-rightbtn").attr("data-type");
+                                day = day.split("-");
+                                
+                                if(day[2] == 1){
+                                    day = day1.split("-");
+                                    day[2] = parseInt(day[2]) + 1;
+                                }else{
+                                    day[2] = day[2] - 1;
+                                }
+                                if(day[2]<10){day[2] = '0'+day[2];};
+                                var cur_day = day[0] + "-" + day[1] + "-" + day[2];
+                                get_list_schedule_tutor('schedule');
+                                
+                                get_scheduled_day_tutor(cur_day,type);
+                            //  var btn_rew = $('.view-detail-schedule');
+                            
+                            // var subject_name = $('#select-timelot-subject :selected').attr("data-name");
+                            // if(subject_name == '' || $.trim(subject_name) == ''){
+                            //     for(i = 0; i<btn_rew.length; i++){
+                            //     if(btn_rew[i].getAttribute('data-fromtime') == $(this).attr("data-time")){
+                                    
+                            //         btn_rew[i].click();
+                            //     };
+                            // };
+                            // }
+                            get_list_schedule_tutor('schedule');
+                            get_scheduled_day_tutor(cur_day,type);
+                           
+                            
                         
                         document.getElementById("timelot_group_tutoring").checked = false;
                         document.getElementById("timelot_one_tutoring").checked = true;
@@ -23838,8 +24132,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var ttime = $(this).attr("data-totime");
                             var day = $(this).attr("data-day");
                             var no = $(this).attr("data-no");
-                            var price_tutoring = $('#update_price_tutoring').val();
-                            var price_group_tutoring = $('#update_price_group').val();
+                            var up_price_tutoring = $('#update_price_tutoring').val();
+                            var up_price_group_tutoring = $('#update_price_group').val();
 
                             var enable_one_tutoring = $('input[name="timelot_one_tutoring"]:checked').val();
                             var enable_group_tutoring = $('input[name="timelot_group_tutoring"]:checked').val();
@@ -23867,19 +24161,37 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             
 
                             if(form_valid){
+                                var btn_rew = $('.btn-new-request');
+                                var btn_det = $('.view-detail-schedule');
+                                var fr_time = $(this).attr("data-fromtime").split(":");
+                                if(fr_time[0]>12){fr_time[0] = (fr_time[0]-12);};
+                                var fr_time1 = fr_time[0]+':'+fr_time[1]+fr_time[2];
+
+                            for(i = 0; i<btn_rew.length; i++){
+                                if(btn_rew[i].getAttribute('data-fromtime') == $(this).attr("data-fromtime")){
+                                    var a = 0;
+                                    for(v = 0; v< btn_det.length; v++){                                    
+                                        if(btn_det[v].getAttribute('data-fromtime') == fr_time1){
+                                            a++;
+                                        }
+                                    }
+                                    if(a == 0){btn_rew[i].click()};
+                                }
+                            };
                                 $.post(home_url + "/?r=ajax/save_timelot", {
                                     one_tutoring: enable_one_tutoring, 
                                     group_tutoring: enable_group_tutoring, 
                                     subject_name: subject_name, 
                                     subject_type:subject_type, 
                                     time_start:time_sc1, 
-                                    time_end:time_sc2, time: time, 
+                                    time_end:time_sc2, 
+                                    time: time, 
                                     date: day,
-                                    price_group_tutoring: price_group_tutoring, 
-                                    price_tutoring: price_tutoring
+                                    up_price_group_tutoring: up_price_group_tutoring, 
+                                    up_price_tutoring: up_price_tutoring
                                 }, function (data) {
-                                       
-                                    if ($.trim(data) == '1'){ 
+
+                                    if ($.trim(data) == '2'){ 
                                         if(!$('#view-detail-schedule'+no).hasClass('active') || !$('#view-detail-schedule'+no).hasClass('slot-available')){
                                             var top = 0;
                                             top = parseInt(no) * 48 + 9 + parseInt(no);
@@ -23888,7 +24200,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                                             var ul_scheduled = $("#tutoring-scheduled-tutor");
                                             var fl = ' class="icon-status"';
-                                            var icon_arrow = '<span id="icon-users' + no + '" class="icon-users" data-day="'+ day +'" data-time="'+ time +'" data-time-view="'+ time_sc1 + ' ~ ' + time_sc2 +'"><span class="number-users">0</span></span>';
+                                            var icon_arrow = '<span id="icon-users' + no + '" class="icon-users" data-day="'+ day +'" data-time="'+ time +'" data-time-view="'+ time_sc1 + ' ~ ' + time_sc2 +'" style="display:table-cell;width:25%;"><span class="number-users">0</span></span>';
 
                                             var li = '<li id="view-detail-schedule' + no + '" class="view-detail-schedule' + class_type + '" ' + style + ' data-no="' + no + '" data-fromtime="' + fromtime + '" data-totime="' + time_duration + '" data-day="' + day + '"><span ' + fl + '>';
                                                 li += '<span class="time-scheduled">' + time_sc1 + ' - ' + time_sc2 + '</span>';
@@ -23899,27 +24211,72 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         }
                                     }
                                 });
-                            }else{
-                                $('#popup-message').html('<p class="text-used">' + msg + '</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
-                                $('#top-popup-message').css("display", "block");
-                            }
-                            $("#popup-option-timelot").css("display","none");
-                            var day = $(".schedule-rightbtn").attr("data-day");
-                            var type = $(".schedule-rightbtn").attr("data-type");
-                            var day = day.split("-");
-                            day[2] = day[2] - 1;
-                            var cur_day = day[0] + "-" + day[1] + "-" + day[2];
-                            get_list_schedule_tutor('schedule');
-                            get_scheduled_day_tutor(cur_day,type);
+                                var day = $(".schedule-rightbtn").attr("data-day");
+                                var day1 = $(".schedule-leftbtn").attr("data-day");                                
+                                var type = $(".schedule-rightbtn").attr("data-type");
+                                day = day.split("-");
+                                
+                                if(day[2] == 1){
+                                    day = day1.split("-");
+                                    day[2] = parseInt(day[2]) + 1;
+                                }else{
+                                    day[2] = day[2] - 1;
+                                }
+                                if(day[2]<10){day[2] = '0'+day[2];};
+                                var cur_day = day[0] + "-" + day[1] + "-" + day[2];
+                                get_list_schedule_tutor('schedule');
+                                
+                                get_scheduled_day_tutor(cur_day,type);
+                                
+                                    $("#popup-option-timelot").css("display","none");
+                                }else{
+                                    $('#popup-message').html('<p class="text-used">' + msg + '</p><button id="got-it" type="button" class="btn-orange form-control nopadding-r border-btn">OK</button>');
+                                    $('#top-popup-message').css("display", "block");
+
+                                }
+                            
+                            
                         });
 
                         $(".btn-option-timelot").live('click', function () {
+
                             var fromtime = $(this).attr("data-fromtime");                        
                             var totime = $(this).attr("data-totime");
                             var day = $(this).attr("data-day");
                             var time = $(this).attr("data-time");
                             var no = $(this).attr("data-no");
+                            // var btn_rew = $('.btn-new-request');
+                            // for(i = 0; i<btn_rew.length; i++){
+                            //     if(btn_rew[i].getAttribute('data-time') == $(this).attr("data-time")){
+                            //         $('#cancel-timelot').attr('data-time',fromtime);
+                            //         btn_rew[i].click();
+                            //     }else{$('#cancel-timelot').attr('data-time','');};
+                            // };
+                            var price_tutoring = $(this).siblings('.btn-new-request').attr('data-price-tutoring');
+                            if(price_tutoring == '' || $.trim(price_tutoring) == ''){
+                                $('span.placeholder').each(function () {
+                                    var text = $(this).text();
+                                    var font = $(this).css("font");
+                                    if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+                                        //console.log("Edge");
+                                        var offset = getDistancePlace(text, "Edge");
+                                    }else if (navigator.userAgent.search("Firefox") >= 0){
+                                        var offset = getDistancePlace(text, "Firefox");
+                                        //console.log("Firefox");
+                                    }else{
+                                        var offset = 18;
+                                    }
+                                    var left = (getTextWidth(text,font) + offset);
+                                    $(this).prev().css("padding-left",left+"px");
+                                });
+                                $('#tutoring-preference').addClass('active in');
+                                $('#sub-tutoring-preference').addClass('active');
+                                $("#tutoring-main").removeClass("active in");
+                                $("#sub-schedule-li").removeClass("active");
 
+                                $('#update-preference').attr('data-type','schedule');
+                                $('#cancel-update-preference').attr('data-type','schedule');
+                            }else{
                             $("#save-timelot").attr("data-fromtime",fromtime);
                             $("#save-timelot").attr("data-totime",totime);
                             $("#save-timelot").attr("data-day",day);
@@ -23928,38 +24285,77 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var ftime = fromtime.split(':');
                             var ttime1 = totime.split(':');
                             var hftime = parseInt(ftime[0]);
-                            var httime = parseInt(totime[0]);                                
-
+                            var httime = parseInt(ttime1[0]);                                
+                            
                             if(hftime > 12) hftime = hftime - 12;
                             if(httime > 12) httime = httime - 12;
 
                             var time_sc1 = hftime+':'+ftime[1]+ftime[2].toLowerCase();
                             var time_sc2 = httime+':'+ttime1[1]+ttime1[2].toLowerCase();
                             var timeview = hftime+':'+ftime[1]+':'+ftime[2].toLowerCase() + ' ~ ' + httime+':'+ttime1[1]+':'+ttime1[2].toLowerCase();
-
+                            var ptime = hftime+':'+ftime[1]+ftime[2];
+                            
                             $.get(home_url + "/?r=ajax/get_timelot", {time: timeview, date: day}, function (data) {
                                 data = JSON.parse(data);
+                                console.log(data);
                                 if (data.subject_type) {
                                     $("#select-timelot-subject").selectBoxIt('selectOption',data.subject_type.toString()).data("selectBox-selectBoxIt");
                                     $("#select-timelot-subject").data("selectBox-selectBoxIt").refresh();
 
                                     if(data.enable_one_tutoring == ''){
                                         $("input[name=timelot_one_tutoring]").attr('checked', false);
+                                        $("#update_price_tutoring").prop('disabled', true);
+                                       
+                                        $("#update_price_group").prop('disabled', false);
+                                        $('#clear-price-group').on('click', function(e) {document.getElementById('update_price_group').value=null;});
+                                        $("#clear-price-one").off("click");
                                     }else{
                                         $("input[name=timelot_one_tutoring]").attr('checked', true);
+                                        $("#update_price_tutoring").css('color','#515151');
+                                        $("#update_price_group").css('color','#ababab');
+                                        $('#clear-price-one').on('click', function(e) {document.getElementById('update_price_tutoring').value=null;});
+                                        $("#clear-price-group").off("click");
                                     }
 
                                     if(data.enable_group_tutoring == ''){
                                         $("input[name=timelot_group_tutoring]").attr('checked', false);
+                                        $("#update_price_tutoring").css('color','#515151');
+                                        $("#update_price_group").css('color','#ababab');
+                                        $("#update_price_group").prop('disabled', true);
+                                        $("#update_price_tutoring").prop('disabled', false);
+                                        $('#clear-price-one').on('click', function(e) {document.getElementById('update_price_tutoring').value=null;});
+                                        $("#clear-price-group").off("click");
                                     }else{
                                         $("input[name=timelot_group_tutoring]").attr('checked', true);
+                                        $("#update_price_tutoring").css('color','#ababab');
+                                        $("#update_price_group").css('color','#515151');
+                                        $('#clear-price-group').on('click', function(e) {document.getElementById('update_price_group').value=null;});
+                                        $("#clear-price-one").off("click");
                                     }
                                 }else{
-                                    $("#select-timelot-subject").selectBoxIt('selectOption',"0").data("selectBox-selectBoxIt");
+                                    $("#select-timelot-subject").selectBoxIt('selectOption',"all").data("selectBox-selectBoxIt");
                                     $("#select-timelot-subject").data("selectBox-selectBoxIt").refresh();
+                                    $("#update_price_tutoring").css('color','#515151');
+                                    $("#update_price_group").css('color','#ababab');
+                                    $("#update_price_group").prop('disabled', true);
+                                    $("#update_price_tutoring").prop('disabled', false);
+                                    $('#clear-price-one').on('click', function(e) {document.getElementById('update_price_tutoring').value=null;});
+                                    $("#clear-price-group").off("click");
                                 }
                             });
+                            $('.manage-preference').attr('time',ptime);
+                            $('.manage-preference').attr('date',day);
 
+                            $.get(home_url + "/?r=ajax/get_price", {time: ptime, date: day}, function (data) {
+                                
+                                var priceall = $.trim(data);
+                                priceall = priceall.split(',');
+                                
+                                $('#update_price_tutoring').val(priceall[0]);
+                                $('#update_price_group').val(priceall[1]);
+                                
+                             
+                            });
                             var today = new Date(day.replace("-", ","));
                             var weekday = new Array(7);
                                 weekday[0] =  "Sun";
@@ -23998,12 +24394,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             $('#time-scheduled-popup').text(month_text + '. ' + today.getDate() + ' (' + n + ') ' + time_sc1 + ' ~ ' + time_sc2);
                             var available_name = $('#view-detail-schedule'+no).find('span.subject-scheduled').text();
-                            if(available_name == '')
-                                $('#subject-scheduled-popup').text('Available');
-                            else
-                                $('#subject-scheduled-popup').text(available_name);
+                            
 
                             $("#popup-option-timelot").css("display","block");
+                            }
 
                         });
 
@@ -24234,7 +24628,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
                                 
                                 if($.inArray(formattedDate, activeDay) != -1){
-                                    //console.log('Sau: '+activeDay);
+                                    console.log('1: '+activeDay);
                                     if(!$(this).hasClass('activeClass')){
                                         $(this).addClass('activeClass');
                                     }
@@ -24261,6 +24655,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     }
 
                                     if($.inArray(formattedDate, activeDay) != -1){
+                                        console.log('2: '+activeDay);
                                         if(!$(this).hasClass('activeClass')){
                                             $(this).addClass('activeClass');
                                         }
@@ -24285,6 +24680,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     }
 
                                     if($.inArray(formattedDate, activeDay) != -1){
+                                        console.log('3: '+activeDay);
                                         if(!$(this).hasClass('activeClass')){
                                             $(this).addClass('activeClass');
                                         }
@@ -24523,17 +24919,49 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('.btn-new-request').attr('data-price-tutoring',data.price_tutoring);
                                 
                                 if (data.availables.length > 0) {
+
                                     if(!$('#tutoring-scheduled-tutor').hasClass('active')){
                                         $('#tutoring-scheduled-tutor').addClass('active');
                                     }
-                                    $.each(data.availables, function (i, v) {                                   
-                                        var height1 = 0;
-                                        var index_st1 = $('#'+$.trim(v.start_id)).index();
-                                        var index_ed1 = $('#'+$.trim(v.end_id)).index();
+                                    $.each(data.availables, function (i, v) { 
+                                        if(v.fromtime.length == "6"){
+                                            var dd = v.fromtime.slice(-2, 6);
+                                            var gg = v.fromtime.slice(0, 1);
+                                            var pp = v.fromtime.slice(2, 4);
 
-                                        $('#'+$.trim(v.start_id)).addClass('start-time');
-                                        $('#'+$.trim(v.start_id)).find('button').attr('data-users',v.users);
-                                        $('#'+$.trim(v.start_id)).find('button').attr('data-accept',v.accept);
+                                        }else{
+                                            var dd = v.fromtime.slice(-2, 7);
+                                            var gg = v.fromtime.slice(0, 2);
+                                            var pp = v.fromtime.slice(3, 5);
+                                        }
+                                        if(dd == "pm" && gg != '12'){
+                                            gg = parseInt(gg);
+                                            gg = gg+12;``
+                                        }
+                                        if(v.totime.length == "6"){
+                                            var dd1 = v.totime.slice(-2, 6);
+                                            var gg1 = v.totime.slice(0, 1);
+                                            var pp1 = v.totime.slice(2, 4);
+
+                                        }else{
+                                            var dd1 = v.totime.slice(-2, 7);
+                                            var gg1 = v.totime.slice(0, 2);
+                                            var pp1 = v.totime.slice(3, 5);
+                                        }
+                                        if(dd1 == "pm" && gg != '12'){
+                                            gg1 = parseInt(gg1);
+                                            gg1 = gg1+12;
+                                        }
+                                        var start_t = gg+'_'+pp+'_'+dd;
+                                        var end_t = gg1+'_'+pp1+'_'+dd1;
+                                        
+                                        var height1 = 0;
+                                        var index_st1 = $('#'+$.trim(start_t)).index();
+                                        var index_ed1 = $('#'+$.trim(end_t)).index();
+                                        
+                                        $('#'+$.trim(start_t)).addClass('start-time');
+                                        $('#'+$.trim(start_t)).find('button').attr('data-users',v.users);
+                                        $('#'+$.trim(start_t)).find('button').attr('data-accept',v.accept);
                                         //$('#'+$.trim(v.start_id)).find('button').attr('data-tid',v.id);
 
                                         if(index_ed1 < 0)
@@ -24594,8 +25022,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 anySubject = v.subject_name
                                             }
                                         }else{
-                                            anySubject = "No Subject Selected"
+                                            anySubject = "Any Subjects"
                                         }
+                                        
                                         
 
                                         if(v.users == 0){
@@ -24607,7 +25036,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             var li = '<li id="view-detail-schedule' + i + '" class="view-detail-schedule' + class_type + ' active" ' + style + ' data-id="' + v.id + '" data-fromtime="' + v.fromtime + '" data-totime="' + v.totime + '" data-day="' + v.day + '"><span ' + fl + '>';
                                             li += '<span class="time-scheduled">' + v.fromtime + ' - ' + v.totime + '</span>';
                                             li += '<span class="subject-scheduled">'+ txt_accept +'</span>';
-                                            li += '</span><span id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">'+ count_user +'</span></span></li>';
+                                            li += '</span><span style="display:table-cell;width:25%;" id="icon-users' + i + '" class="icon-users" data-id="' + v.id + '" data-day="' + v.day + '" data-time="' + v.time + '" data-time-view="' + v.fromtime + ' ~ ' + v.totime + '" data-accept="' + v.accept + '" data-users="'+ count_user +'"><span class="number-users">'+ count_user +'</span></span></li>';
                                         }
                                         ul_scheduled.append(li);
 
@@ -25786,7 +26215,36 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                     });
                      //end function
                    
-                    
+                     $.fn.inputFilter = function(inputFilter) {
+                    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+                      if (inputFilter(this.value)) {
+                        this.oldValue = this.value;
+                        this.oldSelectionStart = this.selectionStart;
+                        this.oldSelectionEnd = this.selectionEnd;
+                      } else if (this.hasOwnProperty("oldValue")) {
+                        this.value = this.oldValue;
+                        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                      } else {
+                        this.value = "";
+                      }
+                    });
+                  };
+                $("#price-tutoring").inputFilter(function(value) {
+                    return /^\d*$/.test(value); 
+                });
+                $("#price-group-tutoring").inputFilter(function(value) {
+                    return /^\d*$/.test(value); 
+                });
+                $("#update_price_tutoring").inputFilter(function(value) {
+                    return /^\d*$/.test(value); 
+                });
+                $("#update_price_group").inputFilter(function(value) {
+                    return /^\d*$/.test(value); 
+                });
+                $("#number-participant").inputFilter(function(value) {
+                    return /^\d*$/.test(value); 
+                });
+
                 })(jQuery);
                 
                 $(".modal-body-signup").click( function (e){
@@ -25811,23 +26269,23 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         }
                         $("#open-menu-schedule").css("display","none");
                         $("#my-timezone").css("display","none");
-                        $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
-                        $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
+                        // $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
+                        // $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
 
                 });
                 $(".teacher-center").click( function (){
                         $("#open-menu-schedule").css("display","none");
-                        $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
-                        $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
+                        // $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
+                        // $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
                 });
                 $(".body-my-scheduled-tutor").click( function (){
-                        $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
-                        $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
+                        // $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
+                        // $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
                         $("#open-menu-schedule").css("display","none");
                 });
                 $(".manage-close, .header-timelot, #tutoring-type").click( function (){
-                         $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
-                        $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
+                         // $("#select-timelot-subjectSelectBoxItOptions").removeClass('show-display');
+                        // $("#select-timelot-subjectSelectBoxItOptions").addClass('hidden-display');
                          });
             
            $('.language-input').click(function () {
@@ -25878,7 +26336,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     html+= '<div class="find-general-border">';
                                                     html+= '<span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?></span>';
                                                     html+= '<div class="form-group">';
-                                                    html+= `<input type="text" class="form-control" name="teaching_subject_0${i}" value="" id="subject-update-0${i}">`;
+                                                    html+= `<input type="text" class="form-control" name="teaching_subject_0${i}" value="" id="subject-update-0${i}" placeholder = "Subject, yyyy-yyyy">`;
                                                             
                                                     html+= '</div>';
                                                     html+= '</div>';
@@ -25911,7 +26369,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     html+= '<div class="find-general-border">';
                                                     html+= '<span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>';
                                                     html+= '<div class="form-group">';
-                                                    html+= `<input type="text" class="form-control" name="teaching_subject_0${i}" value="" id="teaching_subject_0${i}">`;
+                                                    html+= `<input type="text" class="form-control" name="teaching_subject_0${i}" value="" id="teaching_subject_0${i}" placeholder="Subject, yyyy-yyyy">`;
                                                     html+=`<div class="clear-input" onclick="document.getElementById('teaching_subject_0${i}').value=null;"></div> `;
                                                     html+= '</div>';                                                    
                                                     html+= '</div>';
@@ -25943,7 +26401,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     html+= '<div class="find-general-border">';
                                                     html+= '<span class="find-label"><?php _e('Subject and What Year', 'iii-dictionary') ?>:</span>';
                                                     html+= '<div class="form-group">';
-                                                    html+= `<input type="text" class="form-control" name="teaching_subject_0${i}" value="" id="up_teaching_subject_0${i}">`;
+                                                    html+= `<input type="text" class="form-control" name="teaching_subject_0${i}" value="" id="up_teaching_subject_0${i}" placeholder="Subject, yyyy-yyyy">`;
                                                     html+=`<div class="clear-input" onclick="document.getElementById('up_teaching_subject_0${i}').value=null;"></div> `;
                                                     html+= '</div>';                                                    
                                                     html+= '</div>';
@@ -25964,7 +26422,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             
                             html += `<div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">`;
                                 html += `<div class="find-general-border">`;
-                                    html += `<span class="find-label">School/Institute Name ${i}:</span>`;
+                                    html += `<span class="find-label">School/Institute Name ${i}<span class="required-star"> *</span></span>`;
                                         html += `<div class="form-group">`;
                                             html += `<input type="text" class="form-control" name="school_name${i}" value="" id="school-name${i}-update">`;
                                                             
@@ -25985,6 +26443,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         };
                         };
             });
+           
             $('#add-new-school-edu').click(function(){
                 
                 for(i=3; i<6; i++){
@@ -26082,60 +26541,61 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                 $("#modal-alert").css('display', 'none');
                 
             });
+
             
-            
-            $('#select-timelot').on('click','#select-timelot-subjectSelectBoxIt',function(){
+
+            // $('#select-timelot').on('click','#select-timelot-subjectSelectBoxIt',function(){
                                    
-                if($('#select-timelot-subjectSelectBoxItOptions').hasClass('show-display')){
-                    $('#select-timelot-subjectSelectBoxItOptions').removeClass('show-display');
-                    $('#select-timelot-subjectSelectBoxItOptions').addClass('hidden-display');
-                }else if($('#select-timelot-subjectSelectBoxItOptions').hasClass('hidden-display')){
-                    $('#select-timelot-subjectSelectBoxItOptions').removeClass('hidden-display');
-                    $('#select-timelot-subjectSelectBoxItOptions').addClass('show-display');
-                }else{
-                     $('#select-timelot-subjectSelectBoxItOptions').addClass('show-display'); 
-                }
-                 // if($('#select-timelot-subjectSelectBoxItOptions').hasClass('show-display')){
-                 //    $('#select-timelot-subjectSelectBoxItOptions').addClass('hidden');
-                 // };
-            });
-            $('#select-timelot-subjectSelectBoxItOptions').on('click','.selectboxit-focus',function(){
-                $('#select-timelot-subjectSelectBoxItOptions').removeClass('show-display');
-                $('#select-timelot-subjectSelectBoxItOptions').addClass('hidden-display');
-            });
+            //     if($('#select-timelot-subjectSelectBoxItOptions').hasClass('show-display')){
+            //         $('#select-timelot-subjectSelectBoxItOptions').removeClass('show-display');
+            //         $('#select-timelot-subjectSelectBoxItOptions').addClass('hidden-display');
+            //     }else if($('#select-timelot-subjectSelectBoxItOptions').hasClass('hidden-display')){
+            //         $('#select-timelot-subjectSelectBoxItOptions').removeClass('hidden-display');
+            //         $('#select-timelot-subjectSelectBoxItOptions').addClass('show-display');
+            //     }else{
+            //          $('#select-timelot-subjectSelectBoxItOptions').addClass('show-display'); 
+            //     }
+            //      if($('#select-timelot-subjectSelectBoxItOptions').hasClass('show-display')){
+            //         $('#select-timelot-subjectSelectBoxItOptions').addClass('hidden');
+            //      };
+            // });
+            // $('#select-timelot-subjectSelectBoxItOptions').on('click','.selectboxit-focus',function(){
+            //     $('#select-timelot-subjectSelectBoxItOptions').removeClass('show-display');
+            //     $('#select-timelot-subjectSelectBoxItOptions').addClass('hidden-display');
+            // });
             
-            $('.my-timezone').click(function(){
-                            if($(this).hasClass('active')){
-                                $('#my-timezone').toggle();
-                            }else{
-                                var timezone = $(this).attr("data-value");
-                                var name = $(this).attr("data-name");
-                                var index = $(this).attr("data-index");
-                                var city = $(this).attr("data-city");
+            // $('.my-timezone').click(function(){
+            //                 if($(this).hasClass('active')){
+            //                     $('#my-timezone').toggle();
+            //                 }else{
+            //                     var timezone = $(this).attr("data-value");
+            //                     var name = $(this).attr("data-name");
+            //                     var index = $(this).attr("data-index");
+            //                     var city = $(this).attr("data-city");
 
-                                $('.my-timezone').removeClass('active');
-                                $(this).addClass('active');
-                                $('#mycity-name').text(city);
+            //                     $('.my-timezone').removeClass('active');
+            //                     $(this).addClass('active');
+            //                     $('#mycity-name').text(city);
 
-                                // $("#select-timezone").selectBoxIt('selectOption',index.toString()).data("selectBox-selectBoxIt");
-                                // $("#select-timezone").data("selectBox-selectBoxIt").refresh();
+            //                     // $("#select-timezone").selectBoxIt('selectOption',index.toString()).data("selectBox-selectBoxIt");
+            //                     // $("#select-timezone").data("selectBox-selectBoxIt").refresh();
 
-                                $('#my-timezone').toggle();
+            //                     $('#my-timezone').toggle();
 
-                                // $.post(home_url + "/?r=ajax/update_timezone", {                                   
-                                //     timezone: timezone,
-                                //     name: name,
-                                //     index: index
-                                // }, function (data) {});
+            //                     // $.post(home_url + "/?r=ajax/update_timezone", {                                   
+            //                     //     timezone: timezone,
+            //                     //     name: name,
+            //                     //     index: index
+            //                     // }, function (data) {});
 
-                                initDateTimePicker(name, index, timezone, city);
-                                clearInterval(interval);
-                                clearInterval(intervalmy);
-                                clearInterval(intervalcity);
-                                initTimeClock(name);
-                                initMyTimeClock(name);
-                            }
-                        });
+            //                     initDateTimePicker(name, index, timezone, city);
+            //                     clearInterval(interval);
+            //                     clearInterval(intervalmy);
+            //                     clearInterval(intervalcity);
+            //                     initTimeClock(name);
+            //                     initMyTimeClock(name);
+            //                 }
+            //             });
             
             $( document ).ready(function() {
 
@@ -26144,5 +26604,63 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                  document.getElementById('mycity-name').innerHTML= city;
                };
             });
-           
+            $(document).click(function (e){
+            // Đối tượng container chứa popup
+            var containerlang = $("#language-timezone");
+            var upcontainerlang = $("#up-language-timezone");
+            var crcontainerlang = $("#language-timezone-cr");
+            // Nếu click bên ngoài đối tượng container thì ẩn nó đi
+            if (!containerlang.is(e.target) && containerlang.has(e.target).length === 0){
+                var isopened = containerlang.find('.language_drop').css("display");
+                    if (isopened == 'block') {
+                        containerlang.find('.language_drop').slideToggle(0);
+                    }
+            };
+            if (!upcontainerlang.is(e.target) && upcontainerlang.has(e.target).length === 0){
+                var isopened = upcontainerlang.find('.language_drop').css("display");
+                    if (isopened == 'block') {
+                        upcontainerlang.find('.language_drop').slideToggle(0);
+                    }
+            };
+            if (!crcontainerlang.is(e.target) && crcontainerlang.has(e.target).length === 0){
+                var isopened = crcontainerlang.find('.language_drop').css("display");
+                    if (isopened == 'block') {
+                        crcontainerlang.find('.language_drop').slideToggle(0);
+                    }
+            }
+           });
+
+            function validateSelectBox(obj){
+                var options = obj.children;
+                
+                for (var i = 0; i < options.length; i++){
+                    if (options[i].selected){
+                        var html = options[i].value;
+                    }
+                }
+                if(html == '0'){$('#show-subject').text('Select Subject')}
+                if(html == 'all'){$('#show-subject').text('Any Subjects from My Preference')}
+                if(html == 'english_subject|english_conversation'){$('#show-subject').text('English: Conversation for Foreign Students')}
+                if(html == 'english_subject|english_grammar'){$('#show-subject').text('English: Grammar')}
+                if(html == 'english_subject|english_writting'){$('#show-subject').text('English: Writing')}
+                if(html == 'english_subject|english_reading_comprehension'){$('#show-subject').text('English: Reading Comprehension')}                
+                if(html == 'english_subject|others'){$('#show-subject').text('English: Other - '+$('#english-subject-desc').val())}
+                if(html == 'math_subject|elemenatary_school_math'){$('#show-subject').text('Math: Elementary')}
+                if(html == 'math_subject|middle_school_math'){$('#show-subject').text('Math: Middle School')}
+                if(html == 'math_subject|high_school_math'){$('#show-subject').text('Math: High School')}
+                if(html == 'math_subject|advanced_math'){$('#show-subject').text('Math: Advanced')}
+                if(html == 'math_subject|others'){$('#show-subject').text('Math: Others -'+$('#math-subject-desc').val())}
+                if(html == 'science_subject|science_middle_school'){$('#show-subject').text('Science: Elementary/Middle School')}
+                if(html == 'science_subject|physics_high_school'){$('#show-subject').text('Science: Physics for High School')}
+                if(html == 'science_subject|chemistry_high_school'){$('#show-subject').text('Science: Chemistry for High School')}
+                if(html == 'science_subject|others'){$('#show-subject').text('Science: Others - '+$('#science-subject-desc').val())}
+                if(html == 'other_preference|others'){$('#show-subject').text('Other Subjects: - <?php echo $description_preference ?>')}
+               
+
+            }
+      
+
+
+                
+
 </script>
