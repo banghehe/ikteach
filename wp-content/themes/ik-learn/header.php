@@ -72,10 +72,10 @@ function file_get_contents_curl( $url ) {
   return $data;
  
 }
-$ip_user = $_SERVER['REMOTE_ADDR'];
-$time_zone_user = json_decode(file_get_contents_curl("https://ipinfo.io/{$ip_user}"));
+// $ip_user = $_SERVER['REMOTE_ADDR'];
+// $time_zone_user = json_decode(file_get_contents_curl("https://ipinfo.io/{$ip_user}"));
 
-// $time_zone_user = json_decode(file_get_contents("https://ipinfo.io/"));
+$time_zone_user = json_decode(file_get_contents("https://ipinfo.io/"));
 
 $time_zone_user1 = $time_zone_user->region;
 $timezone_name = $time_zone_user->timezone;
@@ -7440,6 +7440,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <li class="my-lib-li"><a class="redirect-create" data-toggle="tab" href="#my-library" id="my-library-li">My Worksheets</a></li>
                                                 <li class="pub-lib-li"><a class="redirect-create" data-toggle="tab" href="#public-lib" id="public-library">Public Worksheets</a></li>
                                                 <li><a class="redirect-create" data-toggle="tab" href="#ready-lesson" id="ready-lesson-li" class="refresh-public-lesson">Public Subjects & Lessons</a></li>
+                                                <li><a class="" href="https://notepad.iktutor.com/?mode=ws" target="_blank" class="refresh-public-lesson">Create Worksheet</a></li>
                                             </ul>
                                         </li>                                        
                                         <li><a class="header-menu-left padd-adjus redirect-create" href="#"> Message</a></li>                               
@@ -9360,14 +9361,14 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     //closeNav();
                                     $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "0px");
                                     $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                    $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "158px");
+                                    $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "192px");
                                     $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "8px");
                                 } else {
                                     
                                     $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "0px");
                                     openNav();
                                     $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                    $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "158px");
+                                    $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "192px");
                                     $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "8px");
                                 }
                             }
@@ -9510,8 +9511,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "7px");
                                     } else if ($("#sub-lesson-manager").hasClass("opensub")) {
                                         $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                        $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "156px");
-                                        $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "5px");
+                                        $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "0px");
+                                        $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "192px");
                                         $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "8px");
                                     } else if ($("#sub-class-manager").hasClass("opensub")) {
                                         $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
@@ -9659,7 +9660,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             } else {
                                 openNav();
                                 $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "158px");
+                                $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "192px");
                                 $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "8px");
                             }
 
