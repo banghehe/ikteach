@@ -1,4 +1,4 @@
- <?php
+<?php
 $route = get_route();
 $main_categories = MWDB::get_grades(array('type' => 'MATH', 'level' => 0, 'admin_only' => 1, 'orderby' => 'ordering', 'order-dir' => 'asc'));
 $levels = MWDB::get_grades(array('type' => 'MATH', 'level' => 1, 'orderby' => 'ordering', 'order-dir' => 'asc'));
@@ -72,10 +72,10 @@ function file_get_contents_curl( $url ) {
   return $data;
  
 }
-// $ip_user = $_SERVER['REMOTE_ADDR'];
-// $time_zone_user = json_decode(file_get_contents_curl("https://ipinfo.io/{$ip_user}"));
+$ip_user = $_SERVER['REMOTE_ADDR'];
+$time_zone_user = json_decode(file_get_contents_curl("https://ipinfo.io/{$ip_user}"));
 
-$time_zone_user = json_decode(file_get_contents("https://ipinfo.io/"));
+// $time_zone_user = json_decode(file_get_contents("https://ipinfo.io/"));
 
 $time_zone_user1 = $time_zone_user->region;
 $timezone_name = $time_zone_user->timezone;
@@ -578,9 +578,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 </div>
                                                 </div>
                                             
-                                                <div class="form__boolean mt-bottom-10 clearfix language_drop" id="checkBoxSearch" style="margin-top: 0">
+                                                <div class="form__boolean mt-bottom-10 clearfix language_drop" style="margin-top: 0">
                                                     <span class="Available-lg">Available language</span>
-                                                    <ul id="list-language" style="font-size: 12px; color: #9c9c9c;">
+                                                    <ul class="list-language" style="font-size: 14px; color: #9c9c9c;">
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons class_cb_search option-input-3 radio" value="en" data-lang="en" name="cb-lang"/>
                                                             <span>English</span>
@@ -734,49 +734,110 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="clearfix"></div>
-                                                <div class="col-sm-12 col-md-12 mt-top-14"><p class="heading-acc">Main Image (Optional) <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>
+                                                        <div id="speak-en" class="col-sm-6 col-md-6 col-xs-6 mt-top-14 mt-bottom-5">
                                                 
-                                                    <div class="col-sm-3 col-md-3 col-xs-3">
-                                                        <input class="form-control input-file" type="file" id="main-image" value="" style="display: none">
-                                                        <button class="btn-dark-blue border-btn" style="background: #cecece; display: inline-block; width: 100%; height: 50px; border-radius: 10px !important;" type="button" name="upload"  onclick="document.getElementById('main-image').click();"><?php _e('Browse', 'iii-dictionary') ?></button>
-                                                    </div>
-                                                    <div class="col-sm-9 col-md-9 col-xs-9">
+                                                            <div  class="find-general-border speak-input">
+                                                                <span class="find-label"><?php _e('Are You English Speaker?', 'iii-dictionary') ?><span class="required-star"> *</span></span>
+                                                                <div id="show-speak">
+                                                                    Select level
+                                                                    
+                                                                <span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>
+                                                                </div>
+                                                            </div>
+                                                    
+                                                            <div class="form__boolean mt-bottom-10 clearfix speak_drop" style="margin-top: 0">
+                                                                
+                                                                <ul class="list-speak" style="font-size: 14px; color: #9c9c9c;">
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="en" data-lang="Native American English" name="cb-speak">
+                                                                        <span>Native American English</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="ja" data-lang="Native British English" name="cb-speak">
+                                                                        <span>Native British English</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="ko" data-lang="Proficient" name="cb-speak">
+                                                                        <span>Proficient</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="zh" data-lang="Intermediate" name="cb-speak">
+                                                                        <span>Intermediate</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="zh-tw" data-lang="Beginner" name="cb-speak">
+                                                                        <span>Beginner</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="vi" data-lang="Non-Speaker" name="cb-speak">
+                                                                        <span>Non-Speaker</span>
+                                                                    </li>
+                                                                    
+                                                                    
+                                                                </ul>
+                                                                <div style="padding:12px 0;">
+                                                                    <div class="ol-sm-6 col-md-6 lg-buttom">
+                                                                        <button id="save-speak" class="btn-dark-blue border-btn " style="background: #009ccc;" type="button" >
+                                                                                                SAVE   
+                                                                                            </button>
+                                                                    </div>
+                                                                    <div class="ol-sm-6 col-md-6" style="padding-left: 9px !important;">
+                                                                        <button id="cancel-speak" class="btn-dark-blue border-btn" style="background: #CECECE;" type="button" >
+                                                                                                CANCEL
+                                                                                            </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-sm-12 col-md-12 col-xs-12 mt-top-14">
+                                                    <p class=" mt-bottom-7 heading-acc">Educational Background <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
+                                                <div class="row mt-top-9">
+                                                    <div class="col-sm-6 col-md-6 col-xs-12">
                                                         <div class="find-general-border">
-                                                            <span class="find-label">Image Location</span>
-                                                            <div class="form-group">
-                                                                <input class="form-control input-path" id="main-value" type="text" value="<?php echo $profile_value ?>">
-                                                                <div class="clear-input" onclick="document.getElementById('main-value').value=null;"></div>
+                                                             <span class="find-label"><?php _e('School/Institute Name 1', 'iii-dictionary') ?><span class="required-star"> *</span></span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_name1" value="" id="school-name1">
+                                                            <div class="clear-input" onclick="document.getElementById('school-name1').value=null;"></div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_link1" value="" id="school-link1">
+                                                            <div class="clear-input" onclick="document.getElementById('school-link1').value=null;"></div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>
+
+                                                <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                             <span class="find-label"><?php _e('School/Institute Name 2', 'iii-dictionary') ?><span class="required-star"> *</span></span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_name2" value="" id="school-name2">
+                                                            <div class="clear-input" onclick="document.getElementById('school-name2').value=null;"></div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="school_link2" value="" id="school-link2">
+                                                            <div class="clear-input" onclick="document.getElementById('school-link2').value=null;"></div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                             <div class="clearfix"></div>
-                                             <div class="col-sm-12 col-md-12 mt-top-4"><p class="heading-acc mt-top-10 mt-bottom-11">Tagline <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>
-                                             <div class="col-sm-12 col-md-12 col-xs-12 mt-bottom-10">
-                                             
-                                                
-                                                    <div class="find-general-border">
-                                                            <span class="find-label"><?php _e('Tutor\'s Tagline (Marketing)', 'iii-dictionary') ?><span class="required-star"> *</span></span>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="previous_school" value="" id="previous-school">
-                                                        <div class="clear-input" onclick="document.getElementById('previous-school').value=null;"></div>
-                                                    </div>
-                                                    </div>
-                                                </div>   
-                                            <div class="clearfix"></div>
-                                            <div class="col-sm-12 col-md-12 col-xs-12">
-                                            <p class="mt-top-4 mt-bottom-12 heading-acc">Why you like Tutoring and Teaching <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
-                                                
-                                                    <div class="find-general-border" style="max-height: 150px;">
-                                                            <span class="find-label"><?php _e('How would you help student', 'iii-dictionary') ?><span class="required-star"> *</span></span>
-                                                    <div class="form-group">
-                                                        <textarea id="desc_tell_me" style="border: none;border-radius: 0; margin: 0px;height: 100px;width: 100%;"></textarea>
-                                                        <!-- <input type="text" class="form-control" name="desc_tell_me" value="" id="desc_tell_me"> -->
-                                                        <div class="clear-input" onclick="document.getElementById('desc_tell_me').value=null;" style="position: absolute;right: 0; bottom: 0;background-color: white;"></div>
-                                                    </div>
-                                                    </div>
+                                                    <div id="add-new-school-edu" class="col-sm-12 col-md-12 col-xs-12 add-more">+Add More</div>
                                                 </div>
-                                                 <div class="clearfix"></div>
+                                                </div>
+                                                <div class="clearfix"></div>
                                                 <div class="col-sm-12 col-md-12 mt-top-14"><p class="heading-acc">Teaching experience (Optional) <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>
                                                 <div class="col-sm-12 col-md-12 col-xs-12 mt-bottom-10">
                                                      
@@ -827,53 +888,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     <div id="add-new-school" class="col-sm-12 col-md-12 col-xs-12 add-more">+Add More</div>
                                                     </div>
                                                     </div>
-                                                    <div class="col-sm-12 col-md-12 col-xs-12 ">
-                                                    <p class=" mt-bottom-7 heading-acc">Educational Background <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
-                                                <div class="row mt-top-9">
-                                                    <div class="col-sm-6 col-md-6 col-xs-12">
-                                                        <div class="find-general-border">
-                                                             <span class="find-label"><?php _e('School/Institute Name 1', 'iii-dictionary') ?><span class="required-star"> *</span></span>
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_name1" value="" id="school-name1">
-                                                            <div class="clear-input" onclick="document.getElementById('school-name1').value=null;"></div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-mb">
-                                                        <div class="find-general-border">
-                                                            <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_link1" value="" id="school-link1">
-                                                            <div class="clear-input" onclick="document.getElementById('school-link1').value=null;"></div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    </div>
-
-                                                <div class="col-sm-12 col-md-12 col-xs-12" style="border-bottom: 1px solid #d9d9d9; padding-top: 15px; width: 98%; margin-left: 8px;"></div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
-                                                        <div class="find-general-border">
-                                                             <span class="find-label"><?php _e('School/Institute Name 2', 'iii-dictionary') ?><span class="required-star"> *</span></span>
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_name2" value="" id="school-name2">
-                                                            <div class="clear-input" onclick="document.getElementById('school-name2').value=null;"></div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-xs-12 mt-top-14">
-                                                        <div class="find-general-border">
-                                                            <span class="find-label"><?php _e('Link (If any)', 'iii-dictionary') ?>:</span>
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="school_link2" value="" id="school-link2">
-                                                            <div class="clear-input" onclick="document.getElementById('school-link2').value=null;"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="add-new-school-edu" class="col-sm-12 col-md-12 col-xs-12 add-more">+Add More</div>
-                                                </div>
-                                                </div>
+                                                    
                                             <div class="clearfix"></div>
                                            <div class="col-sm-12 col-md-12 mt-top-10"><p class="heading-acc">If You Currently Attending School (Optional)<img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>
                                                 
@@ -932,6 +947,51 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                     </div>
                                                                                          
                                                 <div class="clearfix"></div>
+                                                <div class="col-sm-12 col-md-12 " style="border-bottom: 1px dotted #b4b4b4; width: 97.5%; margin-left: 10px; margin-top: 20px;"></div>
+                                                <div class="col-sm-12 col-md-12 mt-top-14" ><p class="heading-acc" style="color: #4eacc8; font-size: 19px; font-family: Myriad_regular;">Marketing Information<img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>
+                                                <div class="col-sm-12 col-md-12 mt-top-14"><p class="heading-acc">Promotional Banner (optional) <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>
+                                                
+                                                    <div class="col-sm-3 col-md-3 col-xs-3">
+                                                        <input class="form-control input-file" type="file" id="main-image" value="" style="display: none">
+                                                        <button class="btn-dark-blue border-btn" style="background: #cecece; display: inline-block; width: 100%; height: 50px; border-radius: 10px !important;" type="button" name="upload"  onclick="document.getElementById('main-image').click();"><?php _e('Browse', 'iii-dictionary') ?></button>
+                                                    </div>
+                                                    <div class="col-sm-9 col-md-9 col-xs-9">
+                                                        <div class="find-general-border">
+                                                            <span class="find-label">Image Location</span>
+                                                            <div class="form-group">
+                                                                <input class="form-control input-path" id="main-value" type="text" value="<?php echo $profile_value ?>">
+                                                                <div class="clear-input" onclick="document.getElementById('main-value').value=null;"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                             <div class="clearfix"></div>
+                                             <div class="col-sm-12 col-md-12 mt-top-4"><p class="heading-acc mt-top-10 mt-bottom-11">Tagline <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p></div>
+                                             <div class="col-sm-12 col-md-12 col-xs-12 mt-bottom-10">
+                                             
+                                                
+                                                    <div class="find-general-border">
+                                                            <span class="find-label"><?php _e('Tutor\'s Tagline (Marketing)', 'iii-dictionary') ?><span class="required-star"> *</span></span>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="previous_school" value="" id="previous-school">
+                                                        <div class="clear-input" onclick="document.getElementById('previous-school').value=null;"></div>
+                                                    </div>
+                                                    </div>
+                                                </div>   
+                                            <div class="clearfix"></div>
+                                            <div class="col-sm-12 col-md-12 col-xs-12">
+                                            <p class="mt-top-4 mt-bottom-12 heading-acc">Why you like Tutoring and Teaching <img id="img-info" src="<?php echo get_template_directory_uri(); ?>/library/images/01_icon_Detail.png" alt="info"></p>
+                                                
+                                                    <div class="find-general-border" style="max-height: 150px;">
+                                                            <span class="find-label"><?php _e('How would you help student', 'iii-dictionary') ?><span class="required-star"> *</span></span>
+                                                    <div class="form-group">
+                                                        <textarea id="desc_tell_me" style="border: none;border-radius: 0; margin: 0px;height: 100px;width: 100%;"></textarea>
+                                                        <!-- <input type="text" class="form-control" name="desc_tell_me" value="" id="desc_tell_me"> -->
+                                                        <div class="clear-input" onclick="document.getElementById('desc_tell_me').value=null;" style="position: absolute;right: 0; bottom: 0;background-color: white;"></div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="clearfix"></div>
+                                                
 
                                                 <div class="col-sm-12 col-md-12 mt-top-14"><p class="heading-acc">Distribution Agreement</p></div>
                                                 <div class="col-sm-12 col-md-12">
@@ -1191,6 +1251,45 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                             </div>
                                         </div>  
                                         <div class="row line-profile">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label><?php _e('Are You English Speaker?', 'iii-dictionary') ?></label>
+                                                    <span class="color-black" id="profile-speak">
+                                                        <?php
+                                                        if ($is_user_logged_in) {
+                                                            $english_speak = get_user_meta($current_user->ID, 'english_speak', true);
+                                                            if (!empty($english_speak) && $english_speak != '')
+                                                                echo $english_speak;
+                                                            else
+                                                                _e('N/A', 'iii-dictionary');
+                                                        }else {
+                                                            _e('N/A', 'iii-dictionary');
+                                                        }
+                                                        ?>
+                                                    </span>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <label><?php _e('Gender', 'iii-dictionary') ?></label>
+                                                <span class="color-black" id="gender-show">
+                                                        <?php
+                                                        if ($is_user_logged_in) {
+                                                            $gender_show = get_user_meta($current_user->ID, 'gender', true);
+                                                            if (!empty($gender_show) && $gender_show != '')
+                                                                echo $gender_show;
+                                                            else
+                                                                _e('N/A', 'iii-dictionary');
+                                                        }else {
+                                                            _e('N/A', 'iii-dictionary');
+                                                        }
+                                                        ?>
+                                                    </span>
+        
+                                               <hr>
+                                            </div>
+                                        </div>
+                                        <div class="row line-profile">
 
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
@@ -1350,24 +1449,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         ?>
                                                     </span>
                                             </div>
-                                            <div class="col-sm-6 col-md-6">
-                                                <label><?php _e('Gender', 'iii-dictionary') ?></label>
-                                                <span class="color-black" id="gender-show">
-                                                        <?php
-                                                        if ($is_user_logged_in) {
-                                                            $gender_show = get_user_meta($current_user->ID, 'gender', true);
-                                                            if (!empty($gender_show) && $gender_show != '')
-                                                                echo $gender_show;
-                                                            else
-                                                                _e('N/A', 'iii-dictionary');
-                                                        }else {
-                                                            _e('N/A', 'iii-dictionary');
-                                                        }
-                                                        ?>
-                                                    </span>
-        
-                                               
-                                            </div>
+                                            
                                         </div>                              
                                     </form>
                                 </div>
@@ -1659,9 +1741,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>
                                                 </div>
                                                 </div>
-                                                <div class="form__boolean mt-bottom-10 clearfix language_drop" id="checkBoxSearch" style="margin-top: 0">
+                                                <div class="form__boolean mt-bottom-10 clearfix language_drop"  style="margin-top: 0">
                                                     <span class="Available-lg">Available language</span>
-                                                    <ul id="list-language" style="font-size: 12px; color: #9c9c9c;">
+                                                    <ul class="list-language" style="font-size: 14px; color: #9c9c9c;">
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="en" <?php if(count($update_language) > 0 && in_array("en", $update_language)) echo 'checked="checked"'; ?> name="update-cb-lang"/>
                                                             <span>English</span>
@@ -1831,6 +1913,64 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                                     <input type="text" class="form-control" name="skype" value="<?php echo $update_skype ?>" id="skype-update">
                                                                     <div class="clear-input" onclick="document.getElementById('skype-update').value=null;"></div>
                                                                     
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="speak-en-up" class="col-sm-6 col-md-6 col-xs-6 mt-top-14 mt-bottom-5">
+                                                
+                                                            <div  class="find-general-border speak-input">
+                                                                <span class="find-label"><?php _e('Are You English Speaker?', 'iii-dictionary') ?><span class="required-star"> *</span></span>
+                                                                <div id="show-speak-up">
+                                                                    <?php 
+                                                                    $speak_en = get_user_meta($current_user->ID, 'english_speak', true);
+                                                                    echo $speak_en;
+                                                                     ?>
+                                                                    
+                                                                <span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>
+                                                                </div>
+                                                            </div>
+                                                    
+                                                            <div class="form__boolean mt-bottom-10 clearfix speak_drop" style="margin-top: 0">
+                                                                
+                                                                <ul class="list-speak" style="font-size: 14px; color: #9c9c9c;">
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="en" data-lang="Native American English" name="cb-speak-up" <?php if($speak_en =="Native American English") echo 'checked="checked"';?>>
+                                                                        <span>Native American English</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="ja" data-lang="Native British English" name="cb-speak-up" <?php if($speak_en =="Native British English") echo 'checked="checked"';?>>
+                                                                        <span>Native British English</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="ko" data-lang="Proficient" name="cb-speak-up" <?php if($speak_en =="Proficient") echo 'checked="checked"';?>>
+                                                                        <span>Proficient</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="zh" data-lang="Intermediate" name="cb-speak-up" <?php if($speak_en =="Intermediate") echo 'checked="checked"';?>>
+                                                                        <span>Intermediate</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="zh-tw" data-lang="be" name="cb-speak-up" <?php if($speak_en =="Beginner") echo 'checked="checked"';?>>
+                                                                        <span>Beginner</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="radio" class="radio_buttons class_cb_search option-input-3 radio" value="vi" data-lang="Non-Speaker" name="cb-speak-up" <?php if($speak_en =="Non-Speaker") echo 'checked="checked"';?>>
+                                                                        <span>Non-Speaker</span>
+                                                                    </li>
+                                                                    
+                                                                    
+                                                                </ul>
+                                                                <div style="padding:12px 0;">
+                                                                    <div class="ol-sm-6 col-md-6 lg-buttom">
+                                                                        <button id="save-speak-up" class="btn-dark-blue border-btn " style="background: #009ccc;" type="button" >
+                                                                                                SAVE   
+                                                                                            </button>
+                                                                    </div>
+                                                                    <div class="ol-sm-6 col-md-6" style="padding-left: 9px !important;">
+                                                                        <button id="cancel-speak-up" class="btn-dark-blue border-btn" style="background: #CECECE;" type="button" >
+                                                                                                CANCEL
+                                                                                            </button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -2376,9 +2516,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                         <span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>
                                                 </div>
                                                 </div>
-                                                <div class="form__boolean mt-bottom-10 clearfix language_drop" id="checkBoxSearch" style="margin-top: 0">
+                                                <div class="form__boolean mt-bottom-10 clearfix language_drop"  style="margin-top: 0">
                                                     <span class="Available-lg">Available language</span>
-                                                    <ul id="list-language-cr" style="font-size: 12px; color: #9c9c9c;">
+                                                    <ul class="list-language" style="font-size: 14px; color: #9c9c9c;">
                                                         <li>
                                                             <input type="checkbox" class="radio_buttons option-input-3 radio" value="en" <?php if(count($update_language) > 0 && in_array("en", $update_language)){ echo 'checked="checked"'; }?> name="update-cb-lang-cr"/>
                                                             <span>English</span>
@@ -7385,25 +7525,69 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 <div class="slide-menu-bg"></div>
                                 <div class="section-left">
                                     <ul id="menu-left-myaccount" class="nav nav-tabs">
-                                        <li class="active" id="account"><a><img src="<?php echo get_template_directory_uri(); ?>/library/images/IconMenu_Profile.png" class="" alt="setting my account" style="width: 24px;margin:26px 0px 20px"></a>
+                                        <li class="active" id="account"><a><img src="<?php 
+                                            if(!empty($user_avatar)){
+                                                echo $user_avatar;
+                                            }else{
+                                                 echo get_template_directory_uri().'/library/images/IconMenu_Profile.png';
+                                            }
+                                            
+                                            ?>" alt="<?php echo $current_user->display_name ?>" class="" alt="setting my account" style="width: 24px;height: 24px;margin:26px 0px 20px; border-radius: 8px;"></a>
+                                            <div id="account-show" style="display: none;">
+                                                <div style="margin-top: 13px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_ACCOUNT_profile.png" style="width: 15px"></div>
+                                                <div style="margin-top: 7px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_ACCOUNT_update_my_account.png" style="width: 15px"></div>
+                                                <div style="margin-top: 7px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_ACCOUNT_subscription_points.png" style="width: 15px"></div>
+                                                <div style="margin-top: 7px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Earning_Payment.png" style="width: 15px"></div>
+                                            </div>
                                         </li>
+                                         
 
-                                        <li><a id="icon-tutoring"><img src="<?php echo get_template_directory_uri(); ?>/library/images/IconMenu_Tutoring.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
+                                        <li>
+                                            <div class="bor-top"></div>
+                                            <a id="icon-tutoring"><img src="https://iktutor.com/iklearn/wp-content/themes/ik-learn/library/images/icon_MAIN_tutoring.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
+                                            <div id="tutoring-show" style="display: none;">
+                                                <div style="margin-top: 0px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Schedule.png" style="width: 15px"></div>
+                                                <div style="margin-top: 12px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Status.png" style="width: 15px"></div>
+                                                <div style="margin-top: 12px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Tutoring_Prefrence.png" style="width: 15px"></div>
+                                                
+                                            </div>
                                         </li>
-                                        <li id="icon-class"><a><img src="<?php echo get_template_directory_uri(); ?>/library/images/IconMenu_ClassManager.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
+                                        <li id="icon-class"><a><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_ONLINE_COURSE_new.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
+                                            <div id="online-show" style="display: none;">
+                                                <div style="margin-top: -4px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Create_Course.png" style="width: 15px"></div>
+                                                <div style="margin-top: 13px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Manage_Course.png" style="width: 15px"></div>
+                                                <div style="margin-top: 13px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_List_of_Course.png" style="width: 15px"></div>
+                                                
+                                                <div style="margin-top: 13px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Manage_Course.png" style="width: 15px"></div>
+                                                <div style="margin-top: 13px;"><img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_Create_Course.png" style="width: 15px"></div>
+                                            </div>
                                         </li>
-                                        <li id="lesson"><a><img src="<?php echo get_template_directory_uri(); ?>/library/images/My_Lesson_Icon.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
+                                        <li><div class="bor-top"></div><a data-toggle="tab" href="#"><img src="<?php echo get_template_directory_uri(); ?>/library/images/Message_Icon.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
                                         </li>
-                                        <li><a data-toggle="tab" href="#"><img src="<?php echo get_template_directory_uri(); ?>/library/images/Message_Icon.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
-                                        </li>                                
+                                        <li><a data-toggle="tab" href="#"><img src="<?php echo get_template_directory_uri(); ?>/library/images/IconMenu_Download.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
+                                        </li>
+                                        <!-- <li id="lesson"><a><img src="<?php echo get_template_directory_uri(); ?>/library/images/My_Lesson_Icon.png" class="" alt="setting my account" style="width: 24px;margin:15px 0px"></a>
+                                        </li> -->
+                                                                        
                                         
                                     </ul>
                                 </div>
 
                                 <div id="mySidenav" class="sidenav">
                                     <ul class="nav nav-tabs none-block">
-                                        <li><a class="header-menu-left" data-toggle="tab" id="myacc">My Account</a>
-                                            <ul class="sub-menu-left opensub" id="sub-myacc">
+                                        <li><a class="header-menu-left" data-toggle="tab" id="myacc" style="color: #49a0b9 !important; height: 63px; font-weight: normal; padding-left: 1px; "><?php
+                                                    if ($is_user_logged_in) {
+                                                        $display_name = get_user_meta($current_user->ID, 'display_name', true);
+                                                        if (!empty($display_name) && $display_name != '')
+                                                            echo $display_name;
+                                                        else{
+                                                            $ru_first_name = get_user_meta($current_user->ID, 'first_name', true);
+                                                            $ru_last_name = get_user_meta($current_user->ID, 'last_name', true);
+                                                            echo $ru_first_name.' '.$ru_last_name;
+                                                    };} else
+                                                        _e('N/A', 'iii-dictionary');
+                                                    ?> <img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_MAIN_normal_state.png" class=""></a>
+                                            <ul class="sub-menu-left opensub" id="sub-myacc" style="padding-bottom: 2px;">
                                                 <?php if (!$is_user_logged_in) { ?>
                                                 <li id="sub-createacc" class="active"><a class="redirect-create" data-toggle="tab" href="#create-account">Create Basic Account</a></li>
                                                 <?php } ?>
@@ -7420,20 +7604,23 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <li id="sub-earn-pay"><a class="redirect-create" data-toggle="tab" href="#earn-pay">Earning & Payment</a></li>
                                             </ul>
                                         </li>
-                                        <li><a class="header-menu-left padd-adjus redirect-create" id="mtutoring" data-toggle="tab">Tutoring</a>
+                                        <li style="padding-top: 5px;"><a class="header-menu-left padd-adjus redirect-create" id="mtutoring" data-toggle="tab">Tutoring <img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_MAIN_normal_state.png" class=""></a>
                                             <ul class="sub-menu-left" id="sub-tutoring">
                                                 <li id="sub-schedule-li"><a class="redirect-create" data-toggle="tab" href="#tutoring-main">Schedule</a></li>
                                                 <li id="sub-status"><a class="redirect-create" data-toggle="tab" href="#tutoring-main">Status</a></li>  
                                                 <li id="sub-tutoring-preference"><a class="redirect-create" data-toggle="tab" href="#tutoring-preference">Tutoring Preference</a></li>  
                                             </ul>
                                         </li>
-                                        <li><a class="header-menu-left padd-adjus"  id="class-manager">Course Manager</a>
-                                            <ul class="sub-menu-left" id="sub-class-manager">
+                                        <li><a class="header-menu-left padd-adjus"  id="class-manager">My Online Course <img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_MAIN_normal_state.png" class=""></a>
+                                            <ul class="sub-menu-left" id="sub-class-manager" style="padding-bottom: 1px">
                                                 <li id="create-class-red"><a class="redirect-create" data-toggle="tab" href="#create-class" id="create-class-li">Create Course</a></li>
                                                 <li id="manage-class-red"><a class="redirect-create" data-toggle="tab" href="#manage-class" id="manage-class-li">Manage course</a></li>
+                                                <li id=""><a class="redirect-create" data-toggle="tab" href="#manage-class" id="manage-class-li">List of course</a></li>
+                                                <li class="my-lib-li"><a class="redirect-create" data-toggle="tab" href="#my-library" id="my-library-li">My Worksheets</a></li>
+                                                <li><a class="" href="https://notepad.iktutor.com/?mode=ws" target="_blank" class="refresh-public-lesson">Create Worksheet</a></li>
                                             </ul>
                                         </li>
-                                        <li><a class="header-menu-left padd-adjus" data-toggle="tab"  id="lesson-manager">Worksheet Manager</a>
+                                        <!-- <li><a class="header-menu-left padd-adjus" data-toggle="tab"  id="lesson-manager">Worksheet Manager</a>
                                             <ul class="sub-menu-left" id="sub-lesson-manager">
                                                 <li><a class="redirect-create" data-toggle="tab" href="#my-subject" id="my-subject-li">My Subject</a></li>
                                                 <li><a class="redirect-create" data-toggle="tab" href="#my-lesson" id="my-lesson-li">My Lesson</a></li>
@@ -7442,8 +7629,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                                 <li><a class="redirect-create" data-toggle="tab" href="#ready-lesson" id="ready-lesson-li" class="refresh-public-lesson">Public Subjects & Lessons</a></li>
                                                 <li><a class="" href="https://notepad.iktutor.com/?mode=ws" target="_blank" class="refresh-public-lesson">Create Worksheet</a></li>
                                             </ul>
-                                        </li>                                        
-                                        <li><a class="header-menu-left padd-adjus redirect-create" href="#"> Message</a></li>                               
+                                        </li>           -->                              
+                                        <li ><a id="imessage" class="header-menu-left padd-adjus redirect-create" href="#"> Message <img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_MAIN_normal_state.png" class=""></a></li> 
+                                         <li><a id="idownload" class="header-menu-left padd-adjus redirect-create" href="#"> Download <img src="<?php echo get_template_directory_uri(); ?>/library/images/icon_MAIN_normal_state.png" class=""></a></li>                               
                                         
                                     </ul>
                                 </div>
@@ -7504,7 +7692,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                 border-right: 1px solid #d6d6d6;
                 width: 0;
                 position: absolute;
-                z-index: 4000;
+                z-index: 3999;
                 margin-left: 56px;
                 background-color: #fff !important;
                 overflow-x: hidden;
@@ -9281,11 +9469,18 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }
 
                             if($('#tutor-regist').hasClass('hidden-teacher')){
-                                var mtop = "119px";
+                                var mtop = "113px";
                             }else{
-                                var mtop = "152px";
+                                var mtop = "157px";
                             }
                             if (name !== '') {
+                                var x=$("#mtutoring img,#class-manager img");
+                                var y=$("#myacc img");
+                                
+                               
+                                change_image_list(x,y);
+
+                                $("#sub-myacc").css("display", "block");
                                 $("#sub-myacc").css("display", "block");
                                 $("#sub-myacc").addClass("opensub");
                                 $("#sub-subscription").css("display", "none");
@@ -9296,7 +9491,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $("#sub-class-manager").removeClass("opensub");
                                 $("#sub-tutoring").css("display", "none");
                                 $("#sub-tutoring").removeClass("opensub");
-
+                                $('#account-show').css('display','block');
+                                $('#tutoring-show').css('display','none');
+                                $('#online-show').css('display','none');
                                 if (check) {
                                     //closeNav();
                                     $('#menu-left-myaccount li:nth-child(2)').css("margin-top", mtop);
@@ -9310,6 +9507,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "4px");
                                     $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "8px");
                                 }
+                                
                                 /*if (check) {
                                     closeNav();
                                 } else {
@@ -9398,27 +9596,30 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $("#sub-lesson-manager").removeClass("opensub");
                                 $("#sub-tutoring").css("display", "none");
                                 $("#sub-tutoring").removeClass("opensub");
-
+                                $("#online-show").css("display", "block");
+                                $("#account-show").css("display", "none");
+                                $("#tutoring-show").css("display", "none");
                                 if (check) {
                                     //closeNav();
                                     $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "0px");
-                                    $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                    $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "58px");
-                                    $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "1px");
+                                    $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-4px");
+                                    $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "17px");
+                                    $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "2px");
                                     $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "6px");
                                 } else {
                                     
                                     $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "0px");
                                     openNav();
-                                    $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                    $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "58px");
-                                    $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "1px");
+                                    $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-4px");
+                                    $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "17px");
+                                    $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "2px");
                                     $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "6px");
                                 }
                             }
 
                         });
                         $("#icon-tutoring").click(function () {
+
                             $('#my-timezone').css("display","none");
                             var name = $(".display-name").text();
                             var viewport = getViewport();  
@@ -9432,6 +9633,18 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 }
                             }
                             if (name !== '') {
+                                var x=$("#myacc img, #class-manager img");
+                                var y=$("#mtutoring img");
+                            $('#account-show').css('display','none');
+                            $('#online-show').css('display','none');
+                            if($("#sub-tutoring").hasClass("opensub")){
+                                openNav();
+                                $("#sub-tutoring").css("display", "none");
+                                $("#sub-tutoring").removeClass("opensub");
+                                $('#tutoring-show').css('display','none');
+                                change_image_close(y);
+                            }else{
+                                $('#tutoring-show').css('display','block');
                                 $("#sub-class-manager").css("display", "none");
                                 $("#sub-class-manager").removeClass("opensub");
                                 $("#sub-myacc").css("display", "none");
@@ -9452,10 +9665,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "6px");
                                 } else {
                                     openNav();
-                                    $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                    $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "91px");
-                                    $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "1px");
-                                    $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "1px");
+                                    $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-4px");
+                                $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "91px");
+                                $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "4px");
+                                $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "4px");
                                     $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "6px");
                                 }
                                 /*if (check) {
@@ -9479,6 +9692,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "6px");
                                 }*/
                             }
+                            }
 
                         });
                         $("#menu_Taggle").click(function () {
@@ -9496,9 +9710,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }
 
                             if($('#tutor-regist').hasClass('hidden-teacher')){
-                                var mtop = "119px";
+                                var mtop = "113px";
                             }else{
-                                var mtop = "152px";
+                                var mtop = "157px";
                             }
 
                             if (name !== '') {
@@ -9515,14 +9729,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "192px");
                                         $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "8px");
                                     } else if ($("#sub-class-manager").hasClass("opensub")) {
+                                        $('#online-show').css('display','block');
                                         $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                        $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "62px");
+                                        $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "17px");
                                         $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "7px");
                                     } else if ($("#sub-tutoring").hasClass("opensub")) {
-                                        $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                        $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "91px");
-                                        $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "1px");
-                                        $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "1px");
+                                        $('#tutoring-show').css('display','block');
+                                        $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-4px");
+                                        $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "0px");
+                                        $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "4px");
+                                        $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "4px");
                                         $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "7px");
                                     } else if ($("#sub-myacc").hasClass("opensub")){
                                         $('#menu-left-myaccount li:nth-child(2)').css("margin-top", mtop);
@@ -9530,7 +9746,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "0px");
                                         $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "0px");
                                         $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "4px");
+                                        $('#account-show').css('display','block');
                                     }  else{
+                                        var x=$("#mtutoring img, #free-courses img");
+                                        var y=$("#myacc img");
+                                        change_image_list(x,y);
                                         $("#sub-myacc").addClass("opensub");
                                         $("#sub-myacc").css("display","block");
                                         $('#menu-left-myaccount li:nth-child(2)').css("margin-top", mtop);
@@ -9538,6 +9758,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                         $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "0px");
                                         $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "0px");
                                         $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "4px");
+                                        $('#account-show').css('display','block');
                                     }
                                 }
                             }
@@ -9563,9 +9784,11 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     $("#mySidenav").addClass("open");
                                 }
                             }
+                            $('.bor-top').css('width','205px');
                         }
 
                         function closeNav() {
+
                             var viewport = getViewport();  
                             if(viewport.width < 650){
                                 $("#menu-account-nav").removeClass("open");
@@ -9583,6 +9806,10 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 } 
                             }
                             $('#menu-left-myaccount li').css("margin-top", "0px");
+                            $('.bor-top').css('width','26px');
+                            $('#account-show').css('display','none');
+                            $('#tutoring-show').css('display','none');
+                            $('#online-show').css('display','none');
                         }
 
                         $("#sub-tutoring li").click(function () {
@@ -9600,6 +9827,18 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                         // text "My Account"'s event
                         $("#myacc").click(function () {
+                            var x=$("#mtutoring img,#class-manager img");
+                            var y=$("#myacc img");
+                            $('#tutoring-show').css('display','none');
+                            $('#online-show').css('display','none');
+                        if($("#sub-myacc").hasClass("opensub")){
+                            $("#sub-myacc").removeClass("opensub");
+                            $("#sub-myacc").css("display", "none");
+                            openNav();
+                            change_image_close(y);
+                        }else{
+                        change_image_list(x,y);
+
                             $("#sub-myacc").css("display", "block");
                             $("#sub-myacc").addClass("opensub");
                             $("#sub-subscription").css("display", "none");
@@ -9610,7 +9849,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $("#sub-class-manager").removeClass("opensub");
                             $("#sub-tutoring").css("display", "none");
                             $("#sub-tutoring").removeClass("opensub");
-
+                            $('#account-show').css('display','block');
                             var viewport = getViewport();  
                             if(viewport.width < 650){
                                 var check = $("#menu-account-nav").hasClass("open");
@@ -9619,9 +9858,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             }
 
                             if($('#tutor-regist').hasClass('hidden-teacher')){
-                                var mtop = "119px";
+                                var mtop = "113px";
                             }else{
-                                var mtop = "152px";
+                                var mtop = "147px";
                             }
 
                             if (check) {
@@ -9633,6 +9872,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "4px");
                                 $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "8px");
                             }
+                        }
                         });
                         // text "Lesson Manager"'s event
                         $("#lesson-manager").click(function () {
@@ -9667,6 +9907,17 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         });
                         // text "Course Manager"'s event
                         $("#class-manager").click(function () {
+                            var x=$("#myacc img, #mtutoring img");
+                            var y=$("#class-manager img");
+                            $('#tutoring-show').css('display','none');
+                            $('#account-show').css('display','none');
+                            if($("#sub-class-manager").hasClass("opensub")){
+                                openNav();
+                                $("#sub-class-manager").css("display", "none");
+                                $("#sub-class-manager").removeClass("opensub");
+                                $('#online-show').css("display", "none");
+                                change_image_close(y);
+                            }else{
                             $("#sub-class-manager").css("display", "block");
                             $("#sub-class-manager").addClass("opensub");
                             $("#sub-myacc").css("display", "none");
@@ -9677,7 +9928,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $("#sub-lesson-manager").removeClass("opensub");
                             $("#sub-tutoring").css("display", "none");
                             $("#sub-tutoring").removeClass("opensub");
-
+                            $('#online-show').css("display", "block");
+                            change_image_list(x,y);
                             var viewport = getViewport();  
                             if(viewport.width < 650){
                                 var check = $("#menu-account-nav").hasClass("open");
@@ -9690,15 +9942,28 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "0px");
                             } else {
                                 openNav();
-                                $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
-                                $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "58px");
-                                $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "1px");
+                                $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-4px");
+                                $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "0px");
+                                $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "17px");
+                                $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "3px");
                                 $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "6px");
                             }
-
+                        }
                         });
 
                         $("#mtutoring").click(function () {
+                            var x=$("#myacc img, #class-manager img");
+                            var y=$("#mtutoring img");
+                            $('#account-show').css('display','none');
+                            $('#online-show').css('display','none');
+                            if($("#sub-tutoring").hasClass("opensub")){
+                                openNav();
+                                $("#sub-tutoring").css("display", "none");
+                                $("#sub-tutoring").removeClass("opensub");
+                                $('#tutoring-show').css('display','none');
+                                change_image_close(y);
+                            }else{
+                                $('#tutoring-show').css('display','block');
                             $("#sub-class-manager").css("display", "none");
                             $("#sub-class-manager").removeClass("opensub");
                             $("#sub-myacc").css("display", "none");
@@ -9709,7 +9974,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             $("#sub-lesson-manager").removeClass("opensub");
                             $("#sub-tutoring").css("display", "block");
                             $("#sub-tutoring").addClass("opensub");
-
+                            change_image_list(x,y);
                             var viewport = getViewport();  
                             if(viewport.width < 650){
                                 var check = $("#menu-account-nav").hasClass("open");
@@ -9719,15 +9984,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
 
                             if (check) {
                                 closeNav();
-                                $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
+                                $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-4px");
                             } else {
                                 openNav();
-                                $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-6px");
+                                $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-4px");
                                 $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "91px");
-                                $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "1px");
-                                $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "1px");
+                                $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "4px");
+                                $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "4px");
                                 $('#menu-left-myaccount li:nth-child(6)').css("margin-top", "6px");
                             }
+                        }
 
                         });
 
@@ -9769,10 +10035,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var time_zone = $('#user-time-zone :selected').attr("data-value");
                             var time_zone_index = $("#user-time-zoneSelectBoxItText").attr("data-val");
                             var cb_lang = [];
+                            var cb_speak = '';
                             $('input[name="cb-lang"]:checked').each(function () {
                                 var val = this.value;
                                 if(val == '') var val = $(this).attr('data-lang');
                                 cb_lang.push(val);
+                            });
+                            $('input[name="cb-speak"]:checked').each(function () {
+                                cb_speak = $(this).attr('data-lang');
+
+                                
                             });
                             
                             var main_image = $('#main-value').val();
@@ -9857,7 +10129,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 user_gpa: user_gpa,
                                 user_major: user_major,
                                 user_grade: user_grade,
-                                main_image: main_image
+                                main_image: main_image,
+                                cb_speak: cb_speak
                             }, function (data) {
                                 if ($.trim(data) == '1') {
                                     $('#popup-message').html('<p class="text-used">Tutor Account has been created successfully</p><button id="got-home" type="button" class="btn-orange form-control nopadding-r border-btn">Got it</button>');
@@ -10024,11 +10297,16 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                             var birth_d = $("#update_birth_dSelectBoxItText").attr("data-val");
                             var gender = $("#update_birth_gSelectBoxItText").attr("data-val");
                             var cb_lang = [];
+                            var cb_speak = '';
                             var subject_type = [];
                             var profile_avatar = $('#profile-value').val();
                             var main_image = $('#up-main-value').val();
                             $('input[name="update-cb-lang"]:checked').each(function () {
                                 cb_lang.push(this.value);
+                            });
+                            $('input[name="cb-speak-up"]:checked').each(function () {
+                                cb_speak = $(this).attr('data-lang'); 
+                                
                             });
 
                             var msg = '';                                
@@ -10097,6 +10375,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     time_zone: time_zone,
                                     time_zone_index: time_zone_index,
                                     time_zone_name: name,
+                                    cb_speak: cb_speak,
                                     type: "update"
                                 }, function (data) {
                                     
@@ -10163,6 +10442,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                     time_zone_index: time_zone_index,
                                     time_zone_name: name,
                                     main_image: main_image,
+                                    cb_speak: cb_speak,
                                     type: "update"
                                 }, function (data) {
                                    
@@ -10290,7 +10570,71 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                         $("#cancel-lg-cr").click(function () {
                             $('.language_drop').css('display','none');
 
-                        });  
+                        }); 
+                        $("#cancel-speak,#cancel-speak-up").click(function () {
+                            $('.speak_drop').css('display','none');
+
+                        }); 
+                        $("#save-speak").click(function () {
+                            $('.speak_drop').css('display','none');
+                            var cb = document.getElementsByName('cb-speak');
+                            var lg = "";
+                            if (cb[0].checked === true){
+                                lg = 'Native American English ';
+                            }
+                            if (cb[1].checked === true){
+                                lg += 'Native British English ';
+                            }
+                            if (cb[2].checked === true){
+                                lg += 'Proficient ';
+                            }
+                            if (cb[3].checked === true){
+                                lg += 'Intermediate ';
+                            }
+                            if (cb[4].checked === true){
+                                lg += 'Beginner ';
+                            }
+                            if (cb[5].checked === true){
+                                lg += 'Non-Speaker';
+                            }
+                            
+                            if(lg == ""){
+                                var sl = "Select Level";
+                            }else{
+                                var sl = lg;
+                            }
+                            document.getElementById("show-speak").innerHTML = sl+'<span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>';
+                         });
+                        $("#save-speak-up").click(function () {
+                            $('.speak_drop').css('display','none');
+                            var cb = document.getElementsByName('cb-speak-up');
+                            var lg = "";
+                            if (cb[0].checked === true){
+                                lg = 'Native American English ';
+                            }
+                            if (cb[1].checked === true){
+                                lg = 'Native British English ';
+                            }
+                            if (cb[2].checked === true){
+                                lg = 'Proficient ';
+                            }
+                            if (cb[3].checked === true){
+                                lg = 'Intermediate ';
+                            }
+                            if (cb[4].checked === true){
+                                lg = 'Beginner ';
+                            }
+                            if (cb[5].checked === true){
+                                lg = 'Non-Speaker';
+                            }
+                            
+                            if(lg == ""){
+                                var sl = "Select Level";
+                            }else{
+                                var sl = lg;
+                            }
+                            document.getElementById("show-speak-up").innerHTML = sl+'<span class="selectboxit-arrow-container" style="margin-top: -4px;"><i style="opacity:0;">0</i></span>';
+                         });
 
                         $("#input-avatar").change(function () {
                             var file_data = $('#input-avatar').prop('files')[0];
@@ -25834,7 +26178,22 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 });
                             });
                         }
-
+                        function change_image_close(y){
+                        y.attr('src','<?php echo get_template_directory_uri(); ?>/library/images/icon_MAIN_normal_state.png');
+                        y.removeClass('active');
+                        $('#menu-left-myaccount li:nth-child(2)').css("margin-top", "-5px");
+                        $('#menu-left-myaccount li:nth-child(3)').css("margin-top", "0px");
+                        $('#menu-left-myaccount li:nth-child(4)').css("margin-top", "2px");
+                        $('#menu-left-myaccount li:nth-child(5)').css("margin-top", "8px");
+                        
+                       
+                        }
+                        function change_image_list(x,y) {
+                            x.attr('src','<?php echo get_template_directory_uri(); ?>/library/images/icon_MAIN_normal_state.png');
+                            y.attr('src','<?php echo get_template_directory_uri(); ?>/library/images/icon_MAIN_open_state.png');
+                            x.removeClass('active');
+                            y.addClass('active');
+                        }
                         function get_profile_info(){
                             $.get(home_url + "/?r=ajax/get_user_profile", {userid: ''}, function (data) {
                                 //console.log(data);
@@ -25856,7 +26215,7 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                                 $('#profile-last-tought').text(data.user_previous_school);
                                 $('#profile-skype-id').text(data.user_skype_id);
                                 $('#profile-profession').text(data.u_profession);
-
+                                $('#profile-speak').text(data.english_speak);
                                 $('#price-tutoring').val(data.price_tutoring);
                                 $('#english-subject-desc').val(data.english_subject_desc);
                                 $('#math-subject-desc').val(data.math_subject_desc);
@@ -26292,6 +26651,9 @@ function set_my_mce_editor_placeholder( $textarea_html ){
            $('.language-input').click(function () {
                 $('.language_drop').slideToggle(0);
             });
+           $('.speak-input').click(function () {
+                $('.speak_drop').slideToggle(0);
+            });
             // $(document).click(function (e){
             // // Đối tượng container chứa popup
             // var containerlang = $("#language-timezone");
@@ -26610,6 +26972,8 @@ function set_my_mce_editor_placeholder( $textarea_html ){
             var containerlang = $("#language-timezone");
             var upcontainerlang = $("#up-language-timezone");
             var crcontainerlang = $("#language-timezone-cr");
+            var speak = $("#speak-en");
+            var speak_up = $("#speak-en-up");
             // Nếu click bên ngoài đối tượng container thì ẩn nó đi
             if (!containerlang.is(e.target) && containerlang.has(e.target).length === 0){
                 var isopened = containerlang.find('.language_drop').css("display");
@@ -26627,6 +26991,18 @@ function set_my_mce_editor_placeholder( $textarea_html ){
                 var isopened = crcontainerlang.find('.language_drop').css("display");
                     if (isopened == 'block') {
                         crcontainerlang.find('.language_drop').slideToggle(0);
+                    }
+            }
+            if (!speak.is(e.target) && speak.has(e.target).length === 0){
+                var isopened = speak.find('.speak_drop').css("display");
+                    if (isopened == 'block') {
+                        speak.find('.speak_drop').slideToggle(0);
+                    }
+            }
+            if (!speak_up.is(e.target) && speak_up.has(e.target).length === 0){
+                var isopened = speak_up.find('.speak_drop').css("display");
+                    if (isopened == 'block') {
+                        speak_up.find('.speak_drop').slideToggle(0);
                     }
             }
            });

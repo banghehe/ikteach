@@ -1,14 +1,21 @@
-<?php
+<?php 
 $route = get_route();
 if(isset($route[1]) && $route[1] == 'logged'){
     $userid = isset($route[2])?$route[2]:'';
     $session_id = isset($route[3])?$route[3]:'';
+    $return_url = isset($route[4])?$route[4]:'';
     $user = get_user_by('ID', $userid);
     $userLogin = $user->user_login;
     wp_set_current_user($userid, $userLogin);
     wp_set_auth_cookie($userid);
     do_action('wp_login', $userid);
-    wp_redirect( 'https://iktutor.com/ikteach/en');
+    if($return_url != ''){
+        $return = str_replace(array(',',';'),array('/','?'),$return_url); 
+        wp_redirect($return);
+    }else{
+        wp_redirect( 'https://iktutor.com/ikteach/en');
+        
+    }
     exit();
 }
 // make sure any ajax call to this script receive status 200
@@ -2441,6 +2448,7 @@ if ($task == "create_account") {
     $user_major = $_REQUEST['user_major'];
     $user_grade = $_REQUEST['user_grad'];
     $main_image = $_REQUEST['main_image'];
+    $cb_speak = $_REQUEST['cb_speak'];
     $html = '';
     $form_valid = true;
     if (is_email($user_name)) {
@@ -2512,6 +2520,11 @@ if ($task == "create_account") {
 
     if (count($cb_lang) == 0) {
         $html .= '<strong>' . __('Error', 'iii-dictionary') . '</strong>: ' . __('Please check the box of Language', 'iii-dictionary');
+        $html .= '<br/>';
+        $form_valid = false;
+    }
+    if (trim($cb_speak) == '') {
+        $html .= '<strong>' . __('Error', 'iii-dictionary') . '</strong>: ' . __('Please check the box of English Speaker', 'iii-dictionary');
         $html .= '<br/>';
         $form_valid = false;
     }
@@ -2617,6 +2630,7 @@ if ($task == "create_account") {
         update_user_meta($user_id, 'user_gpa', $user_gpa);
         update_user_meta($user_id, 'user_major', $user_major);
         update_user_meta($user_id, 'user_grade', $user_grade);
+        update_user_meta($user_id, 'english_speak', $cb_speak);
 
 
 
@@ -2803,7 +2817,7 @@ if ($task == "get_user_profile") {
     $description_preference = get_user_meta($user->ID, 'description_preference', true);
     $english_subject = get_user_meta($user->ID, 'english_subject', true);
     if($english_subject != '') $english_subject = explode(',', $english_subject);
-
+    $english_speak = get_user_meta($user->ID, 'english_speak', true);
     $math_subject = get_user_meta($user->ID, 'math_subject', true);
     if($math_subject != '') $math_subject = explode(',', $math_subject);
 
@@ -2937,7 +2951,8 @@ if ($task == "get_user_profile") {
                 'math_subject' => $math_subject,
                 'science_subject' => $science_subject,
                 'other_preference' => $other_preference,
-                'main_value' => $main_value
+                'main_value' => $main_value,
+                'english_speak' => $english_speak
             );
     echo json_encode($data);
     die;
@@ -2960,7 +2975,7 @@ if ($task == "update_info") {
     $user_profession = $_REQUEST['user_profession'];
     $cb_lang = $_REQUEST['cb_lang'];
     $profile_avatar = $_REQUEST['profile_avatar'];
-    
+    $cb_speak = $_REQUEST['cb_speak'];
     $first_name = $_REQUEST['first_name'];
     $last_name = $_REQUEST['last_name'];
     $birth_y = $_REQUEST['birth_y'];
@@ -3436,6 +3451,9 @@ if ($task == "update_info") {
                     $language_type = implode(',', $cb_lang);
                     update_user_meta($current_user->ID, 'language_type', $language_type);
                 }
+            }
+            if (isset($cb_speak) && trim($cb_speak) != '') {
+                update_user_meta($current_user->ID, 'english_speak', $cb_speak);
             }
 
             if (isset($subject_type)) {

@@ -9652,6 +9652,10 @@ textarea:focus {
 #my-account-modal .section-left {
     width: 56px;
     float: left;
+    /*background: #fff;*/
+    display: block;
+    position: relative;
+    z-index: 4000;
 }
 
 @supports(-ms-ime-align:auto ) {
@@ -9693,6 +9697,9 @@ textarea:focus {
 #menu-left-myaccount >li>a:hover,#menu-left-myaccount >li>a:focus{
     background-color: #fff;
     border-color: #fff;
+}
+#account a {
+    height: 65px;
 }
 .header-menu-left {
     font-weight: bold;
@@ -10069,6 +10076,7 @@ textarea:focus {
 .line-modal{
     margin-bottom: 0;  
     border-bottom: 1px solid #d6d6d6;
+    border-top: 0;
 }
 
 .nav-tabs {
@@ -15678,6 +15686,9 @@ font-weight: bold;
     }
 }
 @media(max-width: 649px) {
+    #account-show{
+            padding-left: 13px !important;
+    }
     #my-account-modal .title-div,
     #my-account-modal .modal-body-signup,
     #top-popup-message .modal-contents,
@@ -16320,7 +16331,7 @@ background-repeat: no-repeat;
 margin-right: -30px;
 }
 
-.language_drop{
+.language_drop, .speak_drop{
     
     background: white;
     border: 1px solid #d9d9d9;
@@ -16332,7 +16343,7 @@ margin-right: -30px;
     margin: 12px;
     border-top: 0;
 }
-.language_drop ul li{
+.language_drop ul li, .speak_drop ul li{
    
     padding: 2px 8px;
 }
@@ -16343,7 +16354,7 @@ margin-right: -30px;
     font-family: Myriad_regular;
 }
 
-.show-language{
+.show-language, #show-speak{
     white-space: nowrap;  
     overflow: hidden;  
     text-overflow: ellipsis;
@@ -16351,7 +16362,9 @@ margin-right: -30px;
    
     cursor: pointer;
 }
-#cancel-lg, #save-lg, #save-lg-ct,#cancel-lg-cr, #save-lg-cr, #cancel-lg-ct{
+#cancel-lg, #save-lg, #save-lg-ct,#cancel-lg-cr, 
+#save-lg-cr, #cancel-lg-ct, #save-speak, #cancel-speak,
+#save-speak-up, #cancel-speak-up{
     border-radius: 0px !important;
     height: 36px;
     width:  182px;
@@ -16379,7 +16392,7 @@ margin-right: -30px;
     width: 100px;
 float: right;
 }
-#list-language li .option-input-3:checked + span,#list-language-cr li .option-input-3:checked +span {
+.list-language li .option-input-3:checked + span{
     color: #4eacc8;
 }
 
@@ -16599,4 +16612,41 @@ margin-left: -7px;
 #tutoring-preference .form-control[disabled]{
     background-color: #fff; 
     color: #a4a4a4;
+}
+#account-show {
+    position: absolute;
+    margin-top: -18px;
+    padding-left: 20px;
+}
+#sub-myacc li a {
+    padding-bottom: 2px;
+    width: 90%;
+}
+.bor-top {
+    /*padding-bottom: 5px;*/
+    width: 26px;
+   
+    border-top: 1px solid #d9d9d9;
+    margin-left: 15px;
+}
+#mySidenav li img {
+    width: 10px;
+    padding: 0 2px 0 2px;
+}
+#myacc img, #idownload img, #imessage img, #mtutoring img, #class-manager img {
+    float: right;
+    margin-top: 6px;
+}
+#tutoring-show {
+    position: absolute;
+    margin-top: -1px;
+    padding-left: 20px;
+}
+#mySidenav ul li a .active {
+    width: 26px !important;
+    margin-right: -8px;
+    margin-top: 0;
+}
+.speak-input {
+    height: 50px;
 }
